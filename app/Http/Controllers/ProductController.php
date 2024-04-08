@@ -269,8 +269,8 @@ class ProductController extends Controller
             }
 
         if($name != null){
-
-	        $shops = $shops->where('product_title', 'LIKE', "%$name%");
+//            $shops = $shops->where('product_title', 'LIKE', "%$name%");
+	        $shops = $shops->where('product_title', 'LIKE', "%$name%")->orWhere('sku', 'LIKE', "%$name%")->orWhere('item_number', 'LIKE', "%$name%");
 	    }elseif($cat != null){
 
 	        $shops = $shops->where('category', $cat);

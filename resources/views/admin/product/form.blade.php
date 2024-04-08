@@ -20,6 +20,18 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
+                {!! Form::label('sku', 'SKU') !!}
+                {!! Form::text('sku', isset($product) ? $product->sku : null, ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('item_number', 'Item number') !!}
+                {!! Form::text('item_number', isset($product) ? $product->item_number : null, ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
                 {!! Form::label('description', 'Description') !!}
                 {!! Form::textarea('description', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required'] : ['class' => 'form-control']) !!}
             </div>

@@ -25,7 +25,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['product_title', 'description','price', 'category', 'link', 'user_id'];
+    protected $fillable = ['product_title', 'description','price', 'category', 'link', 'user_id', 'sku', 'item_number'];
 
     public function categorys()
     {

@@ -198,7 +198,7 @@
                                 @endphp
                                 <option value='0' selected='selected'>All Categories</option>
                                 @foreach ($cat as $cats)
-                                    <option class="level-0" value='{!! $cats->id !!}'>{!! $cats->name !!}
+                                    <option class="level-0" value='{!! $cats->id !!}' {!! Request::get('product_cat') == $cats->id ? 'selected' : '' !!}>{!! $cats->name !!}
                                     </option>
                                 @endforeach
 
