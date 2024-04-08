@@ -1,0 +1,272 @@
+[12-Apr-2023 19:02:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/epdwqwfu/public_html/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/view.php on line 17
+[12-Apr-2023 19:02:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function base_path() in /home/epdwqwfu/public_html/config/crudgenerator.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/crudgenerator.php on line 16
+[12-Apr-2023 19:02:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function base_path() in /home/epdwqwfu/public_html/config/crudgenerator.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/crudgenerator.php on line 16
+[12-Apr-2023 19:02:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/queue.php on line 16
+[12-Apr-2023 19:26:22 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/activitylog.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/activitylog.php on line 9
+[12-Apr-2023 19:26:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/app.php on line 16
+[12-Apr-2023 19:26:45 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/broadcasting.php on line 18
+[12-Apr-2023 19:26:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/cache.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/cache.php on line 21
+[12-Apr-2023 19:27:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function base_path() in /home/epdwqwfu/public_html/config/crudgenerator.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/crudgenerator.php on line 16
+[12-Apr-2023 19:27:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/database.php on line 18
+[12-Apr-2023 19:27:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/filesystems.php on line 16
+[12-Apr-2023 19:27:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/hashing.php on line 32
+[12-Apr-2023 19:28:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/logging.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/logging.php on line 20
+[12-Apr-2023 19:28:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/mail.php on line 16
+[12-Apr-2023 19:28:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/newsletter.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/newsletter.php on line 10
+[12-Apr-2023 19:28:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/queue.php on line 16
+[12-Apr-2023 19:28:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/services.php on line 18
+[12-Apr-2023 19:29:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/session.php on line 21
+[12-Apr-2023 19:29:18 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Http\Request' not found in /home/epdwqwfu/public_html/config/trustedproxy.php:42
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/trustedproxy.php on line 42
+[12-Apr-2023 19:29:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/epdwqwfu/public_html/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/view.php on line 17
+[12-Apr-2023 20:17:45 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/activitylog.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/activitylog.php on line 9
+[12-Apr-2023 20:17:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/app.php on line 16
+[12-Apr-2023 20:17:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/broadcasting.php on line 18
+[12-Apr-2023 20:17:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/cache.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/cache.php on line 21
+[12-Apr-2023 20:17:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function base_path() in /home/epdwqwfu/public_html/config/crudgenerator.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/crudgenerator.php on line 16
+[12-Apr-2023 20:18:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/database.php on line 18
+[12-Apr-2023 20:18:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/filesystems.php on line 16
+[12-Apr-2023 20:18:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/hashing.php on line 32
+[12-Apr-2023 20:22:41 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/logging.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/logging.php on line 20
+[12-Apr-2023 20:22:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/mail.php on line 16
+[12-Apr-2023 20:22:45 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/newsletter.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/newsletter.php on line 10
+[12-Apr-2023 20:22:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/queue.php on line 16
+[12-Apr-2023 20:22:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/services.php on line 18
+[12-Apr-2023 20:22:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/session.php on line 21
+[12-Apr-2023 20:23:01 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Http\Request' not found in /home/epdwqwfu/public_html/config/trustedproxy.php:42
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/trustedproxy.php on line 42
+[12-Apr-2023 20:23:04 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/epdwqwfu/public_html/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/view.php on line 17
+[14-Apr-2023 20:20:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/logging.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/logging.php on line 20
+[14-Apr-2023 21:27:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/newsletter.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/newsletter.php on line 10
+[14-Apr-2023 21:29:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/newsletter.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/newsletter.php on line 10
+[14-Apr-2023 23:19:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/newsletter.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/newsletter.php on line 10
+[14-Apr-2023 23:20:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/newsletter.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/newsletter.php on line 10
+[15-Apr-2023 00:58:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/newsletter.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/newsletter.php on line 10
+[15-Apr-2023 00:58:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/newsletter.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/newsletter.php on line 10
+[15-Apr-2023 05:08:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/queue.php on line 16
+[15-Apr-2023 05:11:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/cache.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/cache.php on line 21
+[15-Apr-2023 15:54:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/mail.php on line 16
+[15-Apr-2023 19:58:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/activitylog.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/activitylog.php on line 9
+[15-Apr-2023 19:58:37 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/app.php on line 16
+[15-Apr-2023 19:58:41 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/broadcasting.php on line 18
+[15-Apr-2023 19:58:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/cache.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/cache.php on line 21
+[15-Apr-2023 19:58:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function base_path() in /home/epdwqwfu/public_html/config/crudgenerator.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/crudgenerator.php on line 16
+[15-Apr-2023 19:58:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/database.php on line 18
+[15-Apr-2023 19:58:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/filesystems.php on line 16
+[15-Apr-2023 19:58:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/hashing.php on line 32
+[15-Apr-2023 19:59:04 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/logging.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/logging.php on line 20
+[15-Apr-2023 19:59:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/mail.php on line 16
+[15-Apr-2023 19:59:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/newsletter.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/newsletter.php on line 10
+[15-Apr-2023 19:59:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/queue.php on line 16
+[15-Apr-2023 19:59:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/services.php on line 18
+[15-Apr-2023 19:59:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/session.php on line 21
+[15-Apr-2023 19:59:21 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Http\Request' not found in /home/epdwqwfu/public_html/config/trustedproxy.php:42
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/trustedproxy.php on line 42
+[15-Apr-2023 19:59:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/epdwqwfu/public_html/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/view.php on line 17
+[16-Apr-2023 00:47:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/database.php on line 18
+[16-Apr-2023 00:48:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function base_path() in /home/epdwqwfu/public_html/config/crudgenerator.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/crudgenerator.php on line 16
+[16-Apr-2023 00:52:38 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/epdwqwfu/public_html/config/activitylog.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/activitylog.php on line 9
+[16-Apr-2023 01:12:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function base_path() in /home/epdwqwfu/public_html/config/crudgenerator.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/crudgenerator.php on line 16
+[16-Apr-2023 01:19:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function base_path() in /home/epdwqwfu/public_html/config/crudgenerator.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/crudgenerator.php on line 16
+[16-Apr-2023 07:58:36 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/epdwqwfu/public_html/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/config/view.php on line 17

@@ -1,0 +1,84 @@
+[12-Apr-2023 19:31:04 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/api.php on line 17
+[12-Apr-2023 19:31:09 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Broadcast' not found in /home/epdwqwfu/public_html/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/channels.php on line 16
+[12-Apr-2023 19:31:11 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Artisan' not found in /home/epdwqwfu/public_html/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/console.php on line 17
+[12-Apr-2023 19:31:18 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/web.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/web.php on line 23
+[12-Apr-2023 20:27:11 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/api.php on line 17
+[12-Apr-2023 20:27:14 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Broadcast' not found in /home/epdwqwfu/public_html/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/channels.php on line 16
+[12-Apr-2023 20:27:18 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Artisan' not found in /home/epdwqwfu/public_html/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/console.php on line 17
+[12-Apr-2023 20:31:35 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/web.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/web.php on line 23
+[13-Apr-2023 13:23:50 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/api.php on line 17
+[13-Apr-2023 13:24:06 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Broadcast' not found in /home/epdwqwfu/public_html/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/channels.php on line 16
+[13-Apr-2023 13:24:27 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Artisan' not found in /home/epdwqwfu/public_html/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/console.php on line 17
+[13-Apr-2023 13:24:59 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/web.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/web.php on line 23
+[13-Apr-2023 23:56:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/api.php on line 17
+[14-Apr-2023 00:02:26 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Broadcast' not found in /home/epdwqwfu/public_html/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/channels.php on line 16
+[14-Apr-2023 00:15:02 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Artisan' not found in /home/epdwqwfu/public_html/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/console.php on line 17
+[14-Apr-2023 00:39:38 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/web.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/web.php on line 23
+[15-Apr-2023 01:47:18 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Artisan' not found in /home/epdwqwfu/public_html/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/console.php on line 17
+[15-Apr-2023 20:09:10 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/api.php on line 17
+[15-Apr-2023 20:09:13 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Broadcast' not found in /home/epdwqwfu/public_html/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/channels.php on line 16
+[15-Apr-2023 20:09:16 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Artisan' not found in /home/epdwqwfu/public_html/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/console.php on line 17
+[15-Apr-2023 20:09:18 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Support\Facades\Route' not found in /home/epdwqwfu/public_html/routes/web.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/routes/web.php on line 23

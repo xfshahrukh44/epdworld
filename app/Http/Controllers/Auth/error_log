@@ -1,0 +1,20 @@
+[15-Apr-2023 16:05:53 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/ForgotPasswordController.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/ForgotPasswordController.php on line 8
+[15-Apr-2023 16:05:55 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/LoginController.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/LoginController.php on line 11
+[15-Apr-2023 16:05:57 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/RegisterController.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/RegisterController.php on line 16
+[15-Apr-2023 16:05:59 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/ResetPasswordController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/ResetPasswordController.php on line 10
+[15-Apr-2023 16:06:01 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/SocialLoginController.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Auth/SocialLoginController.php on line 16

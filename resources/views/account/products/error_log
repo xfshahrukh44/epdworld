@@ -1,0 +1,8 @@
+[16-Apr-2023 22:22:56 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/products/create.blade.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/products/create.blade.php on line 5
+[16-Apr-2023 22:23:05 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/products/index.blade.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/products/index.blade.php on line 5

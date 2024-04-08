@@ -1,0 +1,20 @@
+[13-Apr-2023 02:58:01 UTC] PHP Notice:  Undefined variable: factory in /home/epdwqwfu/public_html/database/factories/UserFactory.php on line 20
+[13-Apr-2023 02:58:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function define() on null in /home/epdwqwfu/public_html/database/factories/UserFactory.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/factories/UserFactory.php on line 20
+[13-Apr-2023 11:02:40 UTC] PHP Notice:  Undefined variable: factory in /home/epdwqwfu/public_html/database/factories/UserFactory.php on line 20
+[13-Apr-2023 11:02:40 UTC] PHP Fatal error:  Uncaught Error: Call to a member function define() on null in /home/epdwqwfu/public_html/database/factories/UserFactory.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/factories/UserFactory.php on line 20
+[13-Apr-2023 15:21:28 UTC] PHP Notice:  Undefined variable: factory in /home/epdwqwfu/public_html/database/factories/UserFactory.php on line 20
+[13-Apr-2023 15:21:28 UTC] PHP Fatal error:  Uncaught Error: Call to a member function define() on null in /home/epdwqwfu/public_html/database/factories/UserFactory.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/factories/UserFactory.php on line 20
+[16-Apr-2023 04:59:04 UTC] PHP Notice:  Undefined variable: factory in /home/epdwqwfu/public_html/database/factories/UserFactory.php on line 20
+[16-Apr-2023 04:59:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function define() on null in /home/epdwqwfu/public_html/database/factories/UserFactory.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/factories/UserFactory.php on line 20

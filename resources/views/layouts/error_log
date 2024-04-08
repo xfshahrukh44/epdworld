@@ -1,0 +1,8 @@
+[14-Apr-2023 17:59:39 UTC] PHP Fatal error:  Uncaught Error: Class 'DB' not found in /home/epdwqwfu/public_html/resources/views/layouts/app.blade.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/layouts/app.blade.php on line 6
+[17-Apr-2023 06:41:43 UTC] PHP Fatal error:  Uncaught Error: Class 'DB' not found in /home/epdwqwfu/public_html/resources/views/layouts/app.blade.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/layouts/app.blade.php on line 6

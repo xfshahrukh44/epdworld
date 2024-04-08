@@ -1,0 +1,52 @@
+[16-Apr-2023 14:03:46 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/AdminController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/AdminController.php on line 12
+[16-Apr-2023 14:03:56 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/AttributesController.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/AttributesController.php on line 14
+[16-Apr-2023 14:04:06 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/AttributesValueController.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/AttributesValueController.php on line 15
+[16-Apr-2023 14:04:11 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/BannerController.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/BannerController.php on line 13
+[16-Apr-2023 14:04:19 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/BlogController.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/BlogController.php on line 13
+[16-Apr-2023 14:04:40 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/CategoryController.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/CategoryController.php on line 13
+[16-Apr-2023 14:04:51 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/PageController.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/PageController.php on line 16
+[16-Apr-2023 14:05:02 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/PermissionsController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/PermissionsController.php on line 9
+[16-Apr-2023 14:05:15 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/ProductController.php:24
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/ProductController.php on line 24
+[16-Apr-2023 14:05:24 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/ProtectionController.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/ProtectionController.php on line 13
+[16-Apr-2023 14:05:41 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/RolesController.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/RolesController.php on line 11
+[16-Apr-2023 14:05:48 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/TestimonialController.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/TestimonialController.php on line 13
+[16-Apr-2023 14:05:58 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/UsersController.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/app/Http/Controllers/Admin/UsersController.php on line 14

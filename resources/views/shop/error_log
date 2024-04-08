@@ -1,0 +1,38 @@
+[14-Apr-2023 18:00:03 UTC] PHP Notice:  Undefined variable: key in /home/epdwqwfu/public_html/resources/views/shop/cart.blade.php on line 160
+[14-Apr-2023 18:00:03 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Product' not found in /home/epdwqwfu/public_html/resources/views/shop/cart.blade.php:163
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/shop/cart.blade.php on line 163
+[14-Apr-2023 18:00:07 UTC] PHP Fatal error:  Uncaught Error: Class 'DB' not found in /home/epdwqwfu/public_html/resources/views/shop/category_detail.blade.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/shop/category_detail.blade.php on line 11
+[14-Apr-2023 18:00:09 UTC] PHP Fatal error:  Uncaught Error: Class 'DB' not found in /home/epdwqwfu/public_html/resources/views/shop/checkout.blade.php:178
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/shop/checkout.blade.php on line 178
+[14-Apr-2023 18:00:11 UTC] PHP Notice:  Undefined variable: product_detail in /home/epdwqwfu/public_html/resources/views/shop/detail.blade.php on line 211
+[14-Apr-2023 18:00:11 UTC] PHP Notice:  Trying to get property 'description' of non-object in /home/epdwqwfu/public_html/resources/views/shop/detail.blade.php on line 211
+[14-Apr-2023 18:00:13 UTC] PHP Fatal error:  Uncaught Error: Class 'DB' not found in /home/epdwqwfu/public_html/resources/views/shop/shop.blade.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/shop/shop.blade.php on line 8
+[17-Apr-2023 06:42:03 UTC] PHP Notice:  Undefined variable: key in /home/epdwqwfu/public_html/resources/views/shop/cart.blade.php on line 160
+[17-Apr-2023 06:42:03 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Product' not found in /home/epdwqwfu/public_html/resources/views/shop/cart.blade.php:163
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/shop/cart.blade.php on line 163
+[17-Apr-2023 06:42:06 UTC] PHP Fatal error:  Uncaught Error: Class 'DB' not found in /home/epdwqwfu/public_html/resources/views/shop/category_detail.blade.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/shop/category_detail.blade.php on line 11
+[17-Apr-2023 06:42:07 UTC] PHP Fatal error:  Uncaught Error: Class 'DB' not found in /home/epdwqwfu/public_html/resources/views/shop/checkout.blade.php:178
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/shop/checkout.blade.php on line 178
+[17-Apr-2023 06:42:09 UTC] PHP Notice:  Undefined variable: product_detail in /home/epdwqwfu/public_html/resources/views/shop/detail.blade.php on line 211
+[17-Apr-2023 06:42:09 UTC] PHP Notice:  Trying to get property 'description' of non-object in /home/epdwqwfu/public_html/resources/views/shop/detail.blade.php on line 211
+[17-Apr-2023 06:42:13 UTC] PHP Fatal error:  Uncaught Error: Class 'DB' not found in /home/epdwqwfu/public_html/resources/views/shop/shop.blade.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/shop/shop.blade.php on line 8

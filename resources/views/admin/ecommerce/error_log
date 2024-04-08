@@ -1,0 +1,4 @@
+[16-Apr-2023 06:37:09 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Product' not found in /home/epdwqwfu/public_html/resources/views/admin/ecommerce/order-page.blade.php:117
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/admin/ecommerce/order-page.blade.php on line 117

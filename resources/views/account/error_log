@@ -1,0 +1,48 @@
+[14-Apr-2023 17:04:30 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/friends.blade.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/friends.blade.php on line 4
+[14-Apr-2023 17:04:32 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/index.blade.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/index.blade.php on line 8
+[14-Apr-2023 17:04:35 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/invoice.blade.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/invoice.blade.php on line 4
+[14-Apr-2023 17:58:38 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/account.blade.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/account.blade.php on line 5
+[14-Apr-2023 17:58:40 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/orders.blade.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/orders.blade.php on line 5
+[14-Apr-2023 17:58:52 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/success.blade.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/success.blade.php on line 5
+[17-Apr-2023 06:40:39 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/account.blade.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/account.blade.php on line 5
+[17-Apr-2023 06:40:43 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/friends.blade.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/friends.blade.php on line 4
+[17-Apr-2023 06:40:44 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/index.blade.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/index.blade.php on line 8
+[17-Apr-2023 06:40:46 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/invoice.blade.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/invoice.blade.php on line 4
+[17-Apr-2023 06:40:48 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/orders.blade.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/orders.blade.php on line 5
+[17-Apr-2023 06:40:59 UTC] PHP Fatal error:  Uncaught Error: Class 'Request' not found in /home/epdwqwfu/public_html/resources/views/account/success.blade.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/resources/views/account/success.blade.php on line 5

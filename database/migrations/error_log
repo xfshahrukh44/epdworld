@@ -1,0 +1,132 @@
+[13-Apr-2023 15:21:29 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_06_16_184050_create_abouts_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_06_16_184050_create_abouts_table.php on line 6
+[13-Apr-2023 15:21:31 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_06_16_184252_create_news_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_06_16_184252_create_news_table.php on line 6
+[13-Apr-2023 15:21:32 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_05_224227_create_faqs_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_05_224227_create_faqs_table.php on line 6
+[13-Apr-2023 15:21:34 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_05_232106_create_links_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_05_232106_create_links_table.php on line 6
+[13-Apr-2023 15:21:35 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_05_235551_create_american_clefts_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_05_235551_create_american_clefts_table.php on line 6
+[13-Apr-2023 15:21:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_07_181054_create_brands_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_07_181054_create_brands_table.php on line 6
+[13-Apr-2023 15:21:38 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_08_001638_create_events_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_08_001638_create_events_table.php on line 6
+[13-Apr-2023 15:21:40 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_08_230846_create_services_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_08_230846_create_services_table.php on line 6
+[13-Apr-2023 15:21:41 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205454_create_articulations_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205454_create_articulations_table.php on line 6
+[13-Apr-2023 15:21:43 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205902_create_academics_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205902_create_academics_table.php on line 6
+[13-Apr-2023 15:21:44 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205945_create_stutterings_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205945_create_stutterings_table.php on line 6
+[13-Apr-2023 15:21:46 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_210518_create_strokes_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_210518_create_strokes_table.php on line 6
+[13-Apr-2023 15:21:47 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_210647_create_voices_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_210647_create_voices_table.php on line 6
+[13-Apr-2023 15:21:49 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_222248_create_ebooks_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_222248_create_ebooks_table.php on line 6
+[13-Apr-2023 15:21:50 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_08_31_194719_create_traning_videos_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_08_31_194719_create_traning_videos_table.php on line 6
+[13-Apr-2023 15:21:52 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_08_31_214446_create_upcomingclasses_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_08_31_214446_create_upcomingclasses_table.php on line 6
+[16-Apr-2023 01:12:54 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_05_235551_create_american_clefts_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_05_235551_create_american_clefts_table.php on line 6
+[16-Apr-2023 04:59:08 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_06_16_184050_create_abouts_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_06_16_184050_create_abouts_table.php on line 6
+[16-Apr-2023 04:59:11 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_06_16_184252_create_news_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_06_16_184252_create_news_table.php on line 6
+[16-Apr-2023 04:59:13 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_05_224227_create_faqs_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_05_224227_create_faqs_table.php on line 6
+[16-Apr-2023 04:59:15 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_05_232106_create_links_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_05_232106_create_links_table.php on line 6
+[16-Apr-2023 04:59:17 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_05_235551_create_american_clefts_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_05_235551_create_american_clefts_table.php on line 6
+[16-Apr-2023 04:59:19 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_08_001638_create_events_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_08_001638_create_events_table.php on line 6
+[16-Apr-2023 04:59:21 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_08_230846_create_services_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_08_230846_create_services_table.php on line 6
+[16-Apr-2023 04:59:24 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205454_create_articulations_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205454_create_articulations_table.php on line 6
+[16-Apr-2023 04:59:26 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205902_create_academics_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205902_create_academics_table.php on line 6
+[16-Apr-2023 04:59:28 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205945_create_stutterings_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_205945_create_stutterings_table.php on line 6
+[16-Apr-2023 04:59:30 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_210518_create_strokes_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_210518_create_strokes_table.php on line 6
+[16-Apr-2023 04:59:32 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_210647_create_voices_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_210647_create_voices_table.php on line 6
+[16-Apr-2023 04:59:35 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_15_222248_create_ebooks_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_15_222248_create_ebooks_table.php on line 6
+[16-Apr-2023 04:59:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_08_31_194719_create_traning_videos_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_08_31_194719_create_traning_videos_table.php on line 6
+[16-Apr-2023 04:59:39 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_08_31_214446_create_upcomingclasses_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_08_31_214446_create_upcomingclasses_table.php on line 6
+[16-Apr-2023 06:50:26 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Migrations\Migration' not found in /home/epdwqwfu/public_html/database/migrations/2021_07_07_181054_create_brands_table.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/epdwqwfu/public_html/database/migrations/2021_07_07_181054_create_brands_table.php on line 6
