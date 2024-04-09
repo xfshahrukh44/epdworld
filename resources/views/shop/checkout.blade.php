@@ -344,10 +344,10 @@
                             <h2> Coupon Discount <span class="span_coupon_discount">0.00</span></h2>
                             <h3> Total Price <span class="span_total">${{ $subtotal +  $variation }}</span></h3>
                         </div>
-                        <div class="amount-wrapper">
-                            <input type="text" class="text_coupon" style="background: white;" placeholder="Enter coupon code">
-                            <button class="btn btn-link btn_apply_coupon">Apply coupon</button>
-                        </div>
+{{--                        <div class="amount-wrapper">--}}
+{{--                            <input type="text" class="text_coupon" style="background: white;" placeholder="Enter coupon code">--}}
+{{--                            <button class="btn btn-link btn_apply_coupon">Apply coupon</button>--}}
+{{--                        </div>--}}
                     </div>
                     <div id="accordion" class="payment-accordion">
                         <div class="card">
@@ -706,4 +706,5 @@
             }
         });
     </script>
+
 @endsection

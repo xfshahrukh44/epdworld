@@ -14,5 +14,7 @@ yarn-error.log
 /public/video
 .env
 *.zip
+*.rar
 *.mp4
 *.sql
+*.wpress
