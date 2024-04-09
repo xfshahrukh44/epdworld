@@ -306,7 +306,6 @@ class OrderController extends Controller
 
 	public function placeOrder(Request $request)
 	{
-
 		$validateArr = array();
 		$messageArr = array();
 		$validateArr['country'] = 'required|max:50';
@@ -389,7 +388,7 @@ class OrderController extends Controller
 		$total +=	$subtotal + $cart['shipping'];
 		
 
-		$order->order_total = $total;
+		$order->order_total = $request->has('total_after_coupon') ? floatval($request->get('total_after_coupon')) : $total;
 
 		$order->user_id = $id;
 
