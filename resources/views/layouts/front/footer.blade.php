@@ -116,7 +116,7 @@
 
             <div class="footer-contact col-xs-12 col-sm-12 col-md-4 col-md-pull-8">
                 <div class="footer-logo">
-                    <img src="{!! asset($logo->img_path) !!}" alt="">
+                    <img data-src="{!! asset($logo->img_path) !!}" class="lazy" alt="logo epdworld.com">
                 </div><!-- /.footer-contact -->
 
                 <div class="footer-call-us">
@@ -138,42 +138,42 @@
                 <div class="footer-social-icons">
                     <ul class="social-icons list-unstyled">
                         <li>
-                            <a href="{!! App\Http\Traits\HelperTrait::returnFlag(682) !!}">
+                            <a aria-label="facebook" href="{!! App\Http\Traits\HelperTrait::returnFlag(682) !!}">
                                 <i class="fa-brands fa-facebook-f"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{!! App\Http\Traits\HelperTrait::returnFlag(1960) !!}">
+                            <a  aria-label="twitter" href="{!! App\Http\Traits\HelperTrait::returnFlag(1960) !!}">
                                 <i class="fa-brands fa-twitter"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{!! App\Http\Traits\HelperTrait::returnFlag(1961) !!}">
+                            <a aria-label="pinterest" href="{!! App\Http\Traits\HelperTrait::returnFlag(1961) !!}">
                                 <i class="fa-brands fa-pinterest"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{!! App\Http\Traits\HelperTrait::returnFlag(1962) !!}">
+                            <a aria-label="linkedin" href="{!! App\Http\Traits\HelperTrait::returnFlag(1962) !!}">
                                 <i class="fa-brands fa-linkedin-in"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{!! App\Http\Traits\HelperTrait::returnFlag(1963) !!}">
+                            <a aria-label="tumblr" href="{!! App\Http\Traits\HelperTrait::returnFlag(1963) !!}">
                                 <i class="fa-brands fa-tumblr"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{!! App\Http\Traits\HelperTrait::returnFlag(1965) !!}">
+                            <a aria-label="instagram" href="{!! App\Http\Traits\HelperTrait::returnFlag(1965) !!}">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{!! App\Http\Traits\HelperTrait::returnFlag(1964) !!}">
+                            <a aria-label="youtube" href="{!! App\Http\Traits\HelperTrait::returnFlag(1964) !!}">
                                 <i class="fa-brands fa-youtube"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{!! App\Http\Traits\HelperTrait::returnFlag(1968) !!}">
+                            <a aria-label="rss" href="{!! App\Http\Traits\HelperTrait::returnFlag(1968) !!}">
                                 <i class="fa-solid fa-rss"></i>
                             </a>
                         </li>
@@ -191,11 +191,11 @@
         <div class="pull-right flip payment">
             <div class="footer-payment-logo">
                 <ul class="cash-card card-inline">
-                    <li class="card-item"><img src="{!! asset('images/1.png') !!}" alt="" width="52"></li>
-                    <li class="card-item"><img src="{!! asset('images/2.png') !!}" alt="" width="52"></li>
-                    <li class="card-item"><img src="{!! asset('images/3.png') !!}" alt="" width="52"></li>
-                    <li class="card-item"><img src="{!! asset('images/4.png') !!}" alt="" width="52"></li>
-                    <li class="card-item"><img src="{!! asset('images/5.png') !!}" alt="" width="52"></li>
+                    <li class="card-item"><img data-src="{!! asset('images/1.png') !!}" class="lazy" alt="card" width="52px" height="100%" ></li>
+                    <li class="card-item"><img data-src="{!! asset('images/2.png') !!}" class="lazy" alt="card" width="52px" height="100%" ></li>
+                    <li class="card-item"><img data-src="{!! asset('images/3.png') !!}" class="lazy" alt="card" width="52px" height="100%" ></li>
+                    <li class="card-item"><img data-src="{!! asset('images/4.png') !!}" class="lazy" alt="card" width="52px" height="100%" ></li>
+                    <li class="card-item"><img data-src="{!! asset('images/5.png') !!}" class="lazy" alt="card" width="52px" height="100%" ></li>
                 </ul>
             </div><!-- /.payment-methods -->
         </div>

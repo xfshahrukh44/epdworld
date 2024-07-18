@@ -4,6 +4,9 @@
 
     <div class="top-bar hidden-md-down">
         <div class="container">
+            <div class="row" >
+            <div class="col-md-12 col-12">
+                <div class="top-bar-parent">
             <nav>
                 <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
                     <li class="menu-item animate-dropdown"><a title="Welcome to Worldwide Electronics Store"
@@ -37,6 +40,9 @@
 
                 </ul>
             </nav>
+            </div>
+            </div>
+            </div>
         </div>
     </div><!-- /.top-bar -->
 
@@ -46,9 +52,9 @@
 
                 <!-- ============================================================= Header Logo ============================================================= -->
                 <div class="header-logo">
-                    <a href="{{ route('home') }}" class="header-logo-link">
+                    <a href="{{ route('home') }}" aria-label="logo" class="header-logo-link">
 
-                        <img src="{{ asset($logo->img_path) }}" alt="">
+                        <img src="{{ asset($logo->img_path) }}" width="100%" height="100%" alt="">
                     </a>
                 </div>
                 <!-- ============================================================= Header Logo : End============================================================= -->
@@ -100,8 +106,8 @@
 
                 <!-- ============================================================= Header Logo ============================================================= -->
                 <div class="header-logo">
-                    <a href="{{ route('home') }}" class="header-logo-link">
-                        <img src="{{ asset($logo->img_path) }}" alt="">
+                    <a href="{{ route('home') }}" aria-label="logo" class="header-logo-link">
+                        <img src="{{ asset($logo->img_path) }}" alt="" width="100%" height="100%" >
                     </a>
                 </div>
                 <!-- ============================================================= Header Logo : End============================================================= -->

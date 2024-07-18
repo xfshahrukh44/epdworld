@@ -81,8 +81,8 @@
                                                 rel="tag">{!! $pro->categorys->name !!}</a></span>
                                         <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
                                             <h3>{!! $pro->product_title !!}</h3>
-                                            <div class="product-thumbnail"> <img data-echo="{!! $pro->image ? asset($pro->image) : asset('images/noimage.png') !!}"
-                                                    src="{!! $pro->image ? asset($pro->image) : asset('images/noimage.png') !!}" alt=""> </div>
+                                            <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
+                                                    src="images/blank.gif" alt=""> </div>
                                         </a>
                                         <div class="price-add-to-cart"> <span class="price">
                                                 <span class="electro-price">
@@ -134,7 +134,7 @@
                             <li class="product-list">
                                 <div class="product-outer">
                                     <div class="product-thumbnail-list"> <img class="wp-post-image"
-                                            data-echo="{!! $pro->image ? asset($pro->image) : asset('images/noimage.png') !!}" src="{!! $pro->image ? asset($pro->image) : asset('images/noimage.png') !!}" alt="">
+                                            data-echo="{!! asset($pro->image) !!}" src="{!! asset($pro->image) !!}" alt="">
                                     </div>
                                     <div class="product-inner product-inner-list"> <span class="loop-product-categories"><a href="#"
                                                 rel="tag">{!! $pro->categorys->name !!}</a></span>
@@ -232,7 +232,7 @@
                 <ul class="product_list_widget">
                     @foreach($latest as $item)
                     <li>
-                        <a href="{{ route('shopDetail', ['id' => $item->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $item->product_title)))]) }}" title="{{$item->product_title}}"> <img
+                        <a href="{{ route('shopDetail', ['id' => $item->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $item->product_title)))]) }}" title="Notebook Black Spire V Nitro  VN7-591G"> <img
                                 width="180" height="180" src="{!! asset($item->image) !!}" class="wp-post-image"
                                 alt="" /><span class="product-title">{!! $item->product_title !!}</span> </a> <span class="electro-price"><ins><span
                                     class="amount">&#36;{!! $item->price !!}</span></ins> </span>

@@ -3,7 +3,7 @@ $('.gymSlider').owlCarousel({
     "nav":false,
     "slideSpeed":300,
     "dots":true,
-    "rtl":is_rtl,
+    // "rtl":is_rtl,
     "paginationSpeed":400,
     "navText":["",""],
     "margin":30,

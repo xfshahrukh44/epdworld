@@ -11,7 +11,7 @@
                     <div class="home-v2-slider">
                         <!-- ========================================== SECTION – HERO : END========================================= -->
                         <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
-                            @foreach ($banner as $ban)
+                            @foreach ($banner as $key => $ban)
                             <div class="item" style="background-image: url({!! $ban->image !!});">
                                 <div class="container">
                                     <div class="row">
@@ -31,7 +31,7 @@
                         <div class="ads-block row">
                             <div class="ad col-xs-12 col-sm-6">
                                 <div class="media">
-                                    <div class="media-left media-middle"><img src="images/ads-block/1.jpg" alt="" />
+                                    <div class="media-left media-middle"><img class="" width="100%" height="100%" src="images/ads-block/1.webp" alt="" />
                                     </div>
                                     <div class="media-body media-middle">
                                         <div class="ad-text">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="ad col-xs-12 col-sm-6">
                                 <div class="media">
-                                    <div class="media-left media-middle"><img src="images/ads-block/2.jpg" alt="" />
+                                    <div class="media-left media-middle"><img class="" width="100%" height="100%" src="images/ads-block/2.webp" alt="" />
                                     </div>
                                     <div class="media-body media-middle">
                                         <div class="ad-text">
@@ -87,9 +87,9 @@
                                                 <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
                                                     <h3>{!! $pro->product_title !!}</h3>
                                                     <div class="product-thumbnail">
-                                                        <img src="images/blank.gif"
+                                                        <img data-src="images/blank.gif"
                                                             data-echo="{!! asset($pro->image) !!}"
-                                                            class="img-responsive" alt="">
+                                                            class="lazy img-responsive" alt="">
                                                     </div>
                                                 </a>
 
@@ -100,7 +100,8 @@
                                                                     ${!! $pro->price !!}</span></ins>
                                                             <div class="ship-box">
                                                                 <div class="ship-detail">
-                                                                  <i class="fa-solid fa-truck"></i>  Free Shipping - 12-day delivery
+                                                                  <!--<i class="fa-solid fa-truck"></i>-->
+                                                                  Free Shipping - 12-day delivery
                                                                 </div>
                                                             </div>
                                                         </span>
@@ -142,9 +143,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Wireless Audio System Multiroom 360</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/products/3.jpg"
+                                                                    <img  data-src="images/products/3.jpg"
                                                                         data-echo="images/products/3.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="lazy img-responsive" alt="">
                                                                 </div>
                                                             </a>
 
@@ -226,9 +227,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Purple Solo 2 Wireless</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/products/5.jpg"
+                                                                    <img data-src="images/products/5.jpg"
                                                                         data-echo="images/products/5.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="lazy img-responsive" alt="">
                                                                 </div>
                                                             </a>
 
@@ -310,9 +311,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>White Solo 2 Wireless</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/newProducts/3.jpg"
+                                                                    <img data-src="images/newProducts/3.jpg"
                                                                         data-echo="images/newProducts/3.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="lazy img-responsive" alt="">
                                                                 </div>
                                                             </a>
 
@@ -408,9 +409,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Wireless Audio System Multiroom 360</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/products/3.jpg"
+                                                                    <img data-src="images/products/3.jpg"
                                                                         data-echo="images/products/3.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="lazy img-responsive" alt="">
                                                                 </div>
                                                             </a>
 
@@ -451,9 +452,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Tablet Thin EliteBook Revolve 810 G6</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/products/1.jpg"
+                                                                    <img data-src="images/products/1.jpg"
                                                                         data-echo="images/products/1.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="lazy img-responsive" alt="">
                                                                 </div>
                                                             </a>
 
@@ -492,9 +493,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Purple Solo 2 Wireless</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/products/5.jpg"
+                                                                    <img data-src="images/products/5.jpg"
                                                                         data-echo="images/products/5.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="lazy img-responsive" alt="">
                                                                 </div>
                                                             </a>
 
@@ -535,9 +536,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Tablet Red EliteBook Revolve 810 G2</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/products/2.jpg"
+                                                                    <img data-src="images/products/2.jpg"
                                                                         data-echo="images/products/2.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="lazy img-responsive" alt="">
                                                                 </div>
                                                             </a>
 
@@ -576,9 +577,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>White Solo 2 Wireless</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/newProducts/3.jpg"
+                                                                    <img data-src="images/newProducts/3.jpg"
                                                                         data-echo="images/newProducts/3.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="lazy img-responsive" alt="">
                                                                 </div>
                                                             </a>
 
@@ -619,9 +620,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Smartphone 6S 32GB LTE</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/newProducts/4.jpg"
+                                                                    <img data-src="images/newProducts/4.jpg"
                                                                         data-echo="images/newProducts/4.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="lazy img-responsive" alt="">
                                                                 </div>
                                                             </a>
 
@@ -681,7 +682,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/4?name=slippers">
-                                            <img src="{!! asset('images/c-1.jpg') !!}" class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-1.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -697,7 +698,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/11?name=heeled-sandals">
-                                            <img src="{!! asset('images/c-2.jpg') !!}" class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-2.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -713,7 +714,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/8?name=womens-tote-bags">
-                                            <img src="{!! asset('images/c-3.jpg') !!}" class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-3.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -729,7 +730,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/123?name=dressshoesoxfords">
-                                            <img src="{!! asset('images/c-4.jpg') !!}" class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-4.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -745,7 +746,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/17?name=sports-socks">
-                                            <img src="{!! asset('images/c-5.jpg') !!}" class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-5.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -761,7 +762,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/112?name=fashion-jewelry-jewelry-sets">
-                                            <img src="{!! asset('images/c-6.jpg') !!}" class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-6.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -778,7 +779,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/25?name=body-stocking">
-                                            <img src="{!! asset('images/c-7.jpg') !!}" class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-7.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -794,7 +795,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/133?name=bikinis--beachwear">
-                                            <img src="{!! asset('images/c-8.jpg') !!}" class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-8.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -927,7 +928,7 @@
                                         <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
                                             <h3>{!! $pro->product_title !!}</h3>
                                             <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
-                                                    src="images/blank.gif" alt=""> </div>
+                                                    data-src="images/blank.gif" alt="" class="lazy"> </div>
                                         </a>
                                         <div class="price-add-to-cart"> <span class="price">
                                                 <span class="electro-price">
@@ -972,7 +973,7 @@
                 <div class="col-lg-12">
                     <div class="bannerTwoSlider owl-carousel owl-theme">
                     @foreach ($second_banner as $ban2)
-                    <div class="item bannerSliderOne" style="background: url({!! $ban2->image !!})">
+                    <div class="item bannerSliderOne lazy" data-bg="url({!! $ban2->image !!})" >
                         <div class="bannerSliderOne_content">
                             {!! $ban2->description !!}
                         </div>
@@ -990,7 +991,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="kitchen-div" style="background-image: url({!! asset($section[0]->value) !!})">
+                    <div class="kitchen-div lazy" data-bg="url({!! asset($section[0]->value) !!})" >
                         <div class="kitchen-content">
                            {!! $section[1]->value !!}
                             <div class="shopBtnDiv">
@@ -1002,7 +1003,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="motherboard-div" style="background-image: url({!! asset($section[3]->value) !!})">
+                    <div class="motherboard-div lazy" data-bg="url({!! asset($section[3]->value) !!})">
                         <div class="kitchen-content">
                             {!! $section[4]->value !!}
                             <div class="shopBtnDiv">
@@ -1034,7 +1035,7 @@
                     <a href="{{ route('australia') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/australia.png') }}" />
+                                <img data-src="{{ asset('images/australia.png') }}" alt="austrila flag" class="lazy" />
                             </div>
                             <div class="flag-name">
                                 <p>Australia</p>
@@ -1045,7 +1046,7 @@
                     <a href="{{ route('brazil') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/brazil.png') }}" />
+                                <img data-src="{{ asset('images/brazil.png') }}" alt="flag brazil" class="lazy" />
                             </div>
                             <div class="flag-name">
                                 <p>Brazil</p>
@@ -1057,7 +1058,7 @@
                     <a href="{{ route('canada') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/canada.png') }}" />
+                                <img data-src="{{ asset('images/canada.png') }}" alt="flag canada" class="lazy"/>
                             </div>
                             <div class="flag-name">
                                 <p>Canada</p>
@@ -1069,7 +1070,7 @@
                     <a href="{{ route('france') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/france.png') }}" />
+                                <img data-src="{{ asset('images/france.png') }}" alt="flag france" class="lazy"/>
                             </div>
                             <div class="flag-name">
                                 <p>France</p>
@@ -1081,7 +1082,7 @@
                     <a href="{{ route('germany') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/germany.png') }}" />
+                                <img data-src="{{ asset('images/germany.png') }}" alt="flag germany" class="lazy" />
                             </div>
                             <div class="flag-name">
                                 <p>Germany</p>
@@ -1096,7 +1097,7 @@
                     <a href="{{ route('india') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/india.png') }}" />
+                                <img data-src="{{ asset('images/india.png') }}" alt="flag" class="lazy" />
                             </div>
                             <div class="flag-name">
                                 <p>India</p>
@@ -1107,7 +1108,7 @@
                     <a href="{{ route('italy') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/italy.png') }}" />
+                                <img data-src="{{ asset('images/italy.png') }}" alt="flag" class="lazy"/>
                             </div>
                             <div class="flag-name">
                                 <p>Italy</p>
@@ -1119,7 +1120,7 @@
                     <a href="{{ route('malaysia') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/malaysia.png') }}" />
+                                <img data-src="{{ asset('images/malaysia.png') }}" alt="flag" class="lazy"/>
                             </div>
                             <div class="flag-name">
                                 <p>Malaysia</p>
@@ -1131,7 +1132,7 @@
                     <a href="{{ route('mexico') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/mexico.png') }}" />
+                                <img data-src="{{ asset('images/mexico.png') }}" alt="flag" class="lazy"/>
                             </div>
                             <div class="flag-name">
                                 <p>Mexico</p>
@@ -1143,7 +1144,7 @@
                     <a href="{{ route('spain') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/spain.png') }}" />
+                                <img data-src="{{ asset('images/spain.png') }}" alt="flag" class="lazy"/>
                             </div>
                             <div class="flag-name">
                                 <p>Spain</p>
@@ -1162,39 +1163,6 @@
 @section('css')
 <style>
 
-ul.products.columns-3 {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 50px 0px;
-}
-
-li.product.first {
-    margin-left: 15px !important;
-    width: 32% !important;
-}
-
-.product-outer {
-    height: 531px !important;
-}
-
-.product-inner {
-    height: 500px !important;
-}
-
-.price-add-to-cart {
-    margin-top: 20px !important;
-}
-
-.product-thumbnail {
-    height: 300px!important;
-    padding: 0px !important;
-}
-
-.product-thumbnail img {
-    height: 100% !important;
-    width: 100% !important;
-    object-fit: cover !important;
-}
 
 </style>
 @endsection

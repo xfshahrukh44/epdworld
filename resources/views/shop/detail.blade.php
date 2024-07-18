@@ -22,9 +22,9 @@
                         <div class="product-images-wrapper"> <span class="onsale">Sale!</span>
                             <div class="images electro-gallery">
                                 <div class="thumbnails-single owl-carousel">
-                                    <a href="{!! $product_detail->image ? asset($product_detail->image) : asset('images/noimage.png') !!}" class="zoom" title=""
+                                    <a href="{!! asset($product_detail->image) !!}" class="zoom" title=""
                                         data-rel="prettyPhoto[product-gallery]"><img src="images/blank.gif"
-                                            data-echo="{!! $product_detail->image ? asset($product_detail->image) : asset('images/noimage.png') !!}" class="wp-post-image"
+                                            data-echo="{!! asset($product_detail->image) !!}" class="wp-post-image"
                                             alt=""></a>
 
                                     @php
@@ -32,7 +32,7 @@
                                     @endphp
                                     @foreach ($gallery as $gal)
                                     <a href="{!! asset($gal->image) !!}" class="zoom" title=""
-                                    data-rel="prettyPhoto[product-gallery]"><img src="{!! asset($gal->image) !!}"
+                                    data-rel="prettyPhoto[product-gallery]"><img src="images/blank.gif"
                                         data-echo="{!! asset($gal->image) !!}" class="wp-post-image"
                                         alt=""></a>
                                     @endforeach
@@ -41,13 +41,13 @@
                                 </div>
                                 <!-- .thumbnails-single -->
                                 <div class="thumbnails-all columns-5 owl-carousel">
-                                    <a href="{!! $product_detail->image ? asset($product_detail->image) : asset('images/noimage.png') !!}" class="first" title=""><img
+                                    <a href="{!! asset($product_detail->image) !!}" class="first" title=""><img
                                             src="images/blank.gif"
-                                            data-echo="{!! $product_detail->image ? asset($product_detail->image) : asset('images/noimage.png') !!}"
+                                            data-echo="{!! asset($product_detail->image) !!}"
                                             class="wp-post-image" alt=""></a>
-                                    @foreach (\Illuminate\Support\Facades\DB::table('product_imagess')->where('product_id', $product_detail->id)->get() as $gal)
+                                    @foreach ($gallery as $gal)
                                     <a href="{!! asset($gal->image) !!}" class="" title=""><img
-                                            src="{!! asset($gal->image) !!}"
+                                            src="images/blank.gif"
                                             data-echo="{!! asset($gal->image) !!}"
                                             class="wp-post-image" alt=""></a>
                                     @endforeach
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <p><strong>SKU</strong>: {!! $product_detail->sku !!}</p>
-                                <p><strong>Vendor</strong>: <a href="{{ route('seller-profile', ['slug' => '$product_detail->users->slug']) }}" target="_blank">{!! $product_detail->users->name ?? '' !!}</a></p>
+                                <p><strong>Vendor</strong>: <a href="{{ route('seller-profile', ['slug' => $product_detail->users->slug]) }}" target="_blank">{!! $product_detail->users->name !!}</a></p>
                                 <!--<p><strong>Have this One?</strong>    -->
                                 <!--@if(Auth::check() && Auth::user()->is_seller == 1)-->
                                 <!--@if($exist == null)-->
@@ -123,12 +123,11 @@
 
                                                         <label class="radio-img">
                                                             <input type="radio" class="radio-box" name="variation[{{ $att_models->attribute->name }}]" value="{{ $pro_atts->attributesValues->id }}" />
-                                                            <div class="image1" style="background-color: {{ $pro_atts->attributesValues->value }}; background-image: url('{{ ($pro_atts->value != null) ? $pro_atts->value : '' }}'); background-size: cover;">
-                                                                <span>
-                                                                @if ($att_models->attribute->name == 'Size')
-                                                                {{ $pro_atts->value }}
+                                                            <div class="image1" style="background-color: {{ $pro_atts->attributesValues->value }}; background-image: url('{{ ($pro_atts->image != null) ? asset($pro_atts->image) : '' }}'); background-size: cover;"><span>
+                                                                @if ($pro_atts->image != null)
+
                                                                 @else
-{{--                                                                {{ $pro_atts->attributesValues->value }}--}}
+                                                                {{ $pro_atts->attributesValues->value }}
                                                                 @endif
                                                                 </span></div>
                                                                 @if($att_models->attribute->name == 'Size')

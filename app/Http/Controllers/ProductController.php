@@ -295,8 +295,7 @@ class ProductController extends Controller
 	{
 
 		$product = new Product;
-		$product_detail = Product::find(intval($id));
-//		dd($product_detail);
+		$product_detail = $product->where('id', $id)->first();
 		$att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $id)->get();
 		$att_id = DB::table('product_attributes')->where('product_id', $id)->get();
 		$shops = DB::table('products')
