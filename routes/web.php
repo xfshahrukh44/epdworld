@@ -140,7 +140,7 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'ad
     Route::get('csvupload','Admin\\ProductController@csvupload')->name('product.csvupload');
     Route::post('csvupload','Admin\\ProductController@csvuploadreq')->name('product.csvupload');
 
-     //Order Status Change Routes//
+    //Order Status Change Routes//
     Route::get('status/completed/{id}','Admin\\ProductController@updatestatuscompleted')->name('status.completed');
     Route::get('status/pending/{id}','Admin\\ProductController@updatestatusPending')->name('status.pending');
 
@@ -187,12 +187,12 @@ Route::get('account-detail','LoggedInController@accountDetail')->name('accountDe
 
 Route::post('update/account','LoggedInController@updateAccount')->name('update.account');
 Route::get('signout', function() {
-        Auth::logout();
+    Auth::logout();
 
-        Session::flash('flash_message', 'You have logged out  Successfully');
-        Session::flash('alert-class', 'alert-success');
+    Session::flash('flash_message', 'You have logged out  Successfully');
+    Session::flash('alert-class', 'alert-success');
 
-        return redirect('signin');
+    return redirect('signin');
 });
 
 Route::get('logout','Auth\LoginController@logout');
@@ -254,6 +254,97 @@ Route::get('/test', function() {
 });
 */
 /* Form Validation */
+
+Route::get('/temp', function () {
+//    dump(\App\Product::all()->count());
+//    $data = utf8_encode($data);
+//    $data = str_replace('&quot;', '"', $data);
+//    dump(json_decode($data));
+//    dump(json_decode($data, null, 512, JSON_THROW_ON_ERROR));
+
+//    $data = file_get_contents(asset('product_links.json'));
+//    $data = json_decode($data);
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+
+    dd('enqueued!');
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\boys.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\car-accessories.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\cell-phone-accessories.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\construction.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\electronics.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\food-items.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\furnitures.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\girls.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\health.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\home-decorations.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\misc.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\pets-supply.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\religious.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\sport-and-gym-gear.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\textiles-and-fabrics.json'));
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+});
 
 
 //===================== Shop Routes Below ========================//

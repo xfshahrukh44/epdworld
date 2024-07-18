@@ -81,7 +81,9 @@
                                     </div>
                                 </div>
                                 <p><strong>SKU</strong>: {!! $product_detail->sku !!}</p>
-                                <p><strong>Vendor</strong>: <a href="{{ route('seller-profile', ['slug' => $product_detail->users->slug]) }}" target="_blank">{!! $product_detail->users->name !!}</a></p>
+                                @if($product_detail->users)
+                                    <p><strong>Vendor</strong>: <a href="{{ route('seller-profile', ['slug' => $product_detail->users->slug]) }}" target="_blank">{!! $product_detail->users->name !!}</a></p>
+                                @endif
                                 <!--<p><strong>Have this One?</strong>    -->
                                 <!--@if(Auth::check() && Auth::user()->is_seller == 1)-->
                                 <!--@if($exist == null)-->
