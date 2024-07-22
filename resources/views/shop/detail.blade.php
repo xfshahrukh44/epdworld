@@ -116,6 +116,8 @@
                                                 @foreach ($att_model as $att_models)
                                                 <div class="variation">
                                                     <h3>{{ $att_models->attribute->name }}</h3>
+                                                    @if ($att_models->attribute->name == 'Size')
+                                                    @endif
                                                     @php
                                                         $pro_att = \App\ProductAttribute::where(['attribute_id' => $att_models->attribute_id, 'product_id' => $product_detail->id])->get();
                                                     @endphp
@@ -125,24 +127,13 @@
 
                                                         <label class="radio-img">
                                                             <input type="radio" class="radio-box" name="variation[{{ $att_models->attribute->name }}]" value="{{ $pro_atts->attributesValues->id }}" />
-                                                            <div class="image1" style="background-color: {{ $pro_atts->attributesValues->value }}; background-image: url('{{ ($pro_atts->image != null) ? asset($pro_atts->image) : '' }}'); background-size: cover;"><span>
-                                                                @if ($pro_atts->image != null)
-
-                                                                @else
-                                                                {{ $pro_atts->attributesValues->value }}
-                                                                @endif
-                                                                </span></div>
-                                                                @if($att_models->attribute->name == 'Size')
-
-                                                                @if ($pro_atts->price != null)
-                                                                {{-- <div class="image2"><span>
-                                                                    ${{ $pro_atts->price }}
-                                                                </span></div>   --}}
-                                                                @else
-
-                                                                @endif
-
-                                                                @endif
+                                                            <div class="image1" style="background-color: {{ $pro_atts->attributesValues->value }}; background-image: url('{{ ($pro_atts->value != null) ? asset($pro_atts->value) : '' }}'); background-size: cover;">
+                                                                <span>
+                                                                    @if($att_models->attribute->name == 'Size')
+                                                                        {{ $pro_atts->value }}
+                                                                    @endif
+                                                                </span>
+                                                            </div>
                                                           </label>
                                                         @endforeach
 

@@ -1,392 +1,710 @@
 {
   "categories": [
     {
-      "title": "Danish products",
+      "title": "Dubai products",
       "products": [
-        "https://www.alibaba.com/product-detail/New-Modern-Design-Wood-Pellets-Burning_1601004155746.html?",
-        "https://www.alibaba.com/product-detail/100-Lowest-price-Armand-de-Brignac_11000012258439.html",
-        "https://www.alibaba.com/product-detail/Modern-Patio-Swings-Outdoor-Rattan-Swing_11000012314168.html",
-        "https://www.alibaba.com/product-detail/Denmark-agriculture-farm-tractor-trailer-for_11000009208722.html",
-        "https://www.alibaba.com/product-detail/Denmark-ADC12-Aluminium-Ingots-for-Sale_10000016984259.html",
-        "https://www.alibaba.com/product-detail/Original-denmark-dried-sycamore-Firewood-Oak_11000015202340.html",
-        "https://www.alibaba.com/product-detail/Original-denmark-Firewood-Oak-fire-wood_11000015072997.html",
-        "https://www.alibaba.com/product-detail/Wholesale-price-from-Denmark-agriculture-farm_11000009135491.html",
-        "https://www.alibaba.com/product-detail/Original-denmark-dried-sycamore-Firewood-Oak_11000015132584.html",
-        "https://www.alibaba.com/product-detail/used-drag-for-sale-in-denmark_11000015437219.html",
-        "https://www.alibaba.com/product-detail/Original-denmark-dried-sycamore-Firewood-Oak_11000015158466.html",
-        "https://www.alibaba.com/product-detail/Lowest-price-from-Denmark_10000012388934.html",
-        "https://www.alibaba.com/product-detail/Used-electric-motor-scrap-Small-Motor_10000016873751.html",
-        "https://www.alibaba.com/product-detail/Factory-Direct-Sale-Freezing-Equipment-Standard_1600915273310.html",
-        "https://www.alibaba.com/product-detail/Used-Two-wheel-mini-farm-tractor_11000015014075.html",
-        "https://www.alibaba.com/product-detail/Bulk-Copper-Scrap-99-99-for_10000016807790.html",
-        "https://www.alibaba.com/product-detail/Massey-Ferguson-Tractors-Massey-Ferguson-290_11000013545984.html",
-        "https://www.alibaba.com/product-detail/Toyotaa-Land-CRUSER-prado-11-2015_10000018196400.html",
-        "https://www.alibaba.com/product-detail/Best-quality-Masseyy-furgusonn-travtor-for_1600908825674.html",
-        "https://www.alibaba.com/product-detail/Very-affordable-PET-Bottle-Scrap-Recycled_1600936824190.html",
-        "https://www.alibaba.com/product-detail/Original-denmark-dried-sycamore-Firewood-Oak_11000015157485.html",
-        "https://www.alibaba.com/product-detail/New-arrival-Fresh-Ginger-and-Air_10000012139499.html",
-        "https://www.alibaba.com/product-detail/Made-In-Denmark-Premium-Quality-Freezing_1600972319608.html",
-        "https://www.alibaba.com/product-detail/High-quality-Dry-20ft-40ft-40HC_10000016805362.html",
-        "https://www.alibaba.com/product-detail/Original-Heineken-330ml-Beer-ORIGINAL-Denmark_11000015138385.html",
-        "https://www.alibaba.com/product-detail/Used-electric-motor-scrap-Small-Motor_10000017306643.html",
-        "https://www.alibaba.com/product-detail/Manufacturer-Aluminum-Alloy-Wheel-Aluminum-Wheel_10000016745556.html",
-        "https://www.alibaba.com/product-detail/Best-quality-Masseyy-furgusonn-travtor-for_1600909058071.html",
-        "https://www.alibaba.com/product-detail/Top-Grade-pvc-scrap-in-Denmark_1600942629557.html",
-        "https://www.alibaba.com/product-detail/Used-electric-motor-scrap-Small-Motor_10000011767962.html",
-        "https://www.alibaba.com/product-detail/BEST-PRICE-AND-SECOND-HANDED-USED_11000015619031.html",
-        "https://www.alibaba.com/product-detail/Made-In-Denmark-Standard-Setting-Freezing_1600972295434.html",
-        "https://www.alibaba.com/product-detail/Made-In-denmark-High-Quality-Heavy_11000015119676.html",
-        "https://www.alibaba.com/product-detail/Used-Tires-Used-Rubber-Truck-Tire_10000015734238.html",
-        "https://www.alibaba.com/product-detail/Perfect-Used-Car-tires-in-bulk_10000016728662.html",
-        "https://www.alibaba.com/product-detail/Used-Refrigerator-Compressor-Scrap-Used-Electric_10000016744999.html",
-        "https://www.alibaba.com/product-detail/Toyotaa-Land-Cruiser-11-2015-4_1600938987040.html",
-        "https://www.alibaba.com/product-detail/WHOLESALE-OF-USED-GRAIN-VACUUMS-IN_11000015532605.html",
-        "https://www.alibaba.com/product-detail/Automatic-feeding-14Kw-indoor-wind-heated_11000009399678.html",
-        "https://www.alibaba.com/product-detail/Made-In-Denmark-Hot-Selling-Freezing_1600915270339.html",
-        "https://www.alibaba.com/product-detail/Denmark-Heineken-Beer-in-Bottles-and_11000015196250.html",
-        "https://www.alibaba.com/product-detail/Best-Offer-for-New-Kubota-B5000DT_10000016713627.html",
-        "https://www.alibaba.com/product-detail/Denmark-wholesale-price-sealed-lead-acid_10000016986239.html",
-        "https://www.alibaba.com/product-detail/Affordable-price-4WD-Massey-Ferguson-9500_10000017404523.html",
-        "https://www.alibaba.com/product-detail/Good-condition-2013-2015-2017-2019_1600909776362.html",
-        "https://www.alibaba.com/product-detail/Exporters-Metal-Scrap-Compressor-Scrap-Ac_10000018346041.html",
-        "https://www.alibaba.com/product-detail/Hennessii-VS-Pure-White_1600596054598.html",
-        "https://www.alibaba.com/product-detail/New-2022-Yamahas-2-stroke-15HP_1601043373057.html",
-        "https://www.alibaba.com/product-detail/Denmark-Origin-Plastic-Scrap-at-affordable_1600936862054.html",
-        "https://www.alibaba.com/product-detail/Special-Pencil-Set-SPREAD-THE-LOVE_1600679430437.html",
-        "https://www.alibaba.com/product-detail/Intimate-Anti-Odour-Kit-with-Tea_1600898831693.html"
-      ]
-    },
-    {
-      "title": "Egyptian products",
-      "products": [
-        "https://www.alibaba.com/product-detail/Best-choice-and-best-discounts-french_50017109341.html",
-        "https://www.alibaba.com/product-detail/Unique-Design-Egyptian-Art-Copper-Plated_11000002588010.html",
-        "https://www.alibaba.com/product-detail/Handmade-Egyptian-Glass-Christmas-Ornaments-decorated_1700002479095.html",
-        "https://www.alibaba.com/product-detail/Highest-Quality-Top-Grade-Egypt-Dried_11000010403340.html",
-        "https://www.alibaba.com/product-detail/100-natural-pure-and-high-quality_10000009592122.html",
-        "https://www.alibaba.com/product-detail/Unique-Design-Wholesale-Luxury-Egyptian-Shisha_11000010785240.html",
-        "https://www.alibaba.com/product-detail/Bed-Sheet-100-EGYPTIAN-COTTON-Super_1600130854296.html",
-        "https://www.alibaba.com/product-detail/Egyptian-Perfume-oils-Fragrances-concentrate-long_50038191360.html",
-        "https://www.alibaba.com/product-detail/Polyester-Statues-Ancient-Egyptian-Pharaonic_1600322103774.html",
-        "https://www.alibaba.com/product-detail/High-quality-Egyptian-Cement-CEM-II_1601008837202.html",
-        "https://www.alibaba.com/product-detail/Handmade-Egyptian-Glass-Perfume-Bottle_114567288.html",
-        "https://www.alibaba.com/product-detail/Egyptian-Rock-Bath-Salt-high-quality_11000015498868.html",
-        "https://www.alibaba.com/product-detail/Children-Home-Wear-Cotton-100-Origin_11000016579201.html",
-        "https://www.alibaba.com/product-detail/KH1-Home-Street-Ramadan-Fabric-Egyptian_50028312142.html",
-        "https://www.alibaba.com/product-detail/Hot-Sell-Egyptian-Perfume-Bottle_62017985917.html",
-        "https://www.alibaba.com/product-detail/Bath-Salt-Manufacturer-from-Egypt-Private_11000014908615.html",
-        "https://www.alibaba.com/product-detail/Low-Maintenance-Cost-Affordable-Price-Egypt_10000018036312.html",
-        "https://www.alibaba.com/product-detail/Egyptian-25ml-Blown-Glass-Luxury-Perfume_11000016687419.html",
-        "https://www.alibaba.com/product-detail/High-Quality-100-Natural-Egypt-Seasoning_1600447715682.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Best-Selling-Red-Sweet_10000010477131.html",
-        "https://www.alibaba.com/product-detail/Wholesale-High-Quality-New-Design-Premium_10000010027410.html",
-        "https://www.alibaba.com/product-detail/Polyester-Statues-Ancient-Egyptian-Pharaonic-Coffin_1700005654600.html",
-        "https://www.alibaba.com/product-detail/Volatile-oil-100-Natural-pure-Egyptian_62000811386.html",
-        "https://www.alibaba.com/product-detail/Mine-Highest-Purity-99-5-Silica_1700002925243.html",
-        "https://www.alibaba.com/product-detail/2023-Best-Manufacturer-raw-White-Papyrus_1600270110954.html",
-        "https://www.alibaba.com/product-detail/Egyptian-Blown-Glass-Perfume-Bottle-with_158397540.html",
-        "https://www.alibaba.com/product-detail/The-best-Price-Bath-Salt-Wholesale_62019094547.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-Egyptian-Glass-Christmas-Ornaments_62000669946.html",
-        "https://www.alibaba.com/product-detail/LW10-DECORATIVE-GLASS-EGYPTIAN-MOUTH-BLOWN_50037906289.html",
-        "https://www.alibaba.com/product-detail/Single-washed-raw-salt-from-Egypt_1601036487500.html",
-        "https://www.alibaba.com/product-detail/Factory-Price-High-Quality-Egypt-Origin_11000010003252.html",
-        "https://www.alibaba.com/product-detail/Premium-Egyptian-Early-Sweet-Grapes-for_10000012545281.html",
-        "https://www.alibaba.com/product-detail/Christmas-Fish-Ornaments-Glass-Tree-Handmade_10000008779977.html",
-        "https://www.alibaba.com/product-detail/Polyester-Statues-Ancient-Egyptian-Pharaonic-For_11000000069726.html",
-        "https://www.alibaba.com/product-detail/Perfume-oil-Ancient-Egyptian-pharaoh-civilization_50038187537.html",
-        "https://www.alibaba.com/product-detail/High-quality-Egyptian-Glass-Perfume-Bottle_1600070090540.html",
-        "https://www.alibaba.com/product-detail/High-quality-Egyptian-Cement-CEM-II_1601004262244.html",
-        "https://www.alibaba.com/product-detail/Wholesale-Egyptian-Glass-Christmas-Ornaments_62000569572.html",
-        "https://www.alibaba.com/product-detail/Wholesale-Cleaning-Road-Salt-Manufacturing-From_1600990293585.html",
-        "https://www.alibaba.com/product-detail/AA76-Beautiful-Tall-Egyptian-Ramadan-Tin_50028172673.html",
-        "https://www.alibaba.com/product-detail/Bath-Salt-Private-Label-High-Quality_11000014680528.html",
-        "https://www.alibaba.com/product-detail/Top-Quality-New-Crop-Wholesale-Supplier_11000006251594.html",
-        "https://www.alibaba.com/product-detail/2022-Top-Selling-Best-Quality-Wholesale_62001154837.html",
-        "https://www.alibaba.com/product-detail/Ready-For-the-New-Egyptian-Grapes_11000008943464.html",
-        "https://www.alibaba.com/product-detail/Polyester-Statues-Ancient-Egyptian-Pharaonic-Akhenaten_11000000061753.html",
-        "https://www.alibaba.com/product-detail/Spearmint-Natural-100-Pure-Essential-Oil_50038365162.html",
-        "https://www.alibaba.com/product-detail/HIGH-QUALITY-BEST-PRICE-CEM-I_1601004915589.html",
-        "https://www.alibaba.com/product-detail/Wholesale-Handmade-Egyptian-Sea-Horse-glass_50041523359.html",
-        "https://www.alibaba.com/product-detail/Wholesale-Egyptian-Glass-Christmas-Ornaments_10000005670022.html",
-        "https://www.alibaba.com/product-detail/De-icing-salt-Road-Salt-Jumbo_1600541494749.html",
-        "https://www.alibaba.com/product-detail/sun-bt-l-Ancient-Egyptian-Art_104401051.html"
-      ]
-    },
-    {
-      "title": "Ghanaian products",
-      "products": [
-        "https://www.alibaba.com/product-detail/Packaged-Yellow-Sheabutter_50022361316.html",
-        "https://www.alibaba.com/product-detail/Traditional-Woven-Moses-Baby-Crib-with_62012603193.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Smokeless-Eco-Friendly-Charcoal_1600636724959.html",
-        "https://www.alibaba.com/product-detail/Traditional-African-Djembe-african-musical-instruments_139110795.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-6x4-Right-Steering-Tractor_1601159823067.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-Tractor-6x4-Cummins-Weichai_1601001904693.html",
-        "https://www.alibaba.com/product-detail/African-Folding-Fans_62008623694.html",
-        "https://www.alibaba.com/product-detail/New-And-Used-SHACMAN-F3000-6x4_10000014696459.html",
-        "https://www.alibaba.com/product-detail/African-Black-Soap_217437974.html",
-        "https://www.alibaba.com/product-detail/Good-price-SHACMAN-F3000-6x4-Tractor_10000014681583.html",
-        "https://www.alibaba.com/product-detail/Baobab-Oil-organic_151102729.html",
-        "https://www.alibaba.com/product-detail/Sinotruk-371hp-380hp-430hp-10-wheel_11000011173470.html",
-        "https://www.alibaba.com/product-detail/Annatto-Seeds_102546957.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-6x4-Tractor-375-400_1601001922955.html",
-        "https://www.alibaba.com/product-detail/Packaged-Yellow-Sheabutter_50022361316.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-Tractor-6x4-Cummins-Weichai_1601141232324.html",
-        "https://www.alibaba.com/product-detail/-Yikai-Naturals-Baobab-Powder_62008750799.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-Tractor-6x4-Cummins-Weichai_1601001884297.html",
-        "https://www.alibaba.com/product-detail/Semi-Ground-Shea-nut-Oil-Cake_1600321936651.html",
-        "https://www.alibaba.com/product-detail/Brand-New-Shacman-F3000-6-4_1601141087845.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Shea-Extractor-Nut-Oil_217438150.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-6x4-Tractor-Truck-375_1601003828757.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Cocoa-Coffee-Beans-Shell_151108672.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-6x4-Tractor-375-400_10000014673761.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-SHACMAN-F3000-6x4-Tractor_1601001910593.html",
-        "https://www.alibaba.com/product-detail/BEST-SHACMAN-F3000-6X4-8X4-tipper_1600993475637.html",
-        "https://www.alibaba.com/product-detail/New-Used-8X4-6X4-SHACMAN-F3000_1601003942107.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-New-Used-8X4-6X4_1600996924576.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-6x4-Tractor-Truck-Cummins_1601141205949.html",
-        "https://www.alibaba.com/product-detail/Brand-SHACMAN-F3000-6X4-8X4-tipper_10000014534729.html",
-        "https://www.alibaba.com/product-detail/New-Sinotruk-Howo-T7-A7-6x4_1600977342219.html",
-        "https://www.alibaba.com/product-detail/CHINA-Brand-SHACMAN-F3000-6x4-Tractor_1601001973474.html",
-        "https://www.alibaba.com/product-detail/New-SHACMAN-F3000-6x4-Tractor-Truck_1601002334388.html",
-        "https://www.alibaba.com/product-detail/China-brand-SHACMAN-F3000-8X4-6X4_10000014587891.html",
-        "https://www.alibaba.com/product-detail/BYD-Song-PLUS-New-Energy-2023_1600932136401.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-6x4-Tractor-Truck-375_11000012057567.html",
-        "https://www.alibaba.com/product-detail/new-car-in-stock-Mercedes-Benz_1600996117404.html",
-        "https://www.alibaba.com/product-detail/SHACMAN-F3000-6X4-8X4-F3000-tipper_11000011470830.html",
-        "https://www.alibaba.com/product-detail/Tank-500-2023-3-0T-sports_11000011579682.html",
-        "https://www.alibaba.com/product-detail/Mercedes-Benz-EQE-350-500-electric_1600996633342.html",
-        "https://www.alibaba.com/product-detail/New-Used-8X4-6X4-SHACMAN-F3000_11000012860848.html",
-        "https://www.alibaba.com/product-detail/New-CHINA-FAW-Brand-TRUCKS-JH6_1600988822805.html",
-        "https://www.alibaba.com/product-detail/china-brand-FAW-New-J5P-J6P_1600936059077.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-New-FAW-J5M-J5K_10000013634420.html",
-        "https://www.alibaba.com/product-detail/FAW-Toyota-bz3-2023-517-616_1601030434396.html",
-        "https://www.alibaba.com/product-detail/New-Used-8X4-6X4-SHACMAN-F3000_11000011703228.html",
-        "https://www.alibaba.com/product-detail/BYD-Yang-Wang-U8-2023-Off_11000012096433.html",
-        "https://www.alibaba.com/product-detail/Dump-truck-SHACMAN-F3000-6X4-8X4_10000014527765.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-FAW-Brand-New-J5P_11000010619324.html",
-        "https://www.alibaba.com/product-detail/Sitrak-C7H-T7H-C9H-T9H-6_11000010614058.html"
-      ]
-    },
-    {
-      "title": "Kenyan products",
-      "products": [
-        "https://www.alibaba.com/product-detail/5D-Full-Drill-Diamond-Painting-Cross_10000010285107.html",
-        "https://www.alibaba.com/product-detail/Used-Dump-Truck-6x4-SINOTRUK-HOWO_10000007707709.html",
-        "https://www.alibaba.com/product-detail/China-Supplier-Heavy-Duty-Shacman-f3000_10000015202451.html",
-        "https://www.alibaba.com/product-detail/Used-CAT-345d-304-6-Ton_1601114457927.html",
-        "https://www.alibaba.com/product-detail/Used-CAT-325d-304-6-Ton_1601117419053.html",
-        "https://www.alibaba.com/product-detail/RE-Jugs-BP-3-Base-ball_1600761975410.html",
-        "https://www.alibaba.com/product-detail/2023-SANTAA-CRUZ-5010-CARBON-CC_1601045849818.html",
-        "https://www.alibaba.com/product-detail/Discount-Sales-For-Sur-Ron-Light_11000015841849.html",
-        "https://www.alibaba.com/product-detail/FAST-SHIPPING-Ranes-Four-4-channel_1600945207994.html",
-        "https://www.alibaba.com/product-detail/Hot-Sales-Super-Box-S5-MAX_11000014661652.html",
-        "https://www.alibaba.com/product-detail/ORIGINAL-Offer-New-Power-K-10_1601039061577.html",
-        "https://www.alibaba.com/product-detail/GOOD-QUALITY-NEW-SSanta-Cruz-Hightower_1601036883977.html",
-        "https://www.alibaba.com/product-detail/sALES-QUALITY-Hondas-EU2200i-2200-Watt_11000014545192.html",
-        "https://www.alibaba.com/product-detail/NEW-DELIVERY-FOR-2023-Hondas-Street_11000014761160.html",
-        "https://www.alibaba.com/product-detail/Great-Stage-3-88-Piano-Fully_11000015435427.html",
-        "https://www.alibaba.com/product-detail/HIBE-E-lit-eS-3-LatestS_1601036480934.html",
-        "https://www.alibaba.com/product-detail/Best-Quality-Yamahas-A5000-61-Keys_1600934385935.html",
-        "https://www.alibaba.com/product-detail/HOT-PRODUCT-BSR-Pro-Electric-Race_11000016290237.html",
-        "https://www.alibaba.com/product-detail/Ready-To-Ship-Original-Sam-Sung_11000014823446.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Original-Logitechs-G502-HERO_1600934268975.html",
-        "https://www.alibaba.com/product-detail/BUY-Original-New-Suzukis-Ax100-Motorcycle_1600993261925.html",
-        "https://www.alibaba.com/product-detail/Brand-New-Ce-17-5Hp-Gasoline_1600912639075.html",
-        "https://www.alibaba.com/product-detail/2024-Sea-Doo-Fish-Pro-Trophy_11000014313761.html",
-        "https://www.alibaba.com/product-detail/New-Original-Montage-M8x-88-Key_11000015911421.html",
-        "https://www.alibaba.com/product-detail/Best-trading-for-new-DDJ-1000SRT_1600988276646.html",
-        "https://www.alibaba.com/product-detail/JUST-DELIERED-POWER-TOOLS-2695-15_11000015953577.html",
-        "https://www.alibaba.com/product-detail/Brand-new-28-cu-ft-4_11000014118108.html",
-        "https://www.alibaba.com/product-detail/Used-CAT-336d-304-6-Ton_1601115240711.html",
-        "https://www.alibaba.com/product-detail/DE-Folding-Fold-imate-Fabric-Cloth_1600760520369.html",
-        "https://www.alibaba.com/product-detail/2023-SAMSSUNG-49-Odyssey-OLED-G9_11000013733030.html",
-        "https://www.alibaba.com/product-detail/BUY-50-GET-20-FREE-NEW_11000014660502.html",
-        "https://www.alibaba.com/product-detail/megatower-2cc-x01-29-170mm-12v_1601037123283.html",
-        "https://www.alibaba.com/product-detail/ALL-NEW-AUTHENTIC-100-GENUINE-Dysons_11000015785535.html",
-        "https://www.alibaba.com/product-detail/Discount-Sales-New-Amazon-Fire-TV_11000014244749.html",
-        "https://www.alibaba.com/product-detail/DISCOUNT-SALES-100-NEW-ORIGINAL-2022_1601035889662.html",
-        "https://www.alibaba.com/product-detail/FAST-SHIPPING-Psr-S970-S-Series_1600945295695.html",
-        "https://www.alibaba.com/product-detail/Best-Sales-price-28-cu-ft_1600819635264.html",
-        "https://www.alibaba.com/product-detail/TOP-NOTCHED-Milwaukese-2869-20-M18_1601036384113.html",
-        "https://www.alibaba.com/product-detail/Buy-New-Quality-Yamahas-PSR-S670_1600985222742.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Sales-Keenz-7S-4_1600915588832.html",
-        "https://www.alibaba.com/product-detail/NEW-Factory-Sealed-Hondas-2-5hp_11000014710532.html",
-        "https://www.alibaba.com/product-detail/Top-Newly-VSeeBox-Elite-2024-Android_11000015382569.html",
-        "https://www.alibaba.com/product-detail/New-2023-Sea-breacher-Shark-X_11000014319026.html",
-        "https://www.alibaba.com/product-detail/Ready-To-Ship-Original-Brand-New_1600934505410.html",
-        "https://www.alibaba.com/product-detail/BEST-DISCOUNT-2023-2024-Ninebots-Gokart_11000016256240.html",
-        "https://www.alibaba.com/product-detail/NEW-ORIGINAL-aKAI-Professional-MPC-X_11000016062365.html",
-        "https://www.alibaba.com/product-detail/NEW-ARRIVAL-PROMO-Kawasakis-Ninja-ZX_1600987624456.html",
-        "https://www.alibaba.com/product-detail/Authentic-quality-Yamahas-PSR-A5000-61_1600934297864.html",
-        "https://www.alibaba.com/product-detail/Authentic-Best-Lawn-X380-For-Sale_11000015845874.html"
-      ]
-    },
-    {
-      "title": "Nigerian products",
-      "products": [
-        "https://www.alibaba.com/product-detail/Hot-Sale-High-Quality-Luxurious-African_11000012861746.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-High-Quality-Luxurious-African_1601018582920.html",
-        "https://www.alibaba.com/product-detail/Newly-Designed-African-Style-Elegant-Nigerian_10000014475101.html",
-        "https://www.alibaba.com/product-detail/New-Arrival-China-Wholesale-Nigeria-Cotton_10000014785694.html",
-        "https://www.alibaba.com/product-detail/2024-Newest-High-Quality-Sequins-Embroidery_1601018853191.html",
-        "https://www.alibaba.com/product-detail/New-Arrival-China-Wholesale-Nigeria-Tissue_10000015222412.html",
-        "https://www.alibaba.com/product-detail/Nigeria-Supplier-Waste-7D-32mm-Polyester_10000014178901.html",
-        "https://www.alibaba.com/product-detail/New-Design-High-Quality-Summer-Women_1600979397864.html",
-        "https://www.alibaba.com/product-detail/Wholesales-Starich-Recycling-HCS-Polyester-Fibre_1600969217793.html",
-        "https://www.alibaba.com/product-detail/Highly-Decorative-African-Cord-Lace-Elegant_1601023354125.html",
-        "https://www.alibaba.com/product-detail/Nigeria-Hollow-Conjugated-Silicone-Non-Silicone_10000013543877.html",
-        "https://www.alibaba.com/product-detail/Custom-Nigeria-Direct-Factory-7D-51MM_1600966381324.html",
-        "https://www.alibaba.com/product-detail/New-Arrival-100-Cotton-Guipure-Lace_10000014311368.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-Luxury-Multicolor-African-Handmade_1600987176723.html",
-        "https://www.alibaba.com/product-detail/Nigeria-Recycled-Raw-Material-White-Filling_1600972912610.html",
-        "https://www.alibaba.com/product-detail/Bulk-Supply-Premium-Quality-Export-Oriented_10000014345628.html",
-        "https://www.alibaba.com/product-detail/Nigeria-Green-Color-HCS-15Dx64MM-Recycled_1600989136567.html",
-        "https://www.alibaba.com/product-detail/African-Cord-Lace-Elegant-Nigerian-Lace_1601023165673.html",
-        "https://www.alibaba.com/product-detail/Nigeria-7D-Recycled-Hollow-Conjugated-Silicone_10000013544825.html",
-        "https://www.alibaba.com/product-detail/Newly-Designed-African-Cord-Lace-Elegant_10000014477063.html",
-        "https://www.alibaba.com/product-detail/Nigeria-Manufacturer-OEKO-tex-100-Recycled_1601046651194.html",
-        "https://www.alibaba.com/product-detail/Latest-Entelle-Guipure-Africaine-100-Cotton_1601016473896.html",
-        "https://www.alibaba.com/product-detail/Nice-Price-Nigeria-Polyester-Fiber-Hollow_1600966326711.html",
-        "https://www.alibaba.com/product-detail/Wholesale-Cotton-Lace-Fabric-Elegant-Nigerian_1600979354575.html",
-        "https://www.alibaba.com/product-detail/Nigeria-Recycled-Polyester-Staple-Fiber-15Dx64MM_11000011216345.html",
-        "https://www.alibaba.com/product-detail/Latest-Style-Nigeria-Switzerland-Flower-Embroidery_11000012227188.html",
-        "https://www.alibaba.com/product-detail/Diced-Hot-Washed-Dry-Plastic-Bottle_10000013579295.html",
-        "https://www.alibaba.com/product-detail/Newly-Designed-African-Style-Elegant-Nigerian_1600999122123.html",
-        "https://www.alibaba.com/product-detail/Shredded-Recycled-PET-Bottle-Flake-Scrap_11000010615064.html",
-        "https://www.alibaba.com/product-detail/Organic-Embroidered-Dry-Lace-Nigerian-Lace_11000013692723.html",
-        "https://www.alibaba.com/product-detail/High-Quality-PET-Flakes-Recycled-Blue_11000010579078.html",
-        "https://www.alibaba.com/product-detail/New-Designs-High-Quality-Wholesale-Price_11000011427224.html",
-        "https://www.alibaba.com/product-detail/New-Arrival-Embroidery-Swiss-Lace-Fabric_1601031783122.html",
-        "https://www.alibaba.com/product-detail/Wholesale-New-Arrivals-100-Cotton-Lace_1600981044631.html",
-        "https://www.alibaba.com/product-detail/100-Cotton-Voile-Fabric-with-Rhinestones_11000012242785.html",
-        "https://www.alibaba.com/product-detail/High-Quality-New-Arrival-Fashion-Design_1600987052869.html",
-        "https://www.alibaba.com/product-detail/Hot-Sell-Nigeria-Swiss-Voile-Lace_1600989479373.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-Nigerian-Elegance-Luxurious-High_11000011392698.html",
-        "https://www.alibaba.com/product-detail/Hot-Selling-Luxury-Multi-Color-Cotton_10000014825065.html",
-        "https://www.alibaba.com/product-detail/African-Lace-Fabric-Nigerian-Dress-For_11000012938943.html",
-        "https://www.alibaba.com/product-detail/Direct-Factory-Fashionable-New-Arrival-Custom_1600984823532.html",
-        "https://www.alibaba.com/product-detail/Newly-Designed-African-Cotton-Lace-Elegant_11000011872872.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Wholesale-Price-African-Embroidered_1601028358059.html",
-        "https://www.alibaba.com/product-detail/2024-African-Style-Cord-Lace-Elegant_1600989241591.html",
-        "https://www.alibaba.com/product-detail/Wholesale-Price-High-Quality-Summer-Elegant_1600979439453.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Exported-Luxury-Design-Sequence_1600984234155.html",
-        "https://www.alibaba.com/product-detail/Wholesale-New-Designs-African-Cord-Lace_1601000114136.html",
-        "https://www.alibaba.com/product-detail/Latest-Swiss-Cotton-African-Voile-Lace_1601026768159.html",
-        "https://www.alibaba.com/product-detail/New-Model-Pure-Color-African-Dry_11000012963545.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Wholesale-Price-African-Cotton_11000012172989.html"
-      ]
-    },
-    {
-      "title": "Norwegian products",
-      "products": [
-        "https://www.alibaba.com/product-detail/Ready-to-ship-Good-Quality-Dry_11000014478316.html",
-        "https://www.alibaba.com/product-detail/Black-Stainless-Steel-Dual-Fuel-Range_11000014235029.html",
-        "https://www.alibaba.com/product-detail/Baby-Stroller-3-in-1-Sto0kke_11000014564284.html",
-        "https://www.alibaba.com/product-detail/Top-Quality-Netherlands-Axe-Daily-Body_11000010251268.html",
-        "https://www.alibaba.com/product-detail/Netherlands-Original-Compact-New-Holland-C345_10000017574495.html",
-        "https://www.alibaba.com/product-detail/Origin-from-Netherlands-High-Quality-Baking_11000009938921.html",
-        "https://www.alibaba.com/product-detail/Natural-Fresh-Garlic-from-Netherlands-Export_10000004164125.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Netherlands-Competitive-Price-Kinder_11000010259554.html",
-        "https://www.alibaba.com/product-detail/Best-Milk-Netherlands-Chocolate-Milka-Chocolate_11000010268697.html",
-        "https://www.alibaba.com/product-detail/Low-Cost-Supplier-Top-Quality-Whole_1600897060079.html",
-        "https://www.alibaba.com/product-detail/Custom-OEM-Available-of-Netherlands-Origin_10000017751605.html",
-        "https://www.alibaba.com/product-detail/Factory-price-PET-Bottle-Scrap-in_10000011162671.html",
-        "https://www.alibaba.com/product-detail/Cattle-Alfalfa-Hay-Alfalfa-Hay-Alfalfa_10000015415105.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-120hp-Used-New-Holland_10000017537624.html",
-        "https://www.alibaba.com/product-detail/Fresh-red-onions-Holland-The-Netherlands_11000014481839.html",
-        "https://www.alibaba.com/product-detail/Buy-Wholesale-Heineken-Premium-Dutch-Lager_11000014363035.html",
-        "https://www.alibaba.com/product-detail/Used-tractor-agricultural-machinery-ferguson-tractor_10000015979392.html",
-        "https://www.alibaba.com/product-detail/Netherlands-Lighters-Accessories-Stash-Tube-Waterproof_1600643329797.html",
-        "https://www.alibaba.com/product-detail/Netherlands-Urea-Fertilizer-Price-50kg-Bag_10000013333047.html",
-        "https://www.alibaba.com/product-detail/Netherlands-Origin-Finest-Quality-Baking-Bad_11000009698653.html",
-        "https://www.alibaba.com/product-detail/Aluminum-Scrap-for-Sale-Aluminium-Alloy_10000011204374.html",
-        "https://www.alibaba.com/product-detail/Best-Quality-Of-Live-Whole-Lobsters_1600899439659.html",
-        "https://www.alibaba.com/product-detail/Netherlands-agriculture-AG300-auto-steering-system_10000017529230.html",
-        "https://www.alibaba.com/product-detail/Pine-Wood-For-Sale-Pine-wood_11000014276947.html",
-        "https://www.alibaba.com/product-detail/Used-Tractor-agricultural-machinery-massey-ferguson_10000012566600.html",
-        "https://www.alibaba.com/product-detail/50-kg-best-quality-wheat-flour_10000015914815.html",
-        "https://www.alibaba.com/product-detail/Private-Label-Hair-Products-Made-in_11000010243583.html",
-        "https://www.alibaba.com/product-detail/Manufacturer-of-Netherlands-Origin-Baking-Bad_10000016358399.html",
-        "https://www.alibaba.com/product-detail/Big-Sale-Single-Head-Netherlands-Factory_10000017528399.html",
-        "https://www.alibaba.com/product-detail/Wholesale-fresh-tomatoes-from-netherlands-online_11000014509188.html",
-        "https://www.alibaba.com/product-detail/2-wheel-small-farm-hand-tractor_10000012048678.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-Chicken-Eggs-Ostrich-Eggs_1600139811647.html",
-        "https://www.alibaba.com/product-detail/Manufactured-in-Netherlands-Unbeatable-Quality-of_10000012813763.html",
-        "https://www.alibaba.com/product-detail/EN-PLUS-A1-Wood-Pellets-in_11000014218334.html",
-        "https://www.alibaba.com/product-detail/Used-Tractor-agricultural-machinery-massey-ferguson_10000012571375.html",
-        "https://www.alibaba.com/product-detail/Empty-shipping-dry-containers-Cheapest-Cost_11000015899197.html",
-        "https://www.alibaba.com/product-detail/Premium-quality-Whirlpool-Outdoor-Spa-Hot_1600847109052.html",
-        "https://www.alibaba.com/product-detail/Wholesale-400g-Toblerone-Bar-Toblerone-100g_1600868062644.html",
-        "https://www.alibaba.com/product-detail/Red-bull-energy-drink-Red-Bull_11000014722442.html",
-        "https://www.alibaba.com/product-detail/Wholesale-quality-pet-food-25kg-bagged_11000013969691.html",
-        "https://www.alibaba.com/product-detail/13-3-Gallon-Trash-Can-Plastic_1600961830685.html",
-        "https://www.alibaba.com/product-detail/New-stock-Halaal-Frozen-Chicken-Feet_1601037986701.html",
-        "https://www.alibaba.com/product-detail/Netherlands-Mass-Oxygen-Flow-Meter_131041998.html",
-        "https://www.alibaba.com/product-detail/Cheap-Waste-Recycled-Tire-Rubber-Scrap_1601027283138.html",
-        "https://www.alibaba.com/product-detail/Hoymiles-HMS-1600-4-in-1_1600785597471.html",
-        "https://www.alibaba.com/product-detail/Conventional-Black-Chia-Seed-99-9-_10000013481156.html",
-        "https://www.alibaba.com/product-detail/New-In-MakitaS-LXT1500-18-Volt_11000007877423.html",
-        "https://www.alibaba.com/product-detail/Organic-Baobab-powder_50032441289.html",
-        "https://www.alibaba.com/product-detail/Walnuts-100-Natural-from-Ecological-Region_11000014721275.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Low-Price-A4-Paper_1600915556700.html",
-        "https://www.alibaba.com/product-detail/Longfield-Games-Playing-Cards-High-Quality_1600467368372.html"
-      ]
-    },
-    {
-      "title": "South African products",
-      "products": [
-        "https://www.alibaba.com/product-detail/Glamour-Lace-Wig-Spray-For-Lace_11000014537898.html",
-        "https://www.alibaba.com/product-detail/LED-Ceiling-Light-Fan-With-Remot_11000015444822.html",
-        "https://www.alibaba.com/product-detail/Glamour-Detangling-Brush_11000014923168.html",
-        "https://www.alibaba.com/product-detail/Gold-nugget_1600924094570.html",
-        "https://www.alibaba.com/product-detail/EUROPRENE-SBR-1723-SYNTHETIC-RUBBER-STYRENE_1600289775607.html",
-        "https://www.alibaba.com/product-detail/Glamour-Lace-Wig-Spray-For-Lace_11000014537898.html",
-        "https://www.alibaba.com/product-detail/Waste-Cooking-oil-UCO-used-Animal_62017273108.html",
-        "https://www.alibaba.com/product-detail/Festool-CTLC-MINI-I-Plus-577149_11000015025852.html",
-        "https://www.alibaba.com/product-detail/Hot-Sale-Car-Engine-3Y-4Y_11000014548844.html",
-        "https://www.alibaba.com/product-detail/New-Sealed-for-Ready-to-ship_1601044436758.html",
-        "https://www.alibaba.com/product-detail/cow-and-goat-milking-machine_11000016210888.html",
-        "https://www.alibaba.com/product-detail/New-Sealed-Graphics-Card-MSI-GeForce_10000011320085.html",
-        "https://www.alibaba.com/product-detail/Used-2012-Toyota-Highlander-Limited-4dr_11000014164141.html",
-        "https://www.alibaba.com/product-detail/X-9-Follow-Golf-Trolley-Hot_1600883264063.html",
-        "https://www.alibaba.com/product-detail/2022-New-Hollan-d-WORKMASTER-35_11000015996920.html",
-        "https://www.alibaba.com/product-detail/Copper-Wire-Scrap-99-9-CHEAP_11000016689612.html",
-        "https://www.alibaba.com/product-detail/Promotional-top-quality-used-in-the_1600207479423.html",
-        "https://www.alibaba.com/product-detail/Premium-Quality-Natural-Pure-White-Sesame_10000017985113.html",
-        "https://www.alibaba.com/product-detail/Competitive-price-and-high-quality-South_1601013203334.html",
-        "https://www.alibaba.com/product-detail/The-Best-Quality-Urea-46-Urea_62000852337.html",
-        "https://www.alibaba.com/product-detail/High-Quality-Wheat-Flour-High-Quality_10000011356077.html",
-        "https://www.alibaba.com/product-detail/MKP-Monopotassium-Phosphate-Fertilizer-Food-Grade_11000016305196.html",
-        "https://www.alibaba.com/product-detail/Massey-Ferguson-299-4WD-Tractor_11000008816487.html",
-        "https://www.alibaba.com/product-detail/Alfalfa-Hay-Bales-Alfalfa-Cubes-Alfalfa_11000016079138.html",
-        "https://www.alibaba.com/product-detail/Massey-Ferguson-Tractors-for-sale-MF_1600972644362.html",
-        "https://www.alibaba.com/product-detail/Urea-46-fertilizer-fertilizer-Urea-N46_1600609087860.html",
-        "https://www.alibaba.com/product-detail/COCONUT-CHARCOAL_11000015180289.html",
-        "https://www.alibaba.com/product-detail/PINE-WOOD-CHIP-READY-EXPORT-WITH_11000004899072.html",
-        "https://www.alibaba.com/product-detail/Farm-Tractors-for-sale_1600227947757.html",
-        "https://www.alibaba.com/product-detail/Washing-powder-Tide-baby-machine-16_11000014329220.html",
-        "https://www.alibaba.com/product-detail/function-wood-cutting-new-cut-off_11000000676080.html",
-        "https://www.alibaba.com/product-detail/urea-46-fertilizer-carbonate-fertilizer-Water_50035370313.html",
-        "https://www.alibaba.com/product-detail/High-Grade-100-Natural-Breeding-Freezedried_1600728894714.html",
-        "https://www.alibaba.com/product-detail/Random-Copolymer-Polypropylene-PP-HP561R_11000014952024.html",
-        "https://www.alibaba.com/product-detail/MCM-Top-Quality-KP30-325KG-Mini_62080209967.html",
-        "https://www.alibaba.com/product-detail/Cement-Production-Line-Portland-Bulk-Portland_11000016419197.html",
-        "https://www.alibaba.com/product-detail/Coconut-Shell_50040545690.html",
-        "https://www.alibaba.com/product-detail/COSMETIC-PRODUCT-SLES-70-Sale-detergent_1600328777885.html",
-        "https://www.alibaba.com/product-detail/Flextools-FT201816-UNIT-5-5HP-1015mm_11000016058600.html",
-        "https://www.alibaba.com/product-detail/Glamour-Lace-Wig-Spray-For-Lace_11000014564209.html",
-        "https://www.alibaba.com/product-detail/Used-farm-tractors_11000002331583.html",
-        "https://www.alibaba.com/product-detail/Top-Selling-High-Quality-Disposable-Cutlery_1600984326059.html",
-        "https://www.alibaba.com/product-detail/BUY-2020-TOYOTA-RAV4-HYBRID-CHEAP_11000014238674.html",
-        "https://www.alibaba.com/product-detail/Hot-Selling-Price-Professional-Graphics-New_1600739856030.html",
-        "https://www.alibaba.com/product-detail/Hot-Selling-Metal-Animal-Feeders-Trough_50045952576.html",
-        "https://www.alibaba.com/product-detail/Fully-automatic-egg-incubator-custom-egg_11000016287615.html",
-        "https://www.alibaba.com/product-detail/Manufacturers-In-Japan-Best-Selling-Wholesale_11000014140224.html",
-        "https://www.alibaba.com/product-detail/High-sALES-Quality-For-New-RICOHS_1601044358831.html",
-        "https://www.alibaba.com/product-detail/Paintball-2000-Count-0-68-Caliber_11000016647461.html",
-        "https://www.alibaba.com/product-detail/Special-Sales-Offer-K-org-Pa_1600884010089.html",
-        "https://www.alibaba.com/product-detail/2022-Massey-Ferguson-1740M-Customizable-OEM_11000016050772.html",
-        "https://www.alibaba.com/product-detail/WASTE-PAPER-OLD-NEWSPAPER-ONP-over_11000016747853.html"
+        {
+          "title": "Best Seller Stainless Steel Wash Basin High Quality Abbas Steel Made In UAE For Wholesale",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Ab4031c53886b4fde8d558a5557ca283ew.png_720x720q50.png",
+          "images": [],
+          "price": "1,000.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Thickness</div><div class=\"right\"><span>.</span></div></div><div class=\"attribute-item\"><div class=\"left\">Tolerance</div><div class=\"right\"><span>other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Steel Grade</div><div class=\"right\"><span>stainless steel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Surface Finish</div><div class=\"right\"><span>BA</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Standard</div><div class=\"right\"><span>bs</span></div></div><div class=\"attribute-item\"><div class=\"left\">Grade</div><div class=\"right\"><span>Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery Time</div><div class=\"right\"><span>46-60 days</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Abbas Steel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>.</span></div></div><div class=\"attribute-item\"><div class=\"left\">Width</div><div class=\"right\"><span>.</span></div></div><div class=\"attribute-item\"><div class=\"left\">Processing Service</div><div class=\"right\"><span>other</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Electric Examination Couch",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A2b7c40e31d6047ba9af49fff8c8fc96fC.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A914cfa341b67432db207601ef808327dq.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ad57e530c16d3486b9e3aecdd91dff098Y.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ad57e530c16d3486b9e3aecdd91dff098Y.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>2 years</span></div></div><div class=\"attribute-item\"><div class=\"left\">After-sale Service</div><div class=\"right\"><span>NONE</span></div></div></div></div></div>"
+        },
+        {
+          "title": "Galvanized Metal Box for storage 42\"X26\"X21 1/2\" Abbas Steel Made In UAE For Wholesale",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Ab12f905e0b194d7399e4918d1513eb31L.png_720x720q50.png",
+          "images": [],
+          "price": "63.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>.</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Abbas Steel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>004</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shape</div><div class=\"right\"><span>.</span></div></div><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>metal</span></div></div><div class=\"attribute-item\"><div class=\"left\">Chemical Composition</div><div class=\"right\"><span>.</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Reclar Galvanic Water Peeler 24K Gold Plus Blackheads & Whiteheads Reclar Galvanic Water Peeler 24K Gold Plus Missha Middle East",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A5351553744064357839bdcaadd06dda1a.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A26a9104d305e44b8b128ea85c4cfe958l.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A4e086a6b19244ba5aefb9c863869177cX.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Aeba67b86c3544e44bcf950acf7b4ec52v.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Aad5850cd7c7d42be8fc3c2410677a5cdo.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Aad5850cd7c7d42be8fc3c2410677a5cdo.jpg_1200x1200.jpg"
+          ],
+          "price": "202.70",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>STANDING</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Skin Tightening</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>For Home Use</span></div></div><div class=\"attribute-item\"><div class=\"left\">Target Area</div><div class=\"right\"><span>Face</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Reclar</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>8809503310003</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>1.5 years</span></div></div><div class=\"attribute-item\"><div class=\"left\">After-sales Service Provided</div><div class=\"right\"><span>Online support</span></div></div><div class=\"attribute-item\"><div class=\"left\">Plugs Type</div><div class=\"right\"><span>US</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>RECLAR GALVANIC WATER PEELER 24K GOLD PLUS</span></div></div><div class=\"attribute-item\"><div class=\"left\">MOQ</div><div class=\"right\"><span>12pcs</span></div></div><div class=\"attribute-item\"><div class=\"left\">Advantages</div><div class=\"right\"><span>Skin Safe</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Skin Care Product</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand</div><div class=\"right\"><span>Reclar</span></div></div><div class=\"attribute-item\"><div class=\"left\">Technology</div><div class=\"right\"><span>Vibration Therapy Handle</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keywords</div><div class=\"right\"><span>Beauty Personal Care Machine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Treatment area</div><div class=\"right\"><span>face</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Facial Skin Care</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Skin Tightening</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>As Per Customer Requirement</span><p><img src=\"//s.alicdn.com/@sc01//kf/U10090a56f5224099a810b093ee06c11dQ.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"><img src=\"//s.alicdn.com/@sc01//kf/H8e16990b30bb4162b7d9cc146f11a4029.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>Jebel Ali Port, Dubai, U.A.E</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>1000 Piece/Pieces per   Week</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Tobacco processing machine Molins, Hauni, Aiger, Decoufle Dubai Factory",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/U6de7ac9e887f4adca5c334b6cd81a41dn.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U662e5af957ce4f529acd9e1abd24c339F.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U220e3764b6234bee8ac914c7787c838c3.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U2e2ad8d476c846f8b7c7f6de2fbf889eI.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U3aa2901351a74c9e94f1c1aa81e2db2eZ.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U3aa2901351a74c9e94f1c1aa81e2db2eZ.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>New</span></div></div><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Tobacco Machinery</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Molins</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Molins Mark 8 &amp; 9</span></div></div><div class=\"attribute-item\"><div class=\"left\">Name</div><div class=\"right\"><span>Tobacco Machinery</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Cigarette Manufacturing</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Multifunctional</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Production</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Fully Automatic</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>Support</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword</div><div class=\"right\"><span>Tobacco processing machine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model</div><div class=\"right\"><span>MK-8, MK-9</span></div></div><div class=\"attribute-item\"><div class=\"left\">Voltage</div><div class=\"right\"><span>220V/380V</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Briton SAE 40 API SJ Dubai Motor Oil Car Care Products Fuel Economy",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/U7d0e5298c132430b98425054b66f7fa4l.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U637c7ad311d1496e865c2a2c0f45ce71n.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uc1f0c1eb0d0b4362bfc48e7b569b32fdz.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uf6d20cbe1ff54f9da28570eed99f588bE.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U2f4d02371876440db975d964dd37a0d0E.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ucc4241ff3cab432b86ddc3f4a7b0ed71k.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ucc4241ff3cab432b86ddc3f4a7b0ed71k.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Weight</div><div class=\"right\"><span>4 Liters</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Briton</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Gasoline</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword</div><div class=\"right\"><span>Lubricant Motor Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>Motor Engine Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>Base Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Quality</div><div class=\"right\"><span>100% Virgin Base Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Yellowish</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product  name</div><div class=\"right\"><span>Automotive Lubricants</span></div></div><div class=\"attribute-item\"><div class=\"left\">Viscosity</div><div class=\"right\"><span>15</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Reduce Friction</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery time</div><div class=\"right\"><span>15 Days</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>1L, 3L, 4L, 5L, 6L, 7L Bottles<br>20L, 25L Pails<br>200L - 208L Drums<br>1000L IBC Tank<br>21,000L - 24,000 Flexi Tank</span><p><img src=\"//s.alicdn.com/@sc01//kf/U932b3b8365e643ba9f0a546b548459309.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"><img src=\"//s.alicdn.com/@sc01//kf/Uf537f4b50c064a13943176bf62025c0a6.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>Jebel Ali Port, Dubai</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>100 Twenty-Foot Container per   Month</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Unify Lube SAE 50 SF Cheap Price Engine Oil Dubai motor oil manufacturer Motor Engine Oil",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Ae06371aad686450dbab0d7e984bb3acdi.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A045a539a64dc4ac49559cd5795a9adfaU.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A2a0ac877821f40d682f7bff04caab0a9v.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A3a5783655c1c434dae48c051aae7f2a5O.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A3c22580cc9db42898b805b45c1210cf0c.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A935058d90bd440a5a2f096d9e7a22d27X.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A935058d90bd440a5a2f096d9e7a22d27X.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Automotive Lubricant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Engine Oil</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>UAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Unify Lube</span></div></div><div class=\"attribute-item\"><div class=\"left\">Specification</div><div class=\"right\"><span>SAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>BASE Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>UNIFY: SAE 50 SF</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>Base Oil + Additive + Thickener</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Automotive Lubricants</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keywords</div><div class=\"right\"><span>Motor Oil Lubricants</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Customer Requirements</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Yellow</span></div></div><div class=\"attribute-item\"><div class=\"left\">Quality</div><div class=\"right\"><span>Economy</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certificate</div><div class=\"right\"><span>ISO9001</span></div></div><div class=\"attribute-item\"><div class=\"left\">Service</div><div class=\"right\"><span>Accept Customization</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery Time</div><div class=\"right\"><span>5-15 Days</span></div></div><div class=\"attribute-item\"><div class=\"left\">Base Oil</div><div class=\"right\"><span>Minerial Oil</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>36000 Metric Ton/Metric Tons per   Year</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "SCREW AIR COMPRESSOR IN  DUBAI",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Ac649fa82226d49d9b875af9433eb3c6fv.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A3e8beb8aa5eb43d38e857b73b20077224.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A3e8beb8aa5eb43d38e857b73b20077224.jpg_1200x1200.jpg"
+          ],
+          "price": "3,500.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Building Material Shops, Manufacturing Plant, Machinery Repair Shops, Retail, Construction works&nbsp;</span></div></div><div class=\"attribute-item\"><div class=\"left\">Showroom Location</div><div class=\"right\"><span>UAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>China</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>1 Year</span></div></div><div class=\"attribute-item\"><div class=\"left\">Working Pressure</div><div class=\"right\"><span>7 bar, 8 bar, 12 bar, 10 bar</span></div></div><div class=\"attribute-item\"><div class=\"left\">Machinery Test Report</div><div class=\"right\"><span>Not Available</span></div></div><div class=\"attribute-item\"><div class=\"left\">Video outgoing-inspection</div><div class=\"right\"><span>Not Available</span></div></div><div class=\"attribute-item\"><div class=\"left\">Marketing Type</div><div class=\"right\"><span>New Product 2020</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty of core components</div><div class=\"right\"><span>1 Year</span></div></div><div class=\"attribute-item\"><div class=\"left\">Core Components</div><div class=\"right\"><span>Engine, Gear, Gearbox</span></div></div><div class=\"attribute-item\"><div class=\"left\">Gas Type</div><div class=\"right\"><span>Air</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Water Cooling System Chiller for Villa Tank Accomodation Dubai Ajman Sharjah Abu Dhabi - DANA",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/UT8LiKoXERXXXagOFbXf.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/UT8MhanXBRbXXagOFbXq.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/UT87cGpXrBXXXagOFbXe.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/UT87OWoXExXXXagOFbXi.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/UT8VXOoXEdaXXagOFbXm.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/UT8VXOoXEdaXXagOFbXm.jpg_1200x1200.jpg"
+          ],
+          "price": "15,000.00",
+          "colors": [],
+          "sizes": [
+            "7kw - 175kw"
+          ],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Hotels, Restaurant, Home Use, Food Shop</span></div></div><div class=\"attribute-item\"><div class=\"left\">Showroom Location</div><div class=\"right\"><span>None</span></div></div><div class=\"attribute-item\"><div class=\"left\">Video outgoing-inspection</div><div class=\"right\"><span>Not Available</span></div></div><div class=\"attribute-item\"><div class=\"left\">Machinery Test Report</div><div class=\"right\"><span>Not Available</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty of core components</div><div class=\"right\"><span>1 Year</span></div></div><div class=\"attribute-item\"><div class=\"left\">Core Components</div><div class=\"right\"><span>Engine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Weight</div><div class=\"right\"><span>40 KG</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>1 year on Manufacturing Defect and 5 years on Compressor( As per t&amp;C)</span></div></div><div class=\"attribute-item\"><div class=\"left\">Key Selling Points</div><div class=\"right\"><span>High-accuracy</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>New</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Air-cooled</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>DANA Water cooling System uae</span></div></div><div class=\"attribute-item\"><div class=\"left\">Voltage</div><div class=\"right\"><span>220 V Single Phase</span></div></div><div class=\"attribute-item\"><div class=\"left\">Dimension(L*W*H)</div><div class=\"right\"><span>560mm x 560mm x 590mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Power</div><div class=\"right\"><span>3300W</span></div></div><div class=\"attribute-item\"><div class=\"left\">Working Temperature Range</div><div class=\"right\"><span>≥45℃</span></div></div><div class=\"attribute-item\"><div class=\"left\">After-sales Service Provided</div><div class=\"right\"><span>Engineers available to service</span></div></div><div class=\"attribute-item\"><div class=\"left\">Water Cooling System</div><div class=\"right\"><span>Dubai Ajman Sharjah Al Ain Fujairah</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certification</div><div class=\"right\"><span>ISO 9001:2008</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Water Cooling System</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>1000 Unit/Units per   Week</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Stainless Steel Kitchen Hoods High Quality Abbas Steel Made In UAE For Wholesale",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/H27d67e8757ad42db831821e77cfcb366C.png_720x720q50.png",
+          "images": [],
+          "price": "100.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Thickness</div><div class=\"right\"><span>.</span></div></div><div class=\"attribute-item\"><div class=\"left\">Tolerance</div><div class=\"right\"><span>other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Steel Grade</div><div class=\"right\"><span>stainless steel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Surface Finish</div><div class=\"right\"><span>BA</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Standard</div><div class=\"right\"><span>bs</span></div></div><div class=\"attribute-item\"><div class=\"left\">Grade</div><div class=\"right\"><span>Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery Time</div><div class=\"right\"><span>46-60 days</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Abbas Steel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>.</span></div></div><div class=\"attribute-item\"><div class=\"left\">Width</div><div class=\"right\"><span>custom</span></div></div><div class=\"attribute-item\"><div class=\"left\">Processing Service</div><div class=\"right\"><span>other</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "INSULATED SANDWICH PANEL SUPPLIER IN SAUDI ARABIA UAE DUBAI",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/H5174f222796941918284a286bc0a0febe.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/H178c7889d8714e71b16361b6f61a2fc4E.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/H22db74b45b5a4b4094ed4de4bda206cbg.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/H22db74b45b5a4b4094ed4de4bda206cbg.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Steel Sheet</span></div></div><div class=\"attribute-item\"><div class=\"left\">Thickness</div><div class=\"right\"><span>0.12-0.8, 0.13-1.0mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Coating</div><div class=\"right\"><span>Z10-Z29</span></div></div><div class=\"attribute-item\"><div class=\"left\">Spangle Type</div><div class=\"right\"><span>Regular Spangle</span></div></div><div class=\"attribute-item\"><div class=\"left\">Hardness</div><div class=\"right\"><span>Full Hard</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>China</span></div></div><div class=\"attribute-item\"><div class=\"left\">Standard</div><div class=\"right\"><span>ASTM</span></div></div><div class=\"attribute-item\"><div class=\"left\">Grade</div><div class=\"right\"><span>SGCC/CGCC/DX51D</span></div></div><div class=\"attribute-item\"><div class=\"left\">Technique</div><div class=\"right\"><span>Hot Rolled Based</span></div></div><div class=\"attribute-item\"><div class=\"left\">Skin Pass</div><div class=\"right\"><span>NO</span></div></div><div class=\"attribute-item\"><div class=\"left\">Oiled or Non-oiled</div><div class=\"right\"><span>Slightly Oiled</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery Time</div><div class=\"right\"><span>8-14 days</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>DANA</span></div></div><div class=\"attribute-item\"><div class=\"left\">Length</div><div class=\"right\"><span>2000</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certificate</div><div class=\"right\"><span>SNI, SASO, SONCAP, tisi, ISO9001</span></div></div><div class=\"attribute-item\"><div class=\"left\">Tolerance</div><div class=\"right\"><span>±5%</span></div></div><div class=\"attribute-item\"><div class=\"left\">Processing Service</div><div class=\"right\"><span>Bending, Welding, Decoiling, Cutting, Punching</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Diesel Engine Oil Fully Synthetic 5L Agri power 15W30  high performance Total protection Gulf product heavy duty diesel oil",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A550a38d3a4314acaab1d1d405a92f40ak.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Ad927712285304ff0b387470d7fb7bb8ar.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ad6e3130784a94c639f516e1d1ce5270fo.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Af5ce258f96244e6088ff77b106d062d6Y.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A16487908c776424685ef41de1f3a10b04.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A16487908c776424685ef41de1f3a10b04.jpg_1200x1200.jpg"
+          ],
+          "price": "1.10",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Automotive Lubricant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Engine Oil</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>AVANA</span></div></div><div class=\"attribute-item\"><div class=\"left\">Specification</div><div class=\"right\"><span>SAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>BASE Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>Agri Power</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Agri Power</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing Size</div><div class=\"right\"><span>1L, 4L,5L, 20L</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keywords</div><div class=\"right\"><span>Motors Engine Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Reduce Friction</span></div></div><div class=\"attribute-item\"><div class=\"left\">Quality</div><div class=\"right\"><span>Excellent</span></div></div><div class=\"attribute-item\"><div class=\"left\">Appearance</div><div class=\"right\"><span>Oily Liquid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>Heavy Machiney</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>500 ml to 1000L packing available. Our esteemed customer can select the packing as per their choice.</span><p><img src=\"//s.alicdn.com/@sc01//kf/U6e6972555b614455bb9d4a18a9590217t.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>JABEL ALI</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>50000 Liter/Liters per   Day</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Luxury Bathroom Accessories Set Soap Dish Square Type High Quality Bathroom parts and accessories from UAE",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Hd28d768bb70a4625a03dfc432c70d32bQ.jpg_720x720q50.jpg",
+          "images": [],
+          "price": "0.31",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Project Solution Capability</div><div class=\"right\"><span>total solution for projects</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Bathroom</span></div></div><div class=\"attribute-item\"><div class=\"left\">Design Style</div><div class=\"right\"><span>Asian</span></div></div><div class=\"attribute-item\"><div class=\"left\">Dish Material</div><div class=\"right\"><span>Plastic</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>NONE</span></div></div><div class=\"attribute-item\"><div class=\"left\">After-sale Service</div><div class=\"right\"><span>Online technical support</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product Category</div><div class=\"right\"><span>Bathroom Shelves</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Uniflo</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>SD 2</span></div></div><div class=\"attribute-item\"><div class=\"left\">Holder Surface Finishing</div><div class=\"right\"><span>Other</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Dubai Factory High quality packing belt color plastic PP packing belt wholesale price",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/U38eecfeb372d449391ab81b11fb5ff9dY.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/S2d5c0cf269044984a720616096bb29fa3.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U17fde38f1c724074a657ef05c8b91723S.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uadbad52382fe45c085cc78af304ae1667.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U2e01d78cb9b447eab4cf3a9816a94075w.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U8f98ae131275483ea6a698614713a5faI.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U8f98ae131275483ea6a698614713a5faI.jpg_1200x1200.jpg"
+          ],
+          "price": "1.28",
+          "colors": [
+            "https://sc04.alicdn.com/kf/U1f1b6a44c3f8430a8e0519aa60eb2824d.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/U192cd8968ffa40c3b60fd14f06c17b90a.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/U466cdecede974a969cc238f930b064e7A.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/Uaa6d7a571b824e2883d7bef01140f1d9c.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/U17d22553f2fc4ad586499990048db5c3J.png_100x100.png",
+            "https://sc04.alicdn.com/kf/Ua25b3e766a264eda9bf8857eb0e9ccdaq.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/U1742e393a158418290131944fa053947i.jpg_100x100.jpg"
+          ],
+          "sizes": [
+            "1000-7000"
+          ],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>PP</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Machine Packing</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Stanpack PP Strap</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>0001</span></div></div><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>Polypropylene Raffia</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>PP Strapping Band</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Customized Color</span></div></div><div class=\"attribute-item\"><div class=\"left\">Size</div><div class=\"right\"><span>9mm - 18mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Thickness</div><div class=\"right\"><span>0.5-1mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Carton + Pallet</span></div></div><div class=\"attribute-item\"><div class=\"left\">Strap Grade</div><div class=\"right\"><span>Auto Machine Grade</span></div></div><div class=\"attribute-item\"><div class=\"left\">Length</div><div class=\"right\"><span>1000-7000m</span></div></div><div class=\"attribute-item\"><div class=\"left\">MOQ</div><div class=\"right\"><span>1000 Kilograms</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Packing Sealing Industrial</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Fencing panels for UAE/ Dubai Construction sites , Corrugated Temporary Fencing/ Discontinuous Fencing",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/UTB8p6tmhDzIXKJkSafV761WgXXaJ.png_720x720q50.png",
+          "images": [],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Frame Material</div><div class=\"right\"><span>Metal</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Easily Assembled</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>UAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Farm Fence</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Fencing, Trellis &amp; Gates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Service</div><div class=\"right\"><span>product marketing copy</span></div></div><div class=\"attribute-item\"><div class=\"left\">Frame Finishing</div><div class=\"right\"><span>Not Coated</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Cigarette making machine Molins high speed MK-8, MK-9 Dubai Factory",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/U5835129a345c48d7a4d746255a6f85bcH.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U3a274f2c652d4f6faf0f777976cf677fZ.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Udfbc68aeedaa4061be24a4aefdeaba68F.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U1ae15c8c60924211800c9c3d38cb56451.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U1ae15c8c60924211800c9c3d38cb56451.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>New</span></div></div><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Tobacco Machinery</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Molins</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Cigarette making machine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Production</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Automatic</span></div></div><div class=\"attribute-item\"><div class=\"left\">Name</div><div class=\"right\"><span>Molins Cigarette Making Machinery</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Multifunctional</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Fully Automatic</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>White</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>Support</span></div></div><div class=\"attribute-item\"><div class=\"left\">Voltage</div><div class=\"right\"><span>220V/380V</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword</div><div class=\"right\"><span>Cigarette making machine</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Unify Lube SAE 50 SC wholesale motor engine oil dubai engine oil",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A1ff8149185d64230b614923445d050f2l.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A5111fc7c86bd4af08948bf6a104e8fafC.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Acfae1b58a7bb486eb3398dc973d94fe1B.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A046cb3199a974aa6a011b613b1c74785n.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ae99582143f684a36a03dc57f4e0ed8f5n.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A142baa63fcb04690aa156bb832045313T.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A142baa63fcb04690aa156bb832045313T.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Automotive Lubricant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Engine Oil</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>UAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Unify Lube</span></div></div><div class=\"attribute-item\"><div class=\"left\">Specification</div><div class=\"right\"><span>SAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>BASE Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>UNIFY: SAE 50 SC</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>Base Oil + Additive + Thickener</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Automotive Lubricants</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keywords</div><div class=\"right\"><span>Motor Oil Lubricants</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Customer Requirements</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Yellow</span></div></div><div class=\"attribute-item\"><div class=\"left\">Quality</div><div class=\"right\"><span>Economy</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certificate</div><div class=\"right\"><span>ISO9001</span></div></div><div class=\"attribute-item\"><div class=\"left\">Service</div><div class=\"right\"><span>Accept Customization</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery Time</div><div class=\"right\"><span>5-15 Days</span></div></div><div class=\"attribute-item\"><div class=\"left\">Base Oil</div><div class=\"right\"><span>Minerial Oil</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>36000 Metric Ton/Metric Tons per   Year</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Briton SAE 40 API SG Motor Engine Oil from Dubai Factory Cheap Price Car Care Products",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/U1682e0da4d45442cbdc12b91339a69a7x.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U4aca6004802e43e7a3ef43d3847a87a1w.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U7128c5afa3c94925974062b640adcd291.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ufae42fe22bbb4c4aabeaf8ae7b08e6d7u.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uc9e9051752594d09b994f7d3ac0d08c8e.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uc9e9051752594d09b994f7d3ac0d08c8e.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Automotive Lubricant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Engine Oil</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Briton</span></div></div><div class=\"attribute-item\"><div class=\"left\">Specification</div><div class=\"right\"><span>SAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>BASE Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>SAE 40 SG</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Automotive Lubricants</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keywords</div><div class=\"right\"><span>Engine Motor Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Customer Requirements</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Transparent Yellow</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Protect Engine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Quality</div><div class=\"right\"><span>100% Virgin Base Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certificate</div><div class=\"right\"><span>ISO9001</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>Automobile Engine Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Service</div><div class=\"right\"><span>Private Label</span></div></div><div class=\"attribute-item\"><div class=\"left\">PAYMENT</div><div class=\"right\"><span>Normal) T/T 30% Deposit</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>1L, 3L, 4L, 5L, 6L, 7L Bottles<br>20L, 25L Pails<br>200L - 208L Drums<br>1000L IBC Tank<br>21,000L - 24,000 Flexi Tank</span><p><img src=\"//s.alicdn.com/@sc01//kf/U932b3b8365e643ba9f0a546b548459309.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"><img src=\"//s.alicdn.com/@sc01//kf/Uf537f4b50c064a13943176bf62025c0a6.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>Jebel Ali Port, Dubai</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>100 Twenty-Foot Container per   Month</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Cooking Oven Furnace Furnace for cooking Aluminum 100 (H) X 80 (W) X 100( D)  cm Abbas Steel Made In UAE For Wholesale",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A6b743a0058704aed8580ce5ff2aedec8s.png_720x720q50.png",
+          "images": [],
+          "price": "1,000.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>.</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Abbas Steel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>09</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shape</div><div class=\"right\"><span>.</span></div></div><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>metal</span></div></div><div class=\"attribute-item\"><div class=\"left\">Chemical Composition</div><div class=\"right\"><span>.</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Molins, Aiger, Hauni, Decoufle Cigarette making machine Dubai Factory",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Ub9a6017cd5da4ba7809d476c0a7e8384x.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Ued97659041104a95a3c86e6eb9fce9b8K.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uc41caad83b7647b7af1cf0b345b7a4dfb.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uff4d7e0f1c4e4b4eaa600d717b7c0651K.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U458460db19e146f8a9696962fd3e748am.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U458460db19e146f8a9696962fd3e748am.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>New</span></div></div><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Tobacco Machinery</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Molins</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Molins Cigarette making machine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Manufacturing Tobacco Products</span></div></div><div class=\"attribute-item\"><div class=\"left\">Name</div><div class=\"right\"><span>Molins MK-8D Max V</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Multifunctional</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Production</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Fully Automatic</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>Support</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword</div><div class=\"right\"><span>Cigarette Making Machine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model</div><div class=\"right\"><span>MK-8D With Max V</span></div></div><div class=\"attribute-item\"><div class=\"left\">Voltage</div><div class=\"right\"><span>220V/380V</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Unify Lube SAE 40 CC/SC diesel engine lube oil cheap price oil Dubai factory car oil motor",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Af04be692d5944ef9add55f70a16d134cP.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A0d89dfc3d2e6439cac05735024a4648db.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A43ec58e935c643b0bfafb3ffbeb8a295k.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A39a70b15605a49dc8a5005e57e56a072r.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A39bd921ff5094af2af628b66dce61c1bs.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A3b17759d26804abd8518506f4c79084cg.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A3b17759d26804abd8518506f4c79084cg.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Automotive Lubricant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Engine Oil</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>UAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Unify Lube</span></div></div><div class=\"attribute-item\"><div class=\"left\">Specification</div><div class=\"right\"><span>SAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>BASE Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>UNIFY:  SAE 40 CC/SC</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>Base Oil + Additive + Thickener</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Diesel Engine Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keywords</div><div class=\"right\"><span>Engine Oil Lubricants</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Customer Requirements</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Yellow</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certificate</div><div class=\"right\"><span>ISO9001</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Diesel Vehicles</span></div></div><div class=\"attribute-item\"><div class=\"left\">Service</div><div class=\"right\"><span>Accept Customization</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery Time</div><div class=\"right\"><span>5-15 Days</span></div></div><div class=\"attribute-item\"><div class=\"left\">Advantage</div><div class=\"right\"><span>Competitive</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>36000 Metric Ton/Metric Tons per   Year</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Briton SAE 20W50 API CJ-4 High Quality Diesel Engine Oil Car Care Products Total Protection Wholesale Price from Dubai Factory",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/U94758688b7b24bdfa042a3d3b65cb114n.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U466df40f63174a7d8e7d5de267ebcaa24.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U528f7e155e464dedaf6ebe9921a46e02d.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U2c499f86c637413f9d6f8f952fc4d31a5.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U34e05e3022ec4687950a9366e0987614P.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U9e685d02310c46f18f45ae4d56d1e8d1V.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U9e685d02310c46f18f45ae4d56d1e8d1V.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Weight</div><div class=\"right\"><span>5 Liters</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Briton</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Heavy-duty</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword</div><div class=\"right\"><span>Lubricants Engine Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>Heavy Duty Engine Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>Base Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Quality</div><div class=\"right\"><span>Excellent</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Yellowish</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product  name</div><div class=\"right\"><span>20W-50 Diesel Engine Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Pack</div><div class=\"right\"><span>Customer Requirements</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery time</div><div class=\"right\"><span>15 Days</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>1L, 3L, 4L, 5L, 6L, 7L Bottles<br>20L, 25L Pails<br>200L - 208L Drums<br>1000L IBC Tank<br>21,000L - 24,000 Flexi Tank</span><p><img src=\"//s.alicdn.com/@sc01//kf/U932b3b8365e643ba9f0a546b548459309.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"><img src=\"//s.alicdn.com/@sc01//kf/Uf537f4b50c064a13943176bf62025c0a6.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>Jebel Ali Port, Dubai</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>100 Twenty-Foot Container per   Month</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Tabak machine Molins Mark 8 & 9 Dubai Factory Supplier",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Ua850b9d4b3dd4194b6be695b77a1cf84b.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U18c8b99dbe9548febee88206b8ed3b40b.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Udd444362dddb4e47b88c3e8f541aad1aB.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U02204aeeec6a4663a99f9bf31ef3f62fT.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uc8787324e12847f0b0e8b7f145b3ffa3t.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uc8787324e12847f0b0e8b7f145b3ffa3t.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>New</span></div></div><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Tobacco Machinery</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Molins</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Tabak machine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Cigarette Manufacturing</span></div></div><div class=\"attribute-item\"><div class=\"left\">Name</div><div class=\"right\"><span>Tabak machinery</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Multifunctional</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Production</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Fully Automatic</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>Support</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword</div><div class=\"right\"><span>Tabak Machine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model</div><div class=\"right\"><span>MK-8 Max V &amp; MK-9 Max S</span></div></div><div class=\"attribute-item\"><div class=\"left\">Voltage</div><div class=\"right\"><span>220V/380V</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Unify Lube SAE 50 CC/SC diesel engine oil Dubai factory car oil",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Aae9043234e2d494982ec7253afee7730s.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Ace32f82cc1a848479e4ac91f2ec9037dT.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ae2fc74d96a594053bc7d106709f9ed3dJ.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A7f3c2cdd00b94adcb479ca10db1579ebR.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A6713ebf8809a4a8e94be33c9f1f48b08l.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A877d246680a34657aa020f652f17abffX.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A877d246680a34657aa020f652f17abffX.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Automotive Lubricant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Engine Oil</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>UAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Unify Lube</span></div></div><div class=\"attribute-item\"><div class=\"left\">Specification</div><div class=\"right\"><span>SAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>BASE Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>UNIFY:  SAE 50 CC/SC</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>Base Oil + Additive + Thickener</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Diesel Engine Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keywords</div><div class=\"right\"><span>Engine Oil Lubricants</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Customer Requirements</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Yellow</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certificate</div><div class=\"right\"><span>ISO9001</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Diesel Vehicles</span></div></div><div class=\"attribute-item\"><div class=\"left\">Service</div><div class=\"right\"><span>Accept Customization</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery Time</div><div class=\"right\"><span>5-15 Days</span></div></div><div class=\"attribute-item\"><div class=\"left\">Advantage</div><div class=\"right\"><span>Competitive</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>36000 Metric Ton/Metric Tons per   Year</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Car Brake Fluid Briton DOT 3 Hight Performance Hydraulic Brake Fluid Direct from Dubai Factory",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Uc27402413ecf425199dc415556e480c6J.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U90da44a138494eee9510f12a0a84b6fdJ.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uce45598321654e389a5fef96cc9ad1201.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U5185b3fb7afb4b6694fb54ffdbf7ada7v.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U5185b3fb7afb4b6694fb54ffdbf7ada7v.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Weight</div><div class=\"right\"><span>250ml / 500ml</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Expiration Date</div><div class=\"right\"><span>3 Years from The Production Date</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Briton</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>Brake System Lubricating</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Improve Braking Performance</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Brake Fluid Dot3</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Dot 3</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Breaking System</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword</div><div class=\"right\"><span>Dot3 Brake Fluid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Physical State</div><div class=\"right\"><span>Clear Liquid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Advantage</div><div class=\"right\"><span>Competitive</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Plastic Bottle</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery time</div><div class=\"right\"><span>30 Working Days</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>250ml, 500ml, 1L, 3L, 4L, 5L, 6L, 7L Bottles<br>20L, 25L Pails<br>200L - 208L Drums<br>1000L IBC Tank<br>21,000L - 24,000 Flexi Tank</span><p><img src=\"//s.alicdn.com/@sc01//kf/U0122d4bf527b4ea2b7267ffcc130f472e.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>Jebel Ali Port, Dubai</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>100 Twenty-Foot Container per   Month</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "High Quality Flush Tank Fittings H/L with Pipe Set Bathroom parts Best Selling from UAE",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Hcc87577ba28346e7b5b3305dbaa925d6j.jpg_720x720q50.jpg",
+          "images": [],
+          "price": "4.60",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Project Solution Capability</div><div class=\"right\"><span>total solution for projects</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Bathroom</span></div></div><div class=\"attribute-item\"><div class=\"left\">Design Style</div><div class=\"right\"><span>Asian</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>NONE</span></div></div><div class=\"attribute-item\"><div class=\"left\">After-sale Service</div><div class=\"right\"><span>Online technical support</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Electronic Induction Type</div><div class=\"right\"><span>None</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Uniflo</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>FTF HL Pipe</span></div></div><div class=\"attribute-item\"><div class=\"left\">Flush Valve Type</div><div class=\"right\"><span>Hand Control</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>1 Carton/Cartons per   Quarter</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "SHEET/PLATE/COIL - India / UAE/Qatar/ Bahrain/GCC",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Heb24c74bcd8a40c79c4523dc5bb59d75L.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Heb24c74bcd8a40c79c4523dc5bb59d75L.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Tolerance</div><div class=\"right\"><span>±1%</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>Rajasthan, India</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Ship Steel Plate</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery Time</div><div class=\"right\"><span>14 Days</span></div></div><div class=\"attribute-item\"><div class=\"left\">Standard</div><div class=\"right\"><span>JIS</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>DANA</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Steel Coil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Technique</div><div class=\"right\"><span>Hot Rolled</span></div></div><div class=\"attribute-item\"><div class=\"left\">Surface Treatment</div><div class=\"right\"><span>Coated</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Container Plate</span></div></div><div class=\"attribute-item\"><div class=\"left\">Special Use</div><div class=\"right\"><span>Silicon Steel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Width</div><div class=\"right\"><span>650mm - 1350mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Length</div><div class=\"right\"><span>upto 6000 mm / Coil Form</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>5000 Metric Ton/Metric Tons per   Month</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Premium Camel Milk Soap Saffron Camellure 125g solid bar soap made from camel milk made in UAE",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/H4886ba8c46784733ad5af1ee1bf60552X.jpg_720x720q50.jpg",
+          "images": [],
+          "price": "3.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Handmade</div><div class=\"right\"><span>NO</span></div></div><div class=\"attribute-item\"><div class=\"left\">Medicated</div><div class=\"right\"><span>NO</span></div></div><div class=\"attribute-item\"><div class=\"left\">Ingredient</div><div class=\"right\"><span>Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Main Ingredient</div><div class=\"right\"><span>Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Basic Cleaning</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Size Type</div><div class=\"right\"><span>regular size</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Hand soap</span></div></div><div class=\"attribute-item\"><div class=\"left\">Form</div><div class=\"right\"><span>Solid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Transparent</div><div class=\"right\"><span>NO</span></div></div><div class=\"attribute-item\"><div class=\"left\">Age Group</div><div class=\"right\"><span>Adults</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Camellure</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>6291115002606</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Great Cost Performance Products Animal Natural Grooming Cleaning Bathing Pet Supplies Dog Shampoo",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A6ab2e1b8e144453b99f4ab00bd112543Q.jpg_720x720q50.jpg",
+          "images": [],
+          "price": "22.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Dogs</span></div></div><div class=\"attribute-item\"><div class=\"left\">Item Type</div><div class=\"right\"><span>Shampoos</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Grooming Products Type</div><div class=\"right\"><span>Shampoos</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>UAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>PRIVATE LABEL</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>R</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "High Selling Product 15W 40 CI 4 Lubricants Car Engine Base Oil Super Quality At  Wholesale Market Price",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Aa0a655729ce0459bb81ca1e0a0f4f7091.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Acf478f61140346fd96fbfe79adaa2ea2z.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A9cd35afd88364932b9363b2fb1b2ffabC.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ab2a62b2643954f009004e754cdeeae29g.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A307bc3863c794dbfa6a5245654fd297av.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A307bc3863c794dbfa6a5245654fd297av.jpg_1200x1200.jpg"
+          ],
+          "price": "1.40",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Automotive Lubricant</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>Turkey</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Boss Lubricant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Specification</div><div class=\"right\"><span>Car Engine oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>BASE Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>15W 40 CI 4 Engine oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>15W 40 CI 4</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Car Engine oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Automotive Lubricant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Advantage</div><div class=\"right\"><span>New Technology</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keywords</div><div class=\"right\"><span>Best Quality 15W 40 CI 4 Car Engine oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Yellow</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>90</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Lubricating Protection</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>1 L, 4 L, 5 L, 20 L, 208 L</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "PP Strapping Band Semi Automatic Machine and PP Strap Fully Auto Machine Strapping Band Size 12mm, 15mm, 18mm Dubai, UAE Factory",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Sc8f20cc6707d4632b44f036a9c80d8f1o.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U618656fb3287422796fdc2e9f5104060W.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Ua5a8ce5ce8c4421cac584d4401f62b27U.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U7eaae1b893b8433984ea86f53962129dg.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U7862f52cb4714e1c8fe66e3e58c7bd94L.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U54b78a6e5c5e4d2e8acbac34b19ec291V.jpeg_1200x1200.jpeg",
+            "https://s.alicdn.com/@sc04/kf/U54b78a6e5c5e4d2e8acbac34b19ec291V.jpeg_1200x1200.jpeg"
+          ],
+          "price": "10.00",
+          "colors": [
+            "https://sc04.alicdn.com/kf/U1f1b6a44c3f8430a8e0519aa60eb2824d.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/U192cd8968ffa40c3b60fd14f06c17b90a.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/U466cdecede974a969cc238f930b064e7A.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/Uaa6d7a571b824e2883d7bef01140f1d9c.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/U17d22553f2fc4ad586499990048db5c3J.png_100x100.png",
+            "https://sc04.alicdn.com/kf/Ua25b3e766a264eda9bf8857eb0e9ccdaq.jpg_100x100.jpg",
+            "https://sc04.alicdn.com/kf/U1742e393a158418290131944fa053947i.jpg_100x100.jpg"
+          ],
+          "sizes": [
+            "1000-7000"
+          ],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>PP</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Machine Packing</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Stanpack PP Strap</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>0001</span></div></div><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>Polypropylene Raffia</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>PP Strapping Band</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Customized Color</span></div></div><div class=\"attribute-item\"><div class=\"left\">Size</div><div class=\"right\"><span>9mm - 18mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Thickness</div><div class=\"right\"><span>0.5-1mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Carton + Pallet</span></div></div><div class=\"attribute-item\"><div class=\"left\">Strap Grade</div><div class=\"right\"><span>Auto Machine Grade</span></div></div><div class=\"attribute-item\"><div class=\"left\">Length</div><div class=\"right\"><span>1000-7000m</span></div></div><div class=\"attribute-item\"><div class=\"left\">MOQ</div><div class=\"right\"><span>1000 Kilograms</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Packing Sealing Industrial</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Camel Milk Handmade Soap 95g Sweet Orange and Lemon PURE ESSENTIAL OLIVE OIL Wholesale From UAE",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/H42c44d04fac54a10b7c3468ba4103528k.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/H42c44d04fac54a10b7c3468ba4103528k.jpg_1200x1200.jpg"
+          ],
+          "price": "4.39",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Handmade</div><div class=\"right\"><span>Yes</span></div></div><div class=\"attribute-item\"><div class=\"left\">Medicated</div><div class=\"right\"><span>NO</span></div></div><div class=\"attribute-item\"><div class=\"left\">Ingredient</div><div class=\"right\"><span>Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Main Ingredient</div><div class=\"right\"><span>OLIVE OIL</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Basic Cleaning</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Size Type</div><div class=\"right\"><span>regular size</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Toilet Soap</span></div></div><div class=\"attribute-item\"><div class=\"left\">Form</div><div class=\"right\"><span>Solid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Transparent</div><div class=\"right\"><span>NO</span></div></div><div class=\"attribute-item\"><div class=\"left\">Age Group</div><div class=\"right\"><span>Adults</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>The Camel Soap</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>F.SO.HM.CC.SOL2</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>100 Piece/Pieces per   Month</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "UAE Domestic Overhead INDUSTRIAL WATER CHILLER DC 20000  Tank Water Chiller",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/H158d70c13f4841938082ce1df3e952b4P.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Hbed56858798e435aa2410dcb6b1fb29bT.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Hda7b624b565a4467a241dda5a8ff408e2.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/He9fa8e7755764456b156735dad7593fdf.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/H0d82c091b0e9494f9b88b5a42634d6d77.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/H0d82c091b0e9494f9b88b5a42634d6d77.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [
+            "52.5/180,000"
+          ],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Hotels, Schools, Mosques, Hospitals, Hotels, Apartments</span></div></div><div class=\"attribute-item\"><div class=\"left\">Showroom Location</div><div class=\"right\"><span>None</span></div></div><div class=\"attribute-item\"><div class=\"left\">Video outgoing-inspection</div><div class=\"right\"><span>Provided</span></div></div><div class=\"attribute-item\"><div class=\"left\">Machinery Test Report</div><div class=\"right\"><span>Provided</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty of core components</div><div class=\"right\"><span>1 Year</span></div></div><div class=\"attribute-item\"><div class=\"left\">Core Components</div><div class=\"right\"><span>Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Weight</div><div class=\"right\"><span>520 KG</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>5 years</span></div></div><div class=\"attribute-item\"><div class=\"left\">Key Selling Points</div><div class=\"right\"><span>High-accuracy</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>Brand New</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Air-cooled</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>DANA</span></div></div><div class=\"attribute-item\"><div class=\"left\">Voltage</div><div class=\"right\"><span>220-240V</span></div></div><div class=\"attribute-item\"><div class=\"left\">Dimension(L*W*H)</div><div class=\"right\"><span>1830 x 1150 x 1680</span></div></div><div class=\"attribute-item\"><div class=\"left\">Power</div><div class=\"right\"><span>3000 WATTS - 70000 WATTS</span></div></div><div class=\"attribute-item\"><div class=\"left\">After-sales Service Provided</div><div class=\"right\"><span>Field maintenance and repair service</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certification</div><div class=\"right\"><span>ISO, CC, IIC</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>Standard Export Sea Worthy Packing</span><p><img src=\"//s.alicdn.com/@sc01//kf/UTB8RrCbO0oSdeJk43Owq6ya4XXa3.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>Jebel Ali Dubai UAE</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>500 Piece/Pieces per   Month</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "High Grade AJWA MAAMOUAL Exquisite 600gm Al Sultan Sweets Assortment Wholesale Food Product",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A124e5bd5c11a40b1b2ebf4638a47fad0g.png_1200x1200.png",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A7b80222d69804ef78b4609e98af83f25e.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/S2145d604f18646458bf8c9cbb8ebacdbS.jpeg_1200x1200.jpeg",
+            "https://s.alicdn.com/@sc04/kf/Se3ad4b31cdc0415ead302d82817f58034.jpeg_1200x1200.jpeg",
+            "https://s.alicdn.com/@sc04/kf/Se3ad4b31cdc0415ead302d82817f58034.jpeg_1200x1200.jpeg"
+          ],
+          "price": "6.50",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Normal, nature</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packaging</div><div class=\"right\"><span>Vacuum Pack, Box, Bag, Bulk, Family Pack, Gift Packing</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>UAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">Storage Type</div><div class=\"right\"><span>normal</span></div></div><div class=\"attribute-item\"><div class=\"left\">Specification</div><div class=\"right\"><span>high quality</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shelf Life</div><div class=\"right\"><span>365 days</span></div></div><div class=\"attribute-item\"><div class=\"left\">Manufacturer</div><div class=\"right\"><span>Al sultan sweets</span></div></div><div class=\"attribute-item\"><div class=\"left\">Ingredients</div><div class=\"right\"><span>Betifour</span></div></div><div class=\"attribute-item\"><div class=\"left\">Content</div><div class=\"right\"><span>00971552006631</span></div></div><div class=\"attribute-item\"><div class=\"left\">Address</div><div class=\"right\"><span>UAE Dubai</span></div></div><div class=\"attribute-item\"><div class=\"left\">Instruction for use</div><div class=\"right\"><span>non</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Al SULTAN INTERNATIONAL SWEETS</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>6297000999739</span></div></div><div class=\"attribute-item\"><div class=\"left\">Flavor</div><div class=\"right\"><span>NUT</span></div></div><div class=\"attribute-item\"><div class=\"left\">Weight (kg)</div><div class=\"right\"><span>0.600</span></div></div><div class=\"attribute-item\"><div class=\"left\">Decoration</div><div class=\"right\"><span>mixed</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shape</div><div class=\"right\"><span>BOX tin</span></div></div><div class=\"attribute-item\"><div class=\"left\">Healthy Snacks</div><div class=\"right\"><span>Weight Management</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand</div><div class=\"right\"><span>Al sultan</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword3</div><div class=\"right\"><span>sweets</span></div></div><div class=\"attribute-item\"><div class=\"left\">Ingredients</div><div class=\"right\"><span>Listed</span></div></div><div class=\"attribute-item\"><div class=\"left\">Main Ingredients</div><div class=\"right\"><span>pistachio $ cashew</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery Time</div><div class=\"right\"><span>10 dayes</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product</div><div class=\"right\"><span>baklawa</span></div></div><div class=\"attribute-item\"><div class=\"left\">Payment</div><div class=\"right\"><span>T/T</span></div></div><div class=\"attribute-item\"><div class=\"left\">Item</div><div class=\"right\"><span>Fresh Powder</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product Type</div><div class=\"right\"><span>sweets</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Factory Direct Sale Top Quality Machinery Engine Parts Oil Pump Yanm. 3D84-2 4D84",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Hd186de6e034d4dc18b6f18eb18fb7c4fr.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/H2c6fbd7cfd5e4498bf0f3fc6d6a47a3bh.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Hf6493522d7d645b3b337fa606f1b6fb3w.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Hb867d28b95ed41d1b0fda3e01e8505cbq.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Hb867d28b95ed41d1b0fda3e01e8505cbq.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Building Material Shops, Manufacturing Plant, Machinery Repair Shops, Construction works&nbsp;, Energy &amp; Mining</span></div></div><div class=\"attribute-item\"><div class=\"left\">Weight (KG)</div><div class=\"right\"><span>3</span></div></div><div class=\"attribute-item\"><div class=\"left\">Showroom Location</div><div class=\"right\"><span>None</span></div></div><div class=\"attribute-item\"><div class=\"left\">Video outgoing-inspection</div><div class=\"right\"><span>Provided</span></div></div><div class=\"attribute-item\"><div class=\"left\">Machinery Test Report</div><div class=\"right\"><span>Provided</span></div></div><div class=\"attribute-item\"><div class=\"left\">Marketing Type</div><div class=\"right\"><span>Ordinary Product</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>Guangdong, China</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Pump</span></div></div><div class=\"attribute-item\"><div class=\"left\">Engine Model</div><div class=\"right\"><span>Yanm. 3D84-2 4D84</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>New</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>6 Months</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>QSTP</span></div></div><div class=\"attribute-item\"><div class=\"left\">Engine Type</div><div class=\"right\"><span>Diesel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product Name</div><div class=\"right\"><span>Oil Pump Yanm. 3D84-2 4D84</span></div></div><div class=\"attribute-item\"><div class=\"left\">keywords</div><div class=\"right\"><span>pumps/ oil pump, excavator pump</span></div></div><div class=\"attribute-item\"><div class=\"left\">material</div><div class=\"right\"><span>Cast Iron</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product classification</div><div class=\"right\"><span>Heavy Machinery &amp; Vehicle Spare Parts</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>New</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand</div><div class=\"right\"><span>QSTP</span></div></div><div class=\"attribute-item\"><div class=\"left\">MOQ</div><div class=\"right\"><span>50pcs</span></div></div><div class=\"attribute-item\"><div class=\"left\">SHIPPING WAYS</div><div class=\"right\"><span>Air/Express/Sea</span></div></div><div class=\"attribute-item\"><div class=\"left\">Package</div><div class=\"right\"><span>oil pump carton</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery time</div><div class=\"right\"><span>1-5 working days</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "G.I Drumbs/ Bin Galvanized  Finish custom sizes Abbas Steel Made In UAE For Wholesale",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Hb4f8e586ebec49b393f48d408b7a0d5cS.png_720x720q50.png",
+          "images": [],
+          "price": "500.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>.</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Abbas Steel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>909</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shape</div><div class=\"right\"><span>.</span></div></div><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>metal</span></div></div><div class=\"attribute-item\"><div class=\"left\">Chemical Composition</div><div class=\"right\"><span>.</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Natural 100% pure  frankincense ,frankincense gum and luban frankincense Grade 1 resin incense burners backflow sticks",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/H94e27e703ab84da590bf9b86eaa67734a.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Uaccd316566604e18ab8da37548020627Q.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uf42ce14483c94262ace02f339a79a28cq.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Uf42ce14483c94262ace02f339a79a28cq.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>Sudan</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>RIKAZ</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>Grade 1</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Multifunction</span></div></div><div class=\"attribute-item\"><div class=\"left\">Quality</div><div class=\"right\"><span>high quality</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>organic product</span></div></div><div class=\"attribute-item\"><div class=\"left\">Minimum order</div><div class=\"right\"><span>6 tons.</span></div></div><div class=\"attribute-item\"><div class=\"left\">Origin</div><div class=\"right\"><span>sudan</span></div></div><div class=\"attribute-item\"><div class=\"left\">SHELF LIFE</div><div class=\"right\"><span>2 Years</span></div></div><div class=\"attribute-item\"><div class=\"left\">Sample:</div><div class=\"right\"><span>Free sample is available</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>olibanum</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword</div><div class=\"right\"><span>frankincense</span></div></div><div class=\"attribute-item\"><div class=\"left\">price</div><div class=\"right\"><span>4200-4400</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>Packing in plastic bags 22KG per bag or upon customer request.</span><p><img src=\"//s.alicdn.com/@sc01//kf/Hadc1689b6c9944aea986f0c13c7d5314d.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"><img src=\"//s.alicdn.com/@sc01//kf/H053e44291a7247a9bc14c9f3279c5d6cW.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>Sudan</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>5 Ton/Tons per   Week</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "2021 Fresh and Trendy Product Laundry Cloth Fabric Softener at Best Deal",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Uc026656b26e54e84b3cb3f116ebc6c19c.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U5b2d310f35974694b243d37db93faae4r.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/U5b2d310f35974694b243d37db93faae4r.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Active ingredient content</div><div class=\"right\"><span> 15%（Include）-30%</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>V2 Fabric Softener</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>HHP002</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Disposable, Sustainable, Stocked</span></div></div><div class=\"attribute-item\"><div class=\"left\">Detergent Use</div><div class=\"right\"><span>APPAREL</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Detergent</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shape</div><div class=\"right\"><span>Liquid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Fragrance</div><div class=\"right\"><span>Rose and Lavender</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certificate</div><div class=\"right\"><span>Dubai Municipality Approved</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>V2 Fabric Softener</span></div></div><div class=\"attribute-item\"><div class=\"left\">Applicable</div><div class=\"right\"><span>Automatic Machine Washing, Hand washing</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Gives a silky touch to your clothes with a fresh fragrance.</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>1000 Carton/Cartons per   Week</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Wholesale Good Quality Arabic Spherical Shape Electric Brass Air Shape Plug-In Electric Incense Burner Creative Crafts For Home",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Ab6eaa9eee73c46f5953c089882a946cai.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A131b37482df4427e9387b8e159aecbefI.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A41c8715130274faab75b05fe9c34b8e1f.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A33f13c611a2b412794729cded4de72ca2.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Aaed821e965ce4a868bd5e63fc8555b27f.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A0427101605b3495a98ea874d6fe23c65U.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A0427101605b3495a98ea874d6fe23c65U.jpg_1200x1200.jpg"
+          ],
+          "price": "11.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>China</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Incense Burner</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>FC Beauty</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>Z10227</span></div></div><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>Metal Incense Burner</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>AROMATIC</span></div></div><div class=\"attribute-item\"><div class=\"left\">Wood Type</div><div class=\"right\"><span>Agarwood</span></div></div><div class=\"attribute-item\"><div class=\"left\">Plug Type</div><div class=\"right\"><span>Electric plug-in</span></div></div><div class=\"attribute-item\"><div class=\"left\">Regional Feature</div><div class=\"right\"><span>other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Scent</div><div class=\"right\"><span>Incence burner</span></div></div><div class=\"attribute-item\"><div class=\"left\">Season</div><div class=\"right\"><span>All-Season</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Incense Burne</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Home+Hotel+Office+Bedroom+Restaurant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>gold</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keyword</div><div class=\"right\"><span>Insence Burner</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>100% Eco-friendly</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Home  Usage Incense Burner</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Safe International Standard Packing</span></div></div><div class=\"attribute-item\"><div class=\"left\">MOQ</div><div class=\"right\"><span>12pcs</span></div></div><div class=\"attribute-item\"><div class=\"left\">Metarial</div><div class=\"right\"><span>Metal</span></div></div><div class=\"attribute-item\"><div class=\"left\">Style</div><div class=\"right\"><span>Custom Designed</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>As per customer requirements</span><p><img src=\"//s.alicdn.com/@sc01//kf/U10090a56f5224099a810b093ee06c11dQ.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"><img src=\"//s.alicdn.com/@sc01//kf/H8e16990b30bb4162b7d9cc146f11a4029.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>Jebel Ali Port, Dubai, U.A.E</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>1000 Piece/Pieces per   Week</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Diesel Engine Oil Mineral SAE 50 CF/SF high performance Total protection Gulf product heavy duty diesel oil",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/U66fbe9c2d45c4d1c97d1e017b8319d07y.png_1200x1200.png",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Ua26e1ca1eff641be96d5785f4f06fd6eO.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/Uca54af489788431b88f6866d647426d37.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/U5cafd8d85ea9412ca6d1de8f1bf82d12z.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/U61ac5a615b6e44588bf500e45e7ed413o.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/U61ac5a615b6e44588bf500e45e7ed413o.png_1200x1200.png"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Automotive Lubricant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Diesel Engine Oil</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>AVANA WAGON</span></div></div><div class=\"attribute-item\"><div class=\"left\">Specification</div><div class=\"right\"><span>SAE</span></div></div><div class=\"attribute-item\"><div class=\"left\">General Composition</div><div class=\"right\"><span>BASE Oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>SAE 50 CF-SF</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Automotive Lubricants</span></div></div><div class=\"attribute-item\"><div class=\"left\">Keywords</div><div class=\"right\"><span>Motor Oil Lubricants-Diesel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Yellow</span></div></div><div class=\"attribute-item\"><div class=\"left\">Function</div><div class=\"right\"><span>Increasing Lubricity</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packing</div><div class=\"right\"><span>Cans</span></div></div><div class=\"attribute-item\"><div class=\"left\">Certificate</div><div class=\"right\"><span>ISO9001</span></div></div><div class=\"attribute-item\"><div class=\"left\">Appearance</div><div class=\"right\"><span>Oily Liquid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Quality</div><div class=\"right\"><span>Excellent</span></div></div><div class=\"attribute-item\"><div class=\"left\">Other name</div><div class=\"right\"><span>Diesel Engine oil</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>Heavy Machiney- diesel</span></div></div></div><h4>Packaging and delivery</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Packaging Details</div><div class=\"right\"><span>1L to 1000L packs as per our customers choice</span><p><img src=\"//s.alicdn.com/@sc01//kf/Ub4c7dd26da1940f78361bb3fa928b4b3F.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"><img src=\"//s.alicdn.com/@sc01//kf/Ue8f61d50a86c4452b462bcb052e47e5el.jpg_50x50xz.jpg\" aria-haspopup=\"true\" aria-expanded=\"false\"></p></div></div><div class=\"attribute-item\"><div class=\"left\">Port</div><div class=\"right\"><span>JABEL ALI</span><p></p></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>50000 Liter/Liters per   Day</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "LUBAN HP4128N High Quality Polypropylene Homopolymer Film Grade 25 KG Packaging PP Bags with High Flow Feature for Storage",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/U08e1141d695a43229dbd18ab111909a6Y.jpeg_1200x1200.jpeg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/U6599cf4af1ea4f4cb072cbac2365edebh.jpeg_1200x1200.jpeg",
+            "https://s.alicdn.com/@sc04/kf/U6599cf4af1ea4f4cb072cbac2365edebh.jpeg_1200x1200.jpeg"
+          ],
+          "price": "1,130.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>Saudia Arabia</span></div></div><div class=\"attribute-item\"><div class=\"left\">color</div><div class=\"right\"><span>white</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shape</div><div class=\"right\"><span>granules</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>optical grade, General grade</span></div></div><div class=\"attribute-item\"><div class=\"left\">Grade</div><div class=\"right\"><span>Film grade</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>High flow, High Gloss</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Lubban</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>HP4128N</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>PP Film Grade</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model</div><div class=\"right\"><span>HP4128N</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Natural</span></div></div><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>Virgin Polypropelene</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>100% Virgin Material</span></div></div><div class=\"attribute-item\"><div class=\"left\">Appearance</div><div class=\"right\"><span>Granule Pellets</span></div></div><div class=\"attribute-item\"><div class=\"left\">Item</div><div class=\"right\"><span>Polypropylene PP Resin</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shape</div><div class=\"right\"><span>Granuels</span></div></div><div class=\"attribute-item\"><div class=\"left\">Name</div><div class=\"right\"><span>HP4128N</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>General Plastics</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "2024 High Quality Lady Shaving Razor Disposable Sweden Stainless Steel Triple Blade Shaver Razor",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Hf2c3192cd5ee4950a958a067545b87164.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/H87a035998db846fd8ac4c4e9270dcc46A.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Haa661f766d9846bcaf7a4e0334cb9382b.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Hb1f66432cdd440f7a3ffa5aa012955f77.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Hf676c8279fb044cd8d7f04c07e35f9747.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Hf676c8279fb044cd8d7f04c07e35f9747.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [
+            "https://sc04.alicdn.com/kf/Had31dcaa0dda4f43ac3e17ee780fa6fcb.jpg_100x100.jpg"
+          ],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>uae dubai</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>Body</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>5905566100346</span></div></div><div class=\"attribute-item\"><div class=\"left\">Electric</div><div class=\"right\"><span>NO</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Triple Blade</span></div></div><div class=\"attribute-item\"><div class=\"left\">Gender</div><div class=\"right\"><span>Female</span></div></div><div class=\"attribute-item\"><div class=\"left\">Disposable</div><div class=\"right\"><span>Yes</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>Shaving Razor</span></div></div><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>HIPS+TPR+ ABS</span></div></div><div class=\"attribute-item\"><div class=\"left\">Size</div><div class=\"right\"><span>132.3mm*39.5mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Weight</div><div class=\"right\"><span>13.1g</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>50 Carton/Cartons per   Week</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Used good condition Rotary drilling rig SOILMEC SR80C for sale SR80 Soilmec second hand rig construction machine",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/H3c29b4101c2c46efafcad6a5a83752b2v.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Hef21fc8bb45e4022bb499822478fb3d0g.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Hd80f87a8b16747a0a400b51a1c4348c49.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Hd80f87a8b16747a0a400b51a1c4348c49.jpg_1200x1200.jpg"
+          ],
+          "price": "40,000.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Farms, Home Use, Retail, Construction works&nbsp;, Energy &amp; Mining</span></div></div><div class=\"attribute-item\"><div class=\"left\">Showroom Location</div><div class=\"right\"><span>None</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>shanghai</span></div></div><div class=\"attribute-item\"><div class=\"left\">Weight</div><div class=\"right\"><span>91000 KG</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>1 Year</span></div></div><div class=\"attribute-item\"><div class=\"left\">Marketing Type</div><div class=\"right\"><span>New Product 2023</span></div></div><div class=\"attribute-item\"><div class=\"left\">Machinery Test Report</div><div class=\"right\"><span>Provided</span></div></div><div class=\"attribute-item\"><div class=\"left\">Video outgoing-inspection</div><div class=\"right\"><span>Provided</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty of core components</div><div class=\"right\"><span>1 Year</span></div></div><div class=\"attribute-item\"><div class=\"left\">Core Components</div><div class=\"right\"><span>Motor, Pump, Engine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Key Selling Points</div><div class=\"right\"><span>Flexible Manufacturing</span></div></div><div class=\"attribute-item\"><div class=\"left\">Drilling Diameter</div><div class=\"right\"><span>300mm, 50mm, 75mm, 60mm, 100mm, 200mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Drilling Depth</div><div class=\"right\"><span>Max.100m</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>Used</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Rotary Drilling Rig</span></div></div><div class=\"attribute-item\"><div class=\"left\">Power Type</div><div class=\"right\"><span>Diesel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>Water Well</span></div></div><div class=\"attribute-item\"><div class=\"left\">Voltage</div><div class=\"right\"><span>diesel engine</span></div></div><div class=\"attribute-item\"><div class=\"left\">Dimension(L*W*H)</div><div class=\"right\"><span>5350*1850*2600mm</span></div></div><div class=\"attribute-item\"><div class=\"left\">Mobility</div><div class=\"right\"><span>yes</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "bitumen 60/70",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Sbfdec77f56434786b5cf13a8c4f43c6fh.png_1200x1200.png",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/S309d517d62b64cc2b1b6cec0bbe03038L.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/Sbc641c8547ea436bbbd71a8c10b7ba39W.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/S5d3540de697349b9bc3494274b126897Z.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/S1c88639d5d5a4126ba0143d567bc8989k.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/S604b6cbe0594487fab5767cb1f64b9b6X.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/S604b6cbe0594487fab5767cb1f64b9b6X.jpg_1200x1200.jpg"
+          ],
+          "price": "345.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>penetration bitumen</span></div></div><div class=\"attribute-item\"><div class=\"left\">Grade</div><div class=\"right\"><span>60/70</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Peak universal business</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>BT01</span></div></div><div class=\"attribute-item\"><div class=\"left\">Softening Point</div><div class=\"right\"><span>49-56</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "JP DRY Charged Battery - Made in Vietnam",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A16aaee36086b4f1cbfc7df7b771a5469W.jpg_720x720q50.jpg",
+          "images": [],
+          "price": "1.00",
+          "colors": [],
+          "sizes": [
+            "> 150AH"
+          ],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>Vietnam</span></div></div><div class=\"attribute-item\"><div class=\"left\">CC</div><div class=\"right\"><span>200</span></div></div><div class=\"attribute-item\"><div class=\"left\">Weight</div><div class=\"right\"><span>30</span></div></div><div class=\"attribute-item\"><div class=\"left\">Voltage</div><div class=\"right\"><span>12V</span></div></div><div class=\"attribute-item\"><div class=\"left\">Car Make</div><div class=\"right\"><span>All Cars</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>JP</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>N200</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>12 Months</span></div></div><div class=\"attribute-item\"><div class=\"left\">Packaging</div><div class=\"right\"><span>Carton Packing</span></div></div><div class=\"attribute-item\"><div class=\"left\">Battery type</div><div class=\"right\"><span>Dry Charged Car Battery</span></div></div><div class=\"attribute-item\"><div class=\"left\">PAYMENT</div><div class=\"right\"><span>T\\T</span></div></div><div class=\"attribute-item\"><div class=\"left\">MOQ</div><div class=\"right\"><span>One 20ft Container</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand</div><div class=\"right\"><span>JP</span></div></div><div class=\"attribute-item\"><div class=\"left\">Volt</div><div class=\"right\"><span>12V 200AH Car Battery</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shipment</div><div class=\"right\"><span>Sea</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty Time</div><div class=\"right\"><span>Warranty Discount is given</span></div></div><div class=\"attribute-item\"><div class=\"left\">Delivery time</div><div class=\"right\"><span>Production</span></div></div><div class=\"attribute-item\"><div class=\"left\">Product name</div><div class=\"right\"><span>202V Hybrid Car Battery</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Hard Capsule Printing Machine Model C",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A345cb4ea29b6464bbf22bd0b57f01b6dl.png_1200x1200.png",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A345cb4ea29b6464bbf22bd0b57f01b6dl.png_1200x1200.png"
+          ],
+          "price": "130,000.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Condition</div><div class=\"right\"><span>Used</span></div></div><div class=\"attribute-item\"><div class=\"left\">Weight (KG)</div><div class=\"right\"><span>945</span></div></div><div class=\"attribute-item\"><div class=\"left\">Video outgoing-inspection</div><div class=\"right\"><span>Not Available</span></div></div><div class=\"attribute-item\"><div class=\"left\">Machinery Test Report</div><div class=\"right\"><span>Not Available</span></div></div><div class=\"attribute-item\"><div class=\"left\">Marketing Type</div><div class=\"right\"><span>Ordinary Product</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty of core components</div><div class=\"right\"><span>Not Available</span></div></div><div class=\"attribute-item\"><div class=\"left\">Core Components</div><div class=\"right\"><span>Solid Aluminum frame assemble that are clear &amp; ano, Pneumatic Clutch for the feed assembly and main be, Two print units for two color printing, Elongated machine, Prints 10 rows simultaneoulsy, output of 320,000 per hour</span></div></div><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>Unavailable</span></div></div><div class=\"attribute-item\"><div class=\"left\">Applicable Industries</div><div class=\"right\"><span>Manufacturing Plant</span></div></div><div class=\"attribute-item\"><div class=\"left\">Showroom Location</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Hartnett</span></div></div><div class=\"attribute-item\"><div class=\"left\">Capsule Printing Machine</div><div class=\"right\"><span>Model C elongated</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>1 Set/Sets per   Day</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "EMICOOL SUPER LITE Highest LSG Ratio among EmiCool Products high quality Wholesale United Arab Emirates",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Af600326fe25546918e2064105591c107m.png_1200x1200.png",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A2e00d8df39a248d99d8fdc646827570br.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/A7a3b9e89cafd4e1598bb9e53af1547e00.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/A7a3b9e89cafd4e1598bb9e53af1547e00.png_1200x1200.png"
+          ],
+          "price": "65.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">CAS No.</div><div class=\"right\"><span>N/A</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Main Raw Material</div><div class=\"right\"><span>Acrylic</span></div></div><div class=\"attribute-item\"><div class=\"left\">Usage</div><div class=\"right\"><span>Building Coating</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application Method</div><div class=\"right\"><span>Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>EMICOOL SUPERLITE</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>glass coating - 34</span></div></div><div class=\"attribute-item\"><div class=\"left\">keyword</div><div class=\"right\"><span>glasses</span></div></div><div class=\"attribute-item\"><div class=\"left\">brand name</div><div class=\"right\"><span>Emirates Glass</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>1000 Square Meter/Square Meters per   Month</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "KANZA WHITENING BEAUTY CREAM WITH FREE SERUM & SOAP - 3 in 1 (TM 393381)",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/A709f494e61ba41e5a4378612f7c76a262.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/A29831f76fea44a85b8dd9a43176867dft.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A3638e0234e904d2ca4e4abbf83c9472f4.jpg_1200x1200.jpg",
+            "https://s.alicdn.com/@sc04/kf/A3638e0234e904d2ca4e4abbf83c9472f4.jpg_1200x1200.jpg"
+          ],
+          "price": "10.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Main Ingredient</div><div class=\"right\"><span>Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Ingredient</div><div class=\"right\"><span>Cruelty-Free, Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Anti-aging, Whitening, Skin Revitalizer, Anti-wrinkle, Dark Circles, Nourishing, Lightening</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Time Used</div><div class=\"right\"><span>Night</span></div></div><div class=\"attribute-item\"><div class=\"left\">Supply Type</div><div class=\"right\"><span>OBM (Original Brand Manufacturing)</span></div></div><div class=\"attribute-item\"><div class=\"left\">Gender</div><div class=\"right\"><span>Female</span></div></div><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>Pakistan</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>KANZA</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>KBCLFSS</span></div></div><div class=\"attribute-item\"><div class=\"left\">Available Quantity</div><div class=\"right\"><span>1000 CARTONS</span></div></div><div class=\"attribute-item\"><div class=\"left\">Age Group</div><div class=\"right\"><span>Adults</span></div></div><div class=\"attribute-item\"><div class=\"left\">Size Type</div><div class=\"right\"><span>regular size</span></div></div><div class=\"attribute-item\"><div class=\"left\">Skin Type</div><div class=\"right\"><span>All Skin Types</span></div></div><div class=\"attribute-item\"><div class=\"left\">Use</div><div class=\"right\"><span>Face</span></div></div><div class=\"attribute-item\"><div class=\"left\">Form</div><div class=\"right\"><span>Cream, Lotion</span></div></div><div class=\"attribute-item\"><div class=\"left\">Effect</div><div class=\"right\"><span>Moisturizing Hydrating Whitening</span></div></div><div class=\"attribute-item\"><div class=\"left\">Key words</div><div class=\"right\"><span>Moisturizing Repairing Whitening</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Wholesale Eflotizer Hand Sanitizer Gel 1Ltr Clean and Germ Free Hands with Effective Sanitization",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/H36fb191765364249bdefff231b558015Q.png_1200x1200.png",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Hcaefeab05c7f4044aef46db433610aeaW.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/H05f99be77a0c4203ad809db250da1215G.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/H3200bddb6a66409986a0632ac1fb10d1S.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/H4f751dcf6b754a3a97e62cc4efd8432d2.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/H4f751dcf6b754a3a97e62cc4efd8432d2.png_1200x1200.png"
+          ],
+          "price": "3.27",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Basic Cleaning</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Eflochem</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>Hand Sanitizer Gel 1Ltr</span></div></div><div class=\"attribute-item\"><div class=\"left\">Transparent</div><div class=\"right\"><span>Yes</span></div></div><div class=\"attribute-item\"><div class=\"left\">Wash Style</div><div class=\"right\"><span>Water Wash</span></div></div><div class=\"attribute-item\"><div class=\"left\">Form</div><div class=\"right\"><span>Liquid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Age Group</div><div class=\"right\"><span>Adults</span></div></div><div class=\"attribute-item\"><div class=\"left\">Custom Description</div><div class=\"right\"><span>Eflotizer Hand Sanitizer Gel 1Ltr</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>Basic Cleaning</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>100 Piece/Pieces per   Week</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Plasterboard Plaster Board Sale Gypsum Board 12.5mm Drywall Gypsum Ceiling Board",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Hbbba4a99b42542dcab293285d0517faax.jpg_1200x1200.jpg",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/Hbbba4a99b42542dcab293285d0517faax.jpg_1200x1200.jpg"
+          ],
+          "price": "1.50",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Industry-specific attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">After-sale Service</div><div class=\"right\"><span>Online technical support</span></div></div><div class=\"attribute-item\"><div class=\"left\">Project Solution Capability</div><div class=\"right\"><span>Others</span></div></div><div class=\"attribute-item\"><div class=\"left\">Application</div><div class=\"right\"><span>Hotel</span></div></div><div class=\"attribute-item\"><div class=\"left\">Feature</div><div class=\"right\"><span>COMMON</span></div></div></div><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Warranty</div><div class=\"right\"><span>More than 5 years</span></div></div><div class=\"attribute-item\"><div class=\"left\">Design Style</div><div class=\"right\"><span>Modern</span></div></div><div class=\"attribute-item\"><div class=\"left\">Size</div><div class=\"right\"><span>1200/1220X 1800/1830/2400/2440MM</span></div></div><div class=\"attribute-item\"><div class=\"left\">Material</div><div class=\"right\"><span>GYPSUM BOARD</span></div></div><div class=\"attribute-item\"><div class=\"left\">Color</div><div class=\"right\"><span>Pink</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "Lavender Hand Wash 5 Liter Liquid with added natural moisturizers cleanses while removing dirt and germs wholesale",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Ae348ad8ecdca4e148a108f77b2e5746cW.jpg_720x720q50.jpg",
+          "images": [],
+          "price": "11.00",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Epoch</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>ECTHW5L1</span></div></div><div class=\"attribute-item\"><div class=\"left\">Toilet Soap Type</div><div class=\"right\"><span>Hand soap</span></div></div><div class=\"attribute-item\"><div class=\"left\">Wash Style</div><div class=\"right\"><span>Water Wash</span></div></div><div class=\"attribute-item\"><div class=\"left\">Form</div><div class=\"right\"><span>Liquid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>Epoch</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>ECTHW5L1</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        },
+        {
+          "title": "TCL Wholesale Fabric Softener Luxurious Softness for Your Clothes in the UAE Laundry Products",
+          "feature_image": "https://s.alicdn.com/@sc04/kf/Hb527e2e96cf6488d999e7e7ae0df44f9s.png_1200x1200.png",
+          "images": [
+            "https://s.alicdn.com/@sc04/kf/H20c96a7a9053489cb017658ff99dcae4C.png_1200x1200.png",
+            "https://s.alicdn.com/@sc04/kf/H20c96a7a9053489cb017658ff99dcae4C.png_1200x1200.png"
+          ],
+          "price": "1.92",
+          "colors": [],
+          "sizes": [],
+          "description": "<div class=\"attribute-layout show-more\"><h3 class=\"att-title\" id=\"key-attributes\">Key attributes</h3><div class=\"attribute-info\"><h4>Other attributes</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Place of Origin</div><div class=\"right\"><span>United Arab Emirates</span></div></div><div class=\"attribute-item\"><div class=\"left\">Active ingredient content</div><div class=\"right\"><span>50%（Include）-80%</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>TCL Detergents LLC</span></div></div><div class=\"attribute-item\"><div class=\"left\">Model Number</div><div class=\"right\"><span>landry - 12</span></div></div><div class=\"attribute-item\"><div class=\"left\">Detergent Use</div><div class=\"right\"><span>Other</span></div></div><div class=\"attribute-item\"><div class=\"left\">Type</div><div class=\"right\"><span>Other Household Chemicals</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shape</div><div class=\"right\"><span>Liquid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Shape</div><div class=\"right\"><span>Liquid</span></div></div><div class=\"attribute-item\"><div class=\"left\">Brand Name</div><div class=\"right\"><span>TCL Detergents LLC</span></div></div></div><h4>Supply Ability</h4><div class=\"attribute-list\"><div class=\"attribute-item\"><div class=\"left\">Supply Ability</div><div class=\"right\"><span>20 Liter/Liters per   Week</span></div></div></div><div class=\"more-bg\"><a href=\"#\">Show more</a> <svg class=\"detail-symbol\"><use xlink:href=\"#icon-down\"></use></svg></div></div></div>"
+        }
       ]
     }
   ]

@@ -93,23 +93,23 @@ class AddProduct implements ShouldQueue
             }
         }
 
-        //colors
-        foreach ($this->product->colors as $color) {
-            ProductAttribute::create([
-                'attribute_id' => 11,
-                'product_id' => $created_product->id,
-                'value' => $color,
-            ]);
-        }
-
-        //sizes
-        foreach ($this->product->sizes as $size) {
-            ProductAttribute::create([
-                'attribute_id' => 12,
-                'product_id' => $created_product->id,
-                'value' => $size,
-            ]);
-        }
+//        //colors
+//        foreach ($this->product->colors as $color) {
+//            ProductAttribute::create([
+//                'attribute_id' => 11,
+//                'product_id' => $created_product->id,
+//                'value' => $color,
+//            ]);
+//        }
+//
+//        //sizes
+//        foreach ($this->product->sizes as $size) {
+//            ProductAttribute::create([
+//                'attribute_id' => 12,
+//                'product_id' => $created_product->id,
+//                'value' => $size,
+//            ]);
+//        }
 
         return true;
     }

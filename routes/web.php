@@ -218,6 +218,8 @@ Route::get('learn-to-play','HomeController@play')->name('play');
 Route::get('contact','HomeController@contact')->name('contact');
 Route::get('test','HomeController@test')->name('test');
 Route::get('seller-profile/{slug}','HomeController@seller_profile')->name('seller-profile');
+
+
 Route::get('/india','HomeController@india')->name('india');
 Route::get('/italy','HomeController@italy')->name('italy');
 Route::get('/malaysia','HomeController@malaysia')->name('malaysia');
@@ -228,6 +230,16 @@ Route::get('/brazil','HomeController@brazil')->name('brazil');
 Route::get('/canada','HomeController@canada')->name('canada');
 Route::get('/france','HomeController@france')->name('france');
 Route::get('/germany','HomeController@germany')->name('germany');
+Route::get('/dubai','HomeController@dubai')->name('dubai');
+Route::get('/denmark','HomeController@denmark')->name('denmark');
+Route::get('/egypt','HomeController@egypt')->name('egypt');
+Route::get('/ghana','HomeController@ghana')->name('ghana');
+Route::get('/kenya','HomeController@kenya')->name('kenya');
+Route::get('/nigeria','HomeController@nigeria')->name('nigeria');
+Route::get('/norway','HomeController@norway')->name('norway');
+Route::get('/senegal','HomeController@senegal')->name('senegal');
+Route::get('/south-africa','HomeController@southAfrica')->name('south-africa');
+Route::get('/sweden','HomeController@sweden')->name('sweden');
 
 
 
@@ -267,6 +279,12 @@ Route::get('/temp', function () {
 //    foreach ($data->categories as $category) {
 //        dispatch(new \App\Jobs\AddProduct2($category));
 //    }
+
+    $data = file_get_contents(asset('product_links2.json'));
+    $data = json_decode($data);
+    foreach ($data->categories as $category) {
+        dispatch(new \App\Jobs\AddProduct2($category));
+    }
 
     dd('enqueued!');
 //

@@ -13,7 +13,7 @@
                         <!-- ========================================== SECTION – HERO : END========================================= -->
                         <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
                             <div class="item"
-                                 style="background-image: url(https://wallpapershigh.com/wp-content/uploads/gym-treadmills-banner-1.webp);">
+                                 style="background-image: url(https://assets.teenvogue.com/photos/626ffe4f2ae344dcbcc3bc13/16:9/w_1200%2Cc_limit/sustainable%2520fashion.jpg);">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-5">
@@ -31,7 +31,7 @@
                                 </div><!-- /.container -->
                             </div><!-- /.item -->
                             <div class="item"
-                                 style="background-image: url(https://fhmindia.com/storage/2022/06/fitness-1.jpg);">
+                                 style="background-image: url(https://i.pinimg.com/originals/db/47/1c/db471cbb7ec32acad35ec543feaff6af.jpg);">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-5">
@@ -51,7 +51,7 @@
                                 </div><!-- /.container -->
                             </div><!-- /.item -->
                             <div class="item"
-                                 style="background-image: url(https://wallpapershigh.com/wp-content/uploads/bodybuilder-4k-1.webp);">
+                                 style="background-image: url(https://sun9-18.userapi.com/impg/mfKKSHjVrP4acvrKhY7vCSNzzqkGtCxxevypVQ/fo8rtiIqQBE.jpg?size=800x480&quality=96&sign=6f38d6b20e0385a27e0a7624f4f7653b&type=share);">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-5">
@@ -78,7 +78,7 @@
                             <div class="ad col-xs-12 col-sm-6">
                                 <div class="media">
                                     <div class="media-left media-middle"><img
-                                                src="https://ae04.alicdn.com/kf/S85b3d02e78d9406db26a03db729d7feag.jpg"
+                                                src="https://avatars.mds.yandex.net/i?id=56ba48688acb14bd625d262cc858a45ed831023c-9181286-images-thumbs&n=13"
                                                 alt=""/>
                                     </div>
                                     <div class="media-body media-middle">
@@ -94,7 +94,7 @@
                             <div class="ad col-xs-12 col-sm-6">
                                 <div class="media">
                                     <div class="media-left media-middle"><img
-                                                src="https://xn--3-8sbs0cyc.xn--p1ai/800/600/https/alfagym.ru/wp-content/uploads/4/0/c/40c639bcdd1f032a6bf94d672251802e.jpeg"
+                                                src="https://avatars.mds.yandex.net/i?id=78b0b998e55a3b190fba1ffb98e425d9-5436811-images-thumbs&n=13"
                                                 alt=""/>
                                     </div>
                                     <div class="media-body media-middle">
@@ -110,6 +110,7 @@
                             </div>
                         </div>
                     </div>
+
                     <section class="products-carousel-tabs animate-in-view fadeIn animated" data-animation="fadeIn">
                         <h2 class="sr-only">Product Carousel Tabs</h2>
                         <ul class="nav nav-inline">
@@ -125,9 +126,10 @@
                                     <div class="home-v2-owl-carousel-tabs">
                                         <div class="woocommerce columns-3">
                                             <div class="products owl-carousel home-v2-carousel-tabs products-carousel columns-3">
+
                                                 @php
                                                     $latest_products = \App\Product::whereHas('categorys', function ($q) {
-                                                        return $q->where('name', 'French products');
+                                                        return $q->where('name', 'Norwegian products');
                                                     })->orderBy('created_at', 'DESC')->take(12)->get();
                                                     $exclude_product_ids = [];
                                                 @endphp
@@ -171,9 +173,9 @@
                                                         </div><!-- /.product-outer -->
                                                     </div>
                                                 @endforeach
-                                            </div><!-- /.products -->
+
+                                            </div>
                                         </div>
-                                    </div>
                                 </section>
                             </div><!-- /.tab-pane -->
 
@@ -203,7 +205,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/4?name=slippers">
-                                            <img src="https://sportishka.com/uploads/posts/2023-03/thumbs/1678229590_sportishka-com-p-protein-dlya-sportsmenov-sport-instagram-50.jpg">
+                                            <img src="https://avatars.mds.yandex.net/i?id=8f25a637e1405655df1f56f5e2be96cad6a0a088-9716553-images-thumbs&n=13"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -219,7 +222,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/11?name=heeled-sandals">
-                                            <img src="https://www.ambal.ru/82692278932f.jpg">
+                                            <img src="https://avatars.mds.yandex.net/i?id=5bdf9b5c2de28a21e3fbc48cf9e71f45c951c668-4949878-images-thumbs&n=13"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -236,7 +240,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/8?name=womens-tote-bags">
-                                            <img src="https://avatars.mds.yandex.net/i?id=834d0aa75ff5bc7053ac3399f70ae59e-4323870-images-thumbs&n=13">
+                                            <img src="https://avatars.mds.yandex.net/i?id=b580b7fdf5a8967f547f9e41f050d7dba2d9bff5-7755581-images-thumbs&n=13"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -253,7 +258,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/123?name=dressshoesoxfords">
-                                            <img src="https://i.blogs.es/3ebee5/1366_2000---2022-09-15t162845.280/200_200.jpeg"
+                                            <img src="https://avatars.mds.yandex.net/i?id=120368ef64f5f41d5d3ce054b0eeaa599a77991d-10576312-images-thumbs&n=13"
                                                  class="img-fluid" alt="top1">
                                         </a>
                                     </div>
@@ -271,7 +276,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/17?name=sports-socks">
-                                            <img src="https://sportishka.com/uploads/posts/2023-03/thumbs/1678229653_sportishka-com-p-protein-dlya-sportsmenov-sport-instagram-28.jpg">
+                                            <img src="https://avatars.mds.yandex.net/i?id=a63900ba3c9e1b22bb9b25fe878e0cf2d121f1f4-10811985-images-thumbs&n=13"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -288,7 +294,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/112?name=fashion-jewelry-jewelry-sets">
-                                            <img src="https://cdn.shopify.com/s/files/1/0041/2162/4676/collections/images_1.jpg?v=1613414170">
+                                            <img src="https://avatars.mds.yandex.net/i?id=e306dd3ef1a0c032f793773fcbb09caa6b09f369-9666026-images-thumbs&n=13"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -306,7 +313,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/25?name=body-stocking">
-                                            <img src="https://avatars.mds.yandex.net/i?id=ac62b509d563c13e1106127143cd094b6889a812-10455853-images-thumbs&n=13">
+                                            <img src="https://avatars.mds.yandex.net/i?id=6ab19667727aebdd4d66af712e94a5f483c86ed3-8075965-images-thumbs&n=13"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -323,7 +331,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/133?name=bikinis--beachwear">
-                                            <img src="https://i.pinimg.com/originals/0e/c4/cf/0ec4cf1eda708a71e7a4b699641923c4.jpg">
+                                            <img src="https://avatars.mds.yandex.net/i?id=cfc8f4b6cea77b41d439cab60d7f3a7ff7dc8593-9847625-images-thumbs&n=13"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -363,7 +372,7 @@
 
                         @php
                             $products = \App\Product::whereHas('categorys', function ($q) {
-                                return $q->where('name', 'French products');
+                                return $q->where('name', 'Norwegian products');
                             })->whereNotIn('id', $exclude_product_ids)->orderBy('created_at', 'DESC')->take(12)->get();
                         @endphp
                         <ul class="products columns-3">
@@ -454,7 +463,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="kitchen-div"
-                         style="background-image: url(https://avatars.mds.yandex.net/i?id=12a3da46a2d46e97649650b4edda7ef022b38ca6-9211927-images-thumbs&n=13)">
+                         style="background-image: url(https://avatars.mds.yandex.net/i?id=ecc8190d7bd7ee1ee2736b5a9a6c2d6548aa29a6-9829431-images-thumbs&n=13)">
                         <div class="kitchen-content">
                             <h6>Sale Upto</h6>
 
@@ -470,7 +479,7 @@
 
                 <div class="col-lg-6">
                     <div class="motherboard-div"
-                         style="background-image: url(https://cdn.shopify.com/s/files/1/0062/3696/2929/products/athletic-man-doing-pushups-exercise-at-gym-royalty-free-image-982408932-1542407555_1200x1200.jpg?v=1556035060https://yandex.com/images/search?img_url=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D2646668928932815&iorient=square&isize=large&lr=10615&p=6&pos=17&rpt=simage&text=jym%20banner%20images)">
+                         style="background-image: url(https://avatars.mds.yandex.net/i?id=ecc6f0ede1c3cb8d290bfe7efad1b7d3e96d9289-7571629-images-thumbs&n=13)">
                         <div class="kitchen-content">
                             <h6>EXTRA 30% OFF</h6>
 
@@ -487,7 +496,6 @@
         </div>
     </section>
     @include('countries')
-
 
 @endsection
 @section('css')

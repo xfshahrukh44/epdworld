@@ -123,6 +123,46 @@ class HomeController extends Controller
         return view('germany');
     }
 
+    public function dubai(){
+        return view('dubai');
+    }
+
+    public function denmark(){
+        return view('denmark');
+    }
+
+    public function egypt(){
+        return view('egypt');
+    }
+
+    public function ghana(){
+        return view('ghana');
+    }
+
+    public function kenya(){
+        return view('kenya');
+    }
+
+    public function nigeria(){
+        return view('nigeria');
+    }
+
+    public function norway(){
+        return view('norway');
+    }
+
+    public function senegal(){
+        return view('senegal');
+    }
+
+    public function southAfrica(){
+        return view('south-africa');
+    }
+
+    public function sweden(){
+        return view('sweden');
+    }
+
 
 
 
