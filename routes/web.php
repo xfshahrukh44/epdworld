@@ -268,6 +268,7 @@ Route::get('/test', function() {
 /* Form Validation */
 
 Route::get('/temp', function () {
+    return view('blog_detail');
 //    dump(\App\Product::all()->count());
 //    $data = utf8_encode($data);
 //    $data = str_replace('&quot;', '"', $data);
@@ -280,13 +281,13 @@ Route::get('/temp', function () {
 //        dispatch(new \App\Jobs\AddProduct2($category));
 //    }
 
-    $data = file_get_contents(asset('product_links2.json'));
-    $data = json_decode($data);
-    foreach ($data->categories as $category) {
-        dispatch(new \App\Jobs\AddProduct2($category));
-    }
-
-    dd('enqueued!');
+//    $data = file_get_contents(asset('product_links2.json'));
+//    $data = json_decode($data);
+//    foreach ($data->categories as $category) {
+//        dispatch(new \App\Jobs\AddProduct2($category));
+//    }
+//
+//    dd('enqueued!');
 //
 //    $data = json_decode(file_get_contents('C:\Users\123\Desktop\alibaba\categories\boys.json'));
 //    foreach ($data->categories as $category) {
@@ -419,3 +420,5 @@ Route::resource('traning-videos', 'TraningVideosController');
 Route::resource('upcomingclasses', 'UpcomingclassesController');
 
 Route::resource('productreview/productreview', 'productreview\ProductreviewController');
+
+Route::get('blog/{slug}', [\App\Http\Controllers\HomeController::class, 'blog_detail'])->name('blog_detail');

@@ -49,7 +49,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
+                                        <th>Meta title</th>
+                                        <th>Focus keyword</th>
+                                        <th>Slug</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -57,7 +59,9 @@
                                     @foreach($blog as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->meta_title }}</td>
+                                        <td>{{ $item->focus_keyword }}</td>
+                                        <td>{{ $item->slug }}</td>
                                         <td>
 
                                             
@@ -87,7 +91,9 @@
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
+                                        <th>Meta title</th>
+                                        <th>Focus keyword</th>
+                                        <th>Slug</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tfoot>

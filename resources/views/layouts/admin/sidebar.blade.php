@@ -96,11 +96,11 @@
                     </li>
                 </ul>
             </li>
-            {{-- <li class="nav-item">
-                <a href="{{url('admin/blog')}}" target="_blank"><i class="la la-tags"></i>
+            <li class="nav-item">
+                <a href="{{url('admin/blog')}}"><i class="la la-tags"></i>
                     <span class="menu-title" data-i18n="eCommerce">Blog</span>
                 </a>
-            </li> --}}
+            </li>
             {{-- <li class="nav-item {{ (request()->is('admin/testimonial') || request()->is('admin/testimonial/*')) ? 'active' : '' }}">
                 <a href="{{url('admin/testimonial')}}"><i class="la la-quote-left"></i>
                     <span class="menu-title" data-i18n="eCommerce">Testimonials</span>

@@ -75,31 +75,37 @@ class BlogController extends Controller
         $model = str_slug('blog','-');
         if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
             $this->validate($request, [
-			'name' => 'required',
-			'short_detail' => 'required',
+//			'name' => 'required',
+//			'short_detail' => 'required',
 			'detail' => 'required',
-			'image' => 'required'
+//			'image' => 'required'
 		]);
 
-            if ($request->hasFile('image')) {
                 $blog = new blog;
 
-           
-                $blog->name = $request->input('name');   
-                $blog->short_detail = $request->input('short_detail');     
+
+//                $blog->name = $request->input('name');
+//                $blog->short_detail = $request->input('short_detail');
+                $blog->focus_keyword = $request->input('focus_keyword');
+                $blog->slug = $request->input('slug');
+                $blog->canonical_tag_href = $request->input('canonical_tag_href');
+                $blog->meta_title = $request->input('meta_title');
+                $blog->meta_descriptoion = $request->input('meta_descriptoion');
                 $blog->detail = $request->input('detail');
-                $file = $request->file('image');
-                
-                //make sure yo have image folder inside your public
-                $destination_path = 'uploads/blogs/';
-                $fileName = $file->getClientOriginalName();
-                $profileImage = date("Ymd").$fileName.".".$file->getClientOriginalExtension();
+                $blog->image = 'no-img';
+                if ($request->hasFile('image')) {
+                    $file = $request->file('image');
 
-                Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR. $profileImage);
+                    //make sure yo have image folder inside your public
+                    $destination_path = 'uploads/blogs/';
+                    $fileName = $file->getClientOriginalName();
+                    $profileImage = date("Ymd") . $fileName . "." . $file->getClientOriginalExtension();
 
-                $blog->image = $destination_path.$profileImage;
+                    Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR . $profileImage);
+
+                    $blog->image = $destination_path . $profileImage;
+                }
                 $blog->save();
-            }
 
             return redirect('admin/blog')->with('message', 'Blog added!');
         }

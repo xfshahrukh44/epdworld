@@ -20,6 +20,7 @@ use App\Page;
 use Image;
 use App\Product;
 use App\User;
+use App\Blog;
 
 class HomeController extends Controller
 {
@@ -374,6 +375,15 @@ class HomeController extends Controller
                 return response()->json(['message'=>'Error Occurred', 'status' => false]);
             }
         }
+    }
+
+    public function blog_detail (Request $request, $slug)
+    {
+        if (!$blog = Blog::where('slug', $slug)->first()) {
+            return redirect()->back();
+        }
+
+        return view('blog_detail', compact('blog'));
     }
 
 }
