@@ -38,12 +38,12 @@
             </div>
         </div>
 
-{{--        <div class="col-md-12">--}}
-{{--            <div class="form-group">--}}
-{{--                {!! Form::label('image', 'Image') !!}--}}
-{{--                <input class="form-control dropify" name="image" type="file" id="image" {{ ($blog->image != '') ? "data-default-file = /$blog->image" : ''}} {{ ($blog->image == '') ? "required" : ''}} value="{{$blog->image}}">--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('image', 'Image') !!}
+                <input class="form-control dropify" name="image" type="file" id="image" {{ ($blog->image != '') ? "data-default-file = " . asset($blog->image) : ''}} {{ ($blog->image == '') ? "required" : ''}} value="{{asset($blog->image)}}">
+            </div>
+        </div>
     </div>
 </div>
 

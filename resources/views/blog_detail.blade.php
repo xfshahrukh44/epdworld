@@ -4,6 +4,10 @@
 @section('meta_descriptoion', $blog->meta_descriptoion ?? '')
 @section('canonical_tag_href', $blog->canonical_tag_href ?? '')
 
+@section('css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+@endsection
+
 @section('content')
 
 <!-- ============================================================== -->
@@ -22,6 +26,11 @@
                     <div class="entry-content">
                         <div class="row about-features inner-top-md inner-bottom-sm">
                             <div class="col-md-12" style="text-align: left;">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <img src="{{asset($blog->image)}}" alt="" class="img-fluid">
+                                    </div>
+                                </div>
                                 {!! $blog->detail !!}
                             </div>
                         </div>

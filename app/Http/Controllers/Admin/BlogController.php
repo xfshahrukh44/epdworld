@@ -159,9 +159,10 @@ class BlogController extends Controller
         $model = str_slug('blog','-');
         if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
             $this->validate($request, [
-			'name' => 'required',
-			'short_detail' => 'required',
-			'detail' => 'required',
+//			'name' => 'required',
+//			'short_detail' => 'required',
+                'detail' => 'required',
+//			'image' => 'required'
 		]);
             $requestData = $request->all();
             
