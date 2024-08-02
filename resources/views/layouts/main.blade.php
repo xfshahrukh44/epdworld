@@ -10,6 +10,7 @@
         <link rel="canonical" href="@yield('canonical_tag_href')" />
         <meta name="author" content="Admin">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="google-site-verification" content="f9t6uOoo5Xkcul28cXfrCjZewfNhOifG4X6TFO6TeAo" />
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="{{asset(!empty($favicon->img_path)?$favicon->img_path:'')}}">
         <title>{{ config('app.name') }} | @yield('title')</title>
