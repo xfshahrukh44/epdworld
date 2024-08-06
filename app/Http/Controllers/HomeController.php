@@ -377,7 +377,7 @@ class HomeController extends Controller
         }
     }
 
-    public function blog_detail (Request $request, $slug)
+    public function blog_detail (Request $request, $slug = null)
     {
         if (!$slug) {
             $blog = null;
