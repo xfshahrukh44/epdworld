@@ -379,6 +379,11 @@ class HomeController extends Controller
 
     public function blog_detail (Request $request, $slug)
     {
+        if (!$slug) {
+            $blog = null;
+            return view('blog_detail', compact('blog'));
+        }
+
         if (!$blog = Blog::where('slug', $slug)->first()) {
             return redirect()->back();
         }

@@ -17,34 +17,36 @@
 
 
 
-<div id="content" class="site-content" tabindex="-1">
-    <div class="container">
-        <div id="primary" class="content-area">
-            <main id="main" class="site-main">
-                <article class="has-post-thumbnail hentry">
-                    <!-- .entry-header -->
-                    <div class="entry-content">
-                        <div class="row about-features inner-top-md inner-bottom-sm">
-                            <div class="col-md-12" style="text-align: left;">
-                                <div class="row">
-                                    <div class="col-md-8 offset-md-2">
-                                        <img src="{{asset($blog->image)}}" alt="" class="img-fluid">
+@if(!is_null($blog))
+    <div id="content" class="site-content" tabindex="-1">
+        <div class="container">
+            <div id="primary" class="content-area">
+                <main id="main" class="site-main">
+                    <article class="has-post-thumbnail hentry">
+                        <!-- .entry-header -->
+                        <div class="entry-content">
+                            <div class="row about-features inner-top-md inner-bottom-sm">
+                                <div class="col-md-12" style="text-align: left;">
+                                    <div class="row">
+                                        <div class="col-md-8 offset-md-2">
+                                            <img src="{{asset($blog->image)}}" alt="" class="img-fluid">
+                                        </div>
                                     </div>
+                                    {!! $blog->detail !!}
                                 </div>
-                                {!! $blog->detail !!}
                             </div>
                         </div>
-                    </div>
-                    <!-- .entry-content -->
-                </article>
-                <!-- #post-## -->
-            </main>
-            <!-- #main -->
+                        <!-- .entry-content -->
+                    </article>
+                    <!-- #post-## -->
+                </main>
+                <!-- #main -->
+            </div>
+            <!-- #primary -->
         </div>
-        <!-- #primary -->
+        <!-- .col-full -->
     </div>
-    <!-- .col-full -->
-</div>
+@endif
 <!-- #content -->
 
 <!--<section class="brands-carousel">-->
