@@ -421,4 +421,5 @@ Route::resource('upcomingclasses', 'UpcomingclassesController');
 
 Route::resource('productreview/productreview', 'productreview\ProductreviewController');
 
-Route::get('blog/{slug}', [\App\Http\Controllers\HomeController::class, 'blog_detail'])->name('blog_detail')->withoutMiddleware('auth');
+//Route::get('blog/{slug}', [\App\Http\Controllers\HomeController::class, 'blog_detail'])->name('blog_detail')->withoutMiddleware('auth');
+Route::get('blog/{slug}', [\App\Http\Controllers\HomeController::class, 'blog_detail'])->name('blog_detail');
