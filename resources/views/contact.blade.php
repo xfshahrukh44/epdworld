@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @section('content')
-
+@section('canonical_tag_href', 'https://epdworld.com/contact')
+@section('title', 'Contact Us')
+@section('meta_descriptoion', 'EPD World offers stylish product distribution services. Please get in touch with us with any questions, concerns, or suggestions for collaboration.')
 <!-- ============================================================== -->
 <!-- BODY START HERE -->
 <!-- ============================================================== -->

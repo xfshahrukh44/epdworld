@@ -27,7 +27,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('meta_descriptoion', 'Meta description') !!}
-                {!! Form::textarea('meta_descriptoion', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::textarea('meta_descriptoion', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => '', 'required' => 'required'] : ['class' => 'form-control']) !!}
             </div>
         </div>
 

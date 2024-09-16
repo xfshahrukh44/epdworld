@@ -435,8 +435,9 @@ section.ads {
 }
 
 .flag-image img {
-    height: 230px;
     object-fit: cover;
+    width: 100px;
+    height: 70px;
 }
 
 .flag-name p {
@@ -480,5 +481,34 @@ html {
     width: 100%;
 }
 
+.hero-2 {
+    font-size: 18px;
+}
 
+#owl-main .item {
+    height: 300px;
+}
+    #owl-main .item .caption {
+        padding-top: 50px;
+    }
+    
+    .home-v2-ads-block .ad .ad-text {
+    font-size: 16px;
+}
+
+.topProducts .owl-nav .owl-next i {
+    right: -10px;
+}
+
+.hero-2 strong {
+    font-size: 15px;
+}
+
+.flag-box {
+    flex-direction: row;
+}
+
+.flag-name {
+    width: 100%;
+}
 }

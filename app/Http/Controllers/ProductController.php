@@ -291,23 +291,48 @@ class ProductController extends Controller
 		return view('shop.shop', compact('shops', 'page', 'category', 'latest'));
 	}
 
-	public function shopDetail($id)
-	{
+	public function shopDetailSlug($slug)
+    {
+        $product = new Product;
+        $product_detail = $product->where('slug', $slug)->first();
+    
+        if (!$product_detail) {
+            abort(404, 'Product not found');
+        }
+    
+        $att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $product_detail->id)->get();
+        $att_id = DB::table('product_attributes')->where('product_id', $product_detail->id)->get();
+        $shops = DB::table('products')
+            ->join('categories', 'products.category', '=', 'categories.id')
+            ->select('products.*', 'categories.name as category_title')->take(3)->get();
+        $vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
+        $exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
+        $reviews = Productreview::where('product_id', $product_detail->id)->get();
+    
+        return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
+    }
+    
+    public function shopDetail($id)
+    {
+        $product = new Product;
+        $product_detail = $product->where('id', $id)->first();
+    
+        if (!$product_detail) {
+            abort(404, 'Product not found');
+        }
+    
+        $att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $product_detail->id)->get();
+        $att_id = DB::table('product_attributes')->where('product_id', $product_detail->id)->get();
+        $shops = DB::table('products')
+            ->join('categories', 'products.category', '=', 'categories.id')
+            ->select('products.*', 'categories.name as category_title')->take(3)->get();
+        $vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
+        $exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
+        $reviews = Productreview::where('product_id', $product_detail->id)->get();
+    
+        return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
+    }
 
-		$product = new Product;
-		$product_detail = $product->where('id', $id)->first();
-		$att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $id)->get();
-		$att_id = DB::table('product_attributes')->where('product_id', $id)->get();
-		$shops = DB::table('products')
-			->join('categories', 'products.category', '=', 'categories.id')
-			->select('products.*', 'categories.name as category_title')->take(3)->get();
-		$vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
-		$exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
-		$reviews = Productreview::where('product_id', $product_detail->id)->get();
-        //  dd($reviews);
-
-		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
-	}
 
 	public function reviewFormSubmit(Request $request){
 	   // dd($request->all());

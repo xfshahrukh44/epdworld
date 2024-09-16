@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-
+@section('title', $product_detail->product_title)
 <!-- ============================================================== -->
 <!-- BODY START HERE -->
 <!-- ============================================================== -->

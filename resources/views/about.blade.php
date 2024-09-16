@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @section('content')
-
+@section('canonical_tag_href', 'https://epdworld.com/about-us')
+@section('title', 'About Us')
+@section('meta_descriptoion', 'Our collection of stylish shoes, bags, and jewelry is carefully chosen to reflect our passion for quality and fashion.')
 <!-- ============================================================== -->
 <!-- BODY START HERE -->
 <!-- ============================================================== -->

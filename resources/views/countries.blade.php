@@ -16,54 +16,51 @@
                     <a href="{{ route('australia') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/australia.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/australia.png') }}" alt="Australia"/>
                             </div>
                             <div class="flag-name">
                                 <p>Australia</p>
                             </div>
                         </div>
                     </a>
-
+            
                     <a href="{{ route('brazil') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/brazil.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/brazil.png') }}" alt="Brazil"/>
                             </div>
                             <div class="flag-name">
                                 <p>Brazil</p>
                             </div>
                         </div>
                     </a>
-
-
+            
                     <a href="{{ route('canada') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/canada.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/canada.png') }}" alt="Canada"/>
                             </div>
                             <div class="flag-name">
                                 <p>Canada</p>
                             </div>
                         </div>
                     </a>
-
-
+            
                     <a href="{{ route('france') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/france.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/france.png') }}" alt="France"/>
                             </div>
                             <div class="flag-name">
                                 <p>France</p>
                             </div>
                         </div>
                     </a>
-
-
+            
                     <a href="{{ route('germany') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/germany.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/germany.png') }}" alt="Germany"/>
                             </div>
                             <div class="flag-name">
                                 <p>Germany</p>
@@ -71,59 +68,56 @@
                         </div>
                     </a>
                 </div>
-
+            
                 <div class="flag-row">
                     <a href="{{ route('india') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/india.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/india.png') }}" alt="India"/>
                             </div>
                             <div class="flag-name">
                                 <p>India</p>
                             </div>
                         </div>
                     </a>
-
+            
                     <a href="{{ route('italy') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/italy.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/italy.png') }}" alt="Italy"/>
                             </div>
                             <div class="flag-name">
                                 <p>Italy</p>
                             </div>
                         </div>
                     </a>
-
-
+            
                     <a href="{{ route('malaysia') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/malaysia.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/malaysia.png') }}" alt="Malaysia"/>
                             </div>
                             <div class="flag-name">
                                 <p>Malaysia</p>
                             </div>
                         </div>
                     </a>
-
-
+            
                     <a href="{{ route('mexico') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/mexico.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/mexico.png') }}" alt="Mexico"/>
                             </div>
                             <div class="flag-name">
                                 <p>Mexico</p>
                             </div>
                         </div>
                     </a>
-
-
+            
                     <a href="{{ route('spain') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img src="{{ asset('images/spain.png') }}"/>
+                                <img class="lazy" data-src="{{ asset('images/spain.png') }}" alt="Spain"/>
                             </div>
                             <div class="flag-name">
                                 <p>Spain</p>
@@ -131,56 +125,56 @@
                         </div>
                     </a>
                 </div>
-
+            
                 <div class="flag-row">
-                    <a href="{{route('dubai')}}">
+                    <a href="{{ route('dubai') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 100px; height: 70px;" src="{{ asset('images/dubai.jpg') }}"/>
+                                <img style="width: 100px; height: 70px;" class="lazy" data-src="{{ asset('images/dubai.jpg') }}" alt="Dubai"/>
                             </div>
                             <div class="flag-name">
                                 <p>Dubai</p>
                             </div>
                         </div>
                     </a>
-
-                    <a href="{{route('denmark')}}">
+            
+                    <a href="{{ route('denmark') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 100px; height: 70px;" src="{{ asset('images/denmark.jpg') }}"/>
+                                <img style="width: 100px; height: 70px;" class="lazy" data-src="{{ asset('images/denmark.jpg') }}" alt="Denmark"/>
                             </div>
                             <div class="flag-name">
                                 <p>Denmark</p>
                             </div>
                         </div>
                     </a>
-
-                    <a href="{{route('egypt')}}">
+            
+                    <a href="{{ route('egypt') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 110px; height: 70px;" src="{{ asset('images/egypt.jpg') }}"/>
+                                <img style="width: 110px; height: 70px;" class="lazy" data-src="{{ asset('images/egypt.jpg') }}" alt="Egypt"/>
                             </div>
                             <div class="flag-name">
                                 <p>Egypt</p>
                             </div>
                         </div>
                     </a>
-
-                    <a href="{{route('ghana')}}">
+            
+                    <a href="{{ route('ghana') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 100px; height: 70px;" src="{{ asset('images/ghana.jpg') }}"/>
+                                <img style="width: 100px; height: 70px;" class="lazy" data-src="{{ asset('images/ghana.jpg') }}" alt="Ghana"/>
                             </div>
                             <div class="flag-name">
                                 <p>Ghana</p>
                             </div>
                         </div>
                     </a>
-
-                    <a href="{{route('kenya')}}">
+            
+                    <a href="{{ route('kenya') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 100px; height: 70px;" src="{{ asset('images/kenya.jpg') }}"/>
+                                <img style="width: 100px; height: 70px;" class="lazy" data-src="{{ asset('images/kenya.jpg') }}" alt="Kenya"/>
                             </div>
                             <div class="flag-name">
                                 <p>Kenya</p>
@@ -188,56 +182,56 @@
                         </div>
                     </a>
                 </div>
-
+            
                 <div class="flag-row">
-                    <a href="{{route('nigeria')}}">
+                    <a href="{{ route('nigeria') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 100px; height: 70px;" src="{{ asset('images/nigeria.jpg') }}"/>
+                                <img style="width: 100px; height: 70px;" class="lazy" data-src="{{ asset('images/nigeria.jpg') }}" alt="Nigeria"/>
                             </div>
                             <div class="flag-name">
                                 <p>Nigeria</p>
                             </div>
                         </div>
                     </a>
-
-                    <a href="{{route('norway')}}">
+            
+                    <a href="{{ route('norway') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 100px; height: 70px;" src="{{ asset('images/norway.webp') }}"/>
+                                <img style="width: 100px; height: 70px;" class="lazy" data-src="{{ asset('images/norway.webp') }}" alt="Norway"/>
                             </div>
                             <div class="flag-name">
                                 <p>Norway</p>
                             </div>
                         </div>
                     </a>
-
-                    <a href="{{route('senegal')}}">
+            
+                    <a href="{{ route('senegal') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 100px; height: 70px;" src="{{ asset('images/senegal.jpg') }}"/>
+                                <img style="width: 100px; height: 70px;" class="lazy" data-src="{{ asset('images/senegal.jpg') }}" alt="Senegal"/>
                             </div>
                             <div class="flag-name">
                                 <p>Senegal</p>
                             </div>
                         </div>
                     </a>
-
-                    <a href="{{route('south-africa')}}">
+            
+                    <a href="{{ route('south-africa') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 100px; height: 70px;" src="{{ asset('images/south-africa.jpg') }}"/>
+                                <img style="width: 100px; height: 70px;" class="lazy" data-src="{{ asset('images/south-africa.jpg') }}" alt="South Africa"/>
                             </div>
                             <div class="flag-name">
                                 <p>South Africa</p>
                             </div>
                         </div>
                     </a>
-
-                    <a href="{{route('sweden')}}">
+            
+                    <a href="{{ route('sweden') }}">
                         <div class="flag-box">
                             <div class="flag-image">
-                                <img style="width: 100px; height: 70px;" src="{{ asset('images/sweden.webp') }}"/>
+                                <img style="width: 100px; height: 70px;" class="lazy" data-src="{{ asset('images/sweden.webp') }}" alt="Sweden"/>
                             </div>
                             <div class="flag-name">
                                 <p>Sweden</p>
@@ -245,8 +239,8 @@
                         </div>
                     </a>
                 </div>
-
             </div>
+
         </div>
     </div>
 </section>

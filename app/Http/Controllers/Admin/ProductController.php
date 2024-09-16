@@ -19,7 +19,7 @@ use DB;
 use Session;
 use Shuchkin\SimpleXLSX;
 use Storage;
-
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -125,6 +125,7 @@ class ProductController extends Controller
 			$product = new product;
 
             $product->product_title = $request->input('product_title');
+            $product->slug = $request->input('slug');
 			$product->price = $request->input('price');
             $product->description = $request->input('description');
 			$product->category = $request->input('item_id');
@@ -253,6 +254,7 @@ class ProductController extends Controller
 		]);
 
         $requestData['product_title'] = $request->input('product_title');
+        $requestData['slug'] = $request->input('slug');
         $requestData['description'] = $request->input('description');
 		$requestData['sku'] = $request->input('sku');
 		$requestData['price'] = $request->input('price');

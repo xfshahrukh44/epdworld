@@ -14,6 +14,12 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
+                {!! Form::label('slug', 'Product Slug') !!}
+                {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
                 {!! Form::label('price', 'Price') !!}
                 {!! Form::text('price', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
             </div>

@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @section('content')
-
+@section('canonical_tag_href', 'https://epdworld.com/')
+@section('title', 'Top Product Distribution Solutions')
+@section('meta_descriptoion', 'Explore EPD World For enhance your business with exclusive deals and quality offerings. So, don’t miss the chance.')
 <!-- ============================================================== -->
 <!-- BODY START HERE -->
 <!-- ============================================================== -->
@@ -31,7 +33,7 @@
                         <div class="ads-block row">
                             <div class="ad col-xs-12 col-sm-6">
                                 <div class="media">
-                                    <div class="media-left media-middle"><img class="" width="100%" height="100%" src="images/ads-block/1.webp" alt="" />
+                                    <div class="media-left media-middle"><img class="lazy" width="100%" height="100%" data-src="images/ads-block/1.webp" alt="" />
                                     </div>
                                     <div class="media-body media-middle">
                                         <div class="ad-text">
@@ -45,7 +47,7 @@
                             </div>
                             <div class="ad col-xs-12 col-sm-6">
                                 <div class="media">
-                                    <div class="media-left media-middle"><img class="" width="100%" height="100%" src="images/ads-block/2.webp" alt="" />
+                                    <div class="media-left media-middle"><img class="lazy" width="100%" height="100%" data-src="images/ads-block/2.webp" alt="" />
                                     </div>
                                     <div class="media-body media-middle">
                                         <div class="ad-text">
@@ -84,14 +86,25 @@
                                             <div class="product-inner">
                                                 <span class="loop-product-categories"><a
                                                         href="" rel="tag">{!! $pro->categorys->name !!}</a></span>
-                                                <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
-                                                    <h3>{!! $pro->product_title !!}</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img data-src="images/blank.gif"
-                                                            data-echo="{!! asset($pro->image) !!}"
-                                                            class="lazy img-responsive" alt="">
-                                                    </div>
-                                                </a>
+                                                @if(empty($pro->slug))
+                                                    <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
+                                                        <h3>{!! $pro->product_title !!}</h3>
+                                                        <div class="product-thumbnail">
+                                                            <img data-src="images/blank.gif"
+                                                                data-echo="{!! asset($pro->image) !!}"
+                                                                class="lazy img-responsive" alt="">
+                                                        </div>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}">
+                                                        <h3>{!! $pro->product_title !!}</h3>
+                                                        <div class="product-thumbnail">
+                                                            <img data-src="images/blank.gif"
+                                                                data-echo="{!! asset($pro->image) !!}"
+                                                                class="lazy img-responsive" alt="">
+                                                        </div>
+                                                    </a>
+                                                @endif
 
                                                 <div class="price-add-to-cart">
                                                     <span class="price">
@@ -106,8 +119,13 @@
                                                             </div>
                                                         </span>
                                                     </span>
-                                                    <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
-                                                        class="button add_to_cart_button">Add to cart</a>
+                                                    @if(empty($pro->slug))
+                                                        <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
+                                                            class="button add_to_cart_button">Add to cart</a>
+                                                    @else
+                                                        <a rel="nofollow" href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}"
+                                                            class="button add_to_cart_button">Add to cart</a>
+                                                    @endif
                                                 </div><!-- /.price-add-to-cart -->
 
                                                 {{-- <div class="hover-area">
@@ -186,9 +204,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Tablet Thin EliteBook Revolve 810 G6</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/products/1.jpg"
+                                                                    <img data-src="images/products/1.jpg"
                                                                         data-echo="images/products/1.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="img-responsive lazy" alt="">
                                                                 </div>
                                                             </a>
 
@@ -270,9 +288,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Tablet Red EliteBook Revolve 810 G2</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/products/2.jpg"
+                                                                    <img data-src="images/products/2.jpg"
                                                                         data-echo="images/products/2.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="img-responsive lazy" alt="">
                                                                 </div>
                                                             </a>
 
@@ -354,9 +372,9 @@
                                                             <a href="single-product.php">
                                                                 <h3>Smartphone 6S 32GB LTE</h3>
                                                                 <div class="product-thumbnail">
-                                                                    <img src="images/newProducts/4.jpg"
+                                                                    <img data-src="images/newProducts/4.jpg"
                                                                         data-echo="images/newProducts/4.jpg"
-                                                                        class="img-responsive" alt="">
+                                                                        class="img-responsive lazy" alt="">
                                                                 </div>
                                                             </a>
 
@@ -814,7 +832,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="#">
-                                            <img src="images/top1.png" class="img-fluid" alt="top1">
+                                            <img data-src="images/top1.png" class="img-fluid lazy" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -831,7 +849,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="#">
-                                            <img src="images/top1.png" class="img-fluid" alt="top1">
+                                            <img data-src="images/top1.png" class="img-fluid lazy" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -848,7 +866,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="#">
-                                            <img src="images/top1.png" class="img-fluid" alt="top1">
+                                            <img data-src="images/top1.png" class="img-fluid lazy" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -865,7 +883,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="#">
-                                            <img src="images/top1.png" class="img-fluid" alt="top1">
+                                            <img data-src="images/top1.png" class="img-fluid lazy" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -882,7 +900,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="#">
-                                            <img src="images/top1.png" class="img-fluid" alt="top1">
+                                            <img data-src="images/top1.png" class="img-fluid lazy" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -925,11 +943,20 @@
                                 <div class="product-outer">
                                     <div class="product-inner"> <span class="loop-product-categories"><a href="#"
                                                 rel="tag">{!! $pro->categorys->name !!}</a></span>
-                                        <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
-                                            <h3>{!! $pro->product_title !!}</h3>
-                                            <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
-                                                    data-src="images/blank.gif" alt="" class="lazy"> </div>
-                                        </a>
+                                        @if(empty($pro->slug))
+                                            <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
+                                                <h3>{!! $pro->product_title !!}</h3>
+                                                <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
+                                                        data-src="images/blank.gif" alt="" class="lazy"> </div>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}">
+                                                <h3>{!! $pro->product_title !!}</h3>
+                                                <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
+                                                        data-src="images/blank.gif" alt="" class="lazy"> </div>
+                                            </a>
+                                        @endif
+                                        
                                         <div class="price-add-to-cart"> <span class="price">
                                                 <span class="electro-price">
                                                     <ins><span class="amount">&#036;{!! $pro->price !!}</span></ins>
@@ -940,8 +967,15 @@
                                                     </div>
                                                     {{-- <del><span class="amount">&#036;2,299.00</span></del> --}}
                                                 </span>
-                                            </span> <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
-                                                class="button add_to_cart_button">Add to cart</a> </div>
+                                            </span> 
+                                                @if(empty($pro->slug))
+                                                    <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
+                                                        class="button add_to_cart_button">Add to cart</a>
+                                                @else
+                                                    <a rel="nofollow" href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}"
+                                                        class="button add_to_cart_button">Add to cart</a>
+                                                @endif 
+                                                </div>
 
 
                                         <!-- /.price-add-to-cart -->

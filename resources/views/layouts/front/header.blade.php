@@ -54,7 +54,7 @@
                 <div class="header-logo">
                     <a href="{{ route('home') }}" aria-label="logo" class="header-logo-link">
 
-                        <img src="{{ asset($logo->img_path) }}" width="100%" height="100%" alt="">
+                        <img src="{{ asset($logo->img_path) }}" width="100%" height="100%" alt="Elite Product Limited">
                     </a>
                 </div>
                 <!-- ============================================================= Header Logo : End============================================================= -->

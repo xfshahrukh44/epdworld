@@ -116,7 +116,7 @@
 
             <div class="footer-contact col-xs-12 col-sm-12 col-md-4 col-md-pull-8">
                 <div class="footer-logo">
-                    <img data-src="{!! asset($logo->img_path) !!}" class="lazy" alt="logo epdworld.com">
+                    <img data-src="{!! asset($logo->img_path) !!}" class="lazy" alt="Elite Product Limited">
                 </div><!-- /.footer-contact -->
 
                 <div class="footer-call-us">

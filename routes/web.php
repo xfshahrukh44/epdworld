@@ -211,7 +211,7 @@ Route::post('update/uploadPicture','LoggedInController@uploadPicture')->name('up
 //===================== Front Routes =====================//
 
 Route::get('/','HomeController@index')->name('home');
-Route::get('about','HomeController@about')->name('about');
+Route::get('about-us','HomeController@about')->name('about');
 Route::get('features','HomeController@features')->name('features');
 Route::get('learn-to-play','HomeController@play')->name('play');
 // Route::get('store','HomeController@store')->name('store');
@@ -369,7 +369,8 @@ Route::get('/temp', function () {
 //===================== Shop Routes Below ========================//
 
 Route::get('store/{orderBy?}','ProductController@shop')->name('shop');
-Route::get('store-detail/{id}','ProductController@shopDetail')->name('shopDetail');
+Route::get('store-detail/{id?}','ProductController@shopDetail')->name('shopDetail');
+Route::get('shop/{slug?}','ProductController@shopDetailSlug')->name('shopDetailSlug');
 Route::get('category-detail/{id}','ProductController@categoryDetail')->name('categoryDetail');
 
 Route::post('/cartAdd', 'ProductController@saveCart')->name('save_cart');

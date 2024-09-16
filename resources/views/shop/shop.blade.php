@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+@section('title', 'Products')
     <!-- ============================================================== -->
     <!-- BODY START HERE -->
     <!-- ============================================================== -->
@@ -79,10 +80,14 @@
                                 <div class="product-outer">
                                     <div class="product-inner"> <span class="loop-product-categories"><a href="#"
                                                 rel="tag">{!! $pro->categorys->name !!}</a></span>
-                                        <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
+                                        @if(empty($pro->slug))
+                                            <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
+                                        @else
+                                            <a href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}">
+                                        @endif
                                             <h3>{!! $pro->product_title !!}</h3>
                                             <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
-                                                    src="images/blank.gif" alt=""> </div>
+                                                    data-src="images/blank.gif" class="lazy" alt=""> </div>
                                         </a>
                                         <div class="price-add-to-cart"> <span class="price">
                                                 <span class="electro-price">
@@ -100,8 +105,15 @@
 
                                                     {{-- <del><span class="amount">&#036;2,299.00</span></del> --}}
                                                 </span>
-                                            </span> <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
-                                                class="button add_to_cart_button">Add to cart</a> </div>
+                                            </span>
+                                                @if(empty($pro->slug))
+                                                    <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
+                                                        class="button add_to_cart_button">Add to cart</a>
+                                                @else
+                                                    <a rel="nofollow" href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}"
+                                                        class="button add_to_cart_button">Add to cart</a>
+                                                @endif
+                                                </div>
 
 
                                         <!-- /.price-add-to-cart -->
@@ -133,8 +145,8 @@
                             @foreach ($shops as $pro)
                             <li class="product-list">
                                 <div class="product-outer">
-                                    <div class="product-thumbnail-list"> <img class="wp-post-image"
-                                            data-echo="{!! asset($pro->image) !!}" src="{!! asset($pro->image) !!}" alt="">
+                                    <div class="product-thumbnail-list"> <img class="wp-post-image lazy"
+                                            data-echo="{!! asset($pro->image) !!}" data-src="{!! asset($pro->image) !!}" alt="">
                                     </div>
                                     <div class="product-inner product-inner-list"> <span class="loop-product-categories"><a href="#"
                                                 rel="tag">{!! $pro->categorys->name !!}</a></span>
@@ -150,8 +162,16 @@
 
                                             </span></div>
 
-                                        <div class="price-add-to-cart"> <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
-                                                class="button add_to_cart_button">Add to cart</a> </div>
+                                        <div class="price-add-to-cart"> 
+                                        @if(empty($pro->slug))
+                                            <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
+                                                class="button add_to_cart_button">Add to cart</a>
+                                        @else
+                                            <a rel="nofollow" href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}"
+                                                class="button add_to_cart_button">Add to cart</a>
+                                        @endif
+                                                
+                                                </div>
                                         <!-- /.price-add-to-cart -->
 
                                     </div>
@@ -232,9 +252,17 @@
                 <ul class="product_list_widget">
                     @foreach($latest as $item)
                     <li>
-                        <a href="{{ route('shopDetail', ['id' => $item->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $item->product_title)))]) }}" title="Notebook Black Spire V Nitro  VN7-591G"> <img
-                                width="180" height="180" src="{!! asset($item->image) !!}" class="wp-post-image"
-                                alt="" /><span class="product-title">{!! $item->product_title !!}</span> </a> <span class="electro-price"><ins><span
+                        @if(empty($item->slug))
+                            <a href="{{ route('shopDetail', ['id' => $item->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $item->product_title)))]) }}" title="Notebook Black Spire V Nitro  VN7-591G"> <img
+                                width="180" height="180" data-src="{!! asset($item->image) !!}" class="wp-post-image lazy"
+                                alt="" /><span class="product-title">{!! $item->product_title !!}</span> </a> 
+                        @else
+                            <a href="{{ route('shopDetailSlug', ['slug' => $item->slug]) }}" title="Notebook Black Spire V Nitro  VN7-591G"> <img
+                                width="180" height="180" data-src="{!! asset($item->image) !!}" class="wp-post-image lazy"
+                                alt="" /><span class="product-title">{!! $item->product_title !!}</span> </a> 
+                        @endif
+                                
+                                <span class="electro-price"><ins><span
                                     class="amount">&#36;{!! $item->price !!}</span></ins> </span>
                     </li>
                     @endforeach
