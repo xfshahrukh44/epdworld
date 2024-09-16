@@ -340,9 +340,16 @@
                         @endforeach
                         <div class="amount-wrapper">
                             <h2>Item Subtotal <span>${{ $subtotal }}</span></h2>
-                            <h2> Variation <span>{{ $variation }}</span></h2>
-                            <h2> Coupon Discount <span class="span_coupon_discount">0.00</span></h2>
-                            <h3> Total Price <span class="span_total">${{ $subtotal +  $variation }}</span></h3>
+                            <h2>Shipping & Handling <span>Free</span></h2>
+{{--                            <h2> Variation <span>{{ $variation }}</span></h2>--}}
+{{--                            <h2> Coupon Discount <span class="span_coupon_discount">0.00</span></h2>--}}
+{{--                            <h3> Total Price <span class="span_total">${{ $subtotal +  $variation }}</span></h3>--}}
+                            <h2> Total Before Sales Tax <span>${{ $subtotal }}</span></h2>
+                            @php
+                                $tax = ($subtotal * 0.05) + 12.78;
+                            @endphp
+                            <h2> Estimated Sales Tax <span>${{ $tax }}</span></h2>
+                            <h3> Order Total Amount <span class="span_total">${{ $subtotal + $tax }}</span></h3>
                         </div>
 {{--                        <div class="amount-wrapper">--}}
 {{--                            <input type="text" class="text_coupon" style="background: white;" placeholder="Enter coupon code">--}}
@@ -363,7 +370,8 @@
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                  data-parent="#accordion">
                                 <div class="card-body">
-                                    <input type="hidden" name="price" value="{{ $subtotal }}"/>
+{{--                                    <input type="hidden" name="price" value="{{ $subtotal }}"/>--}}
+                                    <input type="hidden" name="price" value="{{ $subtotal + $tax }}"/>
                                     <input type="hidden" name="product_id" value=""/>
                                     <input type="hidden" name="qty" value="value['qty']"/>
                                     <div id="paypal-button-container-popup"></div>
@@ -389,7 +397,8 @@
                                         <div id="card-element"></div>
                                         <div id="card-errors" role="alert"></div>
                                         <div class="form-group">
-                                            <button class="btn btn-red btn-block" type="button" id="stripe-submit">Pay Now ${{ $subtotal }}</button>
+{{--                                            <button class="btn btn-red btn-block" type="button" id="stripe-submit">Pay Now ${{ $subtotal }}</button>--}}
+                                            <button class="btn btn-red btn-block" type="button" id="stripe-submit">Pay Now ${{ $subtotal + $tax }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -468,7 +477,7 @@
             //$(this).siblings('input[type="checkbox"]').prop('checked', false);
         });
 
-        const renderPaypalButton = (amount = {{number_format(((float)$subtotal),2, '.', '')}}) => {
+        const renderPaypalButton = (amount = {{number_format(((float)$subtotal + $tax),2, '.', '')}}) => {
             paypal.Button.render({
             env: 'sandbox', //production
 
@@ -668,7 +677,7 @@
             } else if (coupon_value == '1010') {
                 toastr.success('10% off coupon applied!');
 
-                let amount = {{number_format(((float)$subtotal),2, '.', '')}};
+                let amount = {{number_format(((float)$subtotal + $tax),2, '.', '')}};
                 amount -= (amount * 0.1);
                 renderPaypalButton(amount);
                 $('#order-place').find('input[name="total_after_coupon"]').remove();
@@ -681,7 +690,7 @@
             } else if (coupon_value == '2020') {
                 toastr.success('20% off coupon applied!');
 
-                let amount = {{number_format(((float)$subtotal),2, '.', '')}};
+                let amount = {{number_format(((float)$subtotal + $tax),2, '.', '')}};
                 amount -= (amount * 0.2);
                 renderPaypalButton(amount);
                 $('#order-place').find('input[name="total_after_coupon"]').remove();
