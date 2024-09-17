@@ -346,7 +346,8 @@
 {{--                            <h3> Total Price <span class="span_total">${{ $subtotal +  $variation }}</span></h3>--}}
                             <h2> Total Before Sales Tax <span>${{ $subtotal }}</span></h2>
                             @php
-                                $tax = ($subtotal * 0.05) + 12.78;
+                                //$tax = ($subtotal * 0.05) + 12.78;
+                                $tax = 0.00;
                             @endphp
                             <h2> Estimated Sales Tax <span>${{ $tax }}</span></h2>
                             <h3> Order Total Amount <span class="span_total">${{ $subtotal + $tax }}</span></h3>
