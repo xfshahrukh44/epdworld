@@ -90,7 +90,7 @@
                                                     <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
                                                         <h3>{!! $pro->product_title !!}</h3>
                                                         <div class="product-thumbnail">
-                                                            <img data-src="images/blank.gif"
+                                                            <img data-src="{{ asset($pro->image) }}"
                                                                 data-echo="{!! asset($pro->image) !!}"
                                                                 class="lazy img-responsive" alt="">
                                                         </div>
@@ -99,7 +99,7 @@
                                                     <a href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}">
                                                         <h3>{!! $pro->product_title !!}</h3>
                                                         <div class="product-thumbnail">
-                                                            <img data-src="images/blank.gif"
+                                                            <img data-src="{{ asset($pro->image) }}"
                                                                 data-echo="{!! asset($pro->image) !!}"
                                                                 class="lazy img-responsive" alt="">
                                                         </div>
@@ -947,13 +947,13 @@
                                             <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
                                                 <h3>{!! $pro->product_title !!}</h3>
                                                 <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
-                                                        data-src="images/blank.gif" alt="" class="lazy"> </div>
+                                                        data-src="{{ asset($pro->image) }}" alt="" class="lazy"> </div>
                                             </a>
                                         @else
                                             <a href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}">
                                                 <h3>{!! $pro->product_title !!}</h3>
                                                 <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
-                                                        data-src="images/blank.gif" alt="" class="lazy"> </div>
+                                                        data-src="{{ asset($pro->image) }}" alt="" class="lazy"> </div>
                                             </a>
                                         @endif
                                         

@@ -23,7 +23,7 @@
                             <div class="images electro-gallery">
                                 <div class="thumbnails-single owl-carousel">
                                     <a href="{!! asset($product_detail->image) !!}" class="zoom" title=""
-                                        data-rel="prettyPhoto[product-gallery]"><img src="images/blank.gif"
+                                        data-rel="prettyPhoto[product-gallery]"><img src="{{ asset($product_detail->image) }}"
                                             data-echo="{!! asset($product_detail->image) !!}" class="wp-post-image"
                                             alt=""></a>
 
@@ -32,7 +32,7 @@
                                     @endphp
                                     @foreach ($gallery as $gal)
                                     <a href="{!! asset($gal->image) !!}" class="zoom" title=""
-                                    data-rel="prettyPhoto[product-gallery]"><img src="images/blank.gif"
+                                    data-rel="prettyPhoto[product-gallery]"><img src="{{ asset($gal->image) }}"
                                         data-echo="{!! asset($gal->image) !!}" class="wp-post-image"
                                         alt=""></a>
                                     @endforeach
@@ -42,12 +42,12 @@
                                 <!-- .thumbnails-single -->
                                 <div class="thumbnails-all columns-5 owl-carousel">
                                     <a href="{!! asset($product_detail->image) !!}" class="first" title=""><img
-                                            src="images/blank.gif"
+                                            src="{{ asset($product_detail->image) }}"
                                             data-echo="{!! asset($product_detail->image) !!}"
                                             class="wp-post-image" alt=""></a>
                                     @foreach ($gallery as $gal)
                                     <a href="{!! asset($gal->image) !!}" class="" title=""><img
-                                            src="images/blank.gif"
+                                            src="{{ asset($gal->image) }}"
                                             data-echo="{!! asset($gal->image) !!}"
                                             class="wp-post-image" alt=""></a>
                                     @endforeach

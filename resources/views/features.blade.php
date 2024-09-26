@@ -35,7 +35,7 @@
                                         <a href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
                                             <h3>{!! $pro->product_title !!}</h3>
                                             <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
-                                                    src="images/blank.gif" alt=""> </div>
+                                                    src="{{ asset($pro->image) }}" alt=""> </div>
                                         </a>
                                         <div class="price-add-to-cart"> <span class="price">
                                                 <span class="electro-price">

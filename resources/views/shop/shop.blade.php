@@ -87,7 +87,7 @@
                                         @endif
                                             <h3>{!! $pro->product_title !!}</h3>
                                             <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
-                                                    data-src="images/blank.gif" class="lazy" alt=""> </div>
+                                                    data-src="{{asset($pro->image)}}" class="lazy" alt=""> </div>
                                         </a>
                                         <div class="price-add-to-cart"> <span class="price">
                                                 <span class="electro-price">

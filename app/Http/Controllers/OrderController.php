@@ -14,6 +14,7 @@ use App\orders;
 use App\orders_products;
 use App\Http\Requests\OrderRequest;
 use DB;
+use TaxJar\Client;
 use View;
 use Session;
 use App\Http\Traits\HelperTrait;
@@ -59,6 +60,21 @@ class OrderController extends Controller
 		$product_detail = DB::table('products')->first();
 
 		if (Session::get('cart') && count(Session::get('cart')) > 0) {
+//		    $client = Client::withApiKey('79aacc35197596e441bdcb0066fd7340');
+//
+//            $client->setApiConfig('headers', [
+//                'Authorization' => 'Bearer 79aacc35197596e441bdcb0066fd7340'
+//            ]);
+//
+//            $order_taxes = $client->taxForOrder([
+//                'to_country' => 'US',
+//                'to_zip' => '90002',
+//                'to_state' => 'CA',
+//                'amount' => 10,
+//                'shipping' => 0.00
+//            ]);
+//
+//            dd($order_taxes);
 
 			$countries = DB::table('countries')->get();
 			return view('shop.checkout', ['cart' => Session::get('cart'), 'countries' => $countries, 'language' => $language, 'product_detail' => $product_detail]);
