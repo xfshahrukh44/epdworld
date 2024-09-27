@@ -371,7 +371,7 @@
                         @php
                             $products = \App\Product::whereHas('categorys', function ($q) {
                                 return $q->where('name', 'Canadian products');
-                            })->whereNotIn('id', $exclude_product_ids)->orderBy('created_at', 'DESC')->take(12)->get();
+                            })->where('price', '!=', 10.00)->whereNotIn('id', $exclude_product_ids)->orderBy('created_at', 'DESC')->take(12)->get();
                         @endphp
                         <ul class="products columns-3">
                             @foreach($products as $product)
