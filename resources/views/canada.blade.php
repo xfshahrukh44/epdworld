@@ -128,7 +128,7 @@
                                                 @php
                                                     $latest_products = \App\Product::whereHas('categorys', function ($q) {
                                                         return $q->where('name', 'Canadian products');
-                                                    })->where('id', '!=', 8170)->orderBy('created_at', 'DESC')->take(12)->get();
+                                                    })->where('price', '!=', 10.00)->where('id', '!=', 8170)->orderBy('created_at', 'DESC')->take(12)->get();
                                                     $exclude_product_ids = [8170];
                                                 @endphp
 

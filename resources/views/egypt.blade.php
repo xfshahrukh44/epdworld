@@ -130,7 +130,7 @@
                                                 @php
                                                     $latest_products = \App\Product::whereHas('categorys', function ($q) {
                                                         return $q->where('name', 'Egyptian products');
-                                                    })->orderBy('created_at', 'DESC')->take(12)->get();
+                                                    })->where('price', '!=', 10.00)->orderBy('created_at', 'DESC')->take(12)->get();
                                                     $exclude_product_ids = [];
                                                 @endphp
 
