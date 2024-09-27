@@ -280,7 +280,7 @@ class ProductController extends Controller
 
 	   // dd($shops);
         // if(!$shops->isEmpty()){
-            $shops = $shops->orderByDesc('id')->paginate(12);
+            $shops = $shops->where('price', '!=', 10.00)->orderByDesc('id')->paginate(12);
         // }
 
 
