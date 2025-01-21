@@ -9,7 +9,8 @@
                 <div class="top-bar-parent">
             <nav>
                 <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
-                    <li class="menu-item animate-dropdown"><a title="Welcome to Worldwide Electronics Store"
+                    <li class="menu-item animate-dropdown"><a title="Welcome to Elite Product Distributors World"
+{{--                            href="#">{!! App\Http\Traits\HelperTrait::returnFlag(1967) !!}</a></li>--}}
                             href="#">{!! App\Http\Traits\HelperTrait::returnFlag(1967) !!}</a></li>
                 </ul>
             </nav>
@@ -122,7 +123,7 @@
         $parentCategories = App\Category::where('parent', 0)
             ->with('children')
             ->get();
-        
+
     @endphp
 
     <body class="home-v2">
