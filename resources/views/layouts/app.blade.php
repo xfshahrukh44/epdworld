@@ -134,13 +134,13 @@
 	
 </script>
 
-<script type="text/javascript">
-            $(document).ready(function() { $("#e1").select2(); });
-</script>
+<!--<script type="text/javascript">-->
+<!--            $(document).ready(function() { $("#e1").select2(); });-->
+<!--</script>-->
 
-<script type="text/javascript">
-            $(document).ready(function() { $("#e2").select2(); });
-</script>
+<!--<script type="text/javascript">-->
+<!--            $(document).ready(function() { $("#e2").select2(); });-->
+<!--</script>-->
 
 <!-- ============================================================== -->
 @stack('js')
