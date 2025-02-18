@@ -270,8 +270,11 @@ class ProductController extends Controller
 
         if($name != null){
 //            $shops = $shops->where('product_title', 'LIKE', "%$name%");
-	        $shops = $shops->where('product_title', 'LIKE', "%$name%")->orWhere('sku', 'LIKE', "%$name%")->orWhere('item_number', 'LIKE', "%$name%");
-	    }elseif($cat != null){
+	        $shops = $shops->where(function ($q) use ($name) {
+	            return $q->where('product_title', 'LIKE', "%$name%")->orWhere('sku', 'LIKE', "%$name%")->orWhere('item_number', 'LIKE', "%$name%");
+            });
+	    }
+        if ($cat != null && $cat !== '0') {
 
 	        $shops = $shops->where('category', $cat);
 
@@ -280,7 +283,8 @@ class ProductController extends Controller
 
 	   // dd($shops);
         // if(!$shops->isEmpty()){
-            $shops = $shops->where('price', '!=', 10.00)->orderByDesc('id')->paginate(12);
+//            $shops = $shops->where('price', '!=', 10.00)->orderByDesc('id')->paginate(12);
+            $shops = $shops->orderByDesc('id')->paginate(12);
         // }
 
 
@@ -295,11 +299,11 @@ class ProductController extends Controller
     {
         $product = new Product;
         $product_detail = $product->where('slug', $slug)->first();
-    
+
         if (!$product_detail) {
             abort(404, 'Product not found');
         }
-    
+
         $att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $product_detail->id)->get();
         $att_id = DB::table('product_attributes')->where('product_id', $product_detail->id)->get();
         $shops = DB::table('products')
@@ -308,19 +312,19 @@ class ProductController extends Controller
         $vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
         $exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
         $reviews = Productreview::where('product_id', $product_detail->id)->get();
-    
+
         return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
     }
-    
+
     public function shopDetail($id)
     {
         $product = new Product;
         $product_detail = $product->where('id', $id)->first();
-    
+
         if (!$product_detail) {
             abort(404, 'Product not found');
         }
-    
+
         $att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $product_detail->id)->get();
         $att_id = DB::table('product_attributes')->where('product_id', $product_detail->id)->get();
         $shops = DB::table('products')
@@ -329,7 +333,7 @@ class ProductController extends Controller
         $vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
         $exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
         $reviews = Productreview::where('product_id', $product_detail->id)->get();
-    
+
         return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
     }
 

@@ -162,7 +162,7 @@
 
                                             </span></div>
 
-                                        <div class="price-add-to-cart"> 
+                                        <div class="price-add-to-cart">
                                         @if(empty($pro->slug))
                                             <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
                                                 class="button add_to_cart_button">Add to cart</a>
@@ -170,7 +170,7 @@
                                             <a rel="nofollow" href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}"
                                                 class="button add_to_cart_button">Add to cart</a>
                                         @endif
-                                                
+
                                                 </div>
                                         <!-- /.price-add-to-cart -->
 
@@ -231,7 +231,7 @@
                                     @foreach ($cat->grandchildren as $item)
                                     @if($item->parent_cat->parent != 0)
                                         @if($item->parent != 0)
-                                            @if(count($item->products > 0))
+                                            @if(count($item->products) > 0)
                                                 <li class="cat-item"><a href="{{ route('categoryDetail', ['id' => $item->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $item->name)))]) }}">{!! $item->name !!}</a>
                                                  </li>
                                              @endif
@@ -255,13 +255,13 @@
                         @if(empty($item->slug))
                             <a href="{{ route('shopDetail', ['id' => $item->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $item->product_title)))]) }}" title="Notebook Black Spire V Nitro  VN7-591G"> <img
                                 width="180" height="180" data-src="{!! asset($item->image) !!}" class="wp-post-image lazy"
-                                alt="" /><span class="product-title">{!! $item->product_title !!}</span> </a> 
+                                alt="" /><span class="product-title">{!! $item->product_title !!}</span> </a>
                         @else
                             <a href="{{ route('shopDetailSlug', ['slug' => $item->slug]) }}" title="Notebook Black Spire V Nitro  VN7-591G"> <img
                                 width="180" height="180" data-src="{!! asset($item->image) !!}" class="wp-post-image lazy"
-                                alt="" /><span class="product-title">{!! $item->product_title !!}</span> </a> 
+                                alt="" /><span class="product-title">{!! $item->product_title !!}</span> </a>
                         @endif
-                                
+
                                 <span class="electro-price"><ins><span
                                     class="amount">&#36;{!! $item->price !!}</span></ins> </span>
                     </li>

@@ -42,11 +42,11 @@ class LoginController extends Controller
                select('img_path')
                ->where('table_name','=','logo')
                ->first();
-       
+
           $favicon = imagetable::
                            select('img_path')
                            ->where('table_name','=','favicon')
-                           ->first();  
+                           ->first();
 
         View()->share('logo',$logo);
         View()->share('favicon',$favicon);
@@ -54,34 +54,34 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, $user)
     {
-        activity($user->name)
-            ->performedOn($user)
-            ->causedBy($user)
-            ->log('LoggedIn');
-        
+//        activity($user->name)
+//            ->performedOn($user)
+//            ->causedBy($user)
+//            ->log('LoggedIn');
+
           if(auth()->user()->isAdmin() == true) {
                return redirect('admin/dashboard');
           } else {
 
-                Session::flash('message', 'You have logged In  Successfully'); 
-                Session::flash('alert-class', 'alert-success'); 
+                Session::flash('message', 'You have logged In  Successfully');
+                Session::flash('alert-class', 'alert-success');
                return redirect('account');
-          }     
-            
-         
+          }
+
+
     }
 
     public function logout(Request $request)
     {
         $user = auth()->user();
-        activity($user->name)
-            ->performedOn($user)
-            ->causedBy($user)
-            ->log('LoggedOut');
+//        activity($user->name)
+//            ->performedOn($user)
+//            ->causedBy($user)
+//            ->log('LoggedOut');
         $this->guard()->logout();
         $request->session()->invalidate();
 
         return redirect('/login');
     }
-    
+
 }

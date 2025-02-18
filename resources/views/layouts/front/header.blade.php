@@ -221,7 +221,7 @@
                     <li class="nav-item dropdown">
                         <a href="{!! route('cart') !!}" class="nav-link">
                            <i class="fas fa-shopping-cart"></i>
-                            <span class="cart-items-count count">{!! count(Session::get('cart')) !!}</span>
+                            <span class="cart-items-count count">{!! count(Session::get('cart') ?? []) !!}</span>
                             <span class="cart-items-total-price total-price">
                                 @php
                                     $total = 0;
