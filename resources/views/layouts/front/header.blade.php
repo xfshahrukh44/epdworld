@@ -216,7 +216,7 @@
                         </div>
                     </div>
                 </form>
-
+<div class="responsive-mb">
                 <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
                     <li class="nav-item dropdown">
                         <a href="{!! route('cart') !!}" class="nav-link">
@@ -248,5 +248,6 @@
                         <a href="" class="nav-link"><i class="ec ec-compare"></i></a>
                     </li>
                 </ul>
+                </div>
             </div>
         </nav>
