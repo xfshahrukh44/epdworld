@@ -166,16 +166,18 @@ class ProductController extends Controller
 
             $attval = $request->attribute;
 
-            for($i = 0; $i < count($attval); $i++)
-            {
-                $product_attributes = new ProductAttribute;
-                $product_attributes->attribute_id = $attval[$i]['attribute_id'];
-                $product_attributes->value = $attval[$i]['value'];
-                $product_attributes->price = $attval[$i]['v-price'];
-                $product_attributes->qty = $attval[$i]['qty'];
-                $product_attributes->product_id = $product->id;
-
-                $product_attributes->save();
+            if(is_array($attval)){
+                for($i = 0; $i < count($attval); $i++)
+                {
+                    $product_attributes = new ProductAttribute;
+                    $product_attributes->attribute_id = $attval[$i]['attribute_id'];
+                    $product_attributes->value = $attval[$i]['value'];
+                    $product_attributes->price = $attval[$i]['v-price'];
+                    $product_attributes->qty = $attval[$i]['qty'];
+                    $product_attributes->product_id = $product->id;
+    
+                    $product_attributes->save();
+                }
             }
 
 
@@ -323,24 +325,28 @@ class ProductController extends Controller
             $oldprice = $request->v_price;
             $oldqty = $request->qty;
 
-            for($j = 0; $j < count($oldatt); $j++){
-                $product_attribute = ProductAttribute::find($product_attribute_id[$j]);
-                $product_attribute->attribute_id = $oldatt[$j];
-                $product_attribute->value = $oldval[$j];
-                $product_attribute->price = $oldprice[$j];
-                $product_attribute->qty = $oldqty[$j];
-                $product_attribute->save();
+            if(is_array($oldatt)){
+                for($j = 0; $j < count($oldatt); $j++){
+                    $product_attribute = ProductAttribute::find($product_attribute_id[$j]);
+                    $product_attribute->attribute_id = $oldatt[$j];
+                    $product_attribute->value = $oldval[$j];
+                    $product_attribute->price = $oldprice[$j];
+                    $product_attribute->qty = $oldqty[$j];
+                    $product_attribute->save();
+                }
             }
 
-            for($i = 0; $i < count($attval); $i++)
-            {
-                $product_attributes = new ProductAttribute;
-                $product_attributes->attribute_id = $attval[$i]['attribute_id'];
-                $product_attributes->value = $attval[$i]['value'];
-                $product_attributes->price = $attval[$i]['v-price'];
-                $product_attributes->qty = $attval[$i]['qty'];
-                $product_attributes->product_id = $id;
-                $product_attributes->save();
+            if(is_array($attval)){
+                for($i = 0; $i < count($attval); $i++)
+                {
+                    $product_attributes = new ProductAttribute;
+                    $product_attributes->attribute_id = $attval[$i]['attribute_id'];
+                    $product_attributes->value = $attval[$i]['value'];
+                    $product_attributes->price = $attval[$i]['v-price'];
+                    $product_attributes->qty = $attval[$i]['qty'];
+                    $product_attributes->product_id = $id;
+                    $product_attributes->save();
+                }
             }
 
          /*

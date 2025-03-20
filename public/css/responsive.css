@@ -1215,5 +1215,43 @@ table.table.table-striped thead {
 
 a.updateCart.btn.btnDonate {display: flex;align-items: center;justify-content: center;}
 
+.hidden-md-down {
+    display: block !important;
+}
 
+.top-bar-parent {
+    flex-direction: column;
+}
+
+ul#menu-top-bar-right {display: flex;/* text-align: start; */}
+
+ul#menu-top-bar-right li a {
+    font-size: 11px;
+}
+.responsive-mb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+}
+
+.responsive-mb ul {
+    position: unset !important;
+    transform: unset !important;
+}
+
+.responsive-mb ul li {
+    margin: 0 !important;
+}
+
+.navbar-mini-cart .cart-items-count {
+    width: 15px;
+    height: 16px;
+    bottom: 27px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 }
