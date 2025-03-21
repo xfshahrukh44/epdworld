@@ -129,8 +129,8 @@
                                                             <input type="radio" class="radio-box" name="variation[{{ $att_models->attribute->name }}]" value="{{ $pro_atts->attributesValues->id }}" />
                                                             <div class="image1" style="background-color: {{ $pro_atts->attributesValues->value }}; background-image: url('{{ ($pro_atts->value != null) ? asset($pro_atts->value) : '' }}'); background-size: cover;">
                                                                 <span>
-                                                                    @if($att_models->attribute->name == 'Size')
-                                                                        {{ $pro_atts->value }}
+                                                                    @if($att_models->attribute->name === 'Size')
+                                                                        {{ $pro_atts->attributesValues->value }}
                                                                     @endif
                                                                 </span>
                                                             </div>
