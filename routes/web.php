@@ -424,3 +424,6 @@ Route::resource('productreview/productreview', 'productreview\ProductreviewContr
 
 //Route::get('blog/{slug}', [\App\Http\Controllers\HomeController::class, 'blog_detail'])->name('blog_detail')->withoutMiddleware('auth');
 Route::get('blog/{slug?}', [\App\Http\Controllers\HomeController::class, 'blog_detail'])->name('blog_detail');
+
+
+Route::get('admin/attributes_value/getIndex', 'Admin\\AttributesValueController@getIndex')->name('admin.attributesvalue.index');

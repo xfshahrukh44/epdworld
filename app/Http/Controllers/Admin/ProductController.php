@@ -108,8 +108,6 @@ class ProductController extends Controller
 	    //echo "<pre>";
 	    //print_r($_FILES);
 	    //return;
-
-		//dd($_FILES);
         $model = str_slug('product','-');
         if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
             $this->validate($request, [
@@ -132,12 +130,15 @@ class ProductController extends Controller
             $file = $request->file('image');
 
             //make sure yo have image folder inside your public
-            $destination_path = 'uploads/products/';
-            $profileImage = date("Ymdhis").".".$file->getClientOriginalExtension();
+            // $destination_path = 'uploads/products/';
+            // $profileImage = date("Ymdhis").".".$file->getClientOriginalExtension();
 
-            Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR. $profileImage);
+            // Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR. $profileImage);
 
-            $product->image = $destination_path.$profileImage;
+            $imageName = time() . '.' . $file->getClientOriginalExtension(); // Unique name
+            $file->move(public_path('uploads/products/'), $imageName);
+
+            $product->image = 'uploads/products/' . $imageName;
             $product->save();
 
 
@@ -145,15 +146,18 @@ class ProductController extends Controller
 
                 $photos=request()->file('images');
                 foreach ($photos as $photo) {
-                    $destinationPath = 'uploads/products/';
+                    // $destinationPath = 'uploads/products/';
 
-                    $filename = date("Ymdhis").uniqid().".".$photo->getClientOriginalExtension();
-                    //dd($photo,$filename);
-                    Image::make($photo)->save(public_path($destinationPath) . DIRECTORY_SEPARATOR. $filename);
+                    // $filename = date("Ymdhis").uniqid().".".$photo->getClientOriginalExtension();
+                    // //dd($photo,$filename);
+                    // Image::make($photo)->save(public_path($destinationPath) . DIRECTORY_SEPARATOR. $filename);
+
+                    $imageName = time() . '.' . $photo->getClientOriginalExtension(); // Unique name
+                    $photo->move(public_path('uploads/products/'), $imageName);
 
                     DB::table('product_imagess')->insert([
 
-                        ['image' => $destination_path.$filename, 'product_id' => $product->id]
+                        ['image' => 'uploads/products/' . $imageName, 'product_id' => $product->id]
 
                     ]);
 
@@ -166,22 +170,32 @@ class ProductController extends Controller
 
             $attval = $request->attribute;
 
-            if(is_array($attval)){
-                for($i = 0; $i < count($attval); $i++)
-                {
+            if (is_array($attval)) {
+                for ($i = 0; $i < count($attval); $i++) {
                     $product_attributes = new ProductAttribute;
                     $product_attributes->attribute_id = $attval[$i]['attribute_id'];
                     $product_attributes->value = $attval[$i]['value'];
                     $product_attributes->price = $attval[$i]['v-price'];
                     $product_attributes->qty = $attval[$i]['qty'];
                     $product_attributes->product_id = $product->id;
-    
+
+                    // Handle image upload if it exists inside the 'attribute' array
+                    if ($request->hasFile("attribute.$i.image")) {
+                        $image = $request->file("attribute.$i.image");
+
+                        // Generate a unique name for the image
+                        $imageName = time() . '_' . $i . '.' . $image->getClientOriginalExtension();
+
+                        // Move the image to the desired folder
+                        $image->move(public_path('uploads/product_attributes/'), $imageName);
+
+                        // Store the image path in the database
+                        $product_attributes->image = 'uploads/product_attributes/' . $imageName;
+                    }
+
                     $product_attributes->save();
                 }
             }
-
-
-
 
 
             return redirect('admin/product')->with('message', 'Product added!');
@@ -281,32 +295,32 @@ class ProductController extends Controller
 			}
 
             $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
-            $fileNameForm = str_replace(' ', '_', $fileNameExt);
-            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/products/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
+            // $fileNameExt = $request->file('image')->getClientOriginalName();
+            // $fileNameForm = str_replace(' ', '_', $fileNameExt);
+            // $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
+            // $fileExt = $request->file('image')->getClientOriginalExtension();
+            // $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+            // $pathToStore = public_path('uploads/products/');
+            // Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
+            $imageName = time() . '.' . $file->getClientOriginalExtension(); // Unique name
+            $file->move(public_path('uploads/products/'), $imageName);
 
-			$requestData['image'] = 'uploads/products/'.$fileNameToStore;
+			$requestData['image'] = 'uploads/products/' . $imageName;
         }
 
             if(! is_null(request('images'))) {
 
                 $photos=request()->file('images');
                 foreach ($photos as $photo) {
-                    $destinationPath = 'uploads/products/';
 
-                    $filename = date("Ymdhis").uniqid().".".$photo->getClientOriginalExtension();
-                    //dd($photo,$filename);
-                    Image::make($photo)->save(public_path($destinationPath) . DIRECTORY_SEPARATOR. $filename);
+                    $imageName = time() . '.' . $photo->getClientOriginalExtension(); // Unique name
+                    $photo->move(public_path('uploads/products/'), $imageName);
 
                     $product = product::where('id', $id)->first();
 
                     DB::table('product_imagess')->insert([
 
-                        ['image' => $destinationPath.$filename, 'product_id' => $product->id]
+                        ['image' => 'uploads/products/' . $imageName, 'product_id' => $product->id]
 
                     ]);
 
@@ -332,19 +346,47 @@ class ProductController extends Controller
                     $product_attribute->value = $oldval[$j];
                     $product_attribute->price = $oldprice[$j];
                     $product_attribute->qty = $oldqty[$j];
+
+                    if ($request->hasFile("image_att.$j")) {
+                        $image = $request->file("image_att.$j");
+
+                        // Generate a unique name for the image
+                        $imageName = time() . '_' . $j . '.' . $image->getClientOriginalExtension();
+
+                        // Move the image to the desired folder
+                        $image->move(public_path('uploads/product_attributes/'), $imageName);
+
+                        // Store the image path in the database
+                        $product_attributes->image = 'uploads/product_attributes/' . $imageName;
+                    }
+
                     $product_attribute->save();
                 }
             }
 
-            if(is_array($attval)){
-                for($i = 0; $i < count($attval); $i++)
-                {
+            if (is_array($attval)) {
+                for ($i = 0; $i < count($attval); $i++) {
                     $product_attributes = new ProductAttribute;
                     $product_attributes->attribute_id = $attval[$i]['attribute_id'];
                     $product_attributes->value = $attval[$i]['value'];
                     $product_attributes->price = $attval[$i]['v-price'];
                     $product_attributes->qty = $attval[$i]['qty'];
                     $product_attributes->product_id = $id;
+
+                    // Handle image upload if it exists inside the 'attribute' array
+                    if ($request->hasFile("attribute.$i.image")) {
+                        $image = $request->file("attribute.$i.image");
+
+                        // Generate a unique name for the image
+                        $imageName = time() . '_' . $i . '.' . $image->getClientOriginalExtension();
+
+                        // Move the image to the desired folder
+                        $image->move(public_path('uploads/product_attributes/'), $imageName);
+
+                        // Store the image path in the database
+                        $product_attributes->image = 'uploads/product_attributes/' . $imageName;
+                    }
+
                     $product_attributes->save();
                 }
             }

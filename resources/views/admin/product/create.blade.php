@@ -94,7 +94,7 @@
 </div>
 @endsection
 @push('js')
-  
+
   <script src="{{asset('js/jquery.repeater.min.js')}}"></script>
   <script src="{{asset('plugins/vendors/dropify/dist/js/dropify.min.js')}}"></script>
   <script>
@@ -102,14 +102,14 @@
           $('.dropify').dropify();
       });
       !function(e,t,r){"use strict";r(".repeater-default").repeater(),r(".file-repeater, .contact-repeater").repeater({show:function(){r(this).slideDown()},hide:function(e){confirm("Are you sure you want to remove this item?")&&r(this).slideUp(e)}})}(window,document,jQuery);
-      
+
       function getval(sel)
         {
             var globelsel = sel;
             let value = sel.value;
 
             // alert(value);
-            
+
             $.ajax({
             url: "{{ route('get-attributes')}}",
                 type:"POST",

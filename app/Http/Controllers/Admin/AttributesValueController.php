@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Image;
 use File;
 use DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class AttributesValueController extends Controller
 {
@@ -22,11 +23,11 @@ class AttributesValueController extends Controller
                      select('img_path')
                      ->where('table_name','=','logo')
                      ->first();
-             
+
         $favicon = imagetable::
                      select('img_path')
                      ->where('table_name','=','favicon')
-                     ->first();  
+                     ->first();
 
         View()->share('logo',$logo);
         View()->share('favicon',$favicon);
@@ -44,17 +45,41 @@ class AttributesValueController extends Controller
         $model = str_slug('attributesvalue','-');
         if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
 
-            $attributes = AttributeValue::all();
+            // $attributes = AttributeValue::all();
 
-            return view('admin.attributesvalue.index', compact('attributes'));
+            return view('admin.attributesvalue.index');
         }
         return response(view('403'), 403);
 
     }
 
+    public function getIndex(Request $request)
+    {
+        if ($request->ajax()) {
+            $attributes = AttributeValue::with('attributes')->get();
+            return DataTables::of($attributes)
+                ->addColumn('actions', function ($item) {
+                    return '
+                        <a href="' . url("/admin/attributes-value/" . $item->id . "/edit") . '" title="Edit Page">
+                            <button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"></i> Edit</button>
+                        </a>
+                        <form method="POST" action="' . url("/admin/attributes-value/" . $item->id) . '" style="display:inline">
+                            ' . csrf_field() . method_field("DELETE") . '
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Confirm delete?\')">
+                                <i class="fa fa-trash-o"></i> Delete
+                            </button>
+                        </form>';
+                })
+                ->rawColumns(['actions'])
+                ->make(true);
+        }
+
+        return view('admin.attributesvalue.index');
+    }
+
     public function getdata(request $request )
     {
-       
+
 
             $value = $request->value;
 
@@ -65,7 +90,7 @@ class AttributesValueController extends Controller
             }else{
                 return response()->json(['message'=>'Error Occurred', 'status' => false]);
             }
-        
+
 
     }
 
@@ -150,7 +175,7 @@ class AttributesValueController extends Controller
 
             $attributes['attribute_id'] = $request->input('attribute_id');
             $attributes['value'] = $request->input('value');
-            
+
             $attributes->save();
             return redirect('admin/attributes-value')->with('message', 'Value added!');
         }
@@ -206,23 +231,23 @@ class AttributesValueController extends Controller
         $model = str_slug('attributesvalue','-');
         if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
             $this->validate($request, [
-            
+
         ]);
 
 
         $requestData['attribute_id'] = $request->input('attribute_id');
         $requestData['value'] = $request->input('value');
-       
+
         if ($request->hasFile('image')) {
-			
-				
+
+
 			$banner = AttributeValue::where('id', $id)->first();
-			$image_path = public_path($banner->image);	
-			
+			$image_path = public_path($banner->image);
+
 			if(File::exists($image_path)) {
-				
+
 				File::delete($image_path);
-			} 
+			}
 
             $file = $request->file('image');
             $fileNameExt = $request->file('image')->getClientOriginalName();
@@ -232,14 +257,14 @@ class AttributesValueController extends Controller
             $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
             $pathToStore = public_path('uploads/banner/');
             Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
-			$requestData['image'] = 'uploads/banner/'.$fileNameToStore;        
-			
+			$requestData['image'] = 'uploads/banner/'.$fileNameToStore;
+
         }
 
         AttributeValue::where('id', $id)
                   ->update($requestData);
 
-       
+
         session()->flash('message', 'Successfully updated');
         return redirect('admin/attributes-value');
             }

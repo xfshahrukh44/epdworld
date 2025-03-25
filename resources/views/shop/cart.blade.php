@@ -31,8 +31,8 @@
         }
 
         /* .cart-table tbody td:first-child {
-            width: 50%;
-        } */
+                width: 50%;
+            } */
         .row {
             align-items: center;
         }
@@ -107,21 +107,20 @@
             color: #fff;
             padding: 10px 15px;
         }
-
     </style>
 @endsection
 @section('content')
-<section class="about1 pl-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="about-hea">
-                    {{-- <h2>CART</h2> --}}
+    <section class="about1 pl-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="about-hea">
+                        {{-- <h2>CART</h2> --}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 
@@ -176,13 +175,38 @@
                                                             class="img-responsive">
                                                     </div>
                                                     <div class="col-md-9">
-
                                                         <h5>{{ $value['name'] }}</h5>
-                                                        @foreach ($value['variation'] as $key => $values)
-                                                            <p class="m-0">{{ $values['attribute'] }} -
-                                                                {{ $values['attribute_val'] }} -
-                                                                {{ $values['attribute_price'] }}</p>
-                                                        @endforeach
+
+                                                        <table class="table table-sm">
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($value['variation'] as $key => $values)
+                                                                    @dump($key)
+                                                                    @php
+                                                                        $data = App\ProductAttribute::find($key);
+                                                                    @endphp
+                                                                    @if ($data['image'] == null)
+                                                                        <tr>
+                                                                            <th scope="row">{{ $values['attribute'] }}
+                                                                            </th>
+                                                                            <td
+                                                                                style="background-color: {{ $values['attribute_val'] }}">
+                                                                                {{ $values['attribute_val'] }}</td>
+                                                                            <td>{{ $values['attribute_price'] }}</td>
+                                                                        </tr>
+                                                                    @else
+                                                                        <tr>
+                                                                            <th scope="row">{{ $values['attribute'] }}
+                                                                            </th>
+                                                                            <td><img src="{{ asset($data['image']) }}"
+                                                                                    style="width: 30px"></td>
+                                                                            <td>{{ $values['attribute_price'] }}</td>
+                                                                        </tr>
+                                                                    @endif
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
 
                                                     </div>
                                                 </div>
@@ -202,7 +226,7 @@
                                                 <h4>${!! $value['baseprice'] !!}</h4>
                                             </td>
                                             <td class="p_total">
-                                                <h4>${!!$value['baseprice'] * $value['qty'] + $value['variation_price'] !!}
+                                                <h4>${!! $value['baseprice'] * $value['qty'] + $value['variation_price'] !!}
                                                 </h4>
                                             </td>
 
@@ -232,8 +256,7 @@
 
                             <h2>Sub Total: <span>${!! $subtotal !!}</span></h2>
                             <hr>
-                            <h2 class="price">Total: <span
-                                    class="price">${!! $subtotal + $total_variation !!} </span></h2>
+                            <h2 class="price">Total: <span class="price">${!! $subtotal + $total_variation !!} </span></h2>
                         </div>
                     </div>
                 </div>

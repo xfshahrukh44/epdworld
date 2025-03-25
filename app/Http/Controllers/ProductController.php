@@ -154,6 +154,7 @@ class ProductController extends Controller
 
 				$data = ProductAttribute::where('product_id', $_POST['product_id'])
 					->where('value', $value)->first();
+                    dd($data);
 				$cart[$cartId]['variation'][$data->id]['attribute'] = 	$data->attribute->name;
 				$cart[$cartId]['variation'][$data->id]['attribute_val'] = 	$data->attributesValues->value;
 				$cart[$cartId]['variation'][$data->id]['attribute_price'] = 	$data->price;

@@ -45,7 +45,7 @@
                 <div class="card-content collapse show">
                     <div class="card-body card-dashboard">
                         <div class="">
-                            <table class="table table-striped table-bordered zero-configuration" id="myTable">
+                            <table class="table table-striped table-bordered zero-configuration" id="attributesTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -54,14 +54,14 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach($attributes as $item)    
+                                {{-- <tbody>
+                                    @foreach($attributes as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->attributes->name }}</td>
                                         <td>{{ $item->value }}</td>
-                                        <td> 
-                                            
+                                        <td>
+
                                         <a href="{{ url('/admin/attributes-value/' . $item->id . '/edit') }}"
                                                    title="Edit Page">
                                                     <button class="btn btn-primary btn-sm">
@@ -80,11 +80,11 @@
                                                         'title' => 'Delete Page',
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
-                                                
+
                                             {!! Form::close() !!}</td>
                                     </tr>
-                                    @endforeach  
-                                </tbody>
+                                    @endforeach
+                                </tbody> --}}
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
@@ -107,33 +107,64 @@
 <script src="{{asset('plugins/components/datatables/jquery.dataTables.min.js')}}"></script>
 
 <script>
-    $(function () {
-        $('#myTable').DataTable();
-        var table = $('#example').DataTable({
-            "columnDefs": [{
-                "visible": false,
-                "targets": 2
-            }],
-            "order": [
-                [2, 'asc']
-            ],
-            "displayLength": 18,
-            "drawCallback": function (settings) {
-                var api = this.api();
-                var rows = api.rows({
-                    page: 'current'
-                }).nodes();
-                var last = null;
-                api.column(2, {
-                    page: 'current'
-                }).data().each(function (group, i) {
-                    if (last !== group) {
-                        $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                        last = group;
-                    }
-                });
-            }
+    // $(function () {
+    //     $('#myTable').DataTable();
+    //     var table = $('#example').DataTable({
+    //         "columnDefs": [{
+    //             "visible": false,
+    //             "targets": 2
+    //         }],
+    //         "order": [
+    //             [2, 'asc']
+    //         ],
+    //         "displayLength": 18,
+    //         "drawCallback": function (settings) {
+    //             var api = this.api();
+    //             var rows = api.rows({
+    //                 page: 'current'
+    //             }).nodes();
+    //             var last = null;
+    //             api.column(2, {
+    //                 page: 'current'
+    //             }).data().each(function (group, i) {
+    //                 if (last !== group) {
+    //                     $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+    //                     last = group;
+    //                 }
+    //             });
+    //         }
+    //     });
+    // });
+    // $(document).ready(function() {
+    //     $('#attributesTable').DataTable({
+    //         processing: true,
+    //         serverSide: true,
+    //         ajax: '{{ route("admin.attributesvalue.index") }}',
+    //         columns: [
+    //             { data: 'id', name: 'id' },
+    //             { data: 'attributes.name', name: 'attributes.name' },
+    //             { data: 'value', name: 'value' },
+    //             { data: 'actions', name: 'actions', orderable: false, searchable: false }
+    //         ]
+    //     });
+    // });
+    var courseColumns = [
+            { data: 'id', name: 'id' },
+            { data: 'attributes.name', name: 'attributes.name' },
+            { data: 'value', name: 'value' },
+            { data: 'actions', name: 'actions', orderable: false, searchable: false }
+        ];
+
+        $(document).ready(function () {
+            $('#attributesTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route("admin.attributesvalue.index") }}', // Replace with the actual route
+                columns: courseColumns,
+                initComplete: function () {
+                    console.log(this.api().ajax.json()); // Log the response data
+                }
+            });
         });
-    });
 </script>
 @endpush
