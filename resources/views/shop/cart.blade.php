@@ -107,6 +107,10 @@
             color: #fff;
             padding: 10px 15px;
         }
+
+        .variation {
+            margin: 12px 0 !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -177,31 +181,30 @@
                                                     <div class="col-md-9">
                                                         <h5>{{ $value['name'] }}</h5>
 
-                                                        <table class="table table-sm">
+                                                        <table class="table">
                                                             <thead>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach ($value['variation'] as $key => $values)
-                                                                    @dump($key)
                                                                     @php
                                                                         $data = App\ProductAttribute::find($key);
                                                                     @endphp
                                                                     @if ($data['image'] == null)
-                                                                        <tr>
-                                                                            <th scope="row">{{ $values['attribute'] }}
+                                                                        <tr class="variation">
+                                                                            <th>{{ $values['attribute'] }}
                                                                             </th>
                                                                             <td
-                                                                                style="background-color: {{ $values['attribute_val'] }}">
+                                                                                style="background-color: {{ $values['attribute_val'] }}; width: auto;line-height: normal;height: auto;display: inline-block;">
                                                                                 {{ $values['attribute_val'] }}</td>
-                                                                            <td>{{ $values['attribute_price'] }}</td>
+                                                                            <td>${{ $values['attribute_price'] }}</td>
                                                                         </tr>
                                                                     @else
-                                                                        <tr>
-                                                                            <th scope="row">{{ $values['attribute'] }}
+                                                                        <tr class="variation">
+                                                                            <th>{{ $values['attribute'] }}
                                                                             </th>
                                                                             <td><img src="{{ asset($data['image']) }}"
                                                                                     style="width: 30px"></td>
-                                                                            <td>{{ $values['attribute_price'] }}</td>
+                                                                            <td>${{ $values['attribute_price'] }}</td>
                                                                         </tr>
                                                                     @endif
                                                                 @endforeach

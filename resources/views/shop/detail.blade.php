@@ -128,9 +128,8 @@
 
                                                         <div class="att_vals">
                                                         @foreach ($pro_att as $pro_atts)
-                                                        {{-- @dump($pro_atts->image) --}}
                                                             <label class="radio-img">
-                                                                <input type="radio" class="radio-box" name="variation[{{ $att_models->attribute->name }}]" value="{{ $pro_atts->attributesValues->id }}" />
+                                                                <input type="radio" class="radio-box" name="variation[{{ $att_models->attribute->name }}]" value="{{ $pro_atts->id }}" />
                                                                 <div class="image1"
                                                                     style="
                                                                         background-color: {{ $pro_atts->attributesValues->value }};
