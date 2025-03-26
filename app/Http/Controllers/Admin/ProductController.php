@@ -103,73 +103,53 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
-
-	    //echo "<pre>";
-	    //print_r($_FILES);
-	    //return;
         $model = str_slug('product','-');
         if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
             $this->validate($request, [
-			'product_title' => 'required',
-			'description' => 'required',
-			'price' => 'required',
-			'image' => 'required',
-			'item_id' => 'required',
-		]);
-
-		    //echo implode(",",$_POST['language']);
-		    //return;
-			$product = new product;
-
+                'product_title' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'image' => 'required',
+                'item_id' => 'required',
+            ]);
+    
+            // Create new product
+            $product = new product;
             $product->product_title = $request->input('product_title');
             $product->slug = $request->input('slug');
-			$product->price = $request->input('price');
+            $product->price = $request->input('price');
             $product->description = $request->input('description');
-			$product->category = $request->input('item_id');
-            $file = $request->file('image');
-
-            //make sure yo have image folder inside your public
-            // $destination_path = 'uploads/products/';
-            // $profileImage = date("Ymdhis").".".$file->getClientOriginalExtension();
-
-            // Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR. $profileImage);
-
-            $imageName = time() . '.' . $file->getClientOriginalExtension(); // Unique name
-            $file->move(public_path('uploads/products/'), $imageName);
-
-            $product->image = 'uploads/products/' . $imageName;
-            $product->save();
-
-
-            if(! is_null(request('images'))) {
-
-                $photos=request()->file('images');
-                foreach ($photos as $photo) {
-                    // $destinationPath = 'uploads/products/';
-
-                    // $filename = date("Ymdhis").uniqid().".".$photo->getClientOriginalExtension();
-                    // //dd($photo,$filename);
-                    // Image::make($photo)->save(public_path($destinationPath) . DIRECTORY_SEPARATOR. $filename);
-
-                    $imageName = time() . '.' . $photo->getClientOriginalExtension(); // Unique name
-                    $photo->move(public_path('uploads/products/'), $imageName);
-
-                    DB::table('product_imagess')->insert([
-
-                        ['image' => 'uploads/products/' . $imageName, 'product_id' => $product->id]
-
-                    ]);
-
-                }
-
+            $product->category = $request->input('item_id');
+    
+            // Handle main image upload
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $imageName = time() . '_main.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/products/'), $imageName);
+                $product->image = 'uploads/products/' . $imageName;
             }
-             //$photos->save();
-            //$requestData = $request->all();
-            //Product::create($requestData);
-
+    
+            $product->save();
+    
+            // Handle multiple images upload
+            if($request->hasFile('images')) {
+                $photos = $request->file('images');
+                
+                foreach ($photos as $key => $photo) {
+                    // Generate unique name for each image
+                    $imageName = time() . '_' . $key . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
+                    $photo->move(public_path('uploads/products/'), $imageName);
+    
+                    // Insert new image record
+                    DB::table('product_imagess')->insert([
+                        'image' => 'uploads/products/' . $imageName,
+                        'product_id' => $product->id
+                    ]);
+                }
+            }
+    
+            // Handle product attributes
             $attval = $request->attribute;
-
             if (is_array($attval)) {
                 for ($i = 0; $i < count($attval); $i++) {
                     $product_attributes = new ProductAttribute;
@@ -178,31 +158,23 @@ class ProductController extends Controller
                     $product_attributes->price = $attval[$i]['v-price'];
                     $product_attributes->qty = $attval[$i]['qty'];
                     $product_attributes->product_id = $product->id;
-
-                    // Handle image upload if it exists inside the 'attribute' array
+    
+                    // Handle attribute image upload
                     if ($request->hasFile("attribute.$i.image")) {
                         $image = $request->file("attribute.$i.image");
-
-                        // Generate a unique name for the image
-                        $imageName = time() . '_' . $i . '.' . $image->getClientOriginalExtension();
-
-                        // Move the image to the desired folder
+                        $imageName = time() . '_attr_' . $i . '.' . $image->getClientOriginalExtension();
                         $image->move(public_path('uploads/product_attributes/'), $imageName);
-
-                        // Store the image path in the database
                         $product_attributes->image = 'uploads/product_attributes/' . $imageName;
                     }
-
+    
                     $product_attributes->save();
                 }
             }
-
-
+    
             return redirect('admin/product')->with('message', 'Product added!');
         }
         return response(view('403'), 403);
     }
-
     /**
      * Display the specified resource.
      *
@@ -261,170 +233,109 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-            $model = str_slug('product','-');
-            if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
-                $this->validate($request, [
+        $model = str_slug('product','-');
+        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+            $this->validate($request, [
                 'product_title' => 'required',
                 'description' => 'required',
                 'item_id' => 'required'
             ]);
-
+    
             $requestData['product_title'] = $request->input('product_title');
             $requestData['slug'] = $request->input('slug');
             $requestData['description'] = $request->input('description');
             $requestData['sku'] = $request->input('sku');
             $requestData['price'] = $request->input('price');
             $requestData['category'] = $request->input('item_id');
-
-            // dump($request->input());
-            // die();
-        /*Insert your data*/
-
-        // Detail::insert( [
-            // 'images'=>  implode("|",$images),
-        // ]);
-
-        // dd();
-        if ($request->hasFile('image')) {
-            
-            $product = product::where('id', $id)->first();
-            $image_path = public_path($product->image);
-            
+    
+            // Handle main image upload
+            if ($request->hasFile('image')) {
+                $product = product::where('id', $id)->first();
+                $image_path = public_path($product->image);
+    
                 if(File::exists($image_path)) {
-
                     File::delete($image_path);
                 }
-
+    
                 $file = $request->file('image');
-                // $fileNameExt = $request->file('image')->getClientOriginalName();
-                // $fileNameForm = str_replace(' ', '_', $fileNameExt);
-                // $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-                // $fileExt = $request->file('image')->getClientOriginalExtension();
-                // $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-                // $pathToStore = public_path('uploads/products/');
-                // Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
-                $imageName = time() . '.' . $file->getClientOriginalExtension(); // Unique name
+                $imageName = time() . '_main.' . $file->getClientOriginalExtension();
                 $file->move(public_path('uploads/products/'), $imageName);
-
                 $requestData['image'] = 'uploads/products/' . $imageName;
             }
-
-                if(! is_null(request('images'))) {
-
-                    $photos=request()->file('images');
-                    foreach ($photos as $photo) {
-
-                        $imageName = time() . '.' . $photo->getClientOriginalExtension(); // Unique name
-                        $photo->move(public_path('uploads/products/'), $imageName);
-
-                        $product = product::where('id', $id)->first();
-
-                        DB::table('product_imagess')->insert([
-
-                            ['image' => 'uploads/products/' . $imageName, 'product_id' => $product->id]
-
-                        ]);
-
-                    }
-
+    
+            // Handle multiple images upload
+            if($request->hasFile('images')) {
+                // First delete existing images for this product if needed
+                // DB::table('product_imagess')->where('product_id', $id)->delete();
+                
+                $photos = $request->file('images');
+                
+                foreach ($photos as $photo) {
+                    // Generate unique name for each image
+                    $imageName = time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
+                    $photo->move(public_path('uploads/products/'), $imageName);
+    
+                    // Insert new image record
+                    DB::table('product_imagess')->insert([
+                        'image' => 'uploads/products/' . $imageName,
+                        'product_id' => $id
+                    ]);
                 }
-
-            product::where('id', $id)
-                    ->update($requestData);
-
-
-                $attval = $request->attribute;
-                $product_attribute_id = $request->product_attribute;
-                $oldatt = $request->attribute_id;
-                $oldval = $request->value;
-                $oldprice = $request->v_price;
-                $oldqty = $request->qty;
-
-                if(is_array($oldatt)){
-                    for($j = 0; $j < count($oldatt); $j++){
-                        $product_attribute = ProductAttribute::find($product_attribute_id[$j]);
-                        $product_attribute->attribute_id = $oldatt[$j];
-                        $product_attribute->value = $oldval[$j];
-                        $product_attribute->price = $oldprice[$j];
-                        $product_attribute->qty = $oldqty[$j];
-
-                        if ($request->hasFile("image_att.$j")) {
-                            $image = $request->file("image_att.$j");
-
-                            // Generate a unique name for the image
-                            $imageName = time() . '_' . $j . '.' . $image->getClientOriginalExtension();
-
-                            // Move the image to the desired folder
-                            $image->move(public_path('uploads/product_attributes/'), $imageName);
-
-                            // Store the image path in the database
-                            $product_attributes->image = 'uploads/product_attributes/' . $imageName;
-                        }
-
-                        $product_attribute->save();
-                    }
-                }
-
-                if (is_array($attval)) {
-                    for ($i = 0; $i < count($attval); $i++) {
-                        $product_attributes = new ProductAttribute;
-                        $product_attributes->attribute_id = $attval[$i]['attribute_id'];
-                        $product_attributes->value = $attval[$i]['value'];
-                        $product_attributes->price = $attval[$i]['v-price'];
-                        $product_attributes->qty = $attval[$i]['qty'];
-                        $product_attributes->product_id = $id;
-
-                        // Handle image upload if it exists inside the 'attribute' array
-                        if ($request->hasFile("attribute.$i.image")) {
-                            $image = $request->file("attribute.$i.image");
-
-                            // Generate a unique name for the image
-                            $imageName = time() . '_' . $i . '.' . $image->getClientOriginalExtension();
-
-                            // Move the image to the desired folder
-                            $image->move(public_path('uploads/product_attributes/'), $imageName);
-
-                            // Store the image path in the database
-                            $product_attributes->image = 'uploads/product_attributes/' . $imageName;
-                        }
-
-                        $product_attributes->save();
-                    }
-                }
-
-            /*
-            if(! is_null(request('images'))) {
-
-
-                    DB::table('product_imagess')->where('product_id', '=', $id)->delete();
-
-                    $photos=request()->file('images');
-
-
-
-                    foreach ($photos as $photo) {
-                        $destinationPath = 'uploads/products/';
-
-                        $fileName = uniqid() . "_" . $file->getClientOriginalName();
-                        $file->move(storage_path($destinationPath), $fileName);
-
-
-                        DB::table('product_imagess')->insert([
-
-                            ['image' => $destinationPath.$filename, 'product_id' => $product->id]
-
-                        ]);
-
-                    }
-
             }
-            */
-
-
-                return redirect('admin/product')->with('message', 'Product updated!');
+    
+            // Update product data
+            product::where('id', $id)->update($requestData);
+    
+            // Handle product attributes
+            $attval = $request->attribute;
+            $product_attribute_id = $request->product_attribute;
+            $oldatt = $request->attribute_id;
+            $oldval = $request->value;
+            $oldprice = $request->v_price;
+            $oldqty = $request->qty;
+    
+            if(is_array($oldatt)){
+                for($j = 0; $j < count($oldatt); $j++){
+                    $product_attribute = ProductAttribute::find($product_attribute_id[$j]);
+                    $product_attribute->attribute_id = $oldatt[$j];
+                    $product_attribute->value = $oldval[$j];
+                    $product_attribute->price = $oldprice[$j];
+                    $product_attribute->qty = $oldqty[$j];
+    
+                    if ($request->hasFile("image_att.$j")) {
+                        $image = $request->file("image_att.$j");
+                        $imageName = time() . '_attr_' . $j . '.' . $image->getClientOriginalExtension();
+                        $image->move(public_path('uploads/product_attributes/'), $imageName);
+                        $product_attribute->image = 'uploads/product_attributes/' . $imageName;
+                    }
+    
+                    $product_attribute->save();
+                }
             }
-            return response(view('403'), 403);
-
+    
+            if (is_array($attval)) {
+                for ($i = 0; $i < count($attval); $i++) {
+                    $product_attributes = new ProductAttribute;
+                    $product_attributes->attribute_id = $attval[$i]['attribute_id'];
+                    $product_attributes->value = $attval[$i]['value'];
+                    $product_attributes->price = $attval[$i]['v-price'];
+                    $product_attributes->qty = $attval[$i]['qty'];
+                    $product_attributes->product_id = $id;
+    
+                    if ($request->hasFile("attribute.$i.image")) {
+                        $image = $request->file("attribute.$i.image");
+                        $imageName = time() . '_newattr_' . $i . '.' . $image->getClientOriginalExtension();
+                        $image->move(public_path('uploads/product_attributes/'), $imageName);
+                        $product_attributes->image = 'uploads/product_attributes/' . $imageName;
+                    }
+    
+                    $product_attributes->save();
+                }
+            }
+    
+            return redirect('admin/product')->with('message', 'Product updated!');
+        }
+        return response(view('403'), 403);
     }
 
     /**
