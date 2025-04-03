@@ -80,9 +80,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($product as $key => $item)    
+                                    @foreach($product as $item)    
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $item->id }}</td>
                                         <td class="text-dark weight-600"> {{ \Illuminate\Support\Str::limit($item->product_title, 50, $end='...') }}
                                         </td>
                                         <td>{{ $item->price }}</td>
