@@ -203,7 +203,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/4?name=slippers">
-                                            <img data-src="{!! asset('images/c-1.jpg') !!}" class="lazy img-fluid" alt="top1">
+                                            <img src="{{asset('assets/imgs/1.avif')}}"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -219,7 +220,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/11?name=heeled-sandals">
-                                            <img data-src="{!! asset('images/c-2.jpg') !!}" class="lazy img-fluid" alt="top1">
+                                            <img src="{{asset('assets/imgs/2.avif')}}"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -327,7 +329,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/133?name=bikinis--beachwear">
-                                            <img data-src="{!! asset('images/c-8.jpg') !!}" class="lazy img-fluid" alt="top1">
+                                            <img src="https://avatars.mds.yandex.net/i?id=31dc172889b46c63b657e61782a7fc9d9ed49fa4-8561284-images-thumbs&n=13"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">

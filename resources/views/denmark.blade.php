@@ -222,7 +222,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/11?name=heeled-sandals">
-                                            <img data-src="{!! asset('images/c-2.jpg') !!}" class="lazy img-fluid" alt="top1">
+                                            <img src="{{asset('assets/imgs/8.avif')}}"
+                                                 class="img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">

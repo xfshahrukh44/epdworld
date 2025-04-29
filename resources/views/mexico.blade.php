@@ -292,7 +292,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/112?name=fashion-jewelry-jewelry-sets">
-                                            <img src="https://avatars.mds.yandex.net/i?id=c5ba6bc72d9f9201c18667a253c45ab2530f9e99-8497287-images-thumbs&n=13"
+                                            <img src="{{asset('assets/imgs/5.jpg')}}"
                                                  class="img-fluid" alt="top1">
                                         </a>
                                     </div>
