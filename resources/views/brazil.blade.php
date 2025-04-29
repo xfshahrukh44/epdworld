@@ -203,8 +203,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/4?name=slippers">
-                                            <img src="https://avatars.mds.yandex.net/i?id=373917b9b2c4f9cbd585332e8c54babeae3da31b-8959338-images-thumbs&n=13"
-                                                 class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-1.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -220,8 +219,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/11?name=heeled-sandals">
-                                            <img src="https://avatars.mds.yandex.net/i?id=d1ab125ab6f5b8638bdbc8f1307a3f31a8ac9791-9068343-images-thumbs&n=13"
-                                                 class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-2.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -329,8 +327,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/133?name=bikinis--beachwear">
-                                            <img src="https://avatars.mds.yandex.net/i?id=31dc172889b46c63b657e61782a7fc9d9ed49fa4-8561284-images-thumbs&n=13"
-                                                 class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-8.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">

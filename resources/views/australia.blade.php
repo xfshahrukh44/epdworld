@@ -213,8 +213,8 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/4?name=slippers">
-                                            <img src="https://avatars.mds.yandex.net/i?id=95701fd7c5baebaf0024615d9d8560ce72bfde2c-7552730-images-thumbs&n=13"
-                                                 class="img-fluid" alt="top1">
+                                            <img data-src="{!! asset('images/c-1.jpg') !!}" class="lazy img-fluid" alt="top1">
+
                                         </a>
                                     </div>
                                     <div class="top1Content">
@@ -345,8 +345,7 @@
                                     <div class="top-products-cards">
                                         <a
                                                 href="https://epdworld.com/category-detail/133?name=bikinis--beachwear">
-                                            <img src="https://avatars.mds.yandex.net/i?id=b70fc89321464574af304e3580e19c6c6c892d7b-10878933-images-thumbs&n=13"
-                                                 class="img-fluid" alt="top1">
+                                                <img data-src="{!! asset('images/c-8.jpg') !!}" class="lazy img-fluid" alt="top1">
                                         </a>
                                     </div>
                                     <div class="top1Content">

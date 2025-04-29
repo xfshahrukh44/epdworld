@@ -220,7 +220,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/11?name=heeled-sandals">
-                                            <img src="https://avatars.mds.yandex.net/i?id=7f1820e94e4bbba945c9ab9f102992b6e7a989aa-7083384-images-thumbs&n=13"
+                                            <img src="https://i.pinimg.com/originals/69/1a/06/691a0689bc7536cd42ce22a7c7717c2e.jpg"
                                                  class="img-fluid" alt="top1">
                                         </a>
                                     </div>
@@ -238,7 +238,7 @@
                                 <div class="mainDiv">
                                     <div class="top-products-cards">
                                         <a href="https://epdworld.com/category-detail/8?name=womens-tote-bags">
-                                            <img src="https://avatars.mds.yandex.net/i?id=f4a44b077aee4d3d3556a9548da7824e1e99c031-4836432-images-thumbs&n=13"
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/%E3%83%AB%E3%82%B3%E3%83%83%E3%82%AF_%E3%83%99%E3%83%AB%E3%82%AF%E3%83%AD_%288623650427%29.jpg"
                                                  class="img-fluid" alt="top1">
                                         </a>
                                     </div>
