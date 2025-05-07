@@ -358,7 +358,7 @@
 {{--                        </div>--}}
                     </div>
                     <div id="accordion" class="payment-accordion">
-                        <div class="card">
+                        {{-- <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h5 class="mb-0">
                                     <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
@@ -371,14 +371,13 @@
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                  data-parent="#accordion">
                                 <div class="card-body">
-{{--                                    <input type="hidden" name="price" value="{{ $subtotal }}"/>--}}
                                     <input type="hidden" name="price" value="{{ $subtotal + $tax }}"/>
                                     <input type="hidden" name="product_id" value=""/>
                                     <input type="hidden" name="qty" value="value['qty']"/>
                                     <div id="paypal-button-container-popup"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="card">
                             <div class="card-header" id="headingTwo">
                                 <h5 class="mb-0">
