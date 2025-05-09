@@ -4,45 +4,46 @@
 
     <div class="top-bar hidden-md-down">
         <div class="container">
-            <div class="row" >
-            <div class="col-md-12 col-12">
-                <div class="top-bar-parent">
-            <nav>
-                <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
-                    <li class="menu-item animate-dropdown"><a title="Welcome to Elite Product Distributors World"
-{{--                            href="#">{!! App\Http\Traits\HelperTrait::returnFlag(1967) !!}</a></li>--}}
-                            href="#">{!! App\Http\Traits\HelperTrait::returnFlag(1967) !!}</a></li>
-                </ul>
-            </nav>
+            <div class="row">
+                <div class="col-md-12 col-12">
+                    <div class="top-bar-parent">
+                        <nav>
+                            <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
+                                <li class="menu-item animate-dropdown"><a
+                                        title="Welcome to Elite Product Distributors World" {{--                            href="#">{!! App\Http\Traits\HelperTrait::returnFlag(1967) !!}</a></li> --}}
+                                        href="#">{!! App\Http\Traits\HelperTrait::returnFlag(1967) !!}</a></li>
+                            </ul>
+                        </nav>
 
-            <nav>
-                <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
-                    <!--<li class="menu-item animate-dropdown"><a title="Store Locator" href="#"><i-->
-                    <!--            class="ec ec-map-pointer"></i>Store Locator</a></li>-->
-                    <!--<li class="menu-item animate-dropdown"><a title="Track Your Order" href="#"><i-->
-                    <!--            class="ec ec-transport"></i>Track Your Order</a></li>-->
-                    <li class="menu-item animate-dropdown"><a title="Shop" href="{!! route('shop') !!}"><i
-                                class="ec ec-shopping-bag"></i>Shop</a></li>
-                    @if (Auth::user())
-                        <li class="menu-item animate-dropdown"><a title="My Account" href="{{ route('account') }}"><i
-                                    class="ec ec-user"></i>Hi, {{ Auth::user()->name }}</a></li>
-                    @else
-                        <li class="menu-item animate-dropdown"><a title="My Account" href="{{ route('signin') }}"><i
-                                    class="ec ec-user"></i>My
-                                Account</a></li>
-                    @endif
-                    @if(Auth::check())
-                    <li class="menu-item animate-dropdown"><a href="{{ route('account') }}"><i
-                                    class="ec ec-user"></i>Request to be an affiliate seller</a></li>
-                    @else
-                    <li class="menu-item animate-dropdown"><a href="{{ route('seller-signup') }}"><i
-                                    class="ec ec-user"></i>Request to be an affiliate seller</a></li>
-                    @endif
+                        <nav>
+                            <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
+                                <!--<li class="menu-item animate-dropdown"><a title="Store Locator" href="#"><i-->
+                                <!--            class="ec ec-map-pointer"></i>Store Locator</a></li>-->
+                                <!--<li class="menu-item animate-dropdown"><a title="Track Your Order" href="#"><i-->
+                                <!--            class="ec ec-transport"></i>Track Your Order</a></li>-->
+                                <li class="menu-item animate-dropdown"><a title="Shop"
+                                        href="{!! route('shop') !!}"><i class="ec ec-shopping-bag"></i>Shop</a></li>
+                                @if (Auth::user())
+                                    <li class="menu-item animate-dropdown"><a title="My Account"
+                                            href="{{ route('account') }}"><i class="ec ec-user"></i>Hi,
+                                            {{ Auth::user()->name }}</a></li>
+                                @else
+                                    <li class="menu-item animate-dropdown"><a title="My Account"
+                                            href="{{ route('signin') }}"><i class="ec ec-user"></i>My
+                                            Account</a></li>
+                                @endif
+                                @if (Auth::check())
+                                    <li class="menu-item animate-dropdown"><a href="{{ route('account') }}"><i
+                                                class="ec ec-user"></i>Request to be an affiliate seller</a></li>
+                                @else
+                                    <li class="menu-item animate-dropdown"><a href="{{ route('seller-signup') }}"><i
+                                                class="ec ec-user"></i>Request to be an affiliate seller</a></li>
+                                @endif
 
-                </ul>
-            </nav>
-            </div>
-            </div>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
     </div><!-- /.top-bar -->
@@ -55,7 +56,8 @@
                 <div class="header-logo">
                     <a href="{{ route('home') }}" aria-label="logo" class="header-logo-link">
 
-                        <img src="{{ asset($logo->img_path) }}" width="100%" height="100%" alt="Elite Product Limited">
+                        <img src="{{ asset($logo->img_path) }}" width="100%" height="100%"
+                            alt="Elite Product Limited">
                     </a>
                 </div>
                 <!-- ============================================================= Header Logo : End============================================================= -->
@@ -108,7 +110,7 @@
                 <!-- ============================================================= Header Logo ============================================================= -->
                 <div class="header-logo">
                     <a href="{{ route('home') }}" aria-label="logo" class="header-logo-link">
-                        <img src="{{ asset($logo->img_path) }}" alt="" width="100%" height="100%" >
+                        <img src="{{ asset($logo->img_path) }}" alt="" width="100%" height="100%">
                     </a>
                 </div>
                 <!-- ============================================================= Header Logo : End============================================================= -->
@@ -120,9 +122,7 @@
     </header>
 
     @php
-        $parentCategories = App\Category::where('parent', 0)
-            ->with('children')
-            ->get();
+        $parentCategories = App\Category::where('parent', 0)->with('children')->get();
 
     @endphp
 
@@ -144,9 +144,8 @@
                                 @else
                                     <li class="yamm-tfw menu-item menu-item-has-children  menu-item-2590 dropdown">
 
-                                        <a title="Beauty &amp; Health" href=""
-                                            data-toggle="dropdown" class="dropdown-toggle"
-                                            aria-haspopup="true">{{ $item->name }}</a>
+                                        <a title="Beauty &amp; Health" href="" data-toggle="dropdown"
+                                            class="dropdown-toggle" aria-haspopup="true">{{ $item->name }}</a>
                                         <ul role="menu" class=" dropdown-menu"
                                             style="min-height: 389.004px; visibility: hidden; display: none; width: 600px !important; opacity: 1;">
                                             <li class="menu-item animate-dropdown menu-item-object-static_block"
@@ -197,7 +196,8 @@
                     <label class="sr-only screen-reader-text" for="search">Search for:</label>
                     <div class="input-group">
                         <input type="text" id="name" class="form-control search-field" dir="ltr"
-                            value="{{ ucwords(str_replace("-"," ",Request::get('name'))) }}" name="name" placeholder="Search for products" />
+                            value="{{ ucwords(str_replace('-', ' ', Request::get('name'))) }}" name="name"
+                            placeholder="Search for products" />
                         <div class="input-group-addon search-categories">
                             <select name='product_cat' id='product_cat' class='postform resizeselect'>
                                 @php
@@ -205,7 +205,8 @@
                                 @endphp
                                 <option value='0' selected='selected'>All Categories</option>
                                 @foreach ($cat as $cats)
-                                    <option class="level-0" value='{!! $cats->id !!}' {!! Request::get('product_cat') == $cats->id ? 'selected' : '' !!}>{!! $cats->name !!}
+                                    <option class="level-0" value='{!! $cats->id !!}' {!! Request::get('product_cat') == $cats->id ? 'selected' : '' !!}>
+                                        {!! $cats->name !!}
                                     </option>
                                 @endforeach
 
@@ -216,38 +217,38 @@
                         </div>
                     </div>
                 </form>
-<div class="responsive-mb">
-                <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
-                    <li class="nav-item dropdown">
-                        <a href="{!! route('cart') !!}" class="nav-link">
-                           <i class="fas fa-shopping-cart"></i>
-                            <span class="cart-items-count count">{!! count(Session::get('cart') ?? []) !!}</span>
-                            <span class="cart-items-total-price total-price">
-                                @php
-                                    $total = 0;
-                                    foreach (Session::get('cart') as $key => $value) {
-                                        $total += $value['baseprice'];
-                                    }
-                                @endphp
-                                @if ($total > 0)
-                                    <span class="amount">&#36;{{ $total }}</span>
-                                @endif
-                            </span>
-                        </a>
+                <div class="responsive-mb">
+                    <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
+                        <li class="nav-item dropdown">
+                            <a href="{!! route('cart') !!}" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-items-count count">{!! count(Session::get('cart') ?? []) !!}</span>
+                                <span class="cart-items-total-price total-price">
+                                    @php
+                                        $total = 0;
+                                        foreach (Session::get('cart') as $key => $value) {
+                                            $total += $value['baseprice'];
+                                        }
+                                    @endphp
+                                    @if ($total > 0)
+                                        <span class="amount">&#36;{{ $total }}</span>
+                                    @endif
+                                </span>
+                            </a>
 
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
 
-                <ul class="navbar-wishlist nav navbar-nav pull-right flip">
-                    <li class="nav-item">
-                        <a href="" class="nav-link"><i class="ec ec-favorites"></i></a>
-                    </li>
-                </ul>
-                <ul class="navbar-compare nav navbar-nav pull-right flip">
-                    <li class="nav-item">
-                        <a href="" class="nav-link"><i class="ec ec-compare"></i></a>
-                    </li>
-                </ul>
+                    <ul class="navbar-wishlist nav navbar-nav pull-right flip">
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ec ec-favorites"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-compare nav navbar-nav pull-right flip">
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ec ec-compare"></i></a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
