@@ -180,7 +180,8 @@ class BannerController extends Controller
             $fileExt = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
             $pathToStore = public_path('uploads/banner/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
+            $file->move(public_path('uploads/banner/'), $fileNameToStore);
+            // Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
 			$requestData['image'] = 'uploads/banner/'.$fileNameToStore;
 
         }
