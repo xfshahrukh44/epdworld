@@ -449,7 +449,14 @@
             z-index: 0;
             left: 30px;
             bottom: 350px;
-            font-size: 50px;
+            font-size: 40px;
+            background: white;
+            border-radius: 60%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .home-v2-slider .owl-nav .owl-next i {
@@ -457,7 +464,14 @@
             z-index: 0;
             right: 30px;
             bottom: 350px;
-            font-size: 50px;
+            font-size: 40px;
+            background: white;
+            border-radius: 60%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         ul#menu-vertical-menu {
@@ -466,7 +480,9 @@
         }
     </style>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="responsive">
