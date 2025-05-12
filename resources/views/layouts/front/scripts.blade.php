@@ -1335,13 +1335,13 @@ $('#contactform').on('submit',function(e){
     //     $('#menu-vertical-menu').show();
     // });
     
-     $(document).mousemove(function(){
-         if($(".hrvbtr:hover").length != 0){
+    $(document).mousemove(function(){
+        if($(".hrvbtr:hover").length != 0){
             $('.hrvbtr').addClass('open');
-        } else{
+         } else{
             $('.hrvbtr').removeClass('open');
-        }
-    });
+     }
+     });
     
     
     // $('.hrvbtr').hover(function(){

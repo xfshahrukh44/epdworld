@@ -131,66 +131,90 @@
             <div class="container">
                 <ul class="nav navbar-nav departments-menu animate-dropdown">
                     <li class="nav-item dropdown hrvbtr">
-
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                             id="departments-menu-toggle">BROWSE
                             CATEGORY</a>
                         <ul id="menu-vertical-menu"
                             class="dropdown-menu yamm departments-menu-dropdown animated-dropdown">
-                            @foreach ($parentCategories as $item)
-                                @if ($item->children->isEmpty())
-                                    <li class="menu-item animate-dropdown"><a title="Accessories"
-                                            href="">{{ $item->name }}</a></li>
-                                @else
-                                    <li class="yamm-tfw menu-item menu-item-has-children  menu-item-2590 dropdown">
-
-                                        <a title="Beauty &amp; Health" href="" data-toggle="dropdown"
-                                            class="dropdown-toggle" aria-haspopup="true">{{ $item->name }}</a>
-                                        <ul role="menu" class=" dropdown-menu"
-                                            style="min-height: 389.004px; visibility: hidden; display: none; width: 600px !important; opacity: 1;">
-                                            <li class="menu-item animate-dropdown menu-item-object-static_block"
-                                                style="min-height: 385.004px;">
-                                                <div class="yamm-content">
-                                                    <div class="vc_row row wpb_row vc_row-fluid">
-                                                        <div
-                                                            class="wpb_column vc_column_container vc_col-sm-12 col-sm-12">
-                                                            <div class="vc_column-inner ">
-                                                                <div class="wpb_wrapper">
-                                                                    <div class="wpb_text_column wpb_content_element ">
-                                                                        <div class="wpb_wrapper custom-wbp-wrapper">
-
-                                                                            @foreach ($item->children as $children)
-                                                                                @if (!$children->children->isEmpty())
-                                                                                    <ul>
-                                                                                        <li class="nav-title"><a
-                                                                                                href="{{ route('categoryDetail', ['id' => $children->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $children->name)))]) }}">{{ $children->name }}</a>
-                                                                                        </li>
-                                                                                        @foreach ($children->children as $forechildren)
-                                                                                            <li><a
-                                                                                                    href="{{ route('categoryDetail', ['id' => $forechildren->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $forechildren->name)))]) }}">{{ $forechildren->name }}</a>
+                            <div class="mian-browse-category-show">
+                                @foreach ($parentCategories as $item)
+                                    @if ($item->children->isEmpty())
+                                        <li class="menu-item animate-dropdown"><a title="Accessories"
+                                                href="">{{ $item->name }}</a></li>
+                                    @else
+                                        <li class="yamm-tfw menu-item menu-item-has-children  menu-item-2590">
+                                            <a title="Beauty &amp; Health" href="" data-toggle="dropdown"
+                                                class="dropdown-toggle" aria-haspopup="true">{{ $item->name }}</a>
+                                            <ul role="menu" class=" dropdown-menu"
+                                                style="min-height: 389.004px; visibility: hidden; display: none; width: 600px !important; opacity: 1;">
+                                                <li class="menu-item animate-dropdown menu-item-object-static_block"
+                                                    style="min-height: 385.004px;">
+                                                    <div class="yamm-content">
+                                                        <div class="vc_row row wpb_row vc_row-fluid">
+                                                            <div
+                                                                class="wpb_column vc_column_container vc_col-sm-12 col-sm-12">
+                                                                <div class="vc_column-inner ">
+                                                                    <div class="wpb_wrapper">
+                                                                        <div
+                                                                            class="wpb_text_column wpb_content_element ">
+                                                                            <div
+                                                                                class="wpb_wrapper custom-wbp-wrapper">
+                                                                                @foreach ($item->children as $children)
+                                                                                    @if (!$children->children->isEmpty())
+                                                                                        <ul>
+                                                                                            <li class="nav-title"><a
+                                                                                                    href="{{ route('categoryDetail', ['id' => $children->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $children->name)))]) }}">{{ $children->name }}</a>
                                                                                             </li>
-                                                                                        @endforeach
-                                                                                    </ul>
-                                                                                @endif
-                                                                            @endforeach
-
-
+                                                                                            @foreach ($children->children as $forechildren)
+                                                                                                <li><a
+                                                                                                        href="{{ route('categoryDetail', ['id' => $forechildren->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $forechildren->name)))]) }}">{{ $forechildren->name }}</a>
+                                                                                                </li>
+                                                                                            @endforeach
+                                                                                        </ul>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                @endif
-                            @endforeach
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </div>
                         </ul>
                     </li>
                 </ul>
+
+
+
+                {{-- <div class="browse-product">
+                    <ul class="cetagory-browse">
+                        <li class="dropdown-show">
+                            <a href="#">Shoes & Accessories</a>
+                            <ul>
+                                <li class="dropdown-side-open">
+                                    <a href="#">Men's Shoes</a>
+                                </li>
+                                <li class="dropdown-side-open">
+                                    <a href="#">Men's Shoes</a>
+                                </li>
+                                <li class="dropdown-side-open">
+                                    <a href="#">Men's Shoes</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="child-dropdown-category">
+                        <ul class="">
+                            <li class=""></li>
+                        </ul>
+                    </div>
+                </div> --}}
 
                 <form class="navbar-search"action="{{ route('shop') }}" method="get">
                     <label class="sr-only screen-reader-text" for="search">Search for:</label>

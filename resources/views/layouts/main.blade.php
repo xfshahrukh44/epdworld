@@ -474,9 +474,22 @@
             justify-content: center;
         }
 
-        ul#menu-vertical-menu {
+        .mian-browse-category-show {
             overflow-y: scroll;
             height: 475px;
+        }
+
+
+        .mian-browse-category-show li a {
+            color: #333e48 !important;
+            padding-left: 20px !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mian-browse-category-show li {
+            margin-bottom: 5px;
         }
     </style>
 
