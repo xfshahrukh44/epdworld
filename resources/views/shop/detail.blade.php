@@ -464,8 +464,8 @@
 
     .image1 {
         opacity: 1;
-        height: 50px;
-        width: 70px;
+        height: 25px;
+        width: 100%;
         left: 0;
         display: flex !important;
         align-items: center;
@@ -473,7 +473,7 @@
         flex-direction: row;
         border: 1px solid #000;
         background-position: center center;
-        margin: 10px;
+        margin: 5px;
         cursor: pointer;
 
 
@@ -804,7 +804,79 @@ input[type = radio] {
     .att_vals {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
     }
+    
+    
+  .site-content .id-grid.id-grid-cols-2.id-border-\[0\.5px\].id-border-\[\#ddd\].id-mt-3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid #0000003b;
+}
+
+.site-content .id-grid.id-max-h-\[68px\].id-overflow-hidden.id-grid-cols-\[2fr_3fr\].id-border-b-\[0\.5px\].id-border-\[\#ddd\] {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    border: 1px solid #0000003b;
+    height: 65px;
+}
+
+.site-content .id-text-sm.id-p-4.id-bg-\[\#f8f8f8\].id-flex.id-items-center {
+    width: 50%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #0000003b;
+    padding-left: 20px;
+       
+}
+
+.site-content .id-text-sm.id-font-medium.id-p-4.id-flex.id-items-center.id-flex-wrap {
+    width: 50%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #0000003b;
+    padding-left: 20px;
+     overflow-y: hidden;
+}
+
+.site-content id-grid.id-max-h-\[68px\].id-overflow-hidden.id-grid-cols-\[2fr_3fr\] {
+}
+
+.site-content .id-grid.id-max-h-\[68px\].id-overflow-hidden.id-grid-cols-\[2fr_3fr\] {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    border: 1px solid #0000003b;
+    height: 65px;
+}
+    
+    
+    .site-content .id-text-sm.id-font-medium.id-p-4.id-flex.id-items-center.id-flex-wrap .id-flex.id-items-center.id-gap-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-content .id-text-sm.id-font-medium.id-p-4.id-flex.id-items-center.id-flex-wrap .id-flex.id-items-center.id-gap-1 button {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    width: 50%;
+}
+
+.site-content .id-text-sm.id-font-medium.id-p-4.id-flex.id-items-center.id-flex-wrap .id-flex.id-items-center.id-gap-1 button img {
+    width: 50%;
+}
 </style>
 @endsection
 
