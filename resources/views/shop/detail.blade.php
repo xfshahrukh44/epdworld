@@ -88,7 +88,8 @@
                                                 target="_blank">{!! $product_detail->users->name !!}</a></p>
                                     @endif
                                     <!--<p><strong>Have this One?</strong>    -->
-                                    <!--@if (Auth::check() && Auth::user()->is_seller == 1)-->
+                                    <!--@if (Auth::check() && Auth::user()->is_seller == 1)
+-->
                                     <!--@if ($exist == null)
 -->
                                     <!-- <button class="btn-seller" type="button" data-toggle="modal" data-target="#exampleModalCenter">Sell on EPD World</button>-->
@@ -98,7 +99,8 @@
 @endif-->
                                 <!--@else-->
                                     <!--<a class="btn-seller" href="{{ route('seller-signup') }}">Sell on EPD World</a>-->
-                                    <!--@endif-->
+                                    <!--
+@endif-->
                                     <!--</p>-->
                                 </div>
                                 <!-- .description -->
@@ -123,30 +125,33 @@
                                                         <h3>{{ $att_models->attribute->name }}</h3>
 
                                                         @php
-                                                            $pro_att = \App\ProductAttribute::where(['attribute_id' => $att_models->attribute_id, 'product_id' => $product_detail->id])->get();
+                                                            $pro_att = \App\ProductAttribute::where([
+                                                                'attribute_id' => $att_models->attribute_id,
+                                                                'product_id' => $product_detail->id,
+                                                            ])->get();
                                                         @endphp
 
                                                         <div class="att_vals">
-                                                        @foreach ($pro_att as $pro_atts)
-                                                            <label class="radio-img">
-                                                                <input type="radio" class="radio-box" name="variation[{{ $att_models->attribute->name }}]" value="{{ $pro_atts->id }}" />
-                                                                <div class="image1"
-                                                                    style="
+                                                            @foreach ($pro_att as $pro_atts)
+                                                                <label class="radio-img">
+                                                                    <input type="radio" class="radio-box"
+                                                                        name="variation[{{ $att_models->attribute->name }}]"
+                                                                        value="{{ $pro_atts->id }}" />
+                                                                    <div class="image1"
+                                                                        style="
                                                                         background-color: {{ $pro_atts->attributesValues->value }};
-                                                                        @if($pro_atts->image != null)
-                                                                            background-image: url('{{ asset($pro_atts->image) }}');
-                                                                            background-size: cover;
-                                                                        @endif
+                                                                        @if ($pro_atts->image != null) background-image: url('{{ asset($pro_atts->image) }}');
+                                                                            background-size: cover; @endif
                                                                     ">
-                                                                    @if($pro_atts->image == null)
-                                                                        <span>
-                                                                            {{ $pro_atts->attributesValues->value }}
-                                                                        </span>
-                                                                    @else
-                                                                        <span></span>
-                                                                    @endif
-                                                                </div>
-                                                            </label>
+                                                                        @if ($pro_atts->image == null)
+                                                                            <span>
+                                                                                {{ $pro_atts->attributesValues->value }}
+                                                                            </span>
+                                                                        @else
+                                                                            <span></span>
+                                                                        @endif
+                                                                    </div>
+                                                                </label>
                                                             @endforeach
                                                         </div>
                                                     </div>
@@ -170,11 +175,8 @@
                                                     <span id="1" class=" plus btn btnMinus ">+</span>
                                                 </div>
                                             </td>
-
                                             <div class="slecter-but">
-                                                <button type="submit" class="btn enroll"> Add
-                                                    to
-                                                    Cart</a>
+                                                <button type="submit" class="btn enroll"> Add to Cart</a>
                                             </div>
 
                                             {{-- <button id="addCart" class="qty btn btnDonate mt-2" href="javascript:void(0)"
@@ -798,6 +800,7 @@ input[type = radio] {
     .more-bg {
         display: none;
     }
+
     .att_vals {
         display: flex;
         align-items: center;
@@ -893,4 +896,24 @@ input[type = radio] {
         });
     });
 </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        document.querySelectorAll(".att_vals").forEach(function(group) {
+
+            const selected = group.querySelector('input[type="radio"]:checked');
+            if (!selected) {
+                const firstRadio = group.querySelector('input[type="radio"]');
+                if (firstRadio) {
+                    firstRadio.checked = true;
+                }
+            }
+        });
+    });
+</script>
+
+
+
 @endsection

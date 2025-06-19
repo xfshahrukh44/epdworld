@@ -58,7 +58,7 @@ class ProductController extends Controller
 
 			$keyword = $_GET['q'];
 
-			$products = $products->where(function ($query)  use ($keyword) {
+			$products = $products->where(function ($query) use ($keyword) {
 				$query->where('product_title', 'like', $keyword);
 			});
 		}
@@ -81,8 +81,8 @@ class ProductController extends Controller
 		$page = DB::table('pages')->where('id', 2)->first();
 
 		$shops = Product::where('category', $id)->paginate(12);
-        $category = Category::all();
-        $latest = Product::orderBy('id', 'desc')->take(4)->get();
+		$category = Category::all();
+		$latest = Product::orderBy('id', 'desc')->take(4)->get();
 
 
 		return view('shop.shop', compact('shops', 'page', 'category', 'latest'));
@@ -108,7 +108,7 @@ class ProductController extends Controller
 	public function saveCart(Request $request)
 	{
 
-    // dd($request->input('vendor_id'));
+		// dd($request->input('vendor_id'));
 		$var_item = $_POST['variation'];
 
 		$result = array();
@@ -117,7 +117,7 @@ class ProductController extends Controller
 		$product_detail = DB::table('products')->where('id', $_POST['product_id'])->first();
 		$id = isset($_POST['product_id']) ? $_POST['product_id'] : '';
 		$qty = isset($_POST['qty']) ? intval($_POST['qty']) : '1';
-        // dd($product_detail);
+		// dd($product_detail);
 
 
 		$cart = array();
@@ -127,13 +127,13 @@ class ProductController extends Controller
 			$cart = Session::get('cart');
 		}
 
-        if($request->input('vendor_id') != null){
-            $vendor_pro = DB::table('product_users')->where('user_id', $request->input('vendor_id'))->where('product_id', $product_detail->id)->first();
-            $price = $vendor_pro->price;
-            // dd($price);
-        }else{
-		$price = $product_detail->price;
-        }
+		if ($request->input('vendor_id') != null) {
+			$vendor_pro = DB::table('product_users')->where('user_id', $request->input('vendor_id'))->where('product_id', $product_detail->id)->first();
+			$price = $vendor_pro->price;
+			// dd($price);
+		} else {
+			$price = $product_detail->price;
+		}
 
 		if ($id != "" && intval($qty) > 0) {
 
@@ -150,19 +150,20 @@ class ProductController extends Controller
 			$cart[$cartId]['qty'] = $qty;
 			$cart[$cartId]['variation_price'] = 0;
 
+
 			foreach ($var_item as $key => $value) {
 
 				$data = ProductAttribute::where('product_id', $_POST['product_id'])
 					->where('id', $value)->first();
-				$cart[$cartId]['variation'][$data->id]['attribute'] = 	$data->attribute->name;
-				$cart[$cartId]['variation'][$data->id]['attribute_val'] = 	$data->attributesValues->value;
-				$cart[$cartId]['variation'][$data->id]['attribute_price'] = 	$data->price;
+				$cart[$cartId]['variation'][$data->id]['attribute'] = $data->attribute->name;
+				$cart[$cartId]['variation'][$data->id]['attribute_val'] = $data->attributesValues->value;
+				$cart[$cartId]['variation'][$data->id]['attribute_price'] = $data->price;
 				$cart[$cartId]['variation_price'] += $data->price;
 			}
 
 
 			Session::put('cart', $cart);
-// 			dd(Session::get('cart'));
+			// 			dd(Session::get('cart'));
 			Session::flash('message', 'Product Added to cart Successfully');
 			Session::flash('alert-class', 'alert-success');
 			return redirect('/cart');
@@ -183,7 +184,7 @@ class ProductController extends Controller
 			foreach ($cart as $key => $value) {
 				foreach ($value as $key_item => $value_item) {
 					if ($key_item == 'qty') {
-						$cart[$key][$key_item] = (int)($_POST['row'][$count]);
+						$cart[$key][$key_item] = (int) ($_POST['row'][$count]);
 					}
 				}
 				$count = $count + 1;
@@ -246,108 +247,109 @@ class ProductController extends Controller
 
 		$page = DB::table('pages')->where('id', 2)->first();
 
-        $name = $request->name;
+		$name = $request->name;
 
-        $cat = $request->product_cat;
+		$cat = $request->product_cat;
 
-        $shops = new Product;
+		$shops = new Product;
 
-        if($orderBy !="" && $orderBy!= 'default'){
-                if($orderBy == 'latest'){
-                    $shops = $shops->orderBy('id','desc');
-                }elseif($orderBy == 'price-low-high'){
-                    $shops = $shops->orderBy('price','asc');
-                }elseif($orderBy == 'price-high-low'){
-                    $shops = $shops->orderBy('price','desc');
-                }else{
-                    $variable = substr($orderBy,strpos($orderBy, "-"));
-                    $min = explode('-',$variable)[1];
-                    $max = explode('-',$variable)[2];
+		if ($orderBy != "" && $orderBy != 'default') {
+			if ($orderBy == 'latest') {
+				$shops = $shops->orderBy('id', 'desc');
+			} elseif ($orderBy == 'price-low-high') {
+				$shops = $shops->orderBy('price', 'asc');
+			} elseif ($orderBy == 'price-high-low') {
+				$shops = $shops->orderBy('price', 'desc');
+			} else {
+				$variable = substr($orderBy, strpos($orderBy, "-"));
+				$min = explode('-', $variable)[1];
+				$max = explode('-', $variable)[2];
 
-                    $shops = $shops->whereBetween('price', [$min,$max]);
-                }
-            }
+				$shops = $shops->whereBetween('price', [$min, $max]);
+			}
+		}
 
-        if($name != null){
-//            $shops = $shops->where('product_title', 'LIKE', "%$name%");
-	        $shops = $shops->where(function ($q) use ($name) {
-	            return $q->where('product_title', 'LIKE', "%$name%")->orWhere('sku', 'LIKE', "%$name%")->orWhere('item_number', 'LIKE', "%$name%");
-            });
-	    }
-        if ($cat != null && $cat !== '0') {
+		if ($name != null) {
+			//            $shops = $shops->where('product_title', 'LIKE', "%$name%");
+			$shops = $shops->where(function ($q) use ($name) {
+				return $q->where('product_title', 'LIKE', "%$name%")->orWhere('sku', 'LIKE', "%$name%")->orWhere('item_number', 'LIKE', "%$name%");
+			});
+		}
+		if ($cat != null && $cat !== '0') {
 
-	        $shops = $shops->where('category', $cat);
+			$shops = $shops->where('category', $cat);
 
-	    }
+		}
 
 
-	   // dd($shops);
-        // if(!$shops->isEmpty()){
+		// dd($shops);
+		// if(!$shops->isEmpty()){
 //            $shops = $shops->where('price', '!=', 10.00)->orderByDesc('id')->paginate(12);
-            $shops = $shops->orderByDesc('id')->paginate(12);
-        // }
+		$shops = $shops->orderByDesc('id')->paginate(12);
+		// }
 
 
-        $category = Category::all();
-        $latest = Product::orderBy('id', 'desc')->take(4)->get();
+		$category = Category::all();
+		$latest = Product::orderBy('id', 'desc')->take(4)->get();
 
 
 		return view('shop.shop', compact('shops', 'page', 'category', 'latest'));
 	}
 
 	public function shopDetailSlug($slug)
-    {
-        $product = new Product;
-        $product_detail = $product->where('slug', $slug)->first();
+	{
+		$product = new Product;
+		$product_detail = $product->where('slug', $slug)->first();
 
-        if (!$product_detail) {
-            abort(404, 'Product not found');
-        }
+		if (!$product_detail) {
+			abort(404, 'Product not found');
+		}
 
-        $att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $product_detail->id)->get();
-        $att_id = DB::table('product_attributes')->where('product_id', $product_detail->id)->get();
-        $shops = DB::table('products')
-            ->join('categories', 'products.category', '=', 'categories.id')
-            ->select('products.*', 'categories.name as category_title')->take(3)->get();
-        $vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
-        $exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
-        $reviews = Productreview::where('product_id', $product_detail->id)->get();
+		$att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $product_detail->id)->get();
+		$att_id = DB::table('product_attributes')->where('product_id', $product_detail->id)->get();
+		$shops = DB::table('products')
+			->join('categories', 'products.category', '=', 'categories.id')
+			->select('products.*', 'categories.name as category_title')->take(3)->get();
+		$vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
+		$exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
+		$reviews = Productreview::where('product_id', $product_detail->id)->get();
 
-        return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
-    }
+		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
+	}
 
-    public function shopDetail($id)
-    {
-        $product = new Product;
-        $product_detail = $product->where('id', $id)->first();
+	public function shopDetail($id)
+	{
+		$product = new Product;
+		$product_detail = $product->where('id', $id)->first();
 
-        if (!$product_detail) {
-            abort(404, 'Product not found');
-        }
+		if (!$product_detail) {
+			abort(404, 'Product not found');
+		}
 
-        $att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $product_detail->id)->get();
-        $att_id = DB::table('product_attributes')->where('product_id', $product_detail->id)->get();
-        $shops = DB::table('products')
-            ->join('categories', 'products.category', '=', 'categories.id')
-            ->select('products.*', 'categories.name as category_title')->take(3)->get();
-        $vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
-        $exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
-        $reviews = Productreview::where('product_id', $product_detail->id)->get();
+		$att_model = ProductAttribute::groupBy('attribute_id')->where('product_id', $product_detail->id)->get();
+		$att_id = DB::table('product_attributes')->where('product_id', $product_detail->id)->get();
+		$shops = DB::table('products')
+			->join('categories', 'products.category', '=', 'categories.id')
+			->select('products.*', 'categories.name as category_title')->take(3)->get();
+		$vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
+		$exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
+		$reviews = Productreview::where('product_id', $product_detail->id)->get();
 
-        return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
-    }
+		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
+	}
 
 
-	public function reviewFormSubmit(Request $request){
-	   // dd($request->all());
-	    $review = new Productreview;
-	    $review->name = $request->name;
-	    $review->rating = $request->rating;
-	    $review->review = $request->review;
-	    $review->product_id = $request->product_id;
-	    $review->save();
+	public function reviewFormSubmit(Request $request)
+	{
+		// dd($request->all());
+		$review = new Productreview;
+		$review->name = $request->name;
+		$review->rating = $request->rating;
+		$review->review = $request->review;
+		$review->product_id = $request->product_id;
+		$review->save();
 
-	    Session::flash('message', 'Product Review Added Successfully');
+		Session::flash('message', 'Product Review Added Successfully');
 		Session::flash('alert-class', 'alert-success');
 
 		return back();
@@ -360,7 +362,8 @@ class ProductController extends Controller
 		$order = orders::where('id', $order_id)->first();
 		$order_products = orders_products::where('orders_id', $order_id)->get();
 
-		return view('account.invoice')->with('title', 'Invoice #' . $order_id)->with(compact('order', 'order_products'))->with('order_id', $order_id);;
+		return view('account.invoice')->with('title', 'Invoice #' . $order_id)->with(compact('order', 'order_products'))->with('order_id', $order_id);
+		;
 	}
 
 	public function checkout()
@@ -401,16 +404,16 @@ class ProductController extends Controller
 
 		if (ENV == 'demo') {
 			$client = new SoapClient("https://staging.postaplus.net/APIService/PostaWebClient.svc?wsdl");
-			$Password =  '123456';
-			$ShipperAccount =  'DXB51487';
-			$UserName =  'DXB51487';
-			$CodeStation =  'DXB';
+			$Password = '123456';
+			$ShipperAccount = 'DXB51487';
+			$UserName = 'DXB51487';
+			$CodeStation = 'DXB';
 		} else {
 			$client = new SoapClient("https://etrack.postaplus.net/APIService/PostaWebClient.svc?singleWsdl");
-			$Password =  '';
-			$ShipperAccount =  '';
-			$UserName =  '';
-			$CodeStation =  '';
+			$Password = '';
+			$ShipperAccount = '';
+			$UserName = '';
+			$CodeStation = '';
 		}
 
 		$params = array(
