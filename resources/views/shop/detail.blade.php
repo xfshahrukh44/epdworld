@@ -141,7 +141,10 @@
                                                                         style="
                                                                         background-color: {{ $pro_atts->attributesValues->value }};
                                                                         @if ($pro_atts->image != null) background-image: url('{{ asset($pro_atts->image) }}');
-                                                                            background-size: cover; @endif
+                                                                            background-size: contain;
+                                                                            background-repeat: no-repeat;
+                                                                            width: 60px;
+                                                                            height: 60px;; @endif
                                                                     ">
                                                                         @if ($pro_atts->image == null)
                                                                             <span>
@@ -464,8 +467,9 @@
 
     .image1 {
         opacity: 1;
-        height: 25px;
+        height: auto;
         width: 100%;
+        padding: 5px 0;
         left: 0;
         display: flex !important;
         align-items: center;
