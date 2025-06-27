@@ -66,7 +66,7 @@ class HomeController extends Controller
        $banner = DB::table('banners')->where('slider_cat', 0)->get();
        $second_banner = DB::table('banners')->where('slider_cat', 1)->get();
        $section = DB::table('section')->where('page_id', 1)->get();
-       $product = Product::inRandomOrder()->limit(12)->get();
+       $product = Product::latest()->limit(12)->get();
        $product_all = Product::inRandomOrder()->limit(12)->get();
        $category = Category::inRandomOrder()->limit(24)->get();
 
