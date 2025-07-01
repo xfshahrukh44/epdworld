@@ -109,7 +109,7 @@
 
                         <div class="form-group mb-1 col-sm-12 col-md-2">
                             <label for="price">Price</label>
-                            <input type="number" step="0.01" name="v_price[]" class="form-control"
+                            <input type="number" step="any" name="v_price[]" class="form-control"
                                 value="{{ $pro_att_edits->price }}">
                         </div>
 
@@ -163,7 +163,7 @@
                     <div class="form-group mb-1 col-sm-12 col-md-2">
                         <label for="bio" class="cursor-pointer">Price</label>
                         <br>
-                        <input type="number" name="v-price" class="form-control" id="price"
+                        <input type="number" step="any" name="v-price" class="form-control" id="price"
                             value="{{ $pro_att_edits->attributesValues->price }}">
                     </div>
                     <div class="form-group mb-1 col-sm-12 col-md-2">

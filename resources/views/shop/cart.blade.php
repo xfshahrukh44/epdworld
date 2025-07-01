@@ -31,8 +31,8 @@
         }
 
         /* .cart-table tbody td:first-child {
-                                                    width: 50%;
-                                                } */
+                                                                                                width: 50%;
+                                                                                            } */
         .row {
             align-items: center;
         }
@@ -180,11 +180,11 @@
                                                     </div>
                                                     <div class="col-md-9">
                                                         <h5>{{ $value['name'] }}</h5>
-
                                                         <table class="table">
                                                             <thead>
                                                             </thead>
                                                             <tbody>
+                                                                {{-- @dump($value['variation']); --}}
                                                                 @foreach ($value['variation'] as $key => $values)
                                                                     @php
                                                                         $data = App\ProductAttribute::find($key);
@@ -196,7 +196,8 @@
                                                                             <td
                                                                                 style="background-color: {{ $values['attribute_val'] }}; width: auto;line-height: normal;height: auto;display: inline-block;">
                                                                                 {{ $values['attribute_val'] }}</td>
-                                                                            <td>${{ $values['attribute_price'] }}</td>
+                                                                             <td>${{ number_format($values['attribute_price'], 2) ?? 0 }}
+                                                                            </td>
                                                                         </tr>
                                                                     @else
                                                                         <tr class="variation">
@@ -204,7 +205,8 @@
                                                                             </th>
                                                                             <td><img src="{{ asset($data['image']) }}"
                                                                                     style="width: 30px"></td>
-                                                                            <td>${{ $values['attribute_price'] }}</td>
+                                                                            <td>${{ number_format($values['attribute_price'], 2) ?? 0 }}
+                                                                            </td>
                                                                         </tr>
                                                                     @endif
                                                                 @endforeach
@@ -231,7 +233,6 @@
                                             <td class="p_total">
                                                 <h4>${!! number_format($value['baseprice'] * $value['qty'] + $value['variation_price'], 2) !!}</h4>
                                             </td>
-
                                         </tr>
                                         <input type="hidden" name="product_id" id="" value="<?php echo $value['id']; ?>">
                                         <?php $subtotal += $value['baseprice'] * $value['qty'];
