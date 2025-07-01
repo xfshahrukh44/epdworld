@@ -938,7 +938,7 @@
                     <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
 
                         <ul class="products columns-3">
-                            @foreach ($product_all as $pro)
+                            @foreach ($product as $pro)
                             <li class="product first">
                                 <div class="product-outer">
                                     <div class="product-inner"> <span class="loop-product-categories"><a href="#"
