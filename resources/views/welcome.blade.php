@@ -76,7 +76,7 @@
                                     <div class="home-v2-owl-carousel-tabs">
                                         <div class="woocommerce columns-3">
                                             <div class="products owl-carousel home-v2-carousel-tabs products-carousel columns-3">
-                                    @foreach ($product as $pro)
+                                    @foreach ($product_all as $pro)
                                     {{-- @dump($pro->categorys) --}}
                                     {{-- @php
                                         $cat = DB::table('categories')->where('id', $pro->categories)->first();
@@ -956,7 +956,7 @@
                                                         data-src="{{ asset($pro->image) }}" alt="" class="lazy"> </div>
                                             </a>
                                         @endif
-                                        
+
                                         <div class="price-add-to-cart"> <span class="price">
                                                 <span class="electro-price">
                                                     <ins><span class="amount">&#036;{!! $pro->price !!}</span></ins>
@@ -967,14 +967,14 @@
                                                     </div>
                                                     {{-- <del><span class="amount">&#036;2,299.00</span></del> --}}
                                                 </span>
-                                            </span> 
+                                            </span>
                                                 @if(empty($pro->slug))
                                                     <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
                                                         class="button add_to_cart_button">Add to cart</a>
                                                 @else
                                                     <a rel="nofollow" href="{{ route('shopDetailSlug', ['slug' => $pro->slug]) }}"
                                                         class="button add_to_cart_button">Add to cart</a>
-                                                @endif 
+                                                @endif
                                                 </div>
 
 
