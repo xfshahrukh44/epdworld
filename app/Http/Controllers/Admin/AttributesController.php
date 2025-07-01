@@ -18,17 +18,17 @@ class AttributesController extends Controller
     {
         $this->middleware('auth');
         $logo = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','logo')
-                     ->first();
-             
-        $favicon = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','favicon')
-                     ->first();  
+            select('img_path')
+            ->where('table_name', '=', 'logo')
+            ->first();
 
-        View()->share('logo',$logo);
-        View()->share('favicon',$favicon);
+        $favicon = imagetable::
+            select('img_path')
+            ->where('table_name', '=', 'favicon')
+            ->first();
+
+        View()->share('logo', $logo);
+        View()->share('favicon', $favicon);
     }
 
 
@@ -40,8 +40,8 @@ class AttributesController extends Controller
 
     public function index()
     {
-        $model = str_slug('attributes','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('attributes', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
 
             $attributes = Attributes::all();
 
@@ -50,17 +50,17 @@ class AttributesController extends Controller
         return response(view('403'), 403);
 
     }
-   /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\View\View
      */
     public function create()
     {
-        $model = str_slug('attributes','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('attributes', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
 
-            
+
 
             return view('admin.attributes.create');
         }
@@ -77,18 +77,18 @@ class AttributesController extends Controller
      */
     public function store(Request $request)
     {
-        $model = str_slug('attributes','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('attributes', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             $this->validate($request, [
-			'code' => 'required',
-            'name' => 'required'
-		]);
+                'code' => 'required',
+                'name' => 'required'
+            ]);
             // $requestData = $request->all();
             $attributes = new attributes;
 
             $attributes['code'] = $request->input('code');
             $attributes['name'] = $request->input('name');
-            
+
             $attributes->save();
             return redirect('admin/attributes')->with('message', 'Banner added!');
         }
@@ -104,8 +104,8 @@ class AttributesController extends Controller
      */
     public function show($id)
     {
-        $model = str_slug('attributes','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('attributes', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $attributes = Attributes::findOrFail($id);
             return view('admin.attributes.show', compact('attributes'));
         }
@@ -121,8 +121,8 @@ class AttributesController extends Controller
      */
     public function edit($id)
     {
-        $model = str_slug('attributes','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('attributes', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $attributes = Attributes::findOrFail($id);
 
 
@@ -141,47 +141,47 @@ class AttributesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = str_slug('attributes','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('attributes', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $this->validate($request, [
-            
-        ]);
+
+            ]);
 
 
-        $requestData['code'] = $request->input('code');
-        $requestData['name'] = $request->input('name');
-       
-        if ($request->hasFile('image')) {
-			
-				
-			$banner = attributes::where('id', $id)->first();
-			$image_path = public_path($banner->image);	
-			
-			if(File::exists($image_path)) {
-				
-				File::delete($image_path);
-			} 
+            $requestData['code'] = $request->input('code');
+            $requestData['name'] = $request->input('name');
 
-            $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
-            $fileNameForm = str_replace(' ', '_', $fileNameExt);
-            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
-            $pathToStore = public_path('uploads/banner/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
-			$requestData['image'] = 'uploads/banner/'.$fileNameToStore;        
-			
-        }
+            if ($request->hasFile('image')) {
 
-        attributes::where('id', $id)
-                  ->update($requestData);
 
-       
-        session()->flash('message', 'Successfully updated the Banner');
-        return redirect('admin/attributes');
+                $banner = attributes::where('id', $id)->first();
+                $image_path = public_path($banner->image);
+
+                if (File::exists($image_path)) {
+
+                    File::delete($image_path);
+                }
+
+                $file = $request->file('image');
+                $fileNameExt = $request->file('image')->getClientOriginalName();
+                $fileNameForm = str_replace(' ', '_', $fileNameExt);
+                $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
+                $fileExt = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
+                $pathToStore = public_path('uploads/banner/');
+                Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
+                $requestData['image'] = 'uploads/banner/' . $fileNameToStore;
+
             }
-            return response(view('403'), 403);
+
+            attributes::where('id', $id)
+                ->update($requestData);
+
+
+            session()->flash('message', 'Successfully updated the Banner');
+            return redirect('admin/attributes');
+        }
+        return response(view('403'), 403);
 
 
     }
@@ -195,13 +195,13 @@ class AttributesController extends Controller
      */
     public function destroy($id)
     {
-       // $model = str_slug('banner','-');
-       // if(auth()->user()->permissions()->where('name','=','delete-'.$model)->first()!= null) {
+        // $model = str_slug('banner','-');
+        // if(auth()->user()->permissions()->where('name','=','delete-'.$model)->first()!= null) {
         attributes::destroy($id);
 
-            return redirect('admin/attributes')->with('flash_message', 'Banner deleted!');
-       // }
-       // return response(view('403'), 403);
+        return redirect('admin/attributes')->with('flash_message', 'Banner deleted!');
+        // }
+        // return response(view('403'), 403);
 
     }
 }

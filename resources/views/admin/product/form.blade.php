@@ -2,14 +2,18 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-               {!! Form::Label('item', 'Select Category:') !!}
-               {!! Form::select('item_id', $items, isset($product)?$product->category:null, ['class' => 'form-control']) !!}
+                {!! Form::Label('item', 'Select Category:') !!}
+                {!! Form::select('item_id', $items, isset($product) ? $product->category : null, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
-               {!! Form::label('product_title', 'Product Title') !!}
-               {!! Form::text('product_title', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::label('product_title', 'Product Title') !!}
+                {!! Form::text(
+                    'product_title',
+                    null,
+                    'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
+                ) !!}
             </div>
         </div>
         <div class="col-md-12">
@@ -21,7 +25,11 @@
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('price', 'Price') !!}
-                {!! Form::text('price', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::text(
+                    'price',
+                    null,
+                    'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
+                ) !!}
             </div>
         </div>
         <div class="col-md-12">
@@ -39,120 +47,139 @@
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('description', 'Description') !!}
-                {!! Form::textarea('description', null, ('required' == 'required') ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::textarea(
+                    'description',
+                    null,
+                    'required' == 'required'
+                        ? ['class' => 'form-control', 'id' => 'summary-ckeditor', 'required' => 'required']
+                        : ['class' => 'form-control'],
+                ) !!}
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('image', 'Image') !!}
-                <input class="form-control dropify" name="image" type="file" id="image" {{ ($product->image != '') ? "data-default-file = /$product->image" : ''}} {{ ($product->image == '') ? "required" : ''}} value="{{$product->image}}">
+                <input class="form-control dropify" name="image" type="file" id="image"
+                    {{ $product->image != '' ? "data-default-file = /$product->image" : '' }}
+                    {{ $product->image == '' ? 'required' : '' }} value="{{ $product->image }}">
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('additional_image', 'Gallary Image') !!}
                 <div class="gallery Images">
-                @foreach($product_images as $product_image)
-                <div class="image-single">
-                <img src="{{ asset( $product_image->image)}}" alt="" id="image_id">
-                <button type="button" class="btn btn-danger" data-repeater-delete="" onclick="getInputValue({{$product_image->id}}, this);"> <i class="ft-x"></i>Delete</button>
+                    @foreach ($product_images as $product_image)
+                        <div class="image-single">
+                            <img src="{{ asset($product_image->image) }}" alt="" id="image_id">
+                            <button type="button" class="btn btn-danger" data-repeater-delete=""
+                                onclick="getInputValue({{ $product_image->id }}, this);"> <i
+                                    class="ft-x"></i>Delete</button>
+                        </div>
+                    @endforeach
                 </div>
-                @endforeach
-                </div>
-                <input class="form-control dropify" name="images[]" type="file" id="images" {{ ($product->additional_image != '') ? "data-default-file = /$product->additional_image" : ''}} value="{{$product->additional_image}}" multiple>
+                <input class="form-control dropify" name="images[]" type="file" id="images"
+                    {{ $product->additional_image != '' ? "data-default-file = /$product->additional_image" : '' }}
+                    value="{{ $product->additional_image }}" multiple>
             </div>
         </div>
         <div class="col-md-12">
             <h4 class="card-title" id="repeat-form">Add Variation</h4>
         </div>
-        @foreach($product->attributes as $pro_att_edits)
-        <div class="col-md-12">
-            <div data-repeater-list="attribute">
-                <div data-repeater-item class="row">
-                    <input type="hidden" value="{{ $pro_att_edits->id}}" name="product_attribute[]">
+        @foreach ($product->attributes as $pro_att_edits)
+            <div class="col-md-12">
+                <div data-repeater-list="attribute">
+                    <div data-repeater-item class="row">
+                        <input type="hidden" value="{{ $pro_att_edits->id }}" name="product_attribute[]">
 
-                    <div class="form-group mb-1 col-sm-12 col-md-3">
-                        <label for="email-addr">Attribute</label>
-                        <select class="form-control" name="attribute_id[]" onchange="getval(this)" disabled>
-                            <option value="{{ $pro_att_edits->attribute_id }}">{{ $pro_att_edits->attribute->name }}</option>
-                        </select>
+                        <div class="form-group mb-1 col-sm-12 col-md-3">
+                            <label for="email-addr">Attribute</label>
+                            <select class="form-control" name="attribute_id[]" onchange="getval(this)" disabled>
+                                <option value="{{ $pro_att_edits->attribute_id }}">{{ $pro_att_edits->attribute->name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-1 col-sm-12 col-md-3">
+                            <label for="pass">Value</label>
+                            <select class="form-control value" name="value[]" disabled>
+                                <option value="{{ $pro_att_edits->value }}">
+                                    {{ $pro_att_edits->attributesValues->value }}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-1 col-sm-12 col-md-2">
+                            <label for="price">Price</label>
+                            <input type="number" step="any" name="v_price[]" class="form-control"
+                                value="{{ $pro_att_edits->price }}">
+                        </div>
+
+                        <div class="form-group mb-1 col-sm-12 col-md-2">
+                            <label for="qty">Quantity</label>
+                            <input type="number" name="qty[]" class="form-control"
+                                value="{{ $pro_att_edits->qty }}">
+                        </div>
+
+                        <div class="form-group mb-1 col-sm-12 col-md-3">
+                            <label for="image">Image</label>
+                            <input type="file" name="image_att[]" class="form-control">
+                        </div>
+                        @if (!empty($pro_att_edits->image))
+                            <img src="{{ asset($pro_att_edits->image) }}" width="100">
+                        @endif
+
+                        <div class="form-group col-sm-12 col-md-2 text-center mt-2">
+                            <button onclick="deleteAttr({{ $pro_att_edits->id }}, this)" type="button"
+                                class="btn btn-danger" data-repeater-delete="">
+                                <i class="ft-x"></i> Delete
+                            </button>
+                        </div>
+
+                        <hr>
                     </div>
-
-                    <div class="form-group mb-1 col-sm-12 col-md-3">
-                        <label for="pass">Value</label>
-                        <select class="form-control value" name="value[]" disabled>
-                            <option value="{{ $pro_att_edits->value }}">{{ $pro_att_edits->attributesValues->value }}</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group mb-1 col-sm-12 col-md-2">
-                        <label for="price">Price</label>
-                        <input type="number" name="v_price[]" class="form-control" value="{{ $pro_att_edits->price }}">
-                    </div>
-
-                    <div class="form-group mb-1 col-sm-12 col-md-2">
-                        <label for="qty">Quantity</label>
-                        <input type="number" name="qty[]" class="form-control" value="{{ $pro_att_edits->qty }}">
-                    </div>
-
-                    <div class="form-group mb-1 col-sm-12 col-md-3">
-                        <label for="image">Image</label>
-                        <input type="file" name="image_att[]" class="form-control">
-                    </div>
-                    @if(!empty($pro_att_edits->image))
-                        <img src="{{ asset($pro_att_edits->image) }}" width="100">
-                    @endif
-
-                    <div class="form-group col-sm-12 col-md-2 text-center mt-2">
-                        <button onclick="deleteAttr({{ $pro_att_edits->id }}, this)" type="button" class="btn btn-danger" data-repeater-delete="">
-                            <i class="ft-x"></i> Delete
-                        </button>
-                    </div>
-
-                    <hr>
                 </div>
             </div>
-        </div>
         @endforeach
 
         <div class="repeater-default col-md-12">
             <div data-repeater-list="attribute">
                 <div data-repeater-item="" class="row">
 
-                        <div class="form-group mb-1 col-sm-12 col-md-3">
-                            <label for="email-addr">Attribute</label>
-                            <br>
-                            <select class="form-control" id="attribute_id" name="attribute_id" onchange="getval(this)">
-                                @foreach($att as $atts)
-                                <option value="{{ $atts->id}}">{{ $atts->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group mb-1 col-sm-12 col-md-3">
-                            <label for="pass">value</label>
-                            <br>
-                             <select class="form-control value" id="value" name="value">
+                    <div class="form-group mb-1 col-sm-12 col-md-3">
+                        <label for="email-addr">Attribute</label>
+                        <br>
+                        <select class="form-control" id="attribute_id" name="attribute_id" onchange="getval(this)">
+                            @foreach ($att as $atts)
+                                <option value="{{ $atts->id }}">{{ $atts->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group mb-1 col-sm-12 col-md-3">
+                        <label for="pass">value</label>
+                        <br>
+                        <select class="form-control value" id="value" name="value">
 
-                            </select>
-                        </div>
-                        <div class="form-group mb-1 col-sm-12 col-md-2">
-                            <label for="bio" class="cursor-pointer">Price</label>
-                            <br>
-                            <input type="number" name="v-price" class="form-control" id="price"  value="{{ $pro_att_edits->attributesValues->price }}">
-                        </div>
-                        <div class="form-group mb-1 col-sm-12 col-md-2">
-                            <label for="bio" class="cursor-pointer">qty</label>
-                            <br>
-                            <input type="number" name="qty" class="form-control" id="qty" >
-                        </div>
-                        <div class="form-group mb-1 col-sm-12 col-md-3">
-                            <label for="image">Image</label>
-                            <input type="file" name="image" class="form-control">
-                        </div>
-                        <div class="form-group col-sm-12 col-md-2 text-center mt-2">
-                            <button type="button" class="btn btn-danger" data-repeater-delete=""> <i class="ft-x"></i>
-                                Delete</button>
-                        </div>
+                        </select>
+                    </div>
+                    <div class="form-group mb-1 col-sm-12 col-md-2">
+                        <label for="bio" class="cursor-pointer">Price</label>
+                        <br>
+                        <input type="number" step="any" name="v-price" class="form-control" id="price"
+                            value="{{ $pro_att_edits->attributesValues->price }}">
+                    </div>
+                    <div class="form-group mb-1 col-sm-12 col-md-2">
+                        <label for="bio" class="cursor-pointer">qty</label>
+                        <br>
+                        <input type="number" name="qty" class="form-control" id="qty">
+                    </div>
+                    <div class="form-group mb-1 col-sm-12 col-md-3">
+                        <label for="image">Image</label>
+                        <input type="file" name="image" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-12 col-md-2 text-center mt-2">
+                        <button type="button" class="btn btn-danger" data-repeater-delete=""> <i
+                                class="ft-x"></i>
+                            Delete</button>
+                    </div>
 
                     <hr>
                 </div>

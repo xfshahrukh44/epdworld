@@ -87,30 +87,28 @@
                                                 href="{{ route('seller-profile', ['slug' => $product_detail->users->slug]) }}"
                                                 target="_blank">{!! $product_detail->users->name !!}</a></p>
                                     @endif
-                                    <!--<p><strong>Have this One?</strong>    -->
-                                    <!--@if (Auth::check() && Auth::user()->is_seller == 1)-->
-                                    <!--@if ($exist == null)
--->
-                                    <!-- <button class="btn-seller" type="button" data-toggle="modal" data-target="#exampleModalCenter">Sell on EPD World</button>-->
-                                <!--@else-->
-                                    <!-- <strong class="chunks"> <i class="fas fa-check"></i> You Already Listed This Product </strong>-->
-                                    <!--
-@endif-->
-                                <!--@else-->
-                                    <!--<a class="btn-seller" href="{{ route('seller-signup') }}">Sell on EPD World</a>-->
-                                    <!--@endif-->
-                                    <!--</p>-->
+
                                 </div>
                                 <!-- .description -->
                                 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                    <p class="price"><span class="electro-price"><ins><span
-                                                    class="amount">&#36;{!! $product_detail->price !!}</span></ins>
+                                    <p class="price">
+                                        <span class="electro-price">
+                                            <ins><span class="amount">Product Price:
+                                                    &#36;{!! $product_detail->price !!}</span></ins>
                                         </span>
                                     </p>
                                     <meta itemprop="price" content="1215" />
                                     <meta itemprop="priceCurrency" content="USD" />
                                     <link itemprop="availability" href="http://schema.org/InStock" />
                                 </div>
+                                <div class="price-box">
+
+                                    <p class="variation-price price">Variation Price: $<span
+                                            id="variationPriceDisplay">0.00</span></p>
+                                    <p class="total-price price"><strong>Total: $<span class="amount"
+                                                id="totalPriceDisplay">{{ $product_detail->price }}</span></strong></p>
+                                </div>
+
                                 <!-- /itemprop -->
 
 
@@ -120,33 +118,44 @@
                                             <td class="label">
                                                 @foreach ($att_model as $att_models)
                                                     <div class="variation">
-                                                        <h3>{{ $att_models->attribute->name }}</h3>
-
                                                         @php
-                                                            $pro_att = \App\ProductAttribute::where(['attribute_id' => $att_models->attribute_id, 'product_id' => $product_detail->id])->get();
+                                                            $pro_att = \App\ProductAttribute::where([
+                                                                'attribute_id' => $att_models->attribute_id,
+                                                                'product_id' => $product_detail->id,
+                                                            ])->get();
                                                         @endphp
 
+                                                        <h3 class="variation-title"
+                                                            data-attribute="{{ $att_models->attribute->name }}">
+                                                            {{ $att_models->attribute->name }} <span
+                                                                class="selected-price"></span>
+                                                        </h3>
+
                                                         <div class="att_vals">
-                                                        @foreach ($pro_att as $pro_atts)
-                                                            <label class="radio-img">
-                                                                <input type="radio" class="radio-box" name="variation[{{ $att_models->attribute->name }}]" value="{{ $pro_atts->id }}" />
-                                                                <div class="image1"
-                                                                    style="
+                                                            @foreach ($pro_att as $pro_atts)
+                                                                <label class="radio-img">
+                                                                    <input type="radio" class="radio-box"
+                                                                        name="variation[{{ $att_models->attribute->name }}]"
+                                                                        value="{{ $pro_atts->id }}"
+                                                                        data-price="{{ $pro_atts->price }}" />
+                                                                    <div class="image1"
+                                                                        style="
                                                                         background-color: {{ $pro_atts->attributesValues->value }};
-                                                                        @if($pro_atts->image != null)
-                                                                            background-image: url('{{ asset($pro_atts->image) }}');
-                                                                            background-size: cover;
-                                                                        @endif
+                                                                        @if ($pro_atts->image != null) background-image: url('{{ asset($pro_atts->image) }}');
+                                                                            background-size: contain;
+                                                                            background-repeat: no-repeat;
+                                                                            width: 60px;
+                                                                            height: 60px;; @endif
                                                                     ">
-                                                                    @if($pro_atts->image == null)
-                                                                        <span>
-                                                                            {{ $pro_atts->attributesValues->value }}
-                                                                        </span>
-                                                                    @else
-                                                                        <span></span>
-                                                                    @endif
-                                                                </div>
-                                                            </label>
+                                                                        @if ($pro_atts->image == null)
+                                                                            <span>
+                                                                                {{ $pro_atts->attributesValues->value }}
+                                                                            </span>
+                                                                        @else
+                                                                            <span></span>
+                                                                        @endif
+                                                                    </div>
+                                                                </label>
                                                             @endforeach
                                                         </div>
                                                     </div>
@@ -170,11 +179,8 @@
                                                     <span id="1" class=" plus btn btnMinus ">+</span>
                                                 </div>
                                             </td>
-
                                             <div class="slecter-but">
-                                                <button type="submit" class="btn enroll"> Add
-                                                    to
-                                                    Cart</a>
+                                                <button type="submit" class="btn enroll"> Add to Cart</a>
                                             </div>
 
                                             {{-- <button id="addCart" class="qty btn btnDonate mt-2" href="javascript:void(0)"
@@ -462,8 +468,9 @@
 
     .image1 {
         opacity: 1;
-        height: 50px;
-        width: 70px;
+        height: auto;
+        width: 100%;
+        padding: 5px 0;
         left: 0;
         display: flex !important;
         align-items: center;
@@ -471,7 +478,7 @@
         flex-direction: row;
         border: 1px solid #000;
         background-position: center center;
-        margin: 10px;
+        margin: 5px;
         cursor: pointer;
 
 
@@ -798,9 +805,91 @@ input[type = radio] {
     .more-bg {
         display: none;
     }
+
     .att_vals {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+
+    .site-content .id-grid.id-grid-cols-2.id-border-\[0\.5px\].id-border-\[\#ddd\].id-mt-3 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        border: 1px solid #0000003b;
+    }
+
+    .site-content .id-grid.id-max-h-\[68px\].id-overflow-hidden.id-grid-cols-\[2fr_3fr\].id-border-b-\[0\.5px\].id-border-\[\#ddd\] {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0px;
+        border: 1px solid #0000003b;
+        height: 65px;
+    }
+
+    .site-content .id-text-sm.id-p-4.id-bg-\[\#f8f8f8\].id-flex.id-items-center {
+        width: 50%;
+        height: 65px;
+        display: flex;
+        align-items: center;
+        border: 1px solid #0000003b;
+        padding-left: 20px;
+
+    }
+
+    .site-content .id-text-sm.id-font-medium.id-p-4.id-flex.id-items-center.id-flex-wrap {
+        width: 50%;
+        height: 65px;
+        display: flex;
+        align-items: center;
+        border: 1px solid #0000003b;
+        padding-left: 20px;
+        overflow-y: hidden;
+    }
+
+    .site-content id-grid.id-max-h-\[68px\].id-overflow-hidden.id-grid-cols-\[2fr_3fr\] {}
+
+    .site-content .id-grid.id-max-h-\[68px\].id-overflow-hidden.id-grid-cols-\[2fr_3fr\] {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0px;
+        border: 1px solid #0000003b;
+        height: 65px;
+    }
+
+
+    .site-content .id-text-sm.id-font-medium.id-p-4.id-flex.id-items-center.id-flex-wrap .id-flex.id-items-center.id-gap-1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .site-content .id-text-sm.id-font-medium.id-p-4.id-flex.id-items-center.id-flex-wrap .id-flex.id-items-center.id-gap-1 button {
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        width: 50%;
+    }
+
+    .site-content .id-text-sm.id-font-medium.id-p-4.id-flex.id-items-center.id-flex-wrap .id-flex.id-items-center.id-gap-1 button img {
+        width: 50%;
+    }
+
+    .single-product .price {
+        font-size: 20px;
+        color: black;
+        font-weight: 600;
+    }
+
+    .variations span.selected-price {
+        font-size: 20px;
     }
 </style>
 @endsection
@@ -893,4 +982,69 @@ input[type = radio] {
         });
     });
 </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        document.querySelectorAll(".att_vals").forEach(function(group) {
+
+            const selected = group.querySelector('input[type="radio"]:checked');
+            if (!selected) {
+                const firstRadio = group.querySelector('input[type="radio"]');
+                if (firstRadio) {
+                    firstRadio.checked = true;
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        let basePrice = parseFloat(`{{ $product_detail->price }}`);
+        let variationPrices = {};
+
+        function updateVariationPriceLabel(attributeName, price) {
+            $(`h3.variation-title[data-attribute="${attributeName}"] .selected-price`)
+                .html(price > 0 ? `($${price.toFixed(2)})` : '');
+        }
+
+        $('input.radio-box:checked').each(function() {
+            const attributeName = $(this).attr('name').replace('variation[', '').replace(']', '');
+            const selectedPrice = parseFloat($(this).data('price')) || 0;
+            variationPrices[attributeName] = selectedPrice;
+            basePrice += selectedPrice;
+            updateVariationPriceLabel(attributeName, selectedPrice);
+        });
+
+        updatePriceDisplay(basePrice);
+
+        $('input.radio-box').on('change', function() {
+            const attributeName = $(this).attr('name').replace('variation[', '').replace(']', '');
+            const selectedPrice = parseFloat($(this).data('price')) || 0;
+
+            if (variationPrices[attributeName]) {
+                basePrice -= variationPrices[attributeName];
+            }
+
+            basePrice += selectedPrice;
+            variationPrices[attributeName] = selectedPrice;
+
+            updateVariationPriceLabel(attributeName, selectedPrice);
+            updatePriceDisplay(basePrice);
+        });
+
+        function updatePriceDisplay(price) {
+            const base = parseFloat(`{{ $product_detail->price }}`);
+            const variationTotal = price - base;
+
+            $('#basePriceDisplay').html(base.toFixed(2));
+            $('#variationPriceDisplay').html(variationTotal.toFixed(2));
+            $('#totalPriceDisplay').html(price.toFixed(2));
+            $('meta[itemprop="price"]').attr('content', price.toFixed(2));
+        }
+    });
+</script>
+
 @endsection
