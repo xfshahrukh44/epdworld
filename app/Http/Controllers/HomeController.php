@@ -67,60 +67,66 @@ class HomeController extends Controller
        $second_banner = DB::table('banners')->where('slider_cat', 1)->get();
        $section = DB::table('section')->where('page_id', 1)->get();
        $product = Product::inRandomOrder()->limit(12)->get();
-       $product_all = Product::inRandomOrder()->limit(12)->get();
+       $product_all = DB::table('products')
+            ->orderBy('created_at', 'desc')
+            ->limit(50)
+            ->get()
+            ->shuffle()
+            ->take(12);
+
        $category = Category::inRandomOrder()->limit(24)->get();
 
        return view('welcome', compact('page', 'banner', 'second_banner', 'section', 'product', 'product_all', 'category'));
     }
-    
+
     public function india(){
-        
+
         return view('india');
     }
-    
+
     public function italy(){
-        
+
         return view('italy');
     }
-    
+
     public function malaysia(){
-        
+
         return view('malaysia');
     }
-    
+
     public function mexico(){
-        
+
         return view('mexico');
     }
-    
+
     public function spain(){
-        
+
         return view('spain');
     }
-    
+
     public function australia(){
-        
+
         return view('australia');
     }
-    
+
     public function brazil(){
-        
+
         return view('brazil');
     }
-    
+
     public function canada(){
-        
+
         return view('canada');
     }
-    
-    
+
+
     public function france(){
-        
+
         return view('france');
     }
-    
+
     public function germany(){
-        
+
         return view('germany');
     }
 
