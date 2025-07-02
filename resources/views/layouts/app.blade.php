@@ -145,129 +145,130 @@
 
         <script>
             $(document).ready(function() {
-                $('#multiSelect').select2({
+                $('.multiSelect').select2({
                     placeholder: "Add Variation",
                     width: '100%'
                 });
 
                 // Existing onchange logic yahan aa jaye...
             });
+
         </script>
 
 
 
         <script>
-            $(document).ready(function() {
-                initVariation($('.variation-block').first());
+            // $(document).ready(function() {
+            //     initVariation($('.variation-block').first());
 
-                $('#addVariationBtn').on('click', function() {
-                    let newBlock = $('.variation-block').first().clone();
+            //     $('#addVariationBtn').on('click', function() {
+            //         let newBlock = $('.variation-block').first().clone();
 
-                    newBlock.find('.select2').remove();
-                    newBlock.find('.multiSelect').removeAttr('data-select2-id').removeClass(
-                        'select2-hidden-accessible').show();
+            //         newBlock.find('.select2').remove();
+            //         newBlock.find('.multiSelect').removeAttr('data-select2-id').removeClass(
+            //             'select2-hidden-accessible').show();
 
-                    newBlock.find('.attributeRepeaterContainer').empty();
-                    newBlock.find('.multiSelect').val(null);
+            //         newBlock.find('.attributeRepeaterContainer').empty();
+            //         newBlock.find('.multiSelect').val(null);
 
-                    $('#variationsWrapper').append(newBlock);
+            //         $('#variationsWrapper').append(newBlock);
 
-                    initVariation(newBlock);
-                });
+            //         initVariation(newBlock);
+            //     });
 
-                function initVariation(container) {
-                    if (!container.data('selectedAttributes')) {
-                        container.data('selectedAttributes', new Set());
-                    }
+            //     function initVariation(container) {
+            //         if (!container.data('selectedAttributes')) {
+            //             container.data('selectedAttributes', new Set());
+            //         }
 
-                    const selectedAttributes = container.data('selectedAttributes');
-                    const select = container.find('.multiSelect');
-                    const repeater = container.find('.attributeRepeaterContainer');
+            //         const selectedAttributes = container.data('selectedAttributes');
+            //         const select = container.find('.multiSelect');
+            //         const repeater = container.find('.attributeRepeaterContainer');
 
-                    select.select2({
-                        placeholder: "Select attributes",
-                        width: '100%'
-                    });
+            //         select.select2({
+            //             placeholder: "Select attributes",
+            //             width: '100%'
+            //         });
 
-                    select.on('change', function() {
-                        const selectedOptions = $(this).find('option:selected');
+            //         select.on('change', function() {
+            //             const selectedOptions = $(this).find('option:selected');
 
-                        selectedOptions.each(function() {
-                            const attrId = $(this).val();
-                            const attrName = $(this).text();
+            //             selectedOptions.each(function() {
+            //                 const attrId = $(this).val();
+            //                 const attrName = $(this).text();
 
-                            if (!selectedAttributes.has(attrId)) {
-                                selectedAttributes.add(attrId);
-                                appendAttributeBlock(attrId, attrName, repeater);
-                            }
-                        });
+            //                 if (!selectedAttributes.has(attrId)) {
+            //                     selectedAttributes.add(attrId);
+            //                     appendAttributeBlock(attrId, attrName, repeater);
+            //                 }
+            //             });
 
-                        // Remove unselected
-                        selectedAttributes.forEach(attrId => {
-                            if (!select.find(`option[value="${attrId}"]`).is(':selected')) {
-                                repeater.find(`.attribute-block[data-id="${attrId}"]`).remove();
-                                selectedAttributes.delete(attrId);
-                            }
-                        });
-                    });
-                }
-
-
-                function appendAttributeBlock(attrId, attrName, container) {
-                    $.ajax({
-                        url: "{{ url('admin/get-attribute-values') }}/" + attrId,
-                        method: 'GET',
-                        success: function(values) {
-                            let valueOptions = values.map(val =>
-                                `<option value="${val.id}">${val.value}</option>`
-                            ).join('');
-
-                            let block = `
-                <div class="attribute-block d-inline-block mx-2" data-id="${attrId}" style="vertical-align: top; width: 300px;">
-                    <div class="form-group">
-                        <label>Value (${attrName})</label>
-                        <select name="attribute[${attrId}][value]" class="form-control">
-                            ${valueOptions}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input type="number" step="any" name="attribute[${attrId}][price]" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Qty</label>
-                        <input type="number" name="attribute[${attrId}][qty]" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Image</label>
-                        <input type="file" name="attribute[${attrId}][image]" class="form-control">
-                    </div>
-                    <div class="form-group text-end">
-                        <button type="button" class="btn btn-danger btn-sm removeAttrBtn mt-1">Delete</button>
-                    </div>
-                </div>`;
-
-                            container.append(block);
-                        },
-                        error: function() {
-                            alert('Unable to fetch values for attribute ID ' + attrId);
-                        }
-                    });
-                }
+            //             // Remove unselected
+            //             selectedAttributes.forEach(attrId => {
+            //                 if (!select.find(`option[value="${attrId}"]`).is(':selected')) {
+            //                     repeater.find(`.attribute-block[data-id="${attrId}"]`).remove();
+            //                     selectedAttributes.delete(attrId);
+            //                 }
+            //             });
+            //         });
+            //     }
 
 
-                // ✅ Remove block manually
-                $(document).on('click', '.removeAttrBtn', function() {
-                    $(this).closest('.attribute-block').remove();
-                });
-            });
+            //     function appendAttributeBlock(attrId, attrName, container) {
+            //         $.ajax({
+            //             url: "{{ url('admin/get-attribute-values') }}/" + attrId,
+            //             method: 'GET',
+            //             success: function(values) {
+            //                 let valueOptions = values.map(val =>
+            //                     `<option value="${val.id}">${val.value}</option>`
+            //                 ).join('');
+
+            //                 let block = `
+            //     <div class="attribute-block d-inline-block mx-2" data-id="${attrId}" style="vertical-align: top; width: 300px;">
+            //         <div class="form-group">
+            //             <label>Value (${attrName})</label>
+            //             <select name="attribute[${attrId}][value]" class="form-control">
+            //                 ${valueOptions}
+            //             </select>
+            //         </div>
+            //         <div class="form-group">
+            //             <label>Price</label>
+            //             <input type="number" step="any" name="attribute[${attrId}][price]" class="form-control">
+            //         </div>
+            //         <div class="form-group">
+            //             <label>Qty</label>
+            //             <input type="number" name="attribute[${attrId}][qty]" class="form-control">
+            //         </div>
+            //         <div class="form-group">
+            //             <label>Image</label>
+            //             <input type="file" name="attribute[${attrId}][image]" class="form-control">
+            //         </div>
+            //         <div class="form-group text-end">
+            //             <button type="button" class="btn btn-danger btn-sm removeAttrBtn mt-1">Delete</button>
+            //         </div>
+            //     </div>`;
+
+            //                 container.append(block);
+            //             },
+            //             error: function() {
+            //                 alert('Unable to fetch values for attribute ID ' + attrId);
+            //             }
+            //         });
+            //     }
+
+
+            //     // ✅ Remove block manually
+            //     $(document).on('click', '.removeAttrBtn', function() {
+            //         $(this).closest('.attribute-block').remove();
+            //     });
+            // });
         </script>
 
 
         <script>
-            $('#addVariationBtn').on('click', function() {
-                $('#multiSelect').val(null).trigger('change');
-            });
+            // $('#addVariationBtn').on('click', function() {
+            //     $('#multiSelect').val(null).trigger('change');
+            // });
         </script>
 
 

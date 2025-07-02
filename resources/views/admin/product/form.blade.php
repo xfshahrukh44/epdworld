@@ -87,22 +87,27 @@
         </div>
 
         <div id="variationsWrapper">
-            <div class="variation-block">
-                <select class="form-control multiSelect" name="attribute_id[]" multiple>
-                    @foreach ($att as $atts)
-                        <option value="{{ $atts->id }}">{{ $atts->name }}</option>
-                    @endforeach
-                </select>
-                <div class="attributeRepeaterContainer mt-3"></div>
+            <select class="form-control multiSelect" name="attribute_id[]" multiple>
+                @foreach ($att as $attribute)
+                    <option value="{{ $attribute->id }}"
+                        data-values='@json($attribute->values)'> <!-- pass attribute values as JSON -->
+                        {{ $attribute->name }}
+                    </option>
+                @endforeach
+            </select>
+
+            <div id="attributeValuesContainer" class="mt-3">
+                <!-- Here dropdowns for attribute values will be appended -->
             </div>
         </div>
 
-        <button type="button" id="addVariationBtn" class="btn btn-primary mt-3">Add Variation</button>
+
+        {{-- <button type="button" id="addVariationBtn" class="btn btn-primary mt-3">Add Variation</button> --}}
 
 
 
 
-        @foreach ($product->attributes as $pro_att_edits)
+        {{-- @foreach ($product->attributes as $pro_att_edits)
             <div class="col-md-12">
                 <div data-repeater-list="attribute">
                     <div data-repeater-item class="row">
@@ -207,7 +212,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 </div>

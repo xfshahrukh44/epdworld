@@ -154,5 +154,51 @@
                 },
             });
         }
+
+        $(document).ready(function() {
+
+            $('.multiSelect').on('change', function() {
+                console.log('Selected attributes changed');
+                let selectedAttributes = $(this).val(); // array of selected attribute IDs
+                let $container = $('#attributeValuesContainer');
+                $container.empty(); // clear old dropdowns
+
+                if (!selectedAttributes || selectedAttributes.length === 0) {
+                    return; // no attribute selected
+                }
+
+                // For each selected attribute, fetch values via AJAX
+                selectedAttributes.forEach(attrId => {
+                    $.ajax({
+                        url: `{{ url('admin/get-attribute-values') }}/${attrId}`,  // URL to fetch attribute values
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(values) {
+                            if (values.length === 0) return;
+
+                            // Find the attribute name text from select options
+                            let attrName = $(`.multiSelect option[value='${attrId}']`).text();
+
+                            // Create the dropdown for attribute values
+                            let html = `<div class="mb-3">
+                                            <label for="attribute_values_${attrId}">${attrName}</label>
+                                            <select class="form-control" name="attribute_values[${attrId}]">
+                                                <option value="">Select ${attrName}</option>`;
+
+                            values.forEach(function(v) {
+                                html += `<option value="${v.id}">${v.value}</option>`;
+                            });
+
+                            html += `</select></div>`;
+
+                            $container.append(html);
+                        },
+                        error: function() {
+                            console.error(`Failed to load values for attribute ${attrId}`);
+                        }
+                    });
+                });
+            });
+        });
     </script>
 @endpush
