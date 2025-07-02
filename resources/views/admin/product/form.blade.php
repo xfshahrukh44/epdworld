@@ -85,16 +85,33 @@
         <div class="col-md-12">
             <h4 class="card-title" id="repeat-form">Add Variation</h4>
         </div>
+
+        <div id="variationsWrapper">
+            <div class="variation-block">
+                <select class="form-control multiSelect" name="attribute_id[]" multiple>
+                    @foreach ($att as $atts)
+                        <option value="{{ $atts->id }}">{{ $atts->name }}</option>
+                    @endforeach
+                </select>
+                <div class="attributeRepeaterContainer mt-3"></div>
+            </div>
+        </div>
+
+        <button type="button" id="addVariationBtn" class="btn btn-primary mt-3">Add Variation</button>
+
+
+
+
         @foreach ($product->attributes as $pro_att_edits)
             <div class="col-md-12">
                 <div data-repeater-list="attribute">
                     <div data-repeater-item class="row">
                         <input type="hidden" value="{{ $pro_att_edits->id }}" name="product_attribute[]">
-
                         <div class="form-group mb-1 col-sm-12 col-md-3">
                             <label for="email-addr">Attribute</label>
                             <select class="form-control" name="attribute_id[]" onchange="getval(this)" disabled>
-                                <option value="{{ $pro_att_edits->attribute_id }}">{{ $pro_att_edits->attribute->name }}
+                                <option value="{{ $pro_att_edits->attribute_id }}">
+                                    {{ $pro_att_edits->attribute->name }}
                                 </option>
                             </select>
                         </div>
@@ -143,7 +160,6 @@
         <div class="repeater-default col-md-12">
             <div data-repeater-list="attribute">
                 <div data-repeater-item="" class="row">
-
                     <div class="form-group mb-1 col-sm-12 col-md-3">
                         <label for="email-addr">Attribute</label>
                         <br>
@@ -192,6 +208,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 

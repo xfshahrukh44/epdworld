@@ -2,28 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\inquiry;
-
-use App\newsletter;
-use App\Program;
-use App\imagetable;
-use SoapClient;
-use App\Product;
-use App\Category;
-use App\Banner;
-use App\ProductAttribute;
 use DB;
+use Auth;
+
 use View;
 use Session;
-use App\Http\Traits\HelperTrait;
+use App\Banner;
 use App\orders;
+use SoapClient;
+use App\inquiry;
+use App\Product;
+use App\Program;
+use App\Category;
+use App\Attributes;
+use App\imagetable;
+use App\newsletter;
 use App\orders_products;
-use Illuminate\Contracts\Session\Session as SessionSession;
-use Auth;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Pagination\Paginator;
+use App\ProductAttribute;
+use Illuminate\Http\Request;
 use App\Models\Productreview;
+use App\Http\Traits\HelperTrait;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Session\Session as SessionSession;
 
 class ProductController extends Controller
 {
@@ -479,4 +480,8 @@ class ProductController extends Controller
 		}
 		return view('shop.cart', ['messgae' => $messgae, 'cart' => $cart]);
 	}
+
+
+	
+
 }

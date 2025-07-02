@@ -14,10 +14,10 @@ class Attributes extends Model
     protected $table = 'attributes';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -27,8 +27,13 @@ class Attributes extends Model
      */
     protected $fillable = ['code', 'name'];
 
-    public function attributesvalue()
+    // public function attributeValues()
+    // {
+    //     return $this->hasMany('App\AttributeValue', 'id' , 'attribute_id');
+    // }
+    public function attributeValues()
     {
-        return $this->hasMany('App\AttributeValue', 'id' , 'attribute_id');
+        return $this->hasMany(AttributeValue::class, 'attribute_id', 'id');
     }
+
 }

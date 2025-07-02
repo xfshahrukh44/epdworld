@@ -28,18 +28,18 @@ class ProductController extends Controller
     {
         $this->middleware('auth');
 
-		$logo = imagetable::
-					 select('img_path')
-					 ->where('table_name','=','logo')
-					 ->first();
+        $logo = imagetable::
+            select('img_path')
+            ->where('table_name', '=', 'logo')
+            ->first();
 
-		$favicon = imagetable::
-					 select('img_path')
-					 ->where('table_name','=','favicon')
-					 ->first();
+        $favicon = imagetable::
+            select('img_path')
+            ->where('table_name', '=', 'favicon')
+            ->first();
 
-		View()->share('logo',$logo);
-		View()->share('favicon',$favicon);
+        View()->share('logo', $logo);
+        View()->share('favicon', $favicon);
 
     }
 
@@ -53,8 +53,8 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
-        $model = str_slug('product','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('product', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $keyword = $request->get('search');
             //$perPage = 25;
 
@@ -79,16 +79,16 @@ class ProductController extends Controller
     public function create()
     {
 
-        $model = str_slug('product','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('product', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
 
             $att = Attributes::all();
             $attval = AttributeValue::all();
 
-			// $items = Category::all(['id', 'name']);
-			$items = Category::pluck('name', 'id');
+            // $items = Category::all(['id', 'name']);
+            $items = Category::pluck('name', 'id');
 
-            return view('admin.product.create', compact('items', 'att','attval'));
+            return view('admin.product.create', compact('items', 'att', 'attval'));
         }
         return response(view('403'), 403);
 
@@ -103,8 +103,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $model = str_slug('product','-');
-        if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
+        $model = str_slug('product', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             $this->validate($request, [
                 'product_title' => 'required',
                 'description' => 'required',
@@ -112,7 +112,7 @@ class ProductController extends Controller
                 'image' => 'required',
                 'item_id' => 'required',
             ]);
-    
+
             // Create new product
             $product = new product;
             $product->product_title = $request->input('product_title');
@@ -120,7 +120,7 @@ class ProductController extends Controller
             $product->price = $request->input('price');
             $product->description = $request->input('description');
             $product->category = $request->input('item_id');
-    
+
             // Handle main image upload
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
@@ -128,18 +128,18 @@ class ProductController extends Controller
                 $file->move(public_path('uploads/products/'), $imageName);
                 $product->image = 'uploads/products/' . $imageName;
             }
-    
+
             $product->save();
-    
+
             // Handle multiple images upload
-            if($request->hasFile('images')) {
+            if ($request->hasFile('images')) {
                 $photos = $request->file('images');
-                
+
                 foreach ($photos as $key => $photo) {
                     // Generate unique name for each image
                     $imageName = time() . '_' . $key . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
                     $photo->move(public_path('uploads/products/'), $imageName);
-    
+
                     // Insert new image record
                     DB::table('product_imagess')->insert([
                         'image' => 'uploads/products/' . $imageName,
@@ -147,7 +147,7 @@ class ProductController extends Controller
                     ]);
                 }
             }
-    
+
             // Handle product attributes
             $attval = $request->attribute;
             if (is_array($attval)) {
@@ -158,7 +158,7 @@ class ProductController extends Controller
                     $product_attributes->price = $attval[$i]['v-price'];
                     $product_attributes->qty = $attval[$i]['qty'];
                     $product_attributes->product_id = $product->id;
-    
+
                     // Handle attribute image upload
                     if ($request->hasFile("attribute.$i.image")) {
                         $image = $request->file("attribute.$i.image");
@@ -166,11 +166,11 @@ class ProductController extends Controller
                         $image->move(public_path('uploads/product_attributes/'), $imageName);
                         $product_attributes->image = 'uploads/product_attributes/' . $imageName;
                     }
-    
+
                     $product_attributes->save();
                 }
             }
-    
+
             return redirect('admin/product')->with('message', 'Product added!');
         }
         return response(view('403'), 403);
@@ -184,8 +184,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $model = str_slug('product','-');
-        if(auth()->user()->permissions()->where('name','=','view-'.$model)->first()!= null) {
+        $model = str_slug('product', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'view-' . $model)->first() != null) {
             $product = Product::findOrFail($id);
             return view('admin.product.show', compact('product'));
         }
@@ -204,21 +204,21 @@ class ProductController extends Controller
 
 
 
-        $model = str_slug('product','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('product', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
 
             $att = Attributes::all();
             $product = Product::findOrFail($id);
 
-			$items = Category::pluck('name', 'id');
+            $items = Category::pluck('name', 'id');
 
-			$product_images = DB::table('product_imagess')
-                          ->where('product_id', $id)
-                          ->get();
+            $product_images = DB::table('product_imagess')
+                ->where('product_id', $id)
+                ->get();
 
 
 
-            return view('admin.product.edit', compact('product','items','product_images','att'));
+            return view('admin.product.edit', compact('product', 'items', 'product_images', 'att'));
         }
         return response(view('403'), 403);
     }
@@ -233,48 +233,48 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = str_slug('product','-');
-        if(auth()->user()->permissions()->where('name','=','edit-'.$model)->first()!= null) {
+        $model = str_slug('product', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $this->validate($request, [
                 'product_title' => 'required',
                 'description' => 'required',
                 'item_id' => 'required'
             ]);
-    
+
             $requestData['product_title'] = $request->input('product_title');
             $requestData['slug'] = $request->input('slug');
             $requestData['description'] = $request->input('description');
             $requestData['sku'] = $request->input('sku');
             $requestData['price'] = $request->input('price');
             $requestData['category'] = $request->input('item_id');
-    
+
             // Handle main image upload
             if ($request->hasFile('image')) {
                 $product = product::where('id', $id)->first();
                 $image_path = public_path($product->image);
-    
-                if(File::exists($image_path)) {
+
+                if (File::exists($image_path)) {
                     File::delete($image_path);
                 }
-    
+
                 $file = $request->file('image');
                 $imageName = time() . '_main.' . $file->getClientOriginalExtension();
                 $file->move(public_path('uploads/products/'), $imageName);
                 $requestData['image'] = 'uploads/products/' . $imageName;
             }
-    
+
             // Handle multiple images upload
-            if($request->hasFile('images')) {
+            if ($request->hasFile('images')) {
                 // First delete existing images for this product if needed
                 // DB::table('product_imagess')->where('product_id', $id)->delete();
-                
+
                 $photos = $request->file('images');
-                
+
                 foreach ($photos as $photo) {
                     // Generate unique name for each image
                     $imageName = time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
                     $photo->move(public_path('uploads/products/'), $imageName);
-    
+
                     // Insert new image record
                     DB::table('product_imagess')->insert([
                         'image' => 'uploads/products/' . $imageName,
@@ -282,10 +282,10 @@ class ProductController extends Controller
                     ]);
                 }
             }
-    
+
             // Update product data
             product::where('id', $id)->update($requestData);
-    
+
             // Handle product attributes
             $attval = $request->attribute;
             $product_attribute_id = $request->product_attribute;
@@ -293,26 +293,26 @@ class ProductController extends Controller
             $oldval = $request->value;
             $oldprice = $request->v_price;
             $oldqty = $request->qty;
-    
-            if(is_array($oldatt)){
-                for($j = 0; $j < count($oldatt); $j++){
+
+            if (is_array($oldatt)) {
+                for ($j = 0; $j < count($oldatt); $j++) {
                     $product_attribute = ProductAttribute::find($product_attribute_id[$j]);
                     $product_attribute->attribute_id = $oldatt[$j];
                     $product_attribute->value = $oldval[$j];
                     $product_attribute->price = $oldprice[$j];
                     $product_attribute->qty = $oldqty[$j];
-    
+
                     if ($request->hasFile("image_att.$j")) {
                         $image = $request->file("image_att.$j");
                         $imageName = time() . '_attr_' . $j . '.' . $image->getClientOriginalExtension();
                         $image->move(public_path('uploads/product_attributes/'), $imageName);
                         $product_attribute->image = 'uploads/product_attributes/' . $imageName;
                     }
-    
+
                     $product_attribute->save();
                 }
             }
-    
+
             if (is_array($attval)) {
                 for ($i = 0; $i < count($attval); $i++) {
                     $product_attributes = new ProductAttribute;
@@ -321,18 +321,18 @@ class ProductController extends Controller
                     $product_attributes->price = $attval[$i]['v-price'];
                     $product_attributes->qty = $attval[$i]['qty'];
                     $product_attributes->product_id = $id;
-    
+
                     if ($request->hasFile("attribute.$i.image")) {
                         $image = $request->file("attribute.$i.image");
                         $imageName = time() . '_newattr_' . $i . '.' . $image->getClientOriginalExtension();
                         $image->move(public_path('uploads/product_attributes/'), $imageName);
                         $product_attributes->image = 'uploads/product_attributes/' . $imageName;
                     }
-    
+
                     $product_attributes->save();
                 }
             }
-    
+
             return redirect('admin/product')->with('message', 'Product updated!');
         }
         return response(view('403'), 403);
@@ -347,8 +347,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $model = str_slug('product','-');
-        if(auth()->user()->permissions()->where('name','=','delete-'.$model)->first()!= null) {
+        $model = str_slug('product', '-');
+        if (auth()->user()->permissions()->where('name', '=', 'delete-' . $model)->first() != null) {
             Product::destroy($id);
 
             return redirect('admin/product')->with('flash_message', 'Product deleted!');
@@ -356,54 +356,58 @@ class ProductController extends Controller
         return response(view('403'), 403);
 
     }
-	public function orderList() {
+    public function orderList()
+    {
 
-		$orders = orders::
-				    select('orders.*')
-				   ->get();
+        $orders = orders::
+            select('orders.*')
+            ->get();
 
-		return view('admin.ecommerce.order-list', compact('orders'));
-	}
+        return view('admin.ecommerce.order-list', compact('orders'));
+    }
 
-	public function orderListDetail($id) {
+    public function orderListDetail($id)
+    {
 
-		$order_id = $id;
-		$order = orders::where('id',$order_id)->first();
-		$order_products = orders_products::where('orders_id',$order_id)->get();
-
-
-
-		return view('admin.ecommerce.order-page')->with('title','Invoice #'.$order_id)->with(compact('order','order_products'))->with('order_id',$order_id);
-
-		// return view('admin.ecommerce.order-page');
-	}
-
-	public function updatestatuscompleted($id) {
-
-		$order_id = $id;
-		$order = DB::table('orders')
-              ->where('id', $id)
-              ->update(['order_status' => 'Completed']);
+        $order_id = $id;
+        $order = orders::where('id', $order_id)->first();
+        $order_products = orders_products::where('orders_id', $order_id)->get();
 
 
-		Session::flash('message', 'Order Status Updated Successfully');
-						Session::flash('alert-class', 'alert-success');
-						return back();
 
-	}
-	public function updatestatusPending($id) {
+        return view('admin.ecommerce.order-page')->with('title', 'Invoice #' . $order_id)->with(compact('order', 'order_products'))->with('order_id', $order_id);
 
-		$order_id = $id;
-		$order = DB::table('orders')
-              ->where('id', $id)
-              ->update(['order_status' => 'Pending']);
+        // return view('admin.ecommerce.order-page');
+    }
+
+    public function updatestatuscompleted($id)
+    {
+
+        $order_id = $id;
+        $order = DB::table('orders')
+            ->where('id', $id)
+            ->update(['order_status' => 'Completed']);
 
 
-		Session::flash('message', 'Order Status Updated Successfully');
-						Session::flash('alert-class', 'alert-success');
-						return back();
+        Session::flash('message', 'Order Status Updated Successfully');
+        Session::flash('alert-class', 'alert-success');
+        return back();
 
-	}
+    }
+    public function updatestatusPending($id)
+    {
+
+        $order_id = $id;
+        $order = DB::table('orders')
+            ->where('id', $id)
+            ->update(['order_status' => 'Pending']);
+
+
+        Session::flash('message', 'Order Status Updated Successfully');
+        Session::flash('alert-class', 'alert-success');
+        return back();
+
+    }
 
 
 
@@ -415,8 +419,7 @@ class ProductController extends Controller
 
     public function csvuploadreq(Request $request)
     {
-        if($request->has('csvupload'))
-        {
+        if ($request->has('csvupload')) {
 
             // dd(request()->csvupload);
             ini_set('max_execution_time', 3600); //3 minutes
@@ -429,51 +432,50 @@ class ProductController extends Controller
             unset($array[0]);
             // dump($array[1]);
 
-        foreach($array as $key => $newArray)
-        {
-            // Product Category
-            // $category = $newArray[6]['value'];
-            $category = 124;
+            foreach ($array as $key => $newArray) {
+                // Product Category
+                // $category = $newArray[6]['value'];
+                $category = 124;
 
-            $proCat = explode('/', $category);
+                $proCat = explode('/', $category);
 
-            unset($proCat[0]);
-            unset($proCat[1]);
+                unset($proCat[0]);
+                unset($proCat[1]);
 
-            $parent = 0;
+                $parent = 0;
 
-            // foreach($proCat as $key => $item)
-            // {
-            //dump('Category'.'"===>"'.$item);  //category
+                // foreach($proCat as $key => $item)
+                // {
+                //dump('Category'.'"===>"'.$item);  //category
 
-            // $items = str_replace(' ', '-', $item);
+                // $items = str_replace(' ', '-', $item);
 
-            // $slug = preg_replace('/[^A-Za-z0-9\-]/', '', $items);
+                // $slug = preg_replace('/[^A-Za-z0-9\-]/', '', $items);
 
-            // $slugs = strtolower($slug);
+                // $slugs = strtolower($slug);
 
-            // dump($item);
-            // dump('----------------------------------------------------------------');
+                // dump($item);
+                // dump('----------------------------------------------------------------');
 
-            // if($key != 0)
-            // {
-            //     $previous = Category::where('name', $proCat[$key-1])->first()->id;
-            // }else{
-            //     $previous = 0;
-            // }
+                // if($key != 0)
+                // {
+                //     $previous = Category::where('name', $proCat[$key-1])->first()->id;
+                // }else{
+                //     $previous = 0;
+                // }
 
-            // dd($key);
+                // dd($key);
 
                 // $categories = Category::where('name', $item)->first();
 
 
                 // if(!$categories->name)
                 // {
-                    // $cat = new Category();
-                    // $cat->name = $item;
-                    // $cat->slug = $slugs;
-                    // $cat->parent = ($previous == null || $previous == 0) ? 0 : $previous;
-                    // $cat->save();
+                // $cat = new Category();
+                // $cat->name = $item;
+                // $cat->slug = $slugs;
+                // $cat->parent = ($previous == null || $previous == 0) ? 0 : $previous;
+                // $cat->save();
 
 
                 // }
@@ -482,329 +484,330 @@ class ProductController extends Controller
 
 
                 //dump('slug'.'"===>"'.$slugs);  //slug
-            //    }
-            $moq = $newArray[9]['value'];
-            // dump($moq);
-            // die();
+                //    }
+                $moq = $newArray[9]['value'];
+                // dump($moq);
+                // die();
 
-            $link = $newArray[0]['value'];   //link
-            // dump($link);
-            // die();
-            $product_title = $newArray[5]['value'];
-            //dump($product_title);  //description
-
-
-            $str = $newArray[1]['value'];
-            $price =  (float) filter_var( $str, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) ; // Price
-            //dump($price);
-            $profit_margin = 80;
-            $shipping_fee = 25;
-            // $margin = 1.00;
-            // $supplier_fee = 5;
-            // $advertisment = 3;
-
-            $margin_final = (($profit_margin + 100) * $price) /100;
-
-            $shipping_final = (($shipping_fee / 100) * $margin_final);
-            // $stripe_final = (($stripe_fee / 100) * $margin_final);
-            // $supplier_final = (($supplier_fee / 100) * $margin_final);
-            // $advertisment_final = (($advertisment / 100) * $margin_final);
-            // dump($value->price);
-            // dump($shipping_final);
-            // dd($margin_final);
-            // $final = $margin_final + $shipping_final + $stripe_final;
-            $final = $margin_final + $shipping_final;
-            //dump($price); // Price
-
-            $description = $newArray[2]['value'];
-            //dump($description);  //description
+                $link = $newArray[0]['value'];   //link
+                // dump($link);
+                // die();
+                $product_title = $newArray[5]['value'];
+                //dump($product_title);  //description
 
 
-            // Product Image
-            $doc1 = new \DOMDocument();
-            @$doc1->loadHTML($newArray[3]['value'] );
-            $imagePrd = $doc1->getElementsByTagName('img');
+                $str = $newArray[1]['value'];
+                $price = (float) filter_var($str, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION); // Price
+                //dump($price);
+                $profit_margin = 80;
+                $shipping_fee = 25;
+                // $margin = 1.00;
+                // $supplier_fee = 5;
+                // $advertisment = 3;
 
-            //For Signle Product Image
-            $imagename = "";
-            foreach($imagePrd as $key => $tag) {
-                if($key == '0'){
-                    $prdImage = explode("_",($tag->getAttribute('src')))[0];
-                    //dump($prdImage); //Product Image
-                    //dump('here');
-                    // die();
+                $margin_final = (($profit_margin + 100) * $price) / 100;
+
+                $shipping_final = (($shipping_fee / 100) * $margin_final);
+                // $stripe_final = (($stripe_fee / 100) * $margin_final);
+                // $supplier_final = (($supplier_fee / 100) * $margin_final);
+                // $advertisment_final = (($advertisment / 100) * $margin_final);
+                // dump($value->price);
+                // dump($shipping_final);
+                // dd($margin_final);
+                // $final = $margin_final + $shipping_final + $stripe_final;
+                $final = $margin_final + $shipping_final;
+                //dump($price); // Price
+
+                $description = $newArray[2]['value'];
+                //dump($description);  //description
+
+
+                // Product Image
+                $doc1 = new \DOMDocument();
+                @$doc1->loadHTML($newArray[3]['value']);
+                $imagePrd = $doc1->getElementsByTagName('img');
+
+                //For Signle Product Image
+                $imagename = "";
+                foreach ($imagePrd as $key => $tag) {
+                    if ($key == '0') {
+                        $prdImage = explode("_", ($tag->getAttribute('src')))[0];
+                        //dump($prdImage); //Product Image
+                        //dump('here');
+                        // die();
+
+                        $url = $prdImage;
+                        $imagename = substr($url, strrpos($url, '/') + 1);
+                        //dump($url);
+                        Storage::disk('localProductImg')->put($imagename, file_get_contents($url));
+                        // break;
+                    }
+                }
+
+                $product = new Product();
+                $product->product_title = $product_title;
+                $product->description = $description;
+                $product->price = $final;
+                $product->image = 'uploads/products/' . $imagename;
+                $product->link = $link;
+                $product->category = 124;
+                $product->user_id = 1;
+                $product->moq = $moq;
+                $product->save();
+                $pro_id = $product->id;
+
+
+
+                foreach ($imagePrd as $key => $tag) {
+
+                    $prdImage = explode("_", ($tag->getAttribute('src')))[0]; //Product Gallery Image
+                    // dump($prdImage);
 
                     $url = $prdImage;
                     $imagename = substr($url, strrpos($url, '/') + 1);
+
                     //dump($url);
-                    Storage::disk('localProductImg')->put($imagename, file_get_contents($url));
-                // break;
+
+                    Storage::disk('localProduct')->put($key . $imagename, file_get_contents($url));
+
+                    DB::table('product_imagess')->insert([
+
+                        ['image' => 'uploads/galleryimages/' . $key . $imagename, 'product_id' => $product->id]
+
+                    ]);
+
+                    ;
                 }
-            }
 
-            $product = new Product();
-            $product->product_title = $product_title;
-            $product->description = $description;
-            $product->price = $final;
-            $product->image = 'uploads/products/'.$imagename;
-            $product->link = $link;
-            $product->category = 124;
-            $product->user_id = 1;
-            $product->moq = $moq;
-            $product->save();
-            $pro_id = $product->id;
+                //Product Attribute Image
 
+                $doc2 = new \DOMDocument();
+                @$doc2->loadHTML($newArray[4]['value']);
+                $tagName = '';
 
+                $attrColor = $doc2->getElementsByTagName('span');
 
-            foreach($imagePrd as $key => $tag) {
+                $imagePrdAttr = $doc2->getElementsByTagName('img');
 
-                $prdImage = explode("_",($tag->getAttribute('src')))[0]; //Product Gallery Image
-                // dump($prdImage);
+                foreach ($attrColor as $key => $tag) {
 
-                $url = $prdImage;
-                $imagename = substr($url, strrpos($url, '/') + 1);
-
-                //dump($url);
-
-                Storage::disk('localProduct')->put($key.$imagename, file_get_contents($url));
-
-                DB::table('product_imagess')->insert([
-
-                    ['image' => 'uploads/galleryimages/'.$key.$imagename, 'product_id' => $product->id]
-
-                ]);
-
-                ;
-            }
-
-            //Product Attribute Image
-
-            $doc2 = new \DOMDocument();
-            @$doc2->loadHTML($newArray[4]['value']);
-            $tagName = '';
-
-            $attrColor = $doc2->getElementsByTagName('span');
-
-            $imagePrdAttr = $doc2->getElementsByTagName('img');
-
-            foreach($attrColor as $key => $tag) {
-
-                $prdAttClass = $tag->getAttribute('class');
+                    $prdAttClass = $tag->getAttribute('class');
 
 
 
-                if($prdAttClass == 'color') {
-                   // dump('----------------------------------------------------------------');
-                    $prdAttColor = $tag->getAttribute('style'); //Product Attribute Color
+                    if ($prdAttClass == 'color') {
+                        // dump('----------------------------------------------------------------');
+                        $prdAttColor = $tag->getAttribute('style'); //Product Attribute Color
+
+                        $attributeValue = AttributeValue::where('value', $colorName)->first();
+
+                        if (!$attributeValue->value) {
+                            $attValue = new AttributeValue();
+                            $attValue->attribute_id = 11;
+                            $attValue->value = $colorName;
+                            $attValue->save();
+                        }
+
+                        // $colorName = $tag->getAttribute('title');
+                        //dump('hereeeee');
+
+                        $ProductAttribute = new ProductAttribute();
+                        $ProductAttribute->attribute_id = 11;
+                        $ProductAttribute->value = $attValue->id;
+                        $ProductAttribute->product_id = $product->id;
+                        $ProductAttribute->save();
+
+
+
+                        // dump($colorName);
+                        //dump('colorCode'.'"===>"'.$prdAttColor);
+                    }
+                    //dump($prdAttClass);
+                    if ($prdAttClass == 'price') {
+                        //   dump('here----------------------------------------------------------------');
+
+
+                        $colorName = $tag->getAttribute('title');
+
+                        $attPrice = (float) filter_var($tag->nodeValue, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+
+
+                        $attributeValue = AttributeValue::where('value', $colorName)->first();
+
+                        if (!$attributeValue->value) {
+                            $attValue = new AttributeValue();
+                            $attValue->attribute_id = 11;
+                            $attValue->value = $colorName;
+                            $attValue->save();
+                        }
+
+                        $ProductAttribute = new ProductAttribute();
+                        $ProductAttribute->attribute_id = 11;
+                        $ProductAttribute->value = $attValue->id;
+                        $ProductAttribute->product_id = $product->id;
+                        $ProductAttribute->price = $attPrice;
+                        $ProductAttribute->save();
+                        //dump('Price'.'"===>"'.$attPrice);  // Attribute Price
+                    }
+
+
+                }
+                foreach ($imagePrdAttr as $key => $tag) {
+
+                    $prdAttImage = explode("_", ($tag->getAttribute('src')))[0]; //Product Attribute Image
+
+
+                    $url = $prdAttImage;
+                    $imagename = substr($url, strrpos($url, '/') + 1);
+
+                    Storage::disk('localAttribute')->put($key . $imagename, file_get_contents($url));
+                    $colorName = $tag->getAttribute('title');
 
                     $attributeValue = AttributeValue::where('value', $colorName)->first();
 
-                    if(!$attributeValue->value)
-                    {
-                    $attValue = new AttributeValue();
-                    $attValue->attribute_id = 11;
-                    $attValue->value = $colorName;
-                    $attValue->save();
-                    }
-
-                    // $colorName = $tag->getAttribute('title');
-                    //dump('hereeeee');
-
-                    $ProductAttribute = new ProductAttribute();
-                    $ProductAttribute->attribute_id	= 11;
-                    $ProductAttribute->value = $attValue->id;
-                    $ProductAttribute->product_id = $product->id;
-                    $ProductAttribute->save();
-
-
-
-                   // dump($colorName);
-                //dump('colorCode'.'"===>"'.$prdAttColor);
-                }
-                //dump($prdAttClass);
-                if($prdAttClass == 'price') {
-                 //   dump('here----------------------------------------------------------------');
-
-
-                $colorName = $tag->getAttribute('title');
-
-                $attPrice =  (float) filter_var( $tag->nodeValue, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) ;
-
-
-                $attributeValue = AttributeValue::where('value', $colorName)->first();
-
-                if(!$attributeValue->value)
-                    {
-                    $attValue = new AttributeValue();
-                    $attValue->attribute_id = 11;
-                    $attValue->value = $colorName;
-                    $attValue->save();
+                    if (!$attributeValue->value) {
+                        $attValue = new AttributeValue();
+                        $attValue->attribute_id = 11;
+                        $attValue->value = $colorName;
+                        $attValue->save();
                     }
 
                     $ProductAttribute = new ProductAttribute();
-                    $ProductAttribute->attribute_id	= 11;
+                    $ProductAttribute->attribute_id = 11;
                     $ProductAttribute->value = $attValue->id;
                     $ProductAttribute->product_id = $product->id;
                     $ProductAttribute->price = $attPrice;
+                    $ProductAttribute->image = 'uploads/productAttributes/' . $key . $imagename;
                     $ProductAttribute->save();
-                //dump('Price'.'"===>"'.$attPrice);  // Attribute Price
+                    // dump('----------------------------------------------------------------');
+                    //dump($colorName);
+                    //dump('prdAtt'.'"===>"'.$prdAttImage);
+                    //if($key == '0'){
+
                 }
 
 
-            }
-            foreach($imagePrdAttr as $key => $tag) {
-
-                $prdAttImage = explode("_",($tag->getAttribute('src')))[0]; //Product Attribute Image
 
 
-                $url = $prdAttImage;
-                $imagename = substr($url, strrpos($url, '/') + 1);
+                // Size
 
-                Storage::disk('localAttribute')->put($key.$imagename, file_get_contents($url));
-                $colorName = $tag->getAttribute('title');
-
-                $attributeValue = AttributeValue::where('value', $colorName)->first();
-
-                if(!$attributeValue->value)
-                    {
-                    $attValue = new AttributeValue();
-                    $attValue->attribute_id = 11;
-                    $attValue->value = $colorName;
-                    $attValue->save();
-                    }
-
-                    $ProductAttribute = new ProductAttribute();
-                    $ProductAttribute->attribute_id	= 11;
-                    $ProductAttribute->value = $attValue->id;
-                    $ProductAttribute->product_id = $product->id;
-                    $ProductAttribute->price = $attPrice;
-                    $ProductAttribute->image = 'uploads/productAttributes/'.$key.$imagename;
-                    $ProductAttribute->save();
-               // dump('----------------------------------------------------------------');
-                //dump($colorName);
-                //dump('prdAtt'.'"===>"'.$prdAttImage);
-                //if($key == '0'){
-
-            }
-
-
-
-
-            // Size
-
-               $size = $newArray[7]['value'];
-
-            //    dump($size);
-            //    die();
-
-               $sizes = json_decode($size);
-
-               if(!empty($sizes)){
-                foreach($sizes as $key => $item)
-                {
-                 if ($item->attribute_size != null) {
-
-                     $proSize = explode('US', $item->attribute_size);
-
-                     $attprosize = filter_var( $proSize[0], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-
-                     if(intval($attprosize))
-                     {
-
-                        $attributeValue = AttributeValue::where('value', $attprosize)->first();
-
-
-                            $attValue = new AttributeValue();
-                            $attValue->attribute_id = 12;
-                            $attValue->value = $attprosize;
-                            $attValue->save();
-
-                            $ProductAttribute = new ProductAttribute();
-                            $ProductAttribute->attribute_id	= 12;
-                            $ProductAttribute->value = $attValue->id;
-                            $ProductAttribute->product_id = $product->id;
-                            $ProductAttribute->price = (float) filter_var( $proSize[1], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-                            $ProductAttribute->save();
-
-
-
-                        //dump('----------------------------------------------------------------');
-                        // dump('attSize'.'"===>"'.$attprosize);
-                        //dump( );
-                     }
-
-
-
-
-
-                     foreach($proSize as $productSize)
-                     {
-                        $prdSize = filter_var( $productSize, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-                         //dump($productSize[0]);  //size
-                     }
-
-
-                 }
-
-                }
-               }else{
-
-                $size = $newArray[8]['value'];
+                $size = $newArray[7]['value'];
 
                 //    dump($size);
+                //    die();
 
                 $sizes = json_decode($size);
 
-                foreach($sizes as $key => $item)
-                {
-                 if ($item->attribute_size_one != null) {
+                if (!empty($sizes)) {
+                    foreach ($sizes as $key => $item) {
+                        if ($item->attribute_size != null) {
 
-                     $proSize = explode('US', $item->attribute_size_one);
+                            $proSize = explode('US', $item->attribute_size);
 
-                     foreach($proSize as $productSize)
-                     {
-                        $attributeValue = AttributeValue::where('value', $productSize)->first();
+                            $attprosize = filter_var($proSize[0], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
+                            if (intval($attprosize)) {
 
-                            $attValue = new AttributeValue();
-                            $attValue->attribute_id = 12;
-                            $attValue->value = $productSize;
-                            $attValue->save();
+                                $attributeValue = AttributeValue::where('value', $attprosize)->first();
 
 
+                                $attValue = new AttributeValue();
+                                $attValue->attribute_id = 12;
+                                $attValue->value = $attprosize;
+                                $attValue->save();
+
+                                $ProductAttribute = new ProductAttribute();
+                                $ProductAttribute->attribute_id = 12;
+                                $ProductAttribute->value = $attValue->id;
+                                $ProductAttribute->product_id = $product->id;
+                                $ProductAttribute->price = (float) filter_var($proSize[1], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+                                $ProductAttribute->save();
 
 
-                            $ProductAttribute = new ProductAttribute();
-                            $ProductAttribute->attribute_id	= 12;
-                            $ProductAttribute->value = $attValue->id;
-                            $ProductAttribute->product_id = $product->id;
-                            $ProductAttribute->price = $proSize[1];
-                            $ProductAttribute->save();
+
+                                //dump('----------------------------------------------------------------');
+                                // dump('attSize'.'"===>"'.$attprosize);
+                                //dump( );
+                            }
 
 
-                        // dump('attSize1'.'"===>"'.strtolower($productSize));
-                     }
 
 
-                 }
 
+                            foreach ($proSize as $productSize) {
+                                $prdSize = filter_var($productSize, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+                                //dump($productSize[0]);  //size
+                            }
+
+
+                        }
+
+                    }
+                } else {
+
+                    $size = $newArray[8]['value'];
+
+                    //    dump($size);
+
+                    $sizes = json_decode($size);
+
+                    foreach ($sizes as $key => $item) {
+                        if ($item->attribute_size_one != null) {
+
+                            $proSize = explode('US', $item->attribute_size_one);
+
+                            foreach ($proSize as $productSize) {
+                                $attributeValue = AttributeValue::where('value', $productSize)->first();
+
+
+                                $attValue = new AttributeValue();
+                                $attValue->attribute_id = 12;
+                                $attValue->value = $productSize;
+                                $attValue->save();
+
+
+
+
+                                $ProductAttribute = new ProductAttribute();
+                                $ProductAttribute->attribute_id = 12;
+                                $ProductAttribute->value = $attValue->id;
+                                $ProductAttribute->product_id = $product->id;
+                                $ProductAttribute->price = $proSize[1];
+                                $ProductAttribute->save();
+
+
+                                // dump('attSize1'.'"===>"'.strtolower($productSize));
+                            }
+
+
+                        }
+
+                    }
                 }
-               }
 
+
+
+            }
+
+            // die();
+            Session::flash('message', 'Product Uploaded Successfully!');
+            Session::flash('alert-class', 'alert-success');
+            return redirect('admin/product')->with('message', 'Product Uploaded Successfully!');
 
 
         }
 
-        // die();
-        Session::flash('message', 'Product Uploaded Successfully!');
-        Session::flash('alert-class', 'alert-success');
-        return redirect('admin/product')->with('message', 'Product Uploaded Successfully!');
-
-
-         }
-
     }
 
+
+    public function getAttributeValues($id)
+    {
+        $values = AttributeValue::where('attribute_id', $id)->get(['id', 'value']); 
+        return response()->json($values);
     }
+
+
+
+}
 
 
