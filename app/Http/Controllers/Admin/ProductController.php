@@ -127,7 +127,9 @@ class ProductController extends Controller
                 $imageName = time() . '_main.' . $file->getClientOriginalExtension();
                 $file->move(public_path('uploads/products/'), $imageName);
                 $product->image = 'uploads/products/' . $imageName;
+
             }
+
 
             $product->save();
 
@@ -802,7 +804,7 @@ class ProductController extends Controller
 
     public function getAttributeValues($id)
     {
-        $values = AttributeValue::where('attribute_id', $id)->get(['id', 'value']); 
+        $values = AttributeValue::where('attribute_id', $id)->get(['id', 'value']);
         return response()->json($values);
     }
 

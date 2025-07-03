@@ -86,20 +86,68 @@
             <h4 class="card-title" id="repeat-form">Add Variation</h4>
         </div>
 
-        <div id="variationsWrapper">
+        {{-- <div id="variationsWrapper">
             <select class="form-control multiSelect" name="attribute_id[]" multiple>
                 @foreach ($att as $attribute)
-                    <option value="{{ $attribute->id }}"
-                        data-values='@json($attribute->values)'> <!-- pass attribute values as JSON -->
+                    <option value="{{ $attribute->id }}" data-values='@json($attribute->values)'>
+                        <!-- pass attribute values as JSON -->
                         {{ $attribute->name }}
                     </option>
                 @endforeach
             </select>
 
-            <div id="attributeValuesContainer" class="mt-3">
-                <!-- Here dropdowns for attribute values will be appended -->
+           <div id="attributeValuesContainer" class="d-flex flex-wrap gap-2 mt-3"></div>
+
+        </div> --}}
+
+        {{-- <!-- Existing wrapper -->
+        <div id="variationsWrapper">
+            <!-- Container where all blocks will be added -->
+            <div id="allVariationBlocks">
+                <!-- Initial variation will be added via JS -->
             </div>
+
+            <!-- Add variation button -->
+            <button type="button" id="addVariationBtn" class="btn btn-primary mt-3">Add Variation</button>
         </div>
+
+        <!-- Hidden template (not displayed) -->
+        <template id="variationTemplate">
+            <div class="variationBlock mb-4 border p-3 rounded">
+                <select class="form-control multiSelect" name="attribute_id[__INDEX__][]" multiple>
+                    @foreach ($att as $attribute)
+                        <option value="{{ $attribute->id }}" data-values='@json($attribute->values)'>
+                            {{ $attribute->name }}
+                        </option>
+                    @endforeach
+                </select>
+
+                <div class="attributeValuesContainer d-flex flex-wrap gap-2 mt-3"></div>
+            </div>
+        </template> --}}
+
+
+
+        <!-- Attribute Select (Once at the top only) -->
+        <div class="mb-3 mainAttributeSelectsec">
+            <label><strong>Select Attributes</strong></label>
+            <select id="mainAttributeSelect" class="form-control" multiple>
+                @foreach ($att as $attribute)
+                    <option value="{{ $attribute->id }}" data-values='@json($attribute->values)'>
+                        {{ $attribute->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <!-- Variation Blocks Container -->
+        <div id="variationBlocksContainer"></div>
+
+        <!-- Button to Add Variation -->
+        <button type="button" class="btn btn-primary mt-3" id="addVariationBtn">Add Variation</button>
+
+
+
 
 
         {{-- <button type="button" id="addVariationBtn" class="btn btn-primary mt-3">Add Variation</button> --}}

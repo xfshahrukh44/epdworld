@@ -14,6 +14,55 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
+
+        .d-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .form-inline-item {
+            display: flex;
+            flex-direction: column;
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+
+        .form-inline-item label {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .gap-2 {
+            gap: 10px;
+        }
+
+        .mainAttributeSelectsec {
+            width: 100% !important;
+        }
+
+        .mainAttributeSelectsec span.select2.select2-container.select2-container--default {
+            width: 100% !important;
+        }
+
+        .variationBlock .form-inline-item {
+            width: 20%;
+        }
+
+        .variationBlock {
+            margin-bottom: 40px;
+            border: 1px solid #cacfe7;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+            margin: 2px !important;
+        }
+
+        .variationBlock select.form-control.mx-2 {
+            margin: 0 !important;
+        }
     </style>
 @endpush
 @section('content')
@@ -155,50 +204,156 @@
             });
         }
 
+        // $(document).ready(function() {
+
+        //     $('.multiSelect').on('change', function() {
+        //         console.log('Selected attributes changed');
+        //         let selectedAttributes = $(this).val(); // array of selected attribute IDs
+        //         let $container = $('#attributeValuesContainer');
+        //         $container.empty(); // clear old dropdowns
+
+        //         if (!selectedAttributes || selectedAttributes.length === 0) {
+        //             return; // no attribute selected
+        //         }
+
+        //         // For each selected attribute, fetch values via AJAX
+        //         selectedAttributes.forEach(attrId => {
+        //             $.ajax({
+        //                 url: `{{ url('admin/get-attribute-values') }}/${attrId}`,  // URL to fetch attribute values
+        //                 type: 'GET',
+        //                 dataType: 'json',
+        //                 success: function(values) {
+        //                     if (values.length === 0) return;
+
+        //                     // Find the attribute name text from select options
+        //                     let attrName = $(`.multiSelect option[value='${attrId}']`).text();
+
+        //                     // Create the dropdown for attribute values
+        //                     let html = `<div class="mb-3">
+    //                                     <label for="attribute_values_${attrId}">${attrName}</label>
+    //                                     <select class="form-control" name="attribute_values[${attrId}]">
+    //                                         <option value="">Select ${attrName}</option>`;
+
+        //                     values.forEach(function(v) {
+        //                         html += `<option value="${v.id}">${v.value}</option>`;
+        //                     });
+
+        //                     html += `</select></div>`;
+
+        //                     $container.append(html);
+        //                 },
+        //                 error: function() {
+        //                     console.error(`Failed to load values for attribute ${attrId}`);
+        //                 }
+        //             });
+        //         });
+        //     });
+        // });
+
         $(document).ready(function() {
+            let variationIndex = 0;
+            let selectedAttributes = [];
 
-            $('.multiSelect').on('change', function() {
-                console.log('Selected attributes changed');
-                let selectedAttributes = $(this).val(); // array of selected attribute IDs
-                let $container = $('#attributeValuesContainer');
-                $container.empty(); // clear old dropdowns
+            // Initialize Select2
+            $('#mainAttributeSelect').select2();
 
-                if (!selectedAttributes || selectedAttributes.length === 0) {
-                    return; // no attribute selected
+            // When attribute is selected
+            $('#mainAttributeSelect').on('change', function() {
+                // Always get full list of selected attributes
+                selectedAttributes = $('#mainAttributeSelect').select2('val') || [];
+
+                // // Disable selected ones
+                // $('#mainAttributeSelect option').each(function() {
+                //     const val = $(this).val();
+                //     $(this).prop('disabled', selectedAttributes.includes(val));
+                // });
+
+                $('#mainAttributeSelect').trigger('change.select2'); // Refresh Select2
+
+                // Reset variation blocks (we build fresh ones every time)
+                $('#variationBlocksContainer').empty();
+                variationIndex = 0;
+
+                if (selectedAttributes.length > 0) {
+                    addVariationBlock();
                 }
+            });
 
-                // For each selected attribute, fetch values via AJAX
-                selectedAttributes.forEach(attrId => {
-                    $.ajax({
-                        url: `{{ url('admin/get-attribute-values') }}/${attrId}`,  // URL to fetch attribute values
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(values) {
-                            if (values.length === 0) return;
 
-                            // Find the attribute name text from select options
-                            let attrName = $(`.multiSelect option[value='${attrId}']`).text();
+            // Button click - Add new variation block
+            $('#addVariationBtn').on('click', function() {
+                if (selectedAttributes.length === 0) {
+                    alert('Please select at least one attribute first.');
+                    return;
+                }
+                addVariationBlock();
+            });
 
-                            // Create the dropdown for attribute values
-                            let html = `<div class="mb-3">
-                                            <label for="attribute_values_${attrId}">${attrName}</label>
-                                            <select class="form-control" name="attribute_values[${attrId}]">
-                                                <option value="">Select ${attrName}</option>`;
+            function addVariationBlock() {
+                const blockIndex = variationIndex++;
+                const $block = $('<div>', {
+                    class: 'variationBlock'
+                });
+                const $attrValuesContainer = $('<div>', {
+                    class: 'd-flex flex-wrap gap-2 attr-values-container'
+                });
 
-                            values.forEach(function(v) {
-                                html += `<option value="${v.id}">${v.value}</option>`;
-                            });
+                let dropdowns = []; // Store rendered dropdowns with promises
 
-                            html += `</select></div>`;
-
-                            $container.append(html);
-                        },
-                        error: function() {
-                            console.error(`Failed to load values for attribute ${attrId}`);
-                        }
+                const requests = selectedAttributes.map(attrId => {
+                    return new Promise((resolve, reject) => {
+                        $.ajax({
+                            url: `{{ url('admin/get-attribute-values') }}/${attrId}`,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(values) {
+                                const attrName = $(
+                                    '#mainAttributeSelect option[value="' + attrId +
+                                    '"]').text();
+                                let dropdown = `
+                            <div class="form-inline-item">
+                                <label>${attrName}</label>
+                             <select class="form-control mx-2" name="attribute_values[${blockIndex}][${attrId}]">
+                                <option value="">Select ${attrName}</option>`;
+                                values.forEach(v => {
+                                    dropdown +=
+                                        `<option value="${v.id}">${v.value}</option>`;
+                                });
+                                dropdown += `</select></div>`;
+                                dropdowns.push(dropdown);
+                                resolve();
+                            },
+                            error: reject
+                        });
                     });
                 });
-            });
+
+                Promise.all(requests).then(() => {
+                    dropdowns.forEach(html => {
+                        $attrValuesContainer.append(html);
+                    });
+
+                    const priceSection = `
+        <div class="d-flex flex-wrap gap-2 align-items-end ms-3 mt-3">
+            <div class="form-inline-item">
+                <label>Price</label>
+                <input type="number" step="any" name="price[${blockIndex}]" class="form-control mx-2">
+            </div>
+            <div class="form-inline-item">
+                <label>Qty</label>
+                <input type="number" name="qty[${blockIndex}]" class="form-control mx-2">
+            </div>
+            <div class="form-inline-item">
+                <label>Image</label>
+                <input type="file" name="image[${blockIndex}]" class="form-control mx-2">
+            </div>
+        </div>`;
+
+                    $block.append($attrValuesContainer).append(priceSection);
+                    $('#variationBlocksContainer').append($block);
+                });
+            }
+
         });
     </script>
 @endpush
