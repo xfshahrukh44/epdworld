@@ -257,6 +257,8 @@
             // Initialize Select2
             $('#mainAttributeSelect').select2();
 
+            $('.attribute-select').select2();
+
             // When attribute is selected
             $('#mainAttributeSelect').on('change', function() {
                 // Always get full list of selected attributes
@@ -311,13 +313,12 @@
                                     '#mainAttributeSelect option[value="' + attrId +
                                     '"]').text();
                                 let dropdown = `
-                            <div class="form-inline-item">
-                                <label>${attrName}</label>
-                             <select class="form-control mx-2" name="attribute_values[${blockIndex}][${attrId}]">
-                                <option value="">Select ${attrName}</option>`;
+                                    <div class="form-inline-item">
+                                        <label>${attrName}</label>
+                                        <select class="form-control mx-2 variation-attribute-select" name="attribute_values[${blockIndex}][${attrId}]">
+                                            <option value="">Select ${attrName}</option>`;
                                 values.forEach(v => {
-                                    dropdown +=
-                                        `<option value="${v.id}">${v.value}</option>`;
+                                    dropdown += `<option value="${v.id}">${v.value}</option>`;
                                 });
                                 dropdown += `</select></div>`;
                                 dropdowns.push(dropdown);
@@ -351,6 +352,8 @@
 
                     $block.append($attrValuesContainer).append(priceSection);
                     $('#variationBlocksContainer').append($block);
+
+                    $block.find('.variation-attribute-select').select2();
                 });
             }
 
