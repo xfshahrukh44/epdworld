@@ -103,6 +103,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $model = str_slug('product', '-');
         if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             $this->validate($request, [
@@ -152,24 +153,37 @@ class ProductController extends Controller
 
             // Handle product attributes
             $attval = $request->attribute;
+
             if (is_array($attval)) {
                 for ($i = 0; $i < count($attval); $i++) {
-                    $product_attributes = new ProductAttribute;
-                    $product_attributes->attribute_id = $attval[$i]['attribute_id'];
-                    $product_attributes->value = $attval[$i]['value'];
-                    $product_attributes->price = $attval[$i]['v-price'];
-                    $product_attributes->qty = $attval[$i]['qty'];
-                    $product_attributes->product_id = $product->id;
+                    $variation = $attval[$i];
 
-                    // Handle attribute image upload
-                    if ($request->hasFile("attribute.$i.image")) {
-                        $image = $request->file("attribute.$i.image");
-                        $imageName = time() . '_attr_' . $i . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path('uploads/product_attributes/'), $imageName);
-                        $product_attributes->image = 'uploads/product_attributes/' . $imageName;
+                    // Generate a unique variation key like "color-2_size-5"
+                    $variationKeyParts = [];
+                    foreach ($variation['attributes'] as $attr) {
+                        $variationKeyParts[] = 'attr-' . $attr['attribute_id'] . '_' . $attr['value'];
                     }
+                    $variationKey = implode('_', $variationKeyParts);
 
-                    $product_attributes->save();
+                    foreach ($variation['attributes'] as $attr) {
+                        $productAttribute = new ProductAttribute();
+                        $productAttribute->attribute_id = $attr['attribute_id'];
+                        $productAttribute->value = $attr['value'];
+                        $productAttribute->price = $variation['v-price'];
+                        $productAttribute->qty = $variation['qty'];
+                        $productAttribute->product_id = $product->id;
+                        $productAttribute->variation_key = $variationKey;
+
+                        // Handle attribute image upload
+                        if (isset($attr['image']) && $request->hasFile("attribute.$i.attributes.".$attr['attribute_id'].".image")) {
+                            $image = $request->file("attribute.$i.attributes.".$attr['attribute_id'].".image");
+                            $imageName = time() . '_attr_' . $i . '.' . $image->getClientOriginalExtension();
+                            $image->move(public_path('uploads/product_attributes/'), $imageName);
+                            $productAttribute->image = 'uploads/product_attributes/' . $imageName;
+                        }
+
+                        $productAttribute->save();
+                    }
                 }
             }
 
