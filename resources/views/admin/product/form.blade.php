@@ -128,26 +128,27 @@
 
 
 
-        <!-- Attribute Select (Once at the top only) -->
-        <div class="mb-3 mainAttributeSelectsec">
-            <label><strong>Select Attributes</strong></label>
-            <select id="mainAttributeSelect" class="form-control" multiple>
-                @foreach ($att as $attribute)
-                    <option value="{{ $attribute->id }}" data-values='@json($attribute->values)'>
-                        {{ $attribute->name }}
-                    </option>
-                @endforeach
-            </select>
+        <div class="col-md-12">
+            <!-- Attribute Select (Once at the top only) -->
+            <div class="mb-3 mainAttributeSelectsec">
+                <label><strong>Select Attributes</strong></label>
+                <select id="mainAttributeSelect" class="form-control" multiple>
+                    @foreach ($att as $attribute)
+                        <option value="{{ $attribute->id }}" data-values='@json($attribute->values)'>
+                            {{ $attribute->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Variation Blocks Container -->
+            <div id="variationBlocksContainer"></div>
+
+            <!-- Button to Add Variation -->
+            <button type="button" class="btn btn-primary mt-3" id="addVariationBtn">Add Variation</button>
+
+
         </div>
-
-        <!-- Variation Blocks Container -->
-        <div id="variationBlocksContainer"></div>
-
-        <!-- Button to Add Variation -->
-        <button type="button" class="btn btn-primary mt-3" id="addVariationBtn">Add Variation</button>
-
-
-
 
 
         {{-- <button type="button" id="addVariationBtn" class="btn btn-primary mt-3">Add Variation</button> --}}

@@ -262,7 +262,10 @@
             // When attribute is selected
             $('#mainAttributeSelect').on('change', function() {
                 // Always get full list of selected attributes
-                selectedAttributes = $('#mainAttributeSelect').select2('val') || [];
+                selectedAttributes = [];
+                $('#mainAttributeSelect option:selected').each(function() {
+                    selectedAttributes.push($(this).val());
+                });
 
                 // // Disable selected ones
                 // $('#mainAttributeSelect option').each(function() {
@@ -296,6 +299,18 @@
                 const $block = $('<div>', {
                     class: 'variationBlock'
                 });
+
+                // Remove Button
+                const $removeBtn = $('<button>', {
+                    type: 'button',
+                    class: 'btn btn-danger btn-sm position-absolute top-0 end-0 m-2',
+                    text: 'Remove',
+                    click: function() {
+                        $block.remove();
+                    }
+                });
+
+
                 const $attrValuesContainer = $('<div>', {
                     class: 'd-flex flex-wrap gap-2 attr-values-container'
                 });
@@ -318,7 +333,8 @@
                                         <select class="form-control mx-2 variation-attribute-select" name="attribute_values[${blockIndex}][${attrId}]">
                                             <option value="">Select ${attrName}</option>`;
                                 values.forEach(v => {
-                                    dropdown += `<option value="${v.id}">${v.value}</option>`;
+                                    dropdown +=
+                                        `<option value="${v.id}">${v.value}</option>`;
                                 });
                                 dropdown += `</select></div>`;
                                 dropdowns.push(dropdown);
@@ -350,6 +366,11 @@
             </div>
         </div>`;
 
+                    $block.append(
+                        $('<div>', {
+                            class: 'd-flex justify-content-end'
+                        }).append($removeBtn)
+                    );
                     $block.append($attrValuesContainer).append(priceSection);
                     $('#variationBlocksContainer').append($block);
 
