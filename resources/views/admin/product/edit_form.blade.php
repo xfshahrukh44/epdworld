@@ -25,23 +25,19 @@
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('base_price', 'Price') !!}
-                {!! Form::text(
-                    'base_price',
-                    null,
-                    'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
-                ) !!}
+                {!! Form::text('base_price', old('base_price', $product->price ?? null), ['class' => 'form-control', 'required' => 'required']) !!}
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('sku', 'SKU') !!}
-                {!! Form::text('sku', isset($product) ? $product->sku : null, ['class' => 'form-control']) !!}
+                {!! Form::text('sku', old('sku', $product->sku ?? null), ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('item_number', 'Item number') !!}
-                {!! Form::text('item_number', isset($product) ? $product->item_number : null, ['class' => 'form-control']) !!}
+                {!! Form::text('item_number', old('item_number', $product->item_number ?? null), ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="col-md-12">
