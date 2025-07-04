@@ -63,7 +63,7 @@ class ProductController extends Controller
                 $product = Product::where('products.product_title', 'LIKE', "%$keyword%")
                     ->paginate(12);
             } else {
-                $product = Product::orderBy('id', 'asc')->paginate(12);
+                $product = Product::orderBy('id', 'desc')->paginate(12);
             }
 
             return view('admin.product.index', compact('product'));

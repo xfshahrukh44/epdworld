@@ -260,6 +260,11 @@
             $('#mainAttributeSelect').select2();
             $('.variation-attribute-select').select2();
 
+            // Event delegation for remove button (create + edit)
+            $(document).on('click', '.remove-variation-btn', function() {
+                $(this).closest('.variationBlock').remove();
+            });
+
             // Listen to select2:select to track selection order
             $('#mainAttributeSelect').on('select2:select', function(e) {
                 const selectedId = e.params.data.id;
