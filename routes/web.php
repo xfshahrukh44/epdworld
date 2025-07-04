@@ -142,6 +142,8 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin', 'prefix' =>
     Route::get('csvupload', 'Admin\\ProductController@csvupload')->name('product.csvupload');
     Route::post('csvupload', 'Admin\\ProductController@csvuploadreq')->name('product.csvupload');
     Route::get('get-attribute-values/{id}', 'Admin\\ProductController@getAttributeValues');
+    Route::get('search-attribute-values/{attributeId}', 'Admin\\ProductController@searchAttributeValues');
+    Route::get('get-single-attribute-value/{attributeId}/{valueId}', 'Admin\\ProductController@getSingleAttributeValue');
 
 
 

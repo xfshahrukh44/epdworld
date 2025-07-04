@@ -266,7 +266,6 @@ class ProductController extends Controller
                 ->where('product_id', $id)
                 ->get();
 
-
             // Load existing variations and their attributes
             $variations = ProductAttribute::with('variationValues')->where('product_id', $product->id)->get();
 
@@ -904,8 +903,49 @@ class ProductController extends Controller
         return response()->json($values);
     }
 
+    public function searchAttributeValues(Request $request, $attributeId)
+    {
+        $query = $request->get('q', '');
+        $page = $request->get('page', 1);
+        $perPage = 10;
 
+        $attributeValues = \App\AttributeValue::where('attribute_id', $attributeId)
+            ->where('value', 'LIKE', '%' . $query . '%')
+            ->paginate($perPage, ['*'], 'page', $page);
 
+        $results = [];
+
+        foreach ($attributeValues as $value) {
+            $results[] = [
+                'id' => $value->id,
+                'text' => $value->value
+            ];
+        }
+
+        return response()->json([
+            'results' => $results,
+            'pagination' => [
+                'more' => $attributeValues->hasMorePages()
+            ]
+        ]);
+    }
+
+    public function getSingleAttributeValue($attributeId, $valueId)
+    {
+        $value = AttributeValue::where('attribute_id', $attributeId)
+                            ->where('id', $valueId)
+                            ->first(['id', 'value']);
+
+        if (!$value) {
+            return response()->json(null, 404);
+        }
+
+        // Return in Select2 format { id, text }
+        return response()->json([
+            'id' => $value->id,
+            'text' => $value->value,
+        ]);
+    }
 }
 
 

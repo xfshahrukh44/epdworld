@@ -319,6 +319,11 @@
                             type: 'GET',
                             dataType: 'json',
                             success: function(values) {
+                                if (values.length === 0) {
+                                    // 🚫 Skip attributes with no values
+                                    resolve(); // Do not add dropdown for this attribute
+                                    return;
+                                }
                                 const attrName = $('#mainAttributeSelect option[value="' + attrId + '"]').text();
                                 let dropdown = `
                                     <div class="form-inline-item">

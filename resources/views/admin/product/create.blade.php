@@ -328,17 +328,23 @@
                             type: 'GET',
                             dataType: 'json',
                             success: function(values) {
+                                if (values.length === 0) {
+                                    // 🚫 Skip attributes with no values
+                                    resolve(); // Do not add dropdown for this attribute
+                                    return;
+                                }
+
                                 const attrName = $('#mainAttributeSelect option[value="' + attrId + '"]').text();
-                                let dropdown = `
+                                let $dropdown = $(`
                                     <div class="form-inline-item">
                                         <label>${attrName}</label>
-                                        <select class="form-control mx-2 variation-attribute-select" name="attribute_values[${blockIndex}][${attrId}]">
-                                            <option value="">Select ${attrName}</option>`;
-                                values.forEach(v => {
-                                    dropdown += `<option value="${v.id}">${v.value}</option>`;
-                                });
-                                dropdown += `</select></div>`;
-                                dropdowns.push({ order: attrId, html: dropdown });
+                                        <select class="form-control mx-2 variation-attribute-select"
+                                            name="attribute_values[${blockIndex}][${attrId}]">
+                                        </select>
+                                    </div>
+                                `);
+
+                                dropdowns.push({ order: attrId, $html: $dropdown, attrId: attrId });
                                 resolve();
                             },
                             error: reject
@@ -347,14 +353,41 @@
                 });
 
                 Promise.all(requests).then(() => {
-                    // Append dropdowns in correct selection order
                     selectedAttributes.forEach(attrId => {
                         const dropdownObj = dropdowns.find(d => d.order == attrId);
                         if (dropdownObj) {
-                            $attrValuesContainer.append(dropdownObj.html);
+                            $attrValuesContainer.append(dropdownObj.$html);
+
+                            dropdownObj.$html.find('select').select2({
+                                ajax: {
+                                    url: `{{ url('admin/search-attribute-values') }}/${dropdownObj.attrId}`,
+                                    dataType: 'json',
+                                    delay: 250,
+                                    data: function (params) {
+                                        return {
+                                            q: params.term,
+                                            page: params.page || 1
+                                        };
+                                    },
+                                    processResults: function (data, params) {
+                                        params.page = params.page || 1;
+
+                                        return {
+                                            results: data.results,
+                                            pagination: {
+                                                more: data.pagination.more
+                                            }
+                                        };
+                                    },
+                                    cache: true
+                                },
+                                placeholder: 'Select ' + $('#mainAttributeSelect option[value="' + dropdownObj.attrId + '"]').text(),
+                                minimumInputLength: 1
+                            });
                         }
                     });
 
+                    // Price and other fields
                     const priceSection = `
                         <div class="d-flex flex-wrap gap-2 align-items-end ms-3 mt-3">
                             <div class="form-inline-item">
@@ -376,10 +409,9 @@
                             class: 'd-flex justify-content-end'
                         }).append($removeBtn)
                     );
+
                     $block.append($attrValuesContainer).append(priceSection);
                     $('#variationBlocksContainer').append($block);
-
-                    $block.find('.variation-attribute-select').select2();
                 });
             }
         });
