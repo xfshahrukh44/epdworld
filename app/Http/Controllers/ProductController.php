@@ -318,7 +318,7 @@ class ProductController extends Controller
         //     ->get();
 
         // Get all variations of this product
-        return $variations = \App\ProductAttribute::with('variationValues.attribute', 'variationValues.attributeValue')
+        $variations = \App\ProductAttribute::with('variationValues.attribute', 'variationValues.attributeValue')
             ->where('product_id', $product_detail->id)
             ->get();
 

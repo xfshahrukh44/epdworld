@@ -93,20 +93,12 @@
                                 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                     <p class="price">
                                         <span class="electro-price">
-                                            <ins><span class="amount">Product Price:
-                                                    &#36;{!! $product_detail->price !!}</span></ins>
+                                            <ins><span class="amount" id="productPriceDisplay">${{ $product_detail->price }}</span></ins>
                                         </span>
                                     </p>
-                                    <meta itemprop="price" content="1215" />
+                                    <meta itemprop="price" content="{{ $product_detail->price }}" />
                                     <meta itemprop="priceCurrency" content="USD" />
                                     <link itemprop="availability" href="http://schema.org/InStock" />
-                                </div>
-                                <div class="price-box">
-
-                                    <p class="variation-price price">Variation Price: $<span
-                                            id="variationPriceDisplay">0.00</span></p>
-                                    <p class="total-price price"><strong>Total: $<span class="amount"
-                                                id="totalPriceDisplay">{{ $product_detail->price }}</span></strong></p>
                                 </div>
 
                                 <!-- /itemprop -->
@@ -118,7 +110,9 @@
                                         return [
                                             'id' => $variation->id,
                                             'price' => $variation->price,
-                                            'attributes' => $variation->variationValues->pluck('attribute_value_id', 'attribute_id')->toArray()
+                                            'attributes' => $variation->variationValues
+                                                ->pluck('attribute_value_id', 'attribute_id')
+                                                ->toArray(),
                                         ];
                                     });
                                 @endphp
@@ -135,7 +129,8 @@
                                                         <div class="att_vals">
                                                             @foreach ($attribute->values as $value)
                                                                 <label class="radio-img">
-                                                                    <input type="radio" class="radio-box variation-selector"
+                                                                    <input type="radio"
+                                                                        class="radio-box variation-selector"
                                                                         name="variation[{{ $attribute->id }}]"
                                                                         value="{{ $value->id }}"
                                                                         data-attribute-id="{{ $attribute->id }}">
@@ -162,7 +157,8 @@
                                                 @endforeach
 
                                                 {{-- Hidden Variation Data --}}
-                                                <input type="hidden" id="variation-data" value='@json($variations)' />
+                                                <input type="hidden" id="variation-data"
+                                                    value='@json($variations)' />
                                                 <h4 id="final-price"></h4>
                                             </td>
                                         </tr>
@@ -1014,53 +1010,96 @@
     //         $('meta[itemprop="price"]').attr('content', price.toFixed(2));
     //     }
     // });
-    $(document).ready(function() {
-        let variations = $('#variation-data').val();
-        variations = JSON.parse(variations);
-
+    $(document).ready(function () {
+        let variations = JSON.parse($('#variation-data').val());
         let basePrice = parseFloat('{{ $product_detail->price }}');
-
         let selectedAttributes = {};
+        let firstAttributeId = $('.variation-selector').first().data('attribute-id');
 
-        $('.variation-selector').on('change', function() {
+        let variationMap = {};
+
+        variations.forEach(variation => {
+            let firstAttrValueId = null;
+
+            variation.variation_values.forEach(vv => {
+                if (vv.attribute_id === firstAttributeId) {
+                    firstAttrValueId = vv.attribute_value_id;
+                }
+            });
+
+            if (firstAttrValueId) {
+                if (!variationMap[firstAttrValueId]) {
+                    variationMap[firstAttrValueId] = [];
+                }
+                variationMap[firstAttrValueId].push(variation);
+            }
+        });
+
+        $('.variation-selector').on('change', function () {
             let attributeId = $(this).data('attribute-id');
-            let valueId = $(this).val();
+            let valueId = parseInt($(this).val());
 
-            selectedAttributes[attributeId] = parseInt(valueId);
+            selectedAttributes[attributeId] = valueId;
+
+            if (attributeId === firstAttributeId) {
+                let availableVariations = variationMap[valueId];
+
+                if (availableVariations) {
+                    let allowedChildValues = [];
+
+                    availableVariations.forEach(variation => {
+                        variation.variation_values.forEach(vv => {
+                            if (vv.attribute_id !== firstAttributeId) {
+                                allowedChildValues.push(vv.attribute_value_id);
+                            }
+                        });
+                    });
+
+                    $('.variation-selector').each(function () {
+                        if ($(this).data('attribute-id') !== firstAttributeId) {
+                            let optionValue = parseInt($(this).val());
+                            if (allowedChildValues.includes(optionValue)) {
+                                $(this).closest('label').show();
+                            } else {
+                                $(this).closest('label').hide();
+                                $(this).prop('checked', false);
+                                let attrId = $(this).data('attribute-id');
+                                delete selectedAttributes[attrId];
+                            }
+                        }
+                    });
+
+                    // Reset price to base
+                    $('#productPriceDisplay').text(`$${basePrice.toFixed(2)}`);
+                }
+            }
 
             let totalSelected = Object.keys(selectedAttributes).length;
-            let requiredSelections = $('.variation-selector').map(function() {
+            let requiredSelections = $('.variation-selector').map(function () {
                 return $(this).data('attribute-id');
             }).get().filter((v, i, a) => a.indexOf(v) === i).length;
 
             if (totalSelected === requiredSelections) {
                 let matchedVariation = variations.find(variation => {
                     let isMatch = true;
-                    for (let attrId in variation.attributes) {
-                        if (variation.attributes[attrId] != selectedAttributes[attrId]) {
+
+                    variation.variation_values.forEach(vv => {
+                        if (selectedAttributes[vv.attribute_id] != vv.attribute_value_id) {
                             isMatch = false;
-                            break;
                         }
-                    }
+                    });
+
                     return isMatch;
                 });
 
                 if (matchedVariation) {
-                    $('#variationPriceDisplay').text(matchedVariation.price.toFixed(2));
-                    $('#totalPriceDisplay').text(matchedVariation.price.toFixed(2));
+                    $('#productPriceDisplay').text(`$${parseFloat(matchedVariation.price).toFixed(2)}`);
                 } else {
-                    $('#variationPriceDisplay').text('0.00');
-                    $('#totalPriceDisplay').text(basePrice.toFixed(2));
+                    $('#productPriceDisplay').text(`$${basePrice.toFixed(2)}`);
                 }
-            } else {
-                // Partial selection, show base price or no price
-                $('#variationPriceDisplay').text('0.00');
-                $('#totalPriceDisplay').text(basePrice.toFixed(2));
             }
         });
     });
-
-
 </script>
 
 @endsection
