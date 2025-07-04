@@ -110,7 +110,7 @@ class ProductController extends Controller
             $this->validate($request, [
                 'product_title' => 'required',
                 'description' => 'required',
-                'price' => 'required',
+                'base_price' => 'required',
                 'image' => 'required',
                 'item_id' => 'required',
             ]);
@@ -119,7 +119,7 @@ class ProductController extends Controller
             $product = new product;
             $product->product_title = $request->input('product_title');
             $product->slug = $request->input('slug');
-            $product->price = $request->input('price');
+            $product->price = $request->input('base_price');
             $product->description = $request->input('description');
             $product->category = $request->input('item_id');
 
@@ -304,7 +304,7 @@ class ProductController extends Controller
             $requestData['slug'] = $request->input('slug');
             $requestData['description'] = $request->input('description');
             $requestData['sku'] = $request->input('sku');
-            $requestData['price'] = $request->input('price');
+            $requestData['price'] = $request->input('base_price');
             $requestData['category'] = $request->input('item_id');
 
             // Handle main image upload
@@ -365,6 +365,7 @@ class ProductController extends Controller
                 $productVariation->product_id = $product->id;
                 $productVariation->price = $prices[$blockIndex];
                 $productVariation->qty = $qtys[$blockIndex];
+
 
                 if (isset($images[$blockIndex])) {
                     $imageName = time() . '_variation_' . $blockIndex . '.' . $images[$blockIndex]->getClientOriginalExtension();

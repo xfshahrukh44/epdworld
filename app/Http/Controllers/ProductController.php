@@ -341,6 +341,40 @@ class ProductController extends Controller
             $query->whereIn('id', $usedAttributeValueIds);
         }])->whereIn('id', $usedAttributeIds)->get();
 
+        // Get all product attributes at once to reduce queries
+        $productAttributes = \App\ProductAttribute::where('product_id', $product_detail->id)
+            ->with('variationValues')
+            ->get();
+
+        // Attach images only to the first attribute's values
+        $firstAttribute = true;
+
+        foreach ($attributes as $attribute) {
+            foreach ($attribute->values as $value) {
+
+                if ($firstAttribute) {
+                    // Find the matching ProductAttribute
+                    $productAttribute = $productAttributes->first(function ($item) use ($attribute, $value) {
+                        return $item->variationValues->contains(function ($v) use ($attribute, $value) {
+                            return $v->attribute_id == $attribute->id && $v->attribute_value_id == $value->id;
+                        });
+                    });
+
+                    // Attach image if found
+                    if ($productAttribute) {
+                        $value->image = $productAttribute->image;
+                    } else {
+                        $value->image = null;
+                    }
+                }
+            }
+
+            // ✅ After processing the first attribute, we skip image assignment for the rest
+            if ($firstAttribute) {
+                $firstAttribute = false;
+            }
+        }
+
 		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews', 'variations', 'attributes'));
 	}
 
@@ -384,6 +418,40 @@ class ProductController extends Controller
         $attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
             $query->whereIn('id', $usedAttributeValueIds);
         }])->whereIn('id', $usedAttributeIds)->get();
+
+        // Get all product attributes at once to reduce queries
+        $productAttributes = \App\ProductAttribute::where('product_id', $product_detail->id)
+            ->with('variationValues')
+            ->get();
+
+        // Attach images only to the first attribute's values
+        $firstAttribute = true;
+
+        foreach ($attributes as $attribute) {
+            foreach ($attribute->values as $value) {
+
+                if ($firstAttribute) {
+                    // Find the matching ProductAttribute
+                    $productAttribute = $productAttributes->first(function ($item) use ($attribute, $value) {
+                        return $item->variationValues->contains(function ($v) use ($attribute, $value) {
+                            return $v->attribute_id == $attribute->id && $v->attribute_value_id == $value->id;
+                        });
+                    });
+
+                    // Attach image if found
+                    if ($productAttribute) {
+                        $value->image = $productAttribute->image;
+                    } else {
+                        $value->image = null;
+                    }
+                }
+            }
+
+            // ✅ After processing the first attribute, we skip image assignment for the rest
+            if ($firstAttribute) {
+                $firstAttribute = false;
+            }
+        }
 
 		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews', 'variations', 'attributes'));
 	}

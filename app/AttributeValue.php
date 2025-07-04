@@ -31,5 +31,5 @@ class AttributeValue extends Model
     {
         return $this->belongsTo('App\Attributes', 'attribute_id', 'id');
     }
-    
+
 }

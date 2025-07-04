@@ -252,38 +252,33 @@
 
         $(document).ready(function() {
             let variationIndex = 0;
-            let selectedAttributes = [];
+            let selectedAttributes = []; // Track selection order
 
             // Initialize Select2
             $('#mainAttributeSelect').select2();
-
             $('.attribute-select').select2();
 
-            // When attribute is selected
-            $('#mainAttributeSelect').on('change', function() {
-                // Always get full list of selected attributes
-                selectedAttributes = [];
-                $('#mainAttributeSelect option:selected').each(function() {
-                    selectedAttributes.push($(this).val());
-                });
+            // Track selection order on select
+            $('#mainAttributeSelect').on('select2:select', function(e) {
+                const selectedId = e.params.data.id;
 
-                // // Disable selected ones
-                // $('#mainAttributeSelect option').each(function() {
-                //     const val = $(this).val();
-                //     $(this).prop('disabled', selectedAttributes.includes(val));
-                // });
-
-                $('#mainAttributeSelect').trigger('change.select2'); // Refresh Select2
-
-                // Reset variation blocks (we build fresh ones every time)
-                $('#variationBlocksContainer').empty();
-                variationIndex = 0;
-
-                if (selectedAttributes.length > 0) {
-                    addVariationBlock();
+                // Add if not already in the array
+                if (!selectedAttributes.includes(selectedId)) {
+                    selectedAttributes.push(selectedId);
                 }
+
+                rebuildVariationBlocks();
             });
 
+            // Track deselection
+            $('#mainAttributeSelect').on('select2:unselect', function(e) {
+                const unselectedId = e.params.data.id;
+
+                // Remove from array
+                selectedAttributes = selectedAttributes.filter(id => id !== unselectedId);
+
+                rebuildVariationBlocks();
+            });
 
             // Button click - Add new variation block
             $('#addVariationBtn').on('click', function() {
@@ -294,10 +289,19 @@
                 addVariationBlock();
             });
 
+            function rebuildVariationBlocks() {
+                $('#variationBlocksContainer').empty();
+                variationIndex = 0;
+
+                if (selectedAttributes.length > 0) {
+                    addVariationBlock();
+                }
+            }
+
             function addVariationBlock() {
                 const blockIndex = variationIndex++;
                 const $block = $('<div>', {
-                    class: 'variationBlock'
+                    class: 'variationBlock position-relative border p-3 mb-3 rounded'
                 });
 
                 // Remove Button
@@ -310,13 +314,13 @@
                     }
                 });
 
-
                 const $attrValuesContainer = $('<div>', {
                     class: 'd-flex flex-wrap gap-2 attr-values-container'
                 });
 
-                let dropdowns = []; // Store rendered dropdowns with promises
+                let dropdowns = [];
 
+                // AJAX requests in order
                 const requests = selectedAttributes.map(attrId => {
                     return new Promise((resolve, reject) => {
                         $.ajax({
@@ -324,20 +328,17 @@
                             type: 'GET',
                             dataType: 'json',
                             success: function(values) {
-                                const attrName = $(
-                                    '#mainAttributeSelect option[value="' + attrId +
-                                    '"]').text();
+                                const attrName = $('#mainAttributeSelect option[value="' + attrId + '"]').text();
                                 let dropdown = `
                                     <div class="form-inline-item">
                                         <label>${attrName}</label>
                                         <select class="form-control mx-2 variation-attribute-select" name="attribute_values[${blockIndex}][${attrId}]">
                                             <option value="">Select ${attrName}</option>`;
                                 values.forEach(v => {
-                                    dropdown +=
-                                        `<option value="${v.id}">${v.value}</option>`;
+                                    dropdown += `<option value="${v.id}">${v.value}</option>`;
                                 });
                                 dropdown += `</select></div>`;
-                                dropdowns.push(dropdown);
+                                dropdowns.push({ order: attrId, html: dropdown });
                                 resolve();
                             },
                             error: reject
@@ -346,25 +347,29 @@
                 });
 
                 Promise.all(requests).then(() => {
-                    dropdowns.forEach(html => {
-                        $attrValuesContainer.append(html);
+                    // Append dropdowns in correct selection order
+                    selectedAttributes.forEach(attrId => {
+                        const dropdownObj = dropdowns.find(d => d.order == attrId);
+                        if (dropdownObj) {
+                            $attrValuesContainer.append(dropdownObj.html);
+                        }
                     });
 
                     const priceSection = `
-        <div class="d-flex flex-wrap gap-2 align-items-end ms-3 mt-3">
-            <div class="form-inline-item">
-                <label>Price</label>
-                <input type="number" step="any" name="price[${blockIndex}]" class="form-control mx-2">
-            </div>
-            <div class="form-inline-item">
-                <label>Qty</label>
-                <input type="number" name="qty[${blockIndex}]" class="form-control mx-2">
-            </div>
-            <div class="form-inline-item">
-                <label>Image</label>
-                <input type="file" name="var_image[${blockIndex}]" class="form-control mx-2">
-            </div>
-        </div>`;
+                        <div class="d-flex flex-wrap gap-2 align-items-end ms-3 mt-3">
+                            <div class="form-inline-item">
+                                <label>Price</label>
+                                <input type="number" step="any" name="price[${blockIndex}]" class="form-control mx-2">
+                            </div>
+                            <div class="form-inline-item">
+                                <label>Qty</label>
+                                <input type="number" name="qty[${blockIndex}]" class="form-control mx-2">
+                            </div>
+                            <div class="form-inline-item">
+                                <label>Image</label>
+                                <input type="file" name="var_image[${blockIndex}]" class="form-control mx-2">
+                            </div>
+                        </div>`;
 
                     $block.append(
                         $('<div>', {
@@ -377,7 +382,6 @@
                     $block.find('.variation-attribute-select').select2();
                 });
             }
-
         });
     </script>
 @endpush

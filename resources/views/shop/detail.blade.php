@@ -1014,10 +1014,18 @@
         let variations = JSON.parse($('#variation-data').val());
         let basePrice = parseFloat('{{ $product_detail->price }}');
         let selectedAttributes = {};
-        let firstAttributeId = $('.variation-selector').first().data('attribute-id');
+
+        // Dynamically get all unique attribute IDs and find the last one
+        let uniqueAttributeIds = $('.variation-selector').map(function () {
+            return $(this).data('attribute-id');
+        }).get().filter((v, i, a) => a.indexOf(v) === i);
+
+        let firstAttributeId = uniqueAttributeIds[0];
+        let lastAttributeId = uniqueAttributeIds[uniqueAttributeIds.length - 1];
 
         let variationMap = {};
 
+        // Group variations based on first attribute
         variations.forEach(variation => {
             let firstAttrValueId = null;
 
@@ -1041,6 +1049,7 @@
 
             selectedAttributes[attributeId] = valueId;
 
+            // If first attribute is changed, reset all next selections
             if (attributeId === firstAttributeId) {
                 let availableVariations = variationMap[valueId];
 
@@ -1058,34 +1067,40 @@
                     $('.variation-selector').each(function () {
                         if ($(this).data('attribute-id') !== firstAttributeId) {
                             let optionValue = parseInt($(this).val());
+
                             if (allowedChildValues.includes(optionValue)) {
                                 $(this).closest('label').show();
                             } else {
                                 $(this).closest('label').hide();
                                 $(this).prop('checked', false);
+
                                 let attrId = $(this).data('attribute-id');
                                 delete selectedAttributes[attrId];
                             }
                         }
                     });
 
-                    // Reset price to base
+                    // Always reset price on parent change
                     $('#productPriceDisplay').text(`$${basePrice.toFixed(2)}`);
                 }
             }
 
+            // Check if ALL attributes are selected (including last)
             let totalSelected = Object.keys(selectedAttributes).length;
-            let requiredSelections = $('.variation-selector').map(function () {
-                return $(this).data('attribute-id');
-            }).get().filter((v, i, a) => a.indexOf(v) === i).length;
+            let requiredSelections = uniqueAttributeIds.length;
 
-            if (totalSelected === requiredSelections) {
+            // ✅ Price will update ONLY if last attribute is selected
+            if (selectedAttributes.hasOwnProperty(lastAttributeId)) {
+                // Find the matching variation
                 let matchedVariation = variations.find(variation => {
                     let isMatch = true;
 
                     variation.variation_values.forEach(vv => {
-                        if (selectedAttributes[vv.attribute_id] != vv.attribute_value_id) {
-                            isMatch = false;
+                        // ✅ Only check attributes that are selected
+                        if (selectedAttributes.hasOwnProperty(vv.attribute_id)) {
+                            if (selectedAttributes[vv.attribute_id] != vv.attribute_value_id) {
+                                isMatch = false;
+                            }
                         }
                     });
 
@@ -1099,6 +1114,24 @@
                 }
             }
         });
+
+        function getVariationImage(attributeId, attributeValueId) {
+            const variations = JSON.parse(document.getElementById('variation-data').value);
+
+            for (let i = 0; i < variations.length; i++) {
+                let variation = variations[i];
+
+                for (let j = 0; j < variation.variation_values.length; j++) {
+                    let vValue = variation.variation_values[j];
+
+                    if (vValue.attribute_id == attributeId && vValue.attribute_value_id == attributeValueId) {
+                        return variation.image; // Return the image from ProductAttribute
+                    }
+                }
+            }
+            return null;
+        }
+
     });
 </script>
 

@@ -254,32 +254,33 @@
         }
 
         $(document).ready(function() {
-            let variationIndex = parseInt($('#existingVariationCount').val()) || 0; // 👈 Fix: Start from existing count
-            let selectedAttributes = [];
+            let variationIndex = parseInt($('#existingVariationCount').val()) || 0; // 👈 Start from existing variations
+            let selectedAttributes = []; // 👈 Track selection order
 
             $('#mainAttributeSelect').select2();
             $('.variation-attribute-select').select2();
 
-            $('#mainAttributeSelect option:selected').each(function() {
-                selectedAttributes.push($(this).val());
-            });
+            // Listen to select2:select to track selection order
+            $('#mainAttributeSelect').on('select2:select', function(e) {
+                const selectedId = e.params.data.id;
 
-            $('#mainAttributeSelect').on('change', function() {
-                selectedAttributes = [];
-                $('#mainAttributeSelect option:selected').each(function() {
-                    selectedAttributes.push($(this).val());
-                });
-
-                $('#mainAttributeSelect').trigger('change.select2');
-
-                $('#variationBlocksContainer').empty();
-                variationIndex = 0; // ✅ Only reset if you want to rebuild from scratch
-
-                if (selectedAttributes.length > 0) {
-                    addVariationBlock();
+                if (!selectedAttributes.includes(selectedId)) {
+                    selectedAttributes.push(selectedId);
                 }
+
+                rebuildVariationBlocks();
             });
 
+            // Listen to select2:unselect to update selection order
+            $('#mainAttributeSelect').on('select2:unselect', function(e) {
+                const unselectedId = e.params.data.id;
+
+                selectedAttributes = selectedAttributes.filter(id => id !== unselectedId);
+
+                rebuildVariationBlocks();
+            });
+
+            // Button click - Add new variation block
             $('#addVariationBtn').on('click', function() {
                 if (selectedAttributes.length === 0) {
                     alert('Please select at least one attribute first.');
@@ -288,9 +289,18 @@
                 addVariationBlock();
             });
 
+            function rebuildVariationBlocks() {
+                $('#variationBlocksContainer').empty();
+                variationIndex = 0;
+
+                if (selectedAttributes.length > 0) {
+                    addVariationBlock();
+                }
+            }
+
             function addVariationBlock() {
-                const blockIndex = variationIndex++; // ✅ Correctly increments now
-                const $block = $('<div>', { class: 'variationBlock' });
+                const blockIndex = variationIndex++;
+                const $block = $('<div>', { class: 'variationBlock position-relative border p-3 mb-3 rounded' });
 
                 const $removeBtn = $('<button>', {
                     type: 'button',
@@ -319,7 +329,7 @@
                                     dropdown += `<option value="${v.id}">${v.value}</option>`;
                                 });
                                 dropdown += `</select></div>`;
-                                dropdowns.push(dropdown);
+                                dropdowns.push({ order: attrId, html: dropdown }); // Store with order
                                 resolve();
                             },
                             error: reject
@@ -328,7 +338,13 @@
                 });
 
                 Promise.all(requests).then(() => {
-                    dropdowns.forEach(html => { $attrValuesContainer.append(html); });
+                    // Append dropdowns in selection order
+                    selectedAttributes.forEach(attrId => {
+                        const dropdownObj = dropdowns.find(d => d.order == attrId);
+                        if (dropdownObj) {
+                            $attrValuesContainer.append(dropdownObj.html);
+                        }
+                    });
 
                     const priceSection = `
                         <div class="d-flex flex-wrap gap-2 align-items-end ms-3 mt-3">

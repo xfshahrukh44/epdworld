@@ -24,9 +24,9 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                {!! Form::label('price', 'Price') !!}
+                {!! Form::label('base_price', 'Price') !!}
                 {!! Form::text(
-                    'price',
+                    'base_price',
                     null,
                     'required' == 'required' ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control'],
                 ) !!}
