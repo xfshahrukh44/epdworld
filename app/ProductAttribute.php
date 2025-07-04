@@ -42,5 +42,15 @@ class ProductAttribute extends Model
         return $this->belongsTo('App\Attributes', 'attribute_id', 'id');
     }
 
+    // public function variationValues()
+    // {
+    //     return $this->belongsTo('App\Models\ProductVariationValue', 'id', 'product_attribute_id');
+    // }
+
+    public function variationValues()
+    {
+        return $this->hasMany('App\Models\ProductVariationValue', 'product_attribute_id', 'id');
+    }
+
 
 }

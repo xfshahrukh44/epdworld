@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('product_attributes', function (Blueprint $table) {
-            $table->string('variation_key')->nullable()->after('product_id');
+        Schema::create('product_variations', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('product_attribute_id');
+            $table->unsignedBigInteger('attribute_id');
+            $table->unsignedBigInteger('attribute_value_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('product_attributes', function (Blueprint $table) {
-            $table->dropColumn('variation_key');
-        });
+        Schema::dropIfExists('product_variations');
     }
 };

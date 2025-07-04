@@ -362,7 +362,7 @@
             </div>
             <div class="form-inline-item">
                 <label>Image</label>
-                <input type="file" name="image[${blockIndex}]" class="form-control mx-2">
+                <input type="file" name="var_image[${blockIndex}]" class="form-control mx-2">
             </div>
         </div>`;
 

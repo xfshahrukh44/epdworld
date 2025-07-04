@@ -111,46 +111,46 @@
 
                                 <!-- /itemprop -->
 
+                                <input type="hidden" id="variation-data" value='@json($variations)' />
+
+                                @php
+                                    $formattedVariations = $variations->map(function ($variation) {
+                                        return [
+                                            'id' => $variation->id,
+                                            'price' => $variation->price,
+                                            'attributes' => $variation->variationValues->pluck('attribute_value_id', 'attribute_id')->toArray()
+                                        ];
+                                    });
+                                @endphp
+                                {{-- @dump($formattedVariations) --}}
 
                                 <table class="variations">
                                     <tbody>
                                         <tr>
                                             <td class="label">
-                                                @foreach ($att_model as $att_models)
+                                                @foreach ($attributes as $attribute)
                                                     <div class="variation">
-                                                        @php
-                                                            $pro_att = \App\ProductAttribute::where([
-                                                                'attribute_id' => $att_models->attribute_id,
-                                                                'product_id' => $product_detail->id,
-                                                            ])->get();
-                                                        @endphp
-
-                                                        <h3 class="variation-title"
-                                                            data-attribute="{{ $att_models->attribute->name }}">
-                                                            {{ $att_models->attribute->name }} <span
-                                                                class="selected-price"></span>
-                                                        </h3>
+                                                        <h3 class="variation-title">{{ $attribute->name }}</h3>
 
                                                         <div class="att_vals">
-                                                            @foreach ($pro_att as $pro_atts)
+                                                            @foreach ($attribute->values as $value)
                                                                 <label class="radio-img">
-                                                                    <input type="radio" class="radio-box"
-                                                                        name="variation[{{ $att_models->attribute->name }}]"
-                                                                        value="{{ $pro_atts->id }}"
-                                                                        data-price="{{ $pro_atts->price }}" />
+                                                                    <input type="radio" class="radio-box variation-selector"
+                                                                        name="variation[{{ $attribute->id }}]"
+                                                                        value="{{ $value->id }}"
+                                                                        data-attribute-id="{{ $attribute->id }}">
+
                                                                     <div class="image1"
                                                                         style="
-                                                                        background-color: {{ $pro_atts->attributesValues->value }};
-                                                                        @if ($pro_atts->image != null) background-image: url('{{ asset($pro_atts->image) }}');
+                                                                        background-color: {{ $value->value }};
+                                                                        @if ($value->image != null) background-image: url('{{ asset($value->image) }}');
                                                                             background-size: contain;
                                                                             background-repeat: no-repeat;
                                                                             width: 60px;
-                                                                            height: 60px;; @endif
-                                                                    ">
-                                                                        @if ($pro_atts->image == null)
-                                                                            <span>
-                                                                                {{ $pro_atts->attributesValues->value }}
-                                                                            </span>
+                                                                            height: 60px; @endif
+                                                                        ">
+                                                                        @if ($value->image == null)
+                                                                            <span>{{ $value->value }}</span>
                                                                         @else
                                                                             <span></span>
                                                                         @endif
@@ -161,11 +161,14 @@
                                                     </div>
                                                 @endforeach
 
+                                                {{-- Hidden Variation Data --}}
+                                                <input type="hidden" id="variation-data" value='@json($variations)' />
+                                                <h4 id="final-price"></h4>
                                             </td>
-
                                         </tr>
                                     </tbody>
                                 </table>
+
                                 <div class="single_variation_wrap">
                                     <div class="woocommerce-variation single_variation"></div>
                                     <div class="woocommerce-variation-add-to-cart variations_button">
@@ -501,45 +504,11 @@
 
     }
 
-    /* input[type="radio"]:checked > .image1 {
-  box-shadow: 0 0 0 3px orange !important;
-}
-
-input[type = radio] {
-    > input {
-        display:none;
-    }
-    > .image1{
-    cursor:pointer !important;
-      border: 2px solid black;
-
-}
-.radio-box:hover .radio-img{
-  border:2px solid orange;
-}
-
-} */
     .radio-box {
-        /* -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important; */
         cursor: pointer;
     }
 
-    /* input.radio-box:checked {
-    position: relative;
-    border-color: red;
-    height: 100%;
-    width: 100%;
-} */
 
-
-
-    /* .radio-box:checked .image1 {
-    border: 2px solid green;
-    transition: all 0.5s ease;
-    border-bottom-color: transparent!important;
-} */
 
     label.radio-img {
         transition: all 0.5s ease;
@@ -1001,50 +970,97 @@ input[type = radio] {
 </script>
 
 <script>
+    // $(document).ready(function() {
+    //     let basePrice = parseFloat(`{{ $product_detail->price }}`);
+    //     let variationPrices = {};
+
+    //     function updateVariationPriceLabel(attributeName, price) {
+    //         $(`h3.variation-title[data-attribute="${attributeName}"] .selected-price`)
+    //             .html(price > 0 ? `($${price.toFixed(2)})` : '');
+    //     }
+
+    //     $('input.radio-box:checked').each(function() {
+    //         const attributeName = $(this).attr('name').replace('variation[', '').replace(']', '');
+    //         const selectedPrice = parseFloat($(this).data('price')) || 0;
+    //         variationPrices[attributeName] = selectedPrice;
+    //         basePrice += selectedPrice;
+    //         updateVariationPriceLabel(attributeName, selectedPrice);
+    //     });
+
+    //     updatePriceDisplay(basePrice);
+
+    //     $('input.radio-box').on('change', function() {
+    //         const attributeName = $(this).attr('name').replace('variation[', '').replace(']', '');
+    //         const selectedPrice = parseFloat($(this).data('price')) || 0;
+
+    //         if (variationPrices[attributeName]) {
+    //             basePrice -= variationPrices[attributeName];
+    //         }
+
+    //         basePrice += selectedPrice;
+    //         variationPrices[attributeName] = selectedPrice;
+
+    //         updateVariationPriceLabel(attributeName, selectedPrice);
+    //         updatePriceDisplay(basePrice);
+    //     });
+
+    //     function updatePriceDisplay(price) {
+    //         const base = parseFloat(`{{ $product_detail->price }}`);
+    //         const variationTotal = price - base;
+
+    //         $('#basePriceDisplay').html(base.toFixed(2));
+    //         $('#variationPriceDisplay').html(variationTotal.toFixed(2));
+    //         $('#totalPriceDisplay').html(price.toFixed(2));
+    //         $('meta[itemprop="price"]').attr('content', price.toFixed(2));
+    //     }
+    // });
     $(document).ready(function() {
-        let basePrice = parseFloat(`{{ $product_detail->price }}`);
-        let variationPrices = {};
+        let variations = $('#variation-data').val();
+        variations = JSON.parse(variations);
 
-        function updateVariationPriceLabel(attributeName, price) {
-            $(`h3.variation-title[data-attribute="${attributeName}"] .selected-price`)
-                .html(price > 0 ? `($${price.toFixed(2)})` : '');
-        }
+        let basePrice = parseFloat('{{ $product_detail->price }}');
 
-        $('input.radio-box:checked').each(function() {
-            const attributeName = $(this).attr('name').replace('variation[', '').replace(']', '');
-            const selectedPrice = parseFloat($(this).data('price')) || 0;
-            variationPrices[attributeName] = selectedPrice;
-            basePrice += selectedPrice;
-            updateVariationPriceLabel(attributeName, selectedPrice);
-        });
+        let selectedAttributes = {};
 
-        updatePriceDisplay(basePrice);
+        $('.variation-selector').on('change', function() {
+            let attributeId = $(this).data('attribute-id');
+            let valueId = $(this).val();
 
-        $('input.radio-box').on('change', function() {
-            const attributeName = $(this).attr('name').replace('variation[', '').replace(']', '');
-            const selectedPrice = parseFloat($(this).data('price')) || 0;
+            selectedAttributes[attributeId] = parseInt(valueId);
 
-            if (variationPrices[attributeName]) {
-                basePrice -= variationPrices[attributeName];
+            let totalSelected = Object.keys(selectedAttributes).length;
+            let requiredSelections = $('.variation-selector').map(function() {
+                return $(this).data('attribute-id');
+            }).get().filter((v, i, a) => a.indexOf(v) === i).length;
+
+            if (totalSelected === requiredSelections) {
+                let matchedVariation = variations.find(variation => {
+                    let isMatch = true;
+                    for (let attrId in variation.attributes) {
+                        if (variation.attributes[attrId] != selectedAttributes[attrId]) {
+                            isMatch = false;
+                            break;
+                        }
+                    }
+                    return isMatch;
+                });
+
+                if (matchedVariation) {
+                    $('#variationPriceDisplay').text(matchedVariation.price.toFixed(2));
+                    $('#totalPriceDisplay').text(matchedVariation.price.toFixed(2));
+                } else {
+                    $('#variationPriceDisplay').text('0.00');
+                    $('#totalPriceDisplay').text(basePrice.toFixed(2));
+                }
+            } else {
+                // Partial selection, show base price or no price
+                $('#variationPriceDisplay').text('0.00');
+                $('#totalPriceDisplay').text(basePrice.toFixed(2));
             }
-
-            basePrice += selectedPrice;
-            variationPrices[attributeName] = selectedPrice;
-
-            updateVariationPriceLabel(attributeName, selectedPrice);
-            updatePriceDisplay(basePrice);
         });
-
-        function updatePriceDisplay(price) {
-            const base = parseFloat(`{{ $product_detail->price }}`);
-            const variationTotal = price - base;
-
-            $('#basePriceDisplay').html(base.toFixed(2));
-            $('#variationPriceDisplay').html(variationTotal.toFixed(2));
-            $('#totalPriceDisplay').html(price.toFixed(2));
-            $('meta[itemprop="price"]').attr('content', price.toFixed(2));
-        }
     });
+
+
 </script>
 
 @endsection

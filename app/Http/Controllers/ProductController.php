@@ -314,8 +314,34 @@ class ProductController extends Controller
 		$vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
 		$exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
 		$reviews = Productreview::where('product_id', $product_detail->id)->get();
+        // $variations = \App\ProductAttribute::with('variationValues')->where('product_id', $product_detail->id)
+        //     ->get();
 
-		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
+        // Get all variations of this product
+        return $variations = \App\ProductAttribute::with('variationValues.attribute', 'variationValues.attributeValue')
+            ->where('product_id', $product_detail->id)
+            ->get();
+
+        // Extract all used attributes from variations
+        $usedAttributeIds = [];
+        $usedAttributeValueIds = [];
+
+        foreach ($variations as $variation) {
+            foreach ($variation->variationValues as $vValue) {
+                $usedAttributeIds[] = $vValue->attribute_id;
+                $usedAttributeValueIds[] = $vValue->attribute_value_id;
+            }
+        }
+
+        $usedAttributeIds = array_unique($usedAttributeIds);
+        $usedAttributeValueIds = array_unique($usedAttributeValueIds);
+
+        // Get only the attributes that are used in variations
+        $attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
+            $query->whereIn('id', $usedAttributeValueIds);
+        }])->whereIn('id', $usedAttributeIds)->get();
+
+		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews', 'variations', 'attributes'));
 	}
 
 	public function shopDetail($id)
@@ -335,8 +361,31 @@ class ProductController extends Controller
 		$vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
 		$exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
 		$reviews = Productreview::where('product_id', $product_detail->id)->get();
+        // Get all variations of this product
+        $variations = \App\ProductAttribute::with('variationValues.attribute', 'variationValues.attributeValue')
+            ->where('product_id', $product_detail->id)
+            ->get();
 
-		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews'));
+        // Extract all used attributes from variations
+        $usedAttributeIds = [];
+        $usedAttributeValueIds = [];
+
+        foreach ($variations as $variation) {
+            foreach ($variation->variationValues as $vValue) {
+                $usedAttributeIds[] = $vValue->attribute_id;
+                $usedAttributeValueIds[] = $vValue->attribute_value_id;
+            }
+        }
+
+        $usedAttributeIds = array_unique($usedAttributeIds);
+        $usedAttributeValueIds = array_unique($usedAttributeValueIds);
+
+        // Get only the attributes that are used in variations
+        $attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
+            $query->whereIn('id', $usedAttributeValueIds);
+        }])->whereIn('id', $usedAttributeIds)->get();
+
+		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews', 'variations', 'attributes'));
 	}
 
 
@@ -482,6 +531,6 @@ class ProductController extends Controller
 	}
 
 
-	
+
 
 }

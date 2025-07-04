@@ -12,6 +12,7 @@ use App\imagetable;
 use App\Attributes;
 use App\AttributeValue;
 use App\ProductAttribute;
+use App\Models\ProductVariationValue;
 use Illuminate\Http\Request;
 use Image;
 use File;
@@ -103,7 +104,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $model = str_slug('product', '-');
         if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             $this->validate($request, [
@@ -151,41 +152,77 @@ class ProductController extends Controller
                 }
             }
 
-            // Handle product attributes
-            $attval = $request->attribute;
+            $variationData = $request->input('attribute_values'); // Same structure you already have
+            $prices = $request->input('price');
+            $qtys = $request->input('qty');
+            $images = $request->file('var_image');
 
-            if (is_array($attval)) {
-                for ($i = 0; $i < count($attval); $i++) {
-                    $variation = $attval[$i];
+            foreach ($variationData as $blockIndex => $attributes) {
+                $productVariation = new ProductAttribute();
+                $productVariation->product_id = $product->id;
+                $productVariation->price = $prices[$blockIndex];
+                $productVariation->qty = $qtys[$blockIndex];
 
-                    // Generate a unique variation key like "color-2_size-5"
-                    $variationKeyParts = [];
-                    foreach ($variation['attributes'] as $attr) {
-                        $variationKeyParts[] = 'attr-' . $attr['attribute_id'] . '_' . $attr['value'];
-                    }
-                    $variationKey = implode('_', $variationKeyParts);
+                if (isset($images[$blockIndex])) {
+                    $imageName = time() . '_variation_' . $blockIndex . '.' . $images[$blockIndex]->getClientOriginalExtension();
+                    $images[$blockIndex]->move(public_path('uploads/product_attributes/'), $imageName);
+                    $productVariation->image = 'uploads/product_attributes/' . $imageName;
+                }
 
-                    foreach ($variation['attributes'] as $attr) {
-                        $productAttribute = new ProductAttribute();
-                        $productAttribute->attribute_id = $attr['attribute_id'];
-                        $productAttribute->value = $attr['value'];
-                        $productAttribute->price = $variation['v-price'];
-                        $productAttribute->qty = $variation['qty'];
-                        $productAttribute->product_id = $product->id;
-                        $productAttribute->variation_key = $variationKey;
+                $productVariation->save();
 
-                        // Handle attribute image upload
-                        if (isset($attr['image']) && $request->hasFile("attribute.$i.attributes.".$attr['attribute_id'].".image")) {
-                            $image = $request->file("attribute.$i.attributes.".$attr['attribute_id'].".image");
-                            $imageName = time() . '_attr_' . $i . '.' . $image->getClientOriginalExtension();
-                            $image->move(public_path('uploads/product_attributes/'), $imageName);
-                            $productAttribute->image = 'uploads/product_attributes/' . $imageName;
-                        }
-
-                        $productAttribute->save();
+                if($productVariation) {
+                    foreach ($attributes as $attributeId => $valueId) {
+                        ProductVariationValue::create([
+                            'product_attribute_id' => $productVariation->id,
+                            'attribute_id' => $attributeId,
+                            'attribute_value_id' => $valueId,
+                        ]);
                     }
                 }
+
             }
+
+            // Handle product attributes
+            // $attributeValues = $request->attribute_values;
+
+            // if (is_array($attributeValues)) {
+            //     foreach ($attributeValues as $blockIndex => $attributes) {
+            //         // Build variation key
+            //         $variationKeyParts = [];
+            //         foreach ($attributes as $attributeId => $valueId) {
+            //             $variationKeyParts[] = 'attr-' . $attributeId . '_' . $valueId;
+            //         }
+            //         $variationKey = implode('_', $variationKeyParts);
+
+            //         // ✅ Upload image ONCE per variation block
+            //         $imagePath = null;
+            //         if ($request->hasFile("var_image.$blockIndex")) {
+            //             $image = $request->file("var_image.$blockIndex");
+            //             $imageName = time() . '_attr_' . $blockIndex . '.' . $image->getClientOriginalExtension();
+            //             $image->move(public_path('uploads/product_attributes/'), $imageName);
+            //             $imagePath = 'uploads/product_attributes/' . $imageName;
+            //         }
+
+            //         // ✅ Save each attribute row, but with the SAME image path
+            //         foreach ($attributes as $attributeId => $valueId) {
+            //             $productAttribute = new ProductAttribute();
+            //             $productAttribute->attribute_id = $attributeId;
+            //             $productAttribute->value = $valueId;
+            //             $productAttribute->price = $request->price[$blockIndex];
+            //             $productAttribute->qty = $request->qty[$blockIndex];
+            //             $productAttribute->product_id = $product->id;
+            //             $productAttribute->variation_key = $variationKey;
+
+            //             // ✅ Set the same image path for all attributes in this block
+            //             if ($imagePath) {
+            //                 $productAttribute->image = $imagePath;
+            //             }
+
+            //             $productAttribute->save();
+            //         }
+            //     }
+            // }
 
             return redirect('admin/product')->with('message', 'Product added!');
         }
@@ -217,9 +254,6 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-
-
-
         $model = str_slug('product', '-');
         if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
 
@@ -233,8 +267,16 @@ class ProductController extends Controller
                 ->get();
 
 
+            // Load existing variations and their attributes
+            $variations = ProductAttribute::with('variationValues')->where('product_id', $product->id)->get();
 
-            return view('admin.product.edit', compact('product', 'items', 'product_images', 'att'));
+            // Load all attributes
+            $attributes = Attributes::with('values')->get();
+
+            $existingVariations = ProductAttribute::where('product_id', $id)->get();
+
+
+            return view('admin.product.edit', compact('product', 'items', 'product_images', 'att', 'variations', 'attributes', 'existingVariations'));
         }
         return response(view('403'), 403);
     }
@@ -249,6 +291,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $model = str_slug('product', '-');
         if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $this->validate($request, [
@@ -302,52 +345,90 @@ class ProductController extends Controller
             // Update product data
             product::where('id', $id)->update($requestData);
 
+            $product = Product::findOrFail($id);
+
+            // Delete existing variations and variation values
+            $oldVariations = ProductAttribute::where('product_id', $product->id)->get();
+            foreach ($oldVariations as $oldVar) {
+                ProductVariationValue::where('product_attribute_id', $oldVar->id)->delete();
+                $oldVar->delete();
+            }
+
+            // Save new variations
+            $variationData = $request->input('attribute_values');
+            $prices = $request->input('price');
+            $qtys = $request->input('qty');
+            $images = $request->file('var_image');
+
+            foreach ($variationData as $blockIndex => $attributes) {
+                $productVariation = new ProductAttribute();
+                $productVariation->product_id = $product->id;
+                $productVariation->price = $prices[$blockIndex];
+                $productVariation->qty = $qtys[$blockIndex];
+
+                if (isset($images[$blockIndex])) {
+                    $imageName = time() . '_variation_' . $blockIndex . '.' . $images[$blockIndex]->getClientOriginalExtension();
+                    $images[$blockIndex]->move(public_path('uploads/product_attributes/'), $imageName);
+                    $productVariation->image = 'uploads/product_attributes/' . $imageName;
+                }
+
+                $productVariation->save();
+
+                foreach ($attributes as $attributeId => $valueId) {
+                    ProductVariationValue::create([
+                        'product_attribute_id' => $productVariation->id,
+                        'attribute_id' => $attributeId,
+                        'attribute_value_id' => $valueId,
+                    ]);
+                }
+            }
+
             // Handle product attributes
-            $attval = $request->attribute;
-            $product_attribute_id = $request->product_attribute;
-            $oldatt = $request->attribute_id;
-            $oldval = $request->value;
-            $oldprice = $request->v_price;
-            $oldqty = $request->qty;
+            // $attval = $request->attribute;
+            // $product_attribute_id = $request->product_attribute;
+            // $oldatt = $request->attribute_id;
+            // $oldval = $request->value;
+            // $oldprice = $request->v_price;
+            // $oldqty = $request->qty;
 
-            if (is_array($oldatt)) {
-                for ($j = 0; $j < count($oldatt); $j++) {
-                    $product_attribute = ProductAttribute::find($product_attribute_id[$j]);
-                    $product_attribute->attribute_id = $oldatt[$j];
-                    $product_attribute->value = $oldval[$j];
-                    $product_attribute->price = $oldprice[$j];
-                    $product_attribute->qty = $oldqty[$j];
+            // if (is_array($oldatt)) {
+            //     for ($j = 0; $j < count($oldatt); $j++) {
+            //         $product_attribute = ProductAttribute::find($product_attribute_id[$j]);
+            //         $product_attribute->attribute_id = $oldatt[$j];
+            //         $product_attribute->value = $oldval[$j];
+            //         $product_attribute->price = $oldprice[$j];
+            //         $product_attribute->qty = $oldqty[$j];
 
-                    if ($request->hasFile("image_att.$j")) {
-                        $image = $request->file("image_att.$j");
-                        $imageName = time() . '_attr_' . $j . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path('uploads/product_attributes/'), $imageName);
-                        $product_attribute->image = 'uploads/product_attributes/' . $imageName;
-                    }
+            //         if ($request->hasFile("image_att.$j")) {
+            //             $image = $request->file("image_att.$j");
+            //             $imageName = time() . '_attr_' . $j . '.' . $image->getClientOriginalExtension();
+            //             $image->move(public_path('uploads/product_attributes/'), $imageName);
+            //             $product_attribute->image = 'uploads/product_attributes/' . $imageName;
+            //         }
 
-                    $product_attribute->save();
-                }
-            }
+            //         $product_attribute->save();
+            //     }
+            // }
 
-            if (is_array($attval)) {
-                for ($i = 0; $i < count($attval); $i++) {
-                    $product_attributes = new ProductAttribute;
-                    $product_attributes->attribute_id = $attval[$i]['attribute_id'];
-                    $product_attributes->value = $attval[$i]['value'];
-                    $product_attributes->price = $attval[$i]['v-price'];
-                    $product_attributes->qty = $attval[$i]['qty'];
-                    $product_attributes->product_id = $id;
+            // if (is_array($attval)) {
+            //     for ($i = 0; $i < count($attval); $i++) {
+            //         $product_attributes = new ProductAttribute;
+            //         $product_attributes->attribute_id = $attval[$i]['attribute_id'];
+            //         $product_attributes->value = $attval[$i]['value'];
+            //         $product_attributes->price = $attval[$i]['v-price'];
+            //         $product_attributes->qty = $attval[$i]['qty'];
+            //         $product_attributes->product_id = $id;
 
-                    if ($request->hasFile("attribute.$i.image")) {
-                        $image = $request->file("attribute.$i.image");
-                        $imageName = time() . '_newattr_' . $i . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path('uploads/product_attributes/'), $imageName);
-                        $product_attributes->image = 'uploads/product_attributes/' . $imageName;
-                    }
+            //         if ($request->hasFile("attribute.$i.image")) {
+            //             $image = $request->file("attribute.$i.image");
+            //             $imageName = time() . '_newattr_' . $i . '.' . $image->getClientOriginalExtension();
+            //             $image->move(public_path('uploads/product_attributes/'), $imageName);
+            //             $product_attributes->image = 'uploads/product_attributes/' . $imageName;
+            //         }
 
-                    $product_attributes->save();
-                }
-            }
+            //         $product_attributes->save();
+            //     }
+            // }
 
             return redirect('admin/product')->with('message', 'Product updated!');
         }
