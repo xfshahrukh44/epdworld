@@ -93,6 +93,8 @@
                                 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                     <p class="price">
                                         <span class="electro-price">
+                                            <input type="hidden" name="price" id="productPrice"
+                                                value="{{ $product_detail->price }}" />
                                             <ins><span class="amount" id="productPriceDisplay">${{ $product_detail->price }}</span></ins>
                                         </span>
                                     </p>
@@ -1082,6 +1084,7 @@
 
                     // Always reset price on parent change
                     $('#productPriceDisplay').text(`$${basePrice.toFixed(2)}`);
+                    $('#productPrice').val(basePrice.toFixed(2));
                 }
             }
 
@@ -1109,8 +1112,10 @@
 
                 if (matchedVariation) {
                     $('#productPriceDisplay').text(`$${parseFloat(matchedVariation.price).toFixed(2)}`);
+                    $('#productPrice').val(parseFloat(matchedVariation.price).toFixed(2));
                 } else {
                     $('#productPriceDisplay').text(`$${basePrice.toFixed(2)}`);
+                    $('#productPrice').val(basePrice.toFixed(2));
                 }
             }
         });

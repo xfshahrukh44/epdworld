@@ -128,13 +128,13 @@ class ProductController extends Controller
 			$cart = Session::get('cart');
 		}
 
-		if ($request->input('vendor_id') != null) {
-			$vendor_pro = DB::table('product_users')->where('user_id', $request->input('vendor_id'))->where('product_id', $product_detail->id)->first();
-			$price = $vendor_pro->price;
-			// dd($price);
-		} else {
-			$price = $product_detail->price;
-		}
+		// if ($request->input('vendor_id') != null) {
+		// 	$vendor_pro = DB::table('product_users')->where('user_id', $request->input('vendor_id'))->where('product_id', $product_detail->id)->first();
+		// 	$price = $vendor_pro->price;
+		// 	// dd($price);
+		// } else {
+		// 	$price = $product_detail->price;
+		// }
 
 		if ($id != "" && intval($qty) > 0) {
 
@@ -146,7 +146,7 @@ class ProductController extends Controller
 
 			$cart[$cartId]['id'] = $id;
 			$cart[$cartId]['name'] = $productFirstrow->product_title;
-			$cart[$cartId]['baseprice'] = $price;
+			$cart[$cartId]['baseprice'] = $_POST['price'] ?? $product_detail->price;
 			$cart[$cartId]['vendor_id'] = $request->input('vendor_id');
 			$cart[$cartId]['qty'] = $qty;
 			$cart[$cartId]['variation_price'] = 0;
