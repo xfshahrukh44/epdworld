@@ -396,7 +396,7 @@
                             </div>
                             <div class="form-inline-item">
                                 <label>Qty</label>
-                                <input type="number" name="qty[${blockIndex}]" class="form-control mx-2">
+                                <input type="number" name="qty[${blockIndex}]" value="1" class="form-control mx-2">
                             </div>
                             <div class="form-inline-item">
                                 <label>Image</label>
