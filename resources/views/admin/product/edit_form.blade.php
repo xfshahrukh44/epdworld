@@ -142,7 +142,7 @@
             <!-- Variation Blocks -->
             <div id="variationBlocksContainer">
                 @foreach ($variations as $index => $variation)
-                    <div class="variationBlock">
+                    <div class="variationBlock" id="var-{{ $variation->id }}">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2 remove-variation-btn">Remove</button>
                         </div>
