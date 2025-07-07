@@ -255,7 +255,7 @@
 
         $(document).ready(function() {
             let variationIndex = parseInt($('#existingVariationCount').val()) || 0; // 👈 Start from existing variations
-            let selectedAttributes = []; // 👈 Track selection order
+            let selectedAttributes = $('#mainAttributeSelect').val() || []; // 👈 Track selection order
 
             $('#mainAttributeSelect').select2();
             $('.variation-attribute-select').select2();
