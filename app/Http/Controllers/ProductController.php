@@ -19,6 +19,7 @@ use App\imagetable;
 use App\newsletter;
 use App\orders_products;
 use App\ProductAttribute;
+use App\AttributeValue;
 use Illuminate\Http\Request;
 use App\Models\Productreview;
 use App\Http\Traits\HelperTrait;
@@ -108,8 +109,7 @@ class ProductController extends Controller
 
 	public function saveCart(Request $request)
 	{
-
-		// dd($request->input('vendor_id'));
+        // dd($request->all());
 		$var_item = $_POST['variation'];
 
 		$result = array();
@@ -151,17 +151,28 @@ class ProductController extends Controller
 			$cart[$cartId]['qty'] = $qty;
 			$cart[$cartId]['variation_price'] = 0;
 
+            foreach ($var_item as $key => $val) {
+                $data = ProductAttribute::where('product_id', $_POST['product_id'])->first();
+                $get_att = Attributes::where('id', $key)->first();
+                $get_att_val = AttributeValue::where('id', $val)->first();
 
-			foreach ($var_item as $key => $value) {
+                $cart[$cartId]['variation'][] = [
+                    'product_att_id' => $data->id,
+                    'attribute' => $get_att->name,
+                    'attribute_val' => $get_att_val->value,
+                    'attribute_image' => $data->image,
+                ];
+            }
 
-				$data = ProductAttribute::where('product_id', $_POST['product_id'])
-					->where('id', $value)->first();
-				$cart[$cartId]['variation'][$data->id]['attribute'] = $data->attribute->name;
-				$cart[$cartId]['variation'][$data->id]['attribute_val'] = $data->attributesValues->value;
-				$cart[$cartId]['variation'][$data->id]['attribute_price'] = $data->price;
-				$cart[$cartId]['variation_price'] += $data->price;
-			}
+			// foreach ($var_item as $key => $value) {
 
+			// 	$data = ProductAttribute::where('product_id', $_POST['product_id'])
+			// 		->where('id', $value)->first();
+			// 	$cart[$cartId]['variation'][$data->id]['attribute'] = $data->attribute->name;
+			// 	$cart[$cartId]['variation'][$data->id]['attribute_val'] = $data->attributesValues->value;
+			// 	$cart[$cartId]['variation'][$data->id]['attribute_price'] = $data->price;
+			// 	$cart[$cartId]['variation_price'] += $data->price;
+			// }
 
 			Session::put('cart', $cart);
 			// 			dd(Session::get('cart'));

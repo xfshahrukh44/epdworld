@@ -155,6 +155,7 @@
                                     @php
                                         $count = 0;
                                     @endphp
+                                    {{-- @dump($cart); --}}
                                     @foreach ($cart as $key => $value)
                                         @php
                                             $count = $count + 1;
@@ -186,31 +187,19 @@
                                                             <tbody>
                                                                 {{-- @dump($value['variation']); --}}
                                                                 @foreach ($value['variation'] as $key => $values)
-                                                                    @php
-                                                                        $data = App\ProductAttribute::find($key);
-                                                                    @endphp
-                                                                    @if ($data['image'] == null)
-                                                                        <tr class="variation">
-                                                                            <th>{{ $values['attribute'] }}
-                                                                            </th>
-                                                                            <td
-                                                                                style="background-color: {{ $values['attribute_val'] }}; width: auto;line-height: normal;height: auto;display: inline-block;">
-                                                                                {{ $values['attribute_val'] }}</td>
-                                                                             <td>${{ number_format($values['attribute_price'], 2) ?? 0 }}
+                                                                    <tr class="variation">
+                                                                        <th>{{ $values['attribute'] }}</th>
+
+                                                                        @if (!empty($values['attribute_image']))
+                                                                            <td><img src="{{ asset($values['attribute_image']) }}" style="width: 30px"></td>
+                                                                        @else
+                                                                            <td style="background-color: {{ $values['attribute_val'] }}; width: auto; line-height: normal; height: auto; display: inline-block;">
+                                                                                {{ $values['attribute_val'] }}
                                                                             </td>
-                                                                        </tr>
-                                                                    @else
-                                                                        <tr class="variation">
-                                                                            <th>{{ $values['attribute'] }}
-                                                                            </th>
-                                                                            <td><img src="{{ asset($data['image']) }}"
-                                                                                    style="width: 30px"></td>
-                                                                            <td>${{ number_format($values['attribute_price'], 2) ?? 0 }}
-                                                                            </td>
-                                                                        </tr>
-                                                                    @endif
+                                                                        @endif
+                                                                    </tr>
                                                                 @endforeach
-                                                            </tbody>
+                                                                </tbody>
                                                         </table>
 
                                                     </div>
