@@ -190,7 +190,7 @@
                                                                     <tr class="variation">
                                                                         <th>{{ $values['attribute'] }}</th>
 
-                                                                        @if (!empty($values['attribute_image']))
+                                                                        @if (!empty($values['attribute_image']) && $key == 0)
                                                                             <td><img src="{{ asset($values['attribute_image']) }}" style="width: 30px"></td>
                                                                         @else
                                                                             <td style="background-color: {{ $values['attribute_val'] }}; width: auto; line-height: normal; height: auto; display: inline-block;">
