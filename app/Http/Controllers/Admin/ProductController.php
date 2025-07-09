@@ -104,7 +104,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $model = str_slug('product', '-');
         if (auth()->user()->permissions()->where('name', '=', 'add-' . $model)->first() != null) {
             $this->validate($request, [
@@ -290,7 +290,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
+        dd($request->all());
         $model = str_slug('product', '-');
         if (auth()->user()->permissions()->where('name', '=', 'edit-' . $model)->first() != null) {
             $this->validate($request, [
