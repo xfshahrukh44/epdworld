@@ -385,6 +385,7 @@ class ProductController extends Controller
                 $firstAttribute = false;
             }
         }
+        return $attributes;
 
 		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews', 'variations', 'attributes'));
 	}

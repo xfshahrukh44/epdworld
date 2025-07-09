@@ -118,7 +118,6 @@
                                         ];
                                     });
                                 @endphp
-                                @dump($attributes)
 
                                 <table class="variations">
                                     <tbody>
