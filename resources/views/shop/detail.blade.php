@@ -118,7 +118,7 @@
                                         ];
                                     });
                                 @endphp
-                                @dump($formattedVariations)
+                                @dump($attributes)
 
                                 <table class="variations">
                                     <tbody>
