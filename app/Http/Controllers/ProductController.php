@@ -328,12 +328,12 @@ class ProductController extends Controller
         // $variations = \App\ProductAttribute::with('variationValues')->where('product_id', $product_detail->id)
         //     ->get();
 
-        // Step 1: Get all variations of this product
+        // Get all variations of this product
         $variations = \App\ProductAttribute::with('variationValues.attribute', 'variationValues.attributeValue')
             ->where('product_id', $product_detail->id)
             ->get();
 
-        // Step 2: Extract all used attributes and attribute values
+        // Extract all used attributes from variations
         $usedAttributeIds = [];
         $usedAttributeValueIds = [];
 
@@ -347,51 +347,40 @@ class ProductController extends Controller
         $usedAttributeIds = array_unique($usedAttributeIds);
         $usedAttributeValueIds = array_unique($usedAttributeValueIds);
 
-        // Step 3: Get attributes with filtered values (unordered)
+        // Get only the attributes that are used in variations
         $attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
             $query->whereIn('id', $usedAttributeValueIds);
         }])->whereIn('id', $usedAttributeIds)->get();
 
-        // ✅ Step 4: Sort attributes to match the order in the first variation
-        $orderedAttributeIds = [];
-
-        if ($variations->isNotEmpty()) {
-            foreach ($variations->first()->variationValues as $v) {
-                $orderedAttributeIds[] = $v->attribute_id;
-            }
-
-            // Ensure unique and valid ordering
-            $orderedAttributeIds = array_values(array_unique(array_filter($orderedAttributeIds)));
-
-            // Sort attributes collection based on this order
-            $attributes = $attributes->sortBy(function ($attribute) use ($orderedAttributeIds) {
-                return array_search($attribute->id, $orderedAttributeIds);
-            })->values(); // Re-index the collection
-        }
-
-        // Step 5: Get all product attributes (for image matching)
+        // Get all product attributes at once to reduce queries
         $productAttributes = \App\ProductAttribute::where('product_id', $product_detail->id)
             ->with('variationValues')
             ->get();
 
-        // Step 6: Attach images only to the first attribute’s values
+        // Attach images only to the first attribute's values
         $firstAttribute = true;
 
         foreach ($attributes as $attribute) {
             foreach ($attribute->values as $value) {
+
                 if ($firstAttribute) {
-                    // Match a ProductAttribute with this attribute-value pair
+                    // Find the matching ProductAttribute
                     $productAttribute = $productAttributes->first(function ($item) use ($attribute, $value) {
                         return $item->variationValues->contains(function ($v) use ($attribute, $value) {
                             return $v->attribute_id == $attribute->id && $v->attribute_value_id == $value->id;
                         });
                     });
 
-                    $value->image = $productAttribute ? $productAttribute->image : null;
+                    // Attach image if found
+                    if ($productAttribute) {
+                        $value->image = $productAttribute->image;
+                    } else {
+                        $value->image = null;
+                    }
                 }
             }
 
-            // After first attribute processed, skip attaching images
+            // ✅ After processing the first attribute, we skip image assignment for the rest
             if ($firstAttribute) {
                 $firstAttribute = false;
             }
