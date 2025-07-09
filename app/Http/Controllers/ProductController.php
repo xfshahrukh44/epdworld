@@ -348,7 +348,7 @@ class ProductController extends Controller
         $usedAttributeValueIds = array_unique($usedAttributeValueIds);
 
         // Get only the attributes that are used in variations
-        $attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
+        return $attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
             $query->whereIn('id', $usedAttributeValueIds);
         }])->whereIn('id', $usedAttributeIds)->get();
 
