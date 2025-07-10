@@ -171,7 +171,7 @@ class ProductController extends Controller
 
                 $productVariation->save();
 
-                if($productVariation) {
+                if ($productVariation) {
                     foreach ($attributes as $attributeId => $valueId) {
                         ProductVariationValue::create([
                             'product_attribute_id' => $productVariation->id,
@@ -933,8 +933,8 @@ class ProductController extends Controller
     public function getSingleAttributeValue($attributeId, $valueId)
     {
         $value = AttributeValue::where('attribute_id', $attributeId)
-                            ->where('id', $valueId)
-                            ->first(['id', 'value']);
+            ->where('id', $valueId)
+            ->first(['id', 'value']);
 
         if (!$value) {
             return response()->json(null, 404);

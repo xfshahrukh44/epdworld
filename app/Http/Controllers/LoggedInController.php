@@ -112,6 +112,7 @@ class LoggedInController extends Controller
         $data = null;
         $att = Attributes::all();
         $attval = AttributeValue::all();
+        $items = Category::pluck('name', 'id');
         return view('account.products.create', compact('data', 'att', 'attval'));
 
     }

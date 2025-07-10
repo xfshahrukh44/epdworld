@@ -81,7 +81,7 @@
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/js/customizer.min.js') }}"></script>
     <!-- END: Theme JS-->
-    <<!-- script src="{{ asset('plugins/vendors/jquery/jquery.min.js') }}"></script>
+    <!-- script src="{{ asset('plugins/vendors/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('plugins/vendors/jquery/spartan-multi-image-picker.min.js') }}"></script>
         <script src="{{ asset('plugins/vendors/bootstrap/js/popper.min.js') }}"></script>
         <script src="{{ asset('plugins/vendors/bootstrap/js/bootstrap.min.js') }}"></script>

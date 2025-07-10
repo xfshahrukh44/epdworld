@@ -359,6 +359,7 @@
 
                 // AJAX requests in order
                 const requests = selectedAttributes.map(attrId => {
+
                     return new Promise((resolve, reject) => {
                         $.ajax({
                             url: `{{ url('admin/get-attribute-values') }}/${attrId}`,
@@ -457,6 +458,9 @@
 
                     $block.append($attrValuesContainer).append(priceSection);
                     $('#variationBlocksContainer').append($block);
+                }).catch(error => {
+                    console.error('One of the requests failed:', error);
+                    alert('An error occurred while loading product variations. Please try again.');
                 });
             }
         });
