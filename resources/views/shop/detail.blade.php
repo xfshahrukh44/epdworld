@@ -95,7 +95,7 @@
                                         <span class="electro-price">
                                             <input type="hidden" name="price" id="productPrice"
                                                 value="{{ $product_detail->price }}" />
-                                            <ins><span class="amount" id="productPriceDisplay">${{ $product_detail->price }}</span></ins>
+                                            <ins><span class="amount" id="productPriceDisplay">$0.00</span></ins>
                                         </span>
                                     </p>
                                     <meta itemprop="price" content="{{ $product_detail->price }}" />
@@ -106,6 +106,10 @@
                                 <!-- /itemprop -->
 
                                 <input type="hidden" id="variation-data" value='@json($variations)' />
+                                <input type="hidden" id="pricing-flags"
+                                    data-profit-margin="{{ App\Http\Traits\HelperTrait::returnFlag(1974) }}"
+                                    data-shipping="{{ App\Http\Traits\HelperTrait::returnFlag(1973) }}"
+                                    data-stripe-fee="{{ App\Http\Traits\HelperTrait::returnFlag(1975) }}">
 
                                 @php
                                     $formattedVariations = $variations->map(function ($variation) {
@@ -1012,9 +1016,18 @@
     //     }
     // });
     $(document).ready(function () {
+        // Get flags from hidden input
+        let pricingFlags = $('#pricing-flags');
+        let profitMargin = parseFloat(pricingFlags.data('profit-margin'));
+        let shipping = parseFloat(pricingFlags.data('shipping'));
+        let stripeFee = parseFloat(pricingFlags.data('stripe-fee'));
         let variations = JSON.parse($('#variation-data').val());
         let basePrice = parseFloat('{{ $product_detail->price }}');
         let selectedAttributes = {};
+
+        let initialFinalPrice = calculateFinalPrice(basePrice);
+        $('#productPriceDisplay').text(`$${initialFinalPrice.toFixed(2)}`);
+        $('#productPrice').val(initialFinalPrice.toFixed(2));
 
         // Dynamically get all unique attribute IDs and find the last one
         let uniqueAttributeIds = $('.variation-selector').map(function () {
@@ -1110,11 +1123,13 @@
                 });
 
                 if (matchedVariation) {
-                    $('#productPriceDisplay').text(`$${parseFloat(matchedVariation.price).toFixed(2)}`);
-                    $('#productPrice').val(parseFloat(matchedVariation.price).toFixed(2));
+                    let finalPrice = calculateFinalPrice(parseFloat(matchedVariation.price));
+                    $('#productPriceDisplay').text(`$${finalPrice.toFixed(2)}`);
+                    $('#productPrice').val(finalPrice.toFixed(2));
                 } else {
-                    $('#productPriceDisplay').text(`$${basePrice.toFixed(2)}`);
-                    $('#productPrice').val(basePrice.toFixed(2));
+                    let finalPrice = calculateFinalPrice(basePrice);
+                    $('#productPriceDisplay').text(`$${finalPrice.toFixed(2)}`);
+                    $('#productPrice').val(finalPrice.toFixed(2));
                 }
             }
         });
@@ -1134,6 +1149,14 @@
                 }
             }
             return null;
+        }
+
+        // Pricing function
+        function calculateFinalPrice(basePrice) {
+            let priceWithProfit = basePrice * (1 + profitMargin);
+            let priceWithShipping = priceWithProfit * (1 + shipping);
+            let finalPrice = priceWithShipping * (1 + stripeFee);
+            return finalPrice;
         }
 
     });

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('before-css')
-    
+
 @endpush
 
 @section('content')
@@ -42,15 +42,15 @@
                               @csrf
                               <div class="form-body">
                                     <div class="row">
-                                        <?php 
+                                        <?php
                                             $_getConfig = DB::table('m_flag')->where('is_active','1')->where('is_config','1')->get();
                                         ?>
                                         @foreach($_getConfig as $_Config)
-                                            @if($_Config->type='1')
+                                            @if($_Config->is_number == 1)
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="{{$_Config->flag_type}}">{{$_Config->flag_show_text}}</label>
-                                                    <input id="{{$_Config->flag_type}}" class="form-control" name="{{$_Config->flag_type}}" type="text" value="{{$_Config->flag_value}}">
+                                                    <input id="{{$_Config->flag_type}}" class="form-control" name="{{$_Config->flag_type}}" type="number" step="any" value="{{$_Config->flag_value}}">
                                                 </div>
                                             </div>
                                             @else
@@ -118,5 +118,5 @@
 @endsection
 
 @push('js')
-    
+
 @endpush
