@@ -39,7 +39,7 @@
                                         </a>
                                         <div class="price-add-to-cart"> <span class="price">
                                                 <span class="electro-price">
-                                                    <ins><span class="amount">&#036;{!! $pro->price !!}</span></ins>
+                                                    <ins><span class="amount">&#036;{!! $pro->calculated_final_price !!}</span></ins>
                                                     {{-- <del><span class="amount">&#036;2,299.00</span></del> --}}
                                                 </span>
                                             </span> <a rel="nofollow" href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
@@ -2530,7 +2530,7 @@
                         <a href="{{ route('shopDetail', ['id' => $item->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $item->product_title)))]) }}" title="Notebook Black Spire V Nitro  VN7-591G"> <img
                                 width="180" height="180" src="{!! asset($item->image) !!}" class="wp-post-image"
                                 alt="" /><span class="product-title">{!! $item->product_title !!}</span> </a> <span class="electro-price"><ins><span
-                                    class="amount">&#36;{!! $item->price !!}</span></ins> </span>
+                                    class="amount">&#36;{!! $item->calculated_final_price !!}</span></ins> </span>
                     </li>
                     @endforeach
 

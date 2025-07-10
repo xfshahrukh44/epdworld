@@ -263,7 +263,7 @@
                         @endif
 
                                 <span class="electro-price"><ins><span
-                                    class="amount">&#36;{!! $item->price !!}</span></ins> </span>
+                                    class="amount">&#36;{!! $item->calculated_final_price !!}</span></ins> </span>
                     </li>
                     @endforeach
 
