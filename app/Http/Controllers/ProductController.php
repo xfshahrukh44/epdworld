@@ -303,6 +303,7 @@ class ProductController extends Controller
 
 		$category = Category::all();
 		$latest = Product::orderBy('id', 'desc')->take(4)->get();
+        return $shops;
 
 
 		return view('shop.shop', compact('shops', 'page', 'category', 'latest'));
