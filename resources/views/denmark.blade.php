@@ -388,7 +388,7 @@
                                             </a>
                                             <div class="price-add-to-cart"> <span class="price">
                                                     <span class="electro-price">
-                                                        <ins><span class="amount">&#036;{{$product->price}}</span></ins>
+                                                        <ins><span class="amount">&#036;{{$product->calculated_final_price}}</span></ins>
                                                         <div class="ship-box">
                                                             <div class="ship-detail">
                                                               <i class="fa-solid fa-truck"></i>  Free Shipping - 12-day delivery
