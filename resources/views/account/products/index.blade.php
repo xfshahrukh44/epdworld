@@ -45,10 +45,10 @@
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane show active" id="orders" role="#">
                                             <div class="myaccount-content">
-                                                <!--<div class="section-heading">-->
-                                                <!--    <a href="{{ route('addnewproduct') }}" class="add-new donate-btn">Add-->
-                                                <!--        New Product</a>-->
-                                                <!--</div>-->
+                                                <div class="section-heading">
+                                                    <a href="{{ route('addnewproduct') }}" class="add-new donate-btn">Add
+                                                        New Product</a>
+                                                </div>
 
                                                 <div class="myaccount-table table-responsive text-center">
                                                     <table class="table table-bordered">
@@ -58,34 +58,40 @@
                                                                 <th>Product Title</th>
                                                                 <th>Image</th>
                                                                 <th>Price</th>
-                                                                
+
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
 
                                                         <tbody>
-                    
+
                                                             @if ($products)
-                                                            @php
-                                                            $count = 1;
-                                                            @endphp
-                                                            @foreach ($vendor_pro as $pros)
-                                                            @php
-                                                            $product = App\Product::where('id', $pros->product_id)->first();
-                                                            @endphp
-                                                               
+                                                                @php
+                                                                    $count = 1;
+                                                                @endphp
+                                                                @foreach ($vendor_pro as $pros)
+                                                                    @php
+                                                                        $product = App\Product::where(
+                                                                            'id',
+                                                                            $pros->product_id,
+                                                                        )->first();
+                                                                    @endphp
+
                                                                     <tr>
                                                                         <td>{{ $count }}</td>
 
                                                                         <td>{{ $product->product_title }}</td>
                                                                         <td><img src="{{ asset($product->image) }}"> </td>
                                                                         <td>${{ $pros->price }}</td>
-                                                                        
-                                                                        <td class="viewbtn"><button class="btn-seller" type="button" data-toggle="modal" data-target="#exampleModalCenter-{{ $pros->id }}">Edit</button></td>
+
+                                                                        <td class="viewbtn"><button class="btn-seller"
+                                                                                type="button" data-toggle="modal"
+                                                                                data-target="#exampleModalCenter-{{ $pros->id }}">Edit</button>
+                                                                        </td>
 
                                                                     </tr>
                                                                     @php
-                                                                    $count++
+                                                                        $count++;
                                                                     @endphp
                                                                 @endforeach
                                                             @endif
@@ -113,36 +119,38 @@
     </main>
     <!-- Modal -->
     @foreach ($vendor_pro as $pros)
-    <div class="modal fade" id="exampleModalCenter-{{ $pros->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Sell on EPD World</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="{{ route('sell-on-epd-edit') }}" method="POST">
-              @csrf    
-              <input type="hidden" name="product_id" value="{{ $pros->product_id }}" />
-              <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
-              <div class="form-group">
-                <label for="">Stock Quantity</label>
-                <input type="text" class="form-control" name="stock_inventory" value="{{ $pros->stock_inventory }}">
-              </div>
-              <div class="form-group">
-                <label for="">Price</label>
-                <input type="text" class="form-control" name="price" value="{{ $pros->price }}">
-              </div>
-              
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-          
+        <div class="modal fade" id="exampleModalCenter-{{ $pros->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Sell on EPD World</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('sell-on-epd-edit') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $pros->product_id }}" />
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
+                            <div class="form-group">
+                                <label for="">Stock Quantity</label>
+                                <input type="text" class="form-control" name="stock_inventory"
+                                    value="{{ $pros->stock_inventory }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Price</label>
+                                <input type="text" class="form-control" name="price" value="{{ $pros->price }}">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
     @endforeach
 @endsection
 @section('css')
@@ -166,9 +174,10 @@
             color: #fff;
             background: #000;
         }
+
         td img {
-    width: 150px;
-}
+            width: 150px;
+        }
     </style>
 @endsection
 @section('js')

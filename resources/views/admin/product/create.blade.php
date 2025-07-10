@@ -334,7 +334,9 @@
                                     return;
                                 }
 
-                                const attrName = $('#mainAttributeSelect option[value="' + attrId + '"]').text();
+                                const attrName = $(
+                                    '#mainAttributeSelect option[value="' + attrId +
+                                    '"]').text();
                                 let $dropdown = $(`
                                     <div class="form-inline-item">
                                         <label>${attrName}</label>
@@ -344,7 +346,11 @@
                                     </div>
                                 `);
 
-                                dropdowns.push({ order: attrId, $html: $dropdown, attrId: attrId });
+                                dropdowns.push({
+                                    order: attrId,
+                                    $html: $dropdown,
+                                    attrId: attrId
+                                });
                                 resolve();
                             },
                             error: reject
@@ -363,13 +369,13 @@
                                     url: `{{ url('admin/search-attribute-values') }}/${dropdownObj.attrId}`,
                                     dataType: 'json',
                                     delay: 250,
-                                    data: function (params) {
+                                    data: function(params) {
                                         return {
                                             q: params.term,
                                             page: params.page || 1
                                         };
                                     },
-                                    processResults: function (data, params) {
+                                    processResults: function(data, params) {
                                         params.page = params.page || 1;
 
                                         return {
@@ -381,7 +387,9 @@
                                     },
                                     cache: true
                                 },
-                                placeholder: 'Select ' + $('#mainAttributeSelect option[value="' + dropdownObj.attrId + '"]').text(),
+                                placeholder: 'Select ' + $(
+                                    '#mainAttributeSelect option[value="' + dropdownObj
+                                    .attrId + '"]').text(),
                                 minimumInputLength: 1
                             });
                         }

@@ -10,7 +10,8 @@ use App\banner;
 use App\imagetable;
 use App\Category;
 use DB;
-use Mail;use View;
+use Mail;
+use View;
 use Session;
 use App\Http\Helpers\UserSystemInfoHelper;
 use App\Http\Traits\HelperTrait;
@@ -30,9 +31,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-     // use Helper;
+    // use Helper;
 
-     public $cat_array =[];
+    public $cat_array = [];
 
     public function __construct()
     {
@@ -41,17 +42,17 @@ class HomeController extends Controller
 
 
         $logo = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','logo')
-                     ->first();
+            select('img_path')
+            ->where('table_name', '=', 'logo')
+            ->first();
 
         $favicon = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','favicon')
-                     ->first();
+            select('img_path')
+            ->where('table_name', '=', 'favicon')
+            ->first();
 
-        View()->share('logo',$logo);
-        View()->share('favicon',$favicon);
+        View()->share('logo', $logo);
+        View()->share('favicon', $favicon);
 
     }
 
@@ -62,131 +63,148 @@ class HomeController extends Controller
      */
     public function index()
     {
-       $page = DB::table('pages')->where('id', 1)->first();
-       $banner = DB::table('banners')->where('slider_cat', 0)->get();
-       $second_banner = DB::table('banners')->where('slider_cat', 1)->get();
-       $section = DB::table('section')->where('page_id', 1)->get();
-       $product = Product::inRandomOrder()->limit(12)->get();
-       $product_all = DB::table('products')
+        $page = DB::table('pages')->where('id', 1)->first();
+        $banner = DB::table('banners')->where('slider_cat', 0)->get();
+        $second_banner = DB::table('banners')->where('slider_cat', 1)->get();
+        $section = DB::table('section')->where('page_id', 1)->get();
+        $product = Product::inRandomOrder()->limit(12)->get();
+        $product_all = DB::table('products')
             ->orderBy('created_at', 'desc')
             ->limit(50)
             ->get()
             ->shuffle()
             ->take(12);
 
-       $category = Category::inRandomOrder()->limit(24)->get();
+        $category = Category::inRandomOrder()->limit(24)->get();
 
-       return view('welcome', compact('page', 'banner', 'second_banner', 'section', 'product', 'product_all', 'category'));
+        return view('welcome', compact('page', 'banner', 'second_banner', 'section', 'product', 'product_all', 'category'));
     }
 
-    public function india(){
+    public function india()
+    {
 
         return view('india');
     }
 
-    public function italy(){
+    public function italy()
+    {
 
         return view('italy');
     }
 
-    public function malaysia(){
+    public function malaysia()
+    {
 
         return view('malaysia');
     }
 
-    public function mexico(){
+    public function mexico()
+    {
 
         return view('mexico');
     }
 
-    public function spain(){
+    public function spain()
+    {
 
         return view('spain');
     }
 
-    public function australia(){
+    public function australia()
+    {
 
         return view('australia');
     }
 
-    public function brazil(){
+    public function brazil()
+    {
 
         return view('brazil');
     }
 
-    public function canada(){
+    public function canada()
+    {
 
         return view('canada');
     }
 
 
-    public function france(){
+    public function france()
+    {
 
         return view('france');
     }
 
-    public function germany(){
+    public function germany()
+    {
 
         return view('germany');
     }
 
-    public function dubai(){
+    public function dubai()
+    {
         return view('dubai');
     }
 
-    public function denmark(){
+    public function denmark()
+    {
         return view('denmark');
     }
 
-    public function egypt(){
+    public function egypt()
+    {
         return view('egypt');
     }
 
-    public function ghana(){
+    public function ghana()
+    {
         return view('ghana');
     }
 
-    public function kenya(){
+    public function kenya()
+    {
         return view('kenya');
     }
 
-    public function nigeria(){
+    public function nigeria()
+    {
         return view('nigeria');
     }
 
-    public function norway(){
+    public function norway()
+    {
         return view('norway');
     }
 
-    public function senegal(){
+    public function senegal()
+    {
         return view('senegal');
     }
 
-    public function southAfrica(){
+    public function southAfrica()
+    {
         return view('south-africa');
     }
 
-    public function sweden(){
+    public function sweden()
+    {
         return view('sweden');
     }
 
 
 
 
-    public function children_category($category,$cat_id)
+    public function children_category($category, $cat_id)
     {
         $array = [];
-        foreach($category->children as $value)
-        {
-            array_push($array,$value->id);
+        foreach ($category->children as $value) {
+            array_push($array, $value->id);
 
-            if (count($value->children)>0)
-            {
+            if (count($value->children) > 0) {
                 $this->cat_array[$value->id] = [];
 
-                $this->children_category($value,$value->id);
-            }
-            else{
+                $this->children_category($value, $value->id);
+            } else {
                 // $this->cat_array[$value->id] =$cat_id;
             }
 
@@ -203,22 +221,22 @@ class HomeController extends Controller
                 echo '<ul>';
                 generate_tree($category->children);
                 echo '</ul>';
-            }
-            else{
+            } else {
                 return 0;
             }
             echo '</li>';
         }
     }
-    public function buildTree($array,$id_key = 'id',$parent_key = 'parent_id'){
+    public function buildTree($array, $id_key = 'id', $parent_key = 'parent_id')
+    {
         $res = [];
-        foreach($array as $y){
+        foreach ($array as $y) {
             $array_with_id[$y[$id_key]] = $y;
         }
-        foreach($array_with_id as $key => $element){
-            if($element[$parent_key]){
+        foreach ($array_with_id as $key => $element) {
+            if ($element[$parent_key]) {
                 $array_with_id[$element[$parent_key]]['childrens'][$key] = &$array_with_id[$key];
-            }else{
+            } else {
                 $res[$element[$id_key]] = &$array_with_id[$key];
             }
         }
@@ -227,18 +245,18 @@ class HomeController extends Controller
 
     public function test123()
     {
-        $product  = Product::all();
+        $product = Product::all();
 
-            // $value  = Product::find(646);
+        // $value  = Product::find(646);
 
-         foreach($product as $value){
+        foreach ($product as $value) {
             $profit_margin = 80;
             $shipping_fee = 25;
             // $margin = 1.00;
             // $supplier_fee = 5;
             // $advertisment = 3;
 
-            $margin_final = (($profit_margin + 100) * $value->price) /100;
+            $margin_final = (($profit_margin + 100) * $value->price) / 100;
 
             $shipping_final = (($shipping_fee / 100) * $margin_final);
             // $stripe_final = (($stripe_fee / 100) * $margin_final);
@@ -260,7 +278,7 @@ class HomeController extends Controller
 
             dump('==========================');
 
-         }
+        }
 
 
     }
@@ -284,13 +302,13 @@ class HomeController extends Controller
 
         $shops = new Product;
 
-        if($name != null){
+        if ($name != null) {
 
-	        $shops = $shops->where('product_title', 'LIKE', "%$name%");
-	    }elseif($cat != null){
-	        $shops = $shops->where('category', $cat);
-	    }
-	        $shops = $shops->paginate(12);
+            $shops = $shops->where('product_title', 'LIKE', "%$name%");
+        } elseif ($cat != null) {
+            $shops = $shops->where('category', $cat);
+        }
+        $shops = $shops->paginate(12);
 
 
 
@@ -310,7 +328,8 @@ class HomeController extends Controller
     }
 
 
-    public function seller_profile($slug){
+    public function seller_profile($slug)
+    {
         $user = User::where('slug', $slug)->first();
         $product = Product::where('user_id', $user->id)->paginate(12);
         $vendor_pro = DB::table('product_users')->where('user_id', $user->id)->get();
@@ -318,7 +337,8 @@ class HomeController extends Controller
         return view('seller-profile', compact('user', 'product', 'vendor_pro'));
     }
 
-    public function sell_on_epd(Request $request){
+    public function sell_on_epd(Request $request)
+    {
         // dd($request->input());
         $product = Product::find($request->product_id);
         $user = User::find($request->user_id);
@@ -338,52 +358,54 @@ class HomeController extends Controller
         inquiry::create($request->all());
 
 
-        return response()->json(['message'=>'Thank you for contacting us. We will get back to you asap', 'status' => true]);
+        return response()->json(['message' => 'Thank you for contacting us. We will get back to you asap', 'status' => true]);
         return back();
     }
 
-    public function newsletterSubmit(Request $request){
+    public function newsletterSubmit(Request $request)
+    {
 
-        $is_email = newsletter::where('newsletter_email',$request->newsletter_email)->count();
-        if($is_email == 0) {
+        $is_email = newsletter::where('newsletter_email', $request->newsletter_email)->count();
+        if ($is_email == 0) {
             $inquiry = new newsletter;
             $inquiry->newsletter_email = $request->newsletter_email;
             $inquiry->save();
-            return response()->json(['message'=>'Thank you for contacting us. We will get back to you asap', 'status' => true]);
+            return response()->json(['message' => 'Thank you for contacting us. We will get back to you asap', 'status' => true]);
 
-        }else{
-            return response()->json(['message'=>'Email already exists', 'status' => false]);
+        } else {
+            return response()->json(['message' => 'Email already exists', 'status' => false]);
         }
 
     }
 
-    public function updateContent(Request $request){
+    public function updateContent(Request $request)
+    {
         $id = $request->input('id');
         $keyword = $request->input('keyword');
         $htmlContent = $request->input('htmlContent');
-        if($keyword == 'page'){
+        if ($keyword == 'page') {
             $update = DB::table('pages')
-                        ->where('id', $id)
-                        ->update(array('content' => $htmlContent));
+                ->where('id', $id)
+                ->update(array('content' => $htmlContent));
 
-            if($update){
-                return response()->json(['message'=>'Content Updated Successfully', 'status' => true]);
-            }else{
-                return response()->json(['message'=>'Error Occurred', 'status' => false]);
+            if ($update) {
+                return response()->json(['message' => 'Content Updated Successfully', 'status' => true]);
+            } else {
+                return response()->json(['message' => 'Error Occurred', 'status' => false]);
             }
-        }else if($keyword == 'section'){
+        } else if ($keyword == 'section') {
             $update = DB::table('section')
-                        ->where('id', $id)
-                        ->update(array('value' => $htmlContent));
-            if($update){
-                return response()->json(['message'=>'Content Updated Successfully', 'status' => true]);
-            }else{
-                return response()->json(['message'=>'Error Occurred', 'status' => false]);
+                ->where('id', $id)
+                ->update(array('value' => $htmlContent));
+            if ($update) {
+                return response()->json(['message' => 'Content Updated Successfully', 'status' => true]);
+            } else {
+                return response()->json(['message' => 'Error Occurred', 'status' => false]);
             }
         }
     }
 
-    public function blog_detail (Request $request, $slug = null)
+    public function blog_detail(Request $request, $slug = null)
     {
         if (!$slug) {
             $blog = null;

@@ -68,10 +68,6 @@
                                                             </div>
                                                         </div>
 
-
-
-
-
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label for="title">Product Title</label>
@@ -132,132 +128,29 @@
                                                         <div class="col-md-12">
                                                             <h4 class="card-title" id="repeat-form">Add Variation</h4>
                                                         </div>
-                                                        @foreach ($product->attributes as $pro_att_edits)
-                                                            <div class="col-md-12">
-                                                                <div data-repeater-list="attribute">
-                                                                    <div data-repeater-item="" class="row">
-                                                                        <input type="hidden"
-                                                                            value="{{ $pro_att_edits->id }}"
-                                                                            name="product_attribute[]">
-                                                                        <div class="form-group mb-1 col-sm-12 col-md-3">
-                                                                            <label for="email-addr">Attribute</label>
-                                                                            <br>
-                                                                            <select class="form-control" id="attribute_id"
-                                                                                name="attribute_id[]"
-                                                                                onchange="getval(this)" disabled>
-                                                                                <option
-                                                                                    value="{{ $pro_att_edits->attribute_id }}">
-                                                                                    {{ $pro_att_edits->attribute->name }}
-                                                                                </option>
-                                                                                <!-- @foreach ($att as $atts)
-    <option value="{{ $atts->id }}">{{ $atts->name }}</option>
-    @endforeach -->
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group mb-1 col-sm-12 col-md-3">
-                                                                            <label for="pass">value</label>
-                                                                            <br>
-                                                                            <select class="form-control value"
-                                                                                id="value" name="value[]" disabled>
-                                                                                <option
-                                                                                    value="{{ $pro_att_edits->value }}">
-                                                                                    {{ $pro_att_edits->attributesValues->value }}
-                                                                                </option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group mb-1 col-sm-12 col-md-2">
-                                                                            <label for="bio"
-                                                                                class="cursor-pointer">Price</label>
-                                                                            <br>
-                                                                            <input type="number" name="v_price[]"
-                                                                                class="form-control" id="price"
-                                                                                value="{{ $pro_att_edits->price }}">
-                                                                        </div>
-                                                                        <div class="form-group mb-1 col-sm-12 col-md-2">
-                                                                            <label for="bio"
-                                                                                class="cursor-pointer">qty</label>
-                                                                            <br>
-                                                                            <input type="number" name="qty[]"
-                                                                                class="form-control" id="qty"
-                                                                                value="{{ $pro_att_edits->qty }}">
-                                                                        </div>
-                                                                        <div
-                                                                            class="form-group col-sm-12 col-md-2 text-center mt-2">
-                                                                            <button
-                                                                                onclick="deleteAttr({{ $pro_att_edits->id }}, this)"
-                                                                                type="button" class="btn btn-danger"
-                                                                                data-repeater-delete=""> <i
-                                                                                    class="ft-x"></i>
-                                                                                Delete</button>
-                                                                        </div>
-
-                                                                        <hr>
-                                                                    </div>
-                                                                </div>
+                                                        <div class="col-md-12">
+                                                            <!-- Attribute Select (Once at the top only) -->
+                                                            <div class="mb-3 mainAttributeSelectsec">
+                                                                <label><strong>Select Attributes</strong></label>
+                                                                <select id="mainAttributeSelect" class="form-control"
+                                                                    multiple>
+                                                                    @foreach ($att as $attribute)
+                                                                        <option value="{{ $attribute->id }}"
+                                                                            data-values='@json($attribute->values)'>
+                                                                            {{ $attribute->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
-                                                        @endforeach
 
-                                                        <div class="repeater-default col-md-12">
-                                                            <div data-repeater-list="attribute">
-                                                                <div data-repeater-item="" class="row">
+                                                            <!-- Variation Blocks Container -->
+                                                            <div id="variationBlocksContainer"></div>
 
-                                                                    <div class="form-group mb-1 col-sm-12 col-md-3">
-                                                                        <label for="email-addr">Attribute</label>
-                                                                        <br>
-                                                                        <select class="form-control" id="attribute_id"
-                                                                            name="attribute_id" onchange="getval(this)">
-                                                                            @foreach ($att as $atts)
-                                                                                <option value="{{ $atts->id }}">
-                                                                                    {{ $atts->name }}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group mb-1 col-sm-12 col-md-3">
-                                                                        <label for="pass">value</label>
-                                                                        <br>
-                                                                        <select class="form-control value" id="value"
-                                                                            name="value">
+                                                            <!-- Button to Add Variation -->
+                                                            <button type="button" class="btn btn-primary mt-3"
+                                                                id="addVariationBtn">Add Variation</button>
 
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group mb-1 col-sm-12 col-md-2">
-                                                                        <label for="bio"
-                                                                            class="cursor-pointer">Price</label>
-                                                                        <br>
-                                                                        <input type="number" name="v-price"
-                                                                            class="form-control" id="price"
-                                                                            value="{{ $pro_att_edits->attributesValues->price }}">
-                                                                    </div>
-                                                                    <div class="form-group mb-1 col-sm-12 col-md-2">
-                                                                        <label for="bio"
-                                                                            class="cursor-pointer">qty</label>
-                                                                        <br>
-                                                                        <input type="number" name="qty"
-                                                                            class="form-control" id="qty">
-                                                                    </div>
-                                                                    <div
-                                                                        class="form-group col-sm-12 col-md-2 text-center mt-2">
-                                                                        <label for="bio"
-                                                                            class="cursor-pointer">Action</label>
-                                                                        <br>
-                                                                        <button type="button"
-                                                                            class="btn btn-danger att-del"
-                                                                            data-repeater-delete=""> <i
-                                                                                class="ft-x"></i>
-                                                                            Delete</button>
-                                                                    </div>
 
-                                                                    <hr>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group overflow-hidden">
-                                                                <div class="">
-                                                                    <button type="button" data-repeater-create=""
-                                                                        class="btn btn-primary att-add">
-                                                                        <i class="ft-plus"></i> Add
-                                                                    </button>
-                                                                </div>
-                                                            </div>
                                                         </div>
 
                                                         <div class="col-md-12">
@@ -267,9 +160,6 @@
                                                             </div>
                                                         </div>
 
-
-
-
                                                     </div>
 
                                                 </form>
@@ -277,8 +167,6 @@
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
-
-
                                     </div>
                                 </div> <!-- My Account Tab Content End -->
                             </div>
@@ -376,12 +264,16 @@
             color: #fff;
             padding: 10px 35px;
         }
-
-       
     </style>
 @endsection
 @section('js')
-    <script></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('js/jquery.repeater.min.js') }}"></script>
+    <script src="{{ asset('plugins/vendors/dropify/dist/js/dropify.min.js') }}"></script>
+
 
     <script type="text/javascript">
         $('.dropify').dropify();
@@ -391,6 +283,182 @@
         $(document).on('click', ".btn1", function(e) {
             // alert('it works');
             $('.loginForm').submit();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            let variationIndex = 0;
+            let selectedAttributes = []; // Track selection order
+
+            // Initialize Select2
+            $('#mainAttributeSelect').select2();
+            $('.attribute-select').select2();
+
+            // Track selection order on select
+            $('#mainAttributeSelect').on('select2:select', function(e) {
+                const selectedId = e.params.data.id;
+
+                // Add if not already in the array
+                if (!selectedAttributes.includes(selectedId)) {
+                    selectedAttributes.push(selectedId);
+                }
+
+                rebuildVariationBlocks();
+            });
+
+            // Track deselection
+            $('#mainAttributeSelect').on('select2:unselect', function(e) {
+                const unselectedId = e.params.data.id;
+
+                // Remove from array
+                selectedAttributes = selectedAttributes.filter(id => id !== unselectedId);
+
+                rebuildVariationBlocks();
+            });
+
+            // Button click - Add new variation block
+            $('#addVariationBtn').on('click', function() {
+                if (selectedAttributes.length === 0) {
+                    alert('Please select at least one attribute first.');
+                    return;
+                }
+                addVariationBlock();
+            });
+
+            function rebuildVariationBlocks() {
+                $('#variationBlocksContainer').empty();
+                variationIndex = 0;
+
+                if (selectedAttributes.length > 0) {
+                    addVariationBlock();
+                }
+            }
+
+            function addVariationBlock() {
+                const blockIndex = variationIndex++;
+                const $block = $('<div>', {
+                    class: 'variationBlock position-relative border p-3 mb-3 rounded'
+                });
+
+                // Remove Button
+                const $removeBtn = $('<button>', {
+                    type: 'button',
+                    class: 'btn btn-danger btn-sm position-absolute top-0 end-0 m-2',
+                    text: 'Remove',
+                    click: function() {
+                        $block.remove();
+                    }
+                });
+
+                const $attrValuesContainer = $('<div>', {
+                    class: 'd-flex flex-wrap gap-2 attr-values-container'
+                });
+
+                let dropdowns = [];
+
+                // AJAX requests in order
+                const requests = selectedAttributes.map(attrId => {
+                    return new Promise((resolve, reject) => {
+                        $.ajax({
+                            url: `{{ url('admin/get-attribute-values') }}/${attrId}`,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(values) {
+                                if (values.length === 0) {
+                                    // 🚫 Skip attributes with no values
+                                    resolve(); // Do not add dropdown for this attribute
+                                    return;
+                                }
+
+                                const attrName = $(
+                                    '#mainAttributeSelect option[value="' + attrId +
+                                    '"]').text();
+                                let $dropdown = $(`
+                                    <div class="form-inline-item">
+                                        <label>${attrName}</label>
+                                        <select class="form-control mx-2 variation-attribute-select"
+                                            name="attribute_values[${blockIndex}][${attrId}]">
+                                        </select>
+                                    </div>
+                                `);
+
+                                dropdowns.push({
+                                    order: attrId,
+                                    $html: $dropdown,
+                                    attrId: attrId
+                                });
+                                resolve();
+                            },
+                            error: reject
+                        });
+                    });
+                });
+
+                Promise.all(requests).then(() => {
+                    selectedAttributes.forEach(attrId => {
+                        const dropdownObj = dropdowns.find(d => d.order == attrId);
+                        if (dropdownObj) {
+                            $attrValuesContainer.append(dropdownObj.$html);
+
+                            dropdownObj.$html.find('select').select2({
+                                ajax: {
+                                    url: `{{ url('admin/search-attribute-values') }}/${dropdownObj.attrId}`,
+                                    dataType: 'json',
+                                    delay: 250,
+                                    data: function(params) {
+                                        return {
+                                            q: params.term,
+                                            page: params.page || 1
+                                        };
+                                    },
+                                    processResults: function(data, params) {
+                                        params.page = params.page || 1;
+
+                                        return {
+                                            results: data.results,
+                                            pagination: {
+                                                more: data.pagination.more
+                                            }
+                                        };
+                                    },
+                                    cache: true
+                                },
+                                placeholder: 'Select ' + $(
+                                    '#mainAttributeSelect option[value="' + dropdownObj
+                                    .attrId + '"]').text(),
+                                minimumInputLength: 1
+                            });
+                        }
+                    });
+
+                    // Price and other fields
+                    const priceSection = `
+                        <div class="d-flex flex-wrap gap-2 align-items-end ms-3 mt-3">
+                            <div class="form-inline-item">
+                                <label>Price</label>
+                                <input type="number" step="any" name="price[${blockIndex}]" class="form-control mx-2">
+                            </div>
+                            <div class="form-inline-item">
+                                <label>Qty</label>
+                                <input type="number" name="qty[${blockIndex}]" value="1" class="form-control mx-2">
+                            </div>
+                            <div class="form-inline-item">
+                                <label>Image</label>
+                                <input type="file" name="var_image[${blockIndex}]" class="form-control mx-2">
+                            </div>
+                        </div>`;
+
+                    $block.append(
+                        $('<div>', {
+                            class: 'd-flex justify-content-end'
+                        }).append($removeBtn)
+                    );
+
+                    $block.append($attrValuesContainer).append(priceSection);
+                    $('#variationBlocksContainer').append($block);
+                });
+            }
         });
     </script>
 @endsection

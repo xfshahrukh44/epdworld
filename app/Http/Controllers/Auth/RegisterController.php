@@ -34,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/'; 
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -70,29 +70,29 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validator = $this->validator($request->all());
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator, 'registerForm');
         }
 
         event(new Registered($user = $this->create($request->all())));
-        
+
         $emails = config('services.mail.username');
         $data = [
             'name' => $request->name,
             'email' => $request->email
-            ];
+        ];
         $subject = 'EPD WORLD - BECOME A AFFILIATE REQUEST';
-        Mail::send('seller_request_approval',$data, function($message) use ($emails, $subject){
+        Mail::send('seller_request_approval', $data, function ($message) use ($emails, $subject) {
             $message->from(config('services.mail.username'), 'EPD WORLD - BECOME A AFFILIATE REQUEST');
             $message->to($emails)->subject($subject);
         });
 
         $this->guard()->login($user);
-        
-        Session::flash('message', 'New Account Created Successfully'); 
-        Session::flash('alert-class', 'alert-success'); 
+
+        Session::flash('message', 'New Account Created Successfully');
+        Session::flash('alert-class', 'alert-success');
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+            ?: redirect($this->redirectPath());
     }
 
     /**
@@ -108,26 +108,28 @@ class RegisterController extends Controller
             'slug' => Str::slug($data['name']),
             'email' => $data['email'],
             'is_seller' => $data['is_seller'],
-            'image'=>'image\noimage.png',
+
+            'image' => 'image\noimage.png',
             'password' => Hash::make($data['password']),
         ]);
-        
+
         dd(Str::slug($data['name']));
     }
 
     protected function registered(Request $request, $user)
     {
-        if($user->profile == null){
+        // dd($request->all());
+        if ($user->profile == null) {
             $profile = new Profile();
             $profile->user_id = $user->id;
             $profile->localisation = $request->localisation;
             $profile->dob = $request->dob;
             $profile->save();
         }
-        activity($user->name)
-            ->performedOn($user)
-            ->causedBy($user)
-            ->log('Registered');
+        // activity($user->name)
+        //     ->performedOn($user)
+        //     ->causedBy($user)
+        //     ->log('Registered');
         $user->assignRole('user');
     }
 }
