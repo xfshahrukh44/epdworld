@@ -91,7 +91,7 @@
                                         </a>
                                         <div class="price-add-to-cart"> <span class="price">
                                                 <span class="electro-price">
-                                                    <ins><span class="amount">&#036;{!! $pro->price !!}</span></ins>
+                                                    <ins><span class="amount">&#036;{!! $pro->calculated_final_price !!}</span></ins>
                                                     <div class="ship-box">
                                                         <div class="ship-detail">
                                                           <i class="fa-solid fa-truck"></i>  Free Shipping - 12-day delivery
@@ -263,7 +263,7 @@
                         @endif
 
                                 <span class="electro-price"><ins><span
-                                    class="amount">&#36;{!! $item->price !!}</span></ins> </span>
+                                    class="amount">&#36;{!! $item->calculated_final_price !!}</span></ins> </span>
                     </li>
                     @endforeach
 
