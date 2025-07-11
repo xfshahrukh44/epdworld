@@ -58,44 +58,40 @@
                                                                 <th>Product Title</th>
                                                                 <th>Image</th>
                                                                 <th>Price</th>
-
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
-
                                                         <tbody>
-
                                                             @if ($products)
                                                                 @php
                                                                     $count = 1;
                                                                 @endphp
-                                                                @foreach ($vendor_pro as $pros)
+                                                                @foreach ($products as $pros)
                                                                     @php
                                                                         $product = App\Product::where(
                                                                             'id',
-                                                                            $pros->product_id,
+                                                                            $pros->user_id,
                                                                         )->first();
                                                                     @endphp
-
                                                                     <tr>
                                                                         <td>{{ $count }}</td>
-
-                                                                        <td>{{ $product->product_title }}</td>
-                                                                        <td><img src="{{ asset($product->image) }}"> </td>
+                                                                        <td>{{ $pros->product_title }}</td>
+                                                                        <td><img src="{{ asset($pros->image) }}"> </td>
                                                                         <td>${{ $pros->price }}</td>
+                                                                        <td class="viewbtn">
+                                                                            {{-- <button class="btn-seller" type="button"
+                                                                                data-toggle="modal"
+                                                                                data-target="#exampleModalCenter-{{ $pros->id }}">Edit</button> --}}
+                                                                            <a href="{{ route('editproduct', ['id' => $pros->id]) }}"
+                                                                                class="btn-seller">Edit</a>
 
-                                                                        <td class="viewbtn"><button class="btn-seller"
-                                                                                type="button" data-toggle="modal"
-                                                                                data-target="#exampleModalCenter-{{ $pros->id }}">Edit</button>
                                                                         </td>
-
                                                                     </tr>
                                                                     @php
                                                                         $count++;
                                                                     @endphp
                                                                 @endforeach
                                                             @endif
-
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -118,7 +114,7 @@
         <!-- main content end -->
     </main>
     <!-- Modal -->
-    @foreach ($vendor_pro as $pros)
+    @foreach ($products as $pros)
         <div class="modal fade" id="exampleModalCenter-{{ $pros->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

@@ -15,7 +15,7 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
                             <ul class="products columns-3">
-                                @foreach ($vendor_pro as $pros)
+                                @foreach ($product as $pros)
                                     @php
                                         $pro = App\Product::where('id', $pros->product_id)->first();
                                     @endphp
@@ -25,8 +25,7 @@
                                         <div class="product-outer">
                                             <div class="product-inner"> <span class="loop-product-categories"><a
                                                         href="#" rel="tag">{!! $pro->categorys->name !!}</a></span>
-                                                <a
-                                                    href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}">
+                                                <a href="{{ route('shopDetail', ['id' => $pros->id]) }}">
                                                     <h3>{!! $pro->product_title !!}</h3>
                                                     <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
                                                             src="{{ asset($pro->image) }}" alt=""> </div>
@@ -34,7 +33,7 @@
                                                 <div class="price-add-to-cart"> <span class="price">
                                                         <span class="electro-price">
                                                             <ins><span
-                                                                    class="amount">&#036;{!! number_format($pros->price, 2) !!}</span></ins>
+                                                                    class="amount">&#036;{!! number_format($pros->calculated_final_price, 2) !!}</span></ins>
                                                             <div class="ship-box">
                                                                 <div class="ship-detail">
                                                                     <i class="fa-solid fa-truck"></i> Free Shipping - 12-day
@@ -43,7 +42,7 @@
                                                             </div>
                                                         </span>
                                                     </span> <a rel="nofollow"
-                                                        href="{{ route('shopDetail', ['id' => $pro->id, 'name' => preg_replace('/[^A-Za-z0-9\-]/', '', strtolower(str_replace(' ', '-', $pro->product_title)))]) }}"
+                                                        href="{{ route('shopDetail', ['id' => $pros->id]) }}"
                                                         class="button add_to_cart_button">Add to cart</a> </div>
                                                 <!-- /.price-add-to-cart -->
                                                 <!--<div class="hover-area">-->
@@ -79,8 +78,6 @@
                 <aside class="widget woocommerce widget_product_categories electro_widget_product_categories">
                     <h3>Store Details </h3>
                 </aside>
-
-
 
             </div>
         </div>

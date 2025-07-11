@@ -1,28 +1,29 @@
 <?php
 
 namespace App\Http\Controllers;
-use Hash;
-use Illuminate\Http\Request;
-use App\inquiry;
-use App\newsletter;
-use App\Program;
-use App\imagetable;
-use App\Banner;
 use DB;
-use View;
-use File;
-use App\Product;
-use App\orders_products;
-use App\orders;
 use Auth;
-use Session;
-use App\Http\Traits\HelperTrait;
-use App\Attributes;
-use App\AttributeValue;
-use App\ProductAttribute;
+use File;
+use Hash;
+use View;
 use Image;
-use App\Category;
+use Session;
 use App\User;
+use App\Banner;
+use App\orders;
+use App\inquiry;
+use App\Product;
+use App\Program;
+use App\Category;
+use App\Attributes;
+use App\imagetable;
+use App\newsletter;
+use App\AttributeValue;
+use App\orders_products;
+use App\ProductAttribute;
+use Illuminate\Http\Request;
+use App\Http\Traits\HelperTrait;
+use App\Models\ProductVariationValue;
 
 
 
@@ -73,6 +74,7 @@ class LoggedInController extends Controller
         $orders = orders::where('orders.seller_id', Auth::user()->id)
             ->orderBy('orders.id', 'desc')
             ->get();
+
         return view('account.orders', ['ORDERS' => $orders]);
 
     }
@@ -125,144 +127,248 @@ class LoggedInController extends Controller
         $product_images = DB::table('product_imagess')
             ->where('product_id', $id)
             ->get();
-        return view('account.products.create', compact('data', 'att', 'items', 'product_images'));
+        // Load existing variations and their attributes
+        $variations = ProductAttribute::with('variationValues')->where('product_id', $id)->get();
 
+        // Load all attributes
+        $attributes = Attributes::with('values')->get();
+
+        $existingVariations = ProductAttribute::where('product_id', $id)->get();
+        return view('account.products.edit', compact('data', 'att', 'items', 'product_images', 'variations', 'attributes', 'existingVariations'));
+
+    }
+
+    public function getAttributeValues($id)
+    {
+        $values = AttributeValue::where('attribute_id', $id)->get(['id', 'value']);
+        return response()->json($values);
+    }
+
+    public function searchAttributeValues(Request $request, $attributeId)
+    {
+        $query = $request->get('q', '');
+        $page = $request->get('page', 1);
+        $perPage = 10;
+
+        $attributeValues = AttributeValue::where('attribute_id', $attributeId)
+            ->where('value', 'LIKE', '%' . $query . '%')
+            ->paginate($perPage, ['*'], 'page', $page);
+
+        $results = [];
+
+        foreach ($attributeValues as $value) {
+            $results[] = [
+                'id' => $value->id,
+                'text' => $value->value
+            ];
+        }
+
+        return response()->json([
+            'results' => $results,
+            'pagination' => [
+                'more' => $attributeValues->hasMorePages()
+            ]
+        ]);
+    }
+
+    public function getSingleAttributeValue($attributeId, $valueId)
+    {
+        $value = AttributeValue::where('attribute_id', $attributeId)
+            ->where('id', $valueId)
+            ->first(['id', 'value']);
+
+        if (!$value) {
+            return response()->json(null, 404);
+        }
+
+        // Return in Select2 format { id, text }
+        return response()->json([
+            'id' => $value->id,
+            'text' => $value->value,
+        ]);
     }
 
     public function updateproduct(Request $request, $id)
     {
+
+        $request->validate([
+            'product_title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'base_price' => 'required'
+        ]);
+
         $requestData['product_title'] = $request->input('product_title');
         $requestData['description'] = $request->input('description');
-        $requestData['price'] = $request->input('price');
+        $requestData['price'] = $request->input('base_price');
         $requestData['category'] = $request->input('category');
 
 
+        // Handle main image upload
         if ($request->hasFile('image')) {
-
             $product = product::where('id', $id)->first();
             $image_path = public_path($product->image);
 
             if (File::exists($image_path)) {
-
                 File::delete($image_path);
             }
 
             $file = $request->file('image');
-            $fileNameExt = $request->file('image')->getClientOriginalName();
-            $fileNameForm = str_replace(' ', '_', $fileNameExt);
-            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
-            $fileExt = $request->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $fileName . '_' . time() . '.' . $fileExt;
-            $pathToStore = public_path('uploads/products/');
-            Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR . $fileNameToStore);
-
-            $requestData['image'] = 'uploads/products/' . $fileNameToStore;
+            $imageName = time() . '_main.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/products/'), $imageName);
+            $requestData['image'] = 'uploads/products/' . $imageName;
         }
 
-        product::where('id', $id)
-            ->update($requestData);
+        // Handle multiple images upload
+        if ($request->hasFile('images')) {
+            // First delete existing images for this product if needed
+            // DB::table('product_imagess')->where('product_id', $id)->delete();
 
-        if (!is_null(request('images'))) {
+            $photos = $request->file('images');
 
-            $photos = request()->file('images');
             foreach ($photos as $photo) {
-                $destinationPath = 'uploads/products/';
+                // Generate unique name for each image
+                $imageName = time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
+                $photo->move(public_path('uploads/products/'), $imageName);
 
-                $filename = date("Ymdhis") . uniqid() . "." . $photo->getClientOriginalExtension();
-                //dd($photo,$filename);
-                Image::make($photo)->save(public_path($destinationPath) . DIRECTORY_SEPARATOR . $filename);
-
-                $product = product::where('id', $id)->first();
-
+                // Insert new image record
                 DB::table('product_imagess')->insert([
-
-                    ['image' => $destinationPath . $filename, 'product_id' => $product->id]
-
+                    'image' => 'uploads/products/' . $imageName,
+                    'product_id' => $id
                 ]);
+            }
+        }
 
+
+        product::where('id', $id)->update($requestData);
+
+        $product = Product::findOrFail($id);
+
+        // dd($product);
+
+        // Delete existing variations and variation values
+        $oldVariations = ProductAttribute::where('product_id', $product->id)->get();
+        foreach ($oldVariations as $oldVar) {
+            ProductVariationValue::where('product_attribute_id', $oldVar->id)->delete();
+            $oldVar->delete();
+        }
+
+        // Save new variations
+        $variationData = $request->input('attribute_values');
+        $prices = $request->input('price');
+        $qtys = $request->input('qty');
+        $images = $request->file('var_image');
+
+        foreach ($variationData as $blockIndex => $attributes) {
+            $productVariation = new ProductAttribute();
+            $productVariation->product_id = $product->id;
+            $productVariation->price = $prices[$blockIndex];
+            $productVariation->qty = $qtys[$blockIndex];
+
+
+            if (isset($images[$blockIndex])) {
+                $imageName = time() . '_variation_' . $blockIndex . '.' . $images[$blockIndex]->getClientOriginalExtension();
+                $images[$blockIndex]->move(public_path('uploads/product_attributes/'), $imageName);
+                $productVariation->image = 'uploads/product_attributes/' . $imageName;
             }
 
+            $productVariation->save();
+
+            foreach ($attributes as $attributeId => $valueId) {
+                ProductVariationValue::create([
+                    'product_attribute_id' => $productVariation->id,
+                    'attribute_id' => $attributeId,
+                    'attribute_value_id' => $valueId,
+                ]);
+            }
         }
-        product::where('id', $id)
-            ->update($requestData);
-        $attval = $request->attribute;
-        $product_attribute_id = $request->product_attribute;
-        $oldatt = $request->attribute_id;
-        $oldval = $request->value;
-        $oldprice = $request->v_price;
-        $oldqty = $request->qty;
-        for ($j = 0; $j < count($oldatt); $j++) {
-            $product_attribute = ProductAttribute::find($product_attribute_id[$j]);
-            $product_attribute->attribute_id = $oldatt[$j];
-            $product_attribute->value = $oldval[$j];
-            $product_attribute->price = $oldprice[$j];
-            $product_attribute->qty = $oldqty[$j];
-            $product_attribute->save();
-        }
-        for ($i = 0; $i < count($attval); $i++) {
-            $product_attributes = new ProductAttribute;
-            $product_attributes->attribute_id = $attval[$i]['attribute_id'];
-            $product_attributes->value = $attval[$i]['value'];
-            $product_attributes->price = $attval[$i]['v-price'];
-            $product_attributes->qty = $attval[$i]['qty'];
-            $product_attributes->product_id = $id;
-            $product_attributes->save();
-        }
+
+
         Session::flash('message', 'Your Product has been updated Successfully');
-        return redirect('/uploadproduct');
+        return redirect()->route("productlist");
     }
     public function storeproduct(Request $request)
     {
+        // dd($request->all());
+        $request->validate([
+            'product_title' => 'required',
+            'description' => 'required',
+            'base_price' => 'required',
+            'image' => 'required',
+            'category' => 'required',
+        ]);
+        // dd($request);
         $product = new product;
         $product->product_title = $request->input('product_title');
-        $product->price = $request->input('price');
+        $product->price = $request->input('base_price');
         $product->description = $request->input('description');
         $product->category = $request->input('category');
         $product->user_id = Auth::user()->id;
-        $file = $request->file('image');
-        //make sure yo have image folder inside your public
-        $destination_path = 'uploads/products/';
-        $profileImage = date("Ymdhis") . "." . $file->getClientOriginalExtension();
-        Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR . $profileImage);
-        $product->image = $destination_path . $profileImage;
-        $product->save();
-        if (!is_null(request('images'))) {
 
-            $photos = request()->file('images');
-            foreach ($photos as $photo) {
-                $destinationPath = 'uploads/products/';
-
-                $filename = date("Ymdhis") . uniqid() . "." . $photo->getClientOriginalExtension();
-                //dd($photo,$filename);
-                Image::make($photo)->save(public_path($destinationPath) . DIRECTORY_SEPARATOR . $filename);
-
-                DB::table('product_imagess')->insert([
-
-                    ['image' => $destination_path . $filename, 'product_id' => $product->id]
-
-                ]);
-
-            }
+        // Handle main image upload
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $imageName = time() . '_main.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/products/'), $imageName);
+            $product->image = 'uploads/products/' . $imageName;
 
         }
+
+        $product->save();
+
+        // Handle multiple images upload
+        if ($request->hasFile('images')) {
+            $photos = $request->file('images');
+
+            foreach ($photos as $key => $photo) {
+                // Generate unique name for each image
+                $imageName = time() . '_' . $key . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
+                $photo->move(public_path('uploads/products/'), $imageName);
+
+                // Insert new image record
+                DB::table('product_imagess')->insert([
+                    'image' => 'uploads/products/' . $imageName,
+                    'product_id' => $product->id
+                ]);
+            }
+        }
+
         //$photos->save();
         //$requestData = $request->all();
         //Product::create($requestData);
 
-        $attval = $request->attribute;
+        $variationData = $request->input('attribute_values'); // Same structure you already have
+        $prices = $request->input('price');
+        $qtys = $request->input('qty');
+        $images = $request->file('var_image');
 
-        for ($i = 0; $i < count($attval); $i++) {
-            $product_attributes = new ProductAttribute;
-            $product_attributes->attribute_id = $attval[$i]['attribute_id'];
-            $product_attributes->value = $attval[$i]['value'];
-            $product_attributes->price = $attval[$i]['v-price'];
-            $product_attributes->qty = $attval[$i]['qty'];
-            $product_attributes->product_id = $product->id;
+        foreach ($variationData as $blockIndex => $attributes) {
+            $productVariation = new ProductAttribute();
+            $productVariation->product_id = $product->id;
+            $productVariation->price = $prices[$blockIndex];
+            $productVariation->qty = $qtys[$blockIndex];
 
-            $product_attributes->save();
+            if (isset($images[$blockIndex])) {
+                $imageName = time() . '_variation_' . $blockIndex . '.' . $images[$blockIndex]->getClientOriginalExtension();
+                $images[$blockIndex]->move(public_path('uploads/product_attributes/'), $imageName);
+                $productVariation->image = 'uploads/product_attributes/' . $imageName;
+            }
+
+            $productVariation->save();
+
+            if ($productVariation) {
+                foreach ($attributes as $attributeId => $valueId) {
+                    ProductVariationValue::create([
+                        'product_attribute_id' => $productVariation->id,
+                        'attribute_id' => $attributeId,
+                        'attribute_value_id' => $valueId,
+                    ]);
+                }
+            }
+
         }
         Session::flash('message', 'Your Product has been saved Successfully');
-        return redirect('/uploadproduct');
+        return redirect()->route('productlist');
     }
     public function account()
     {

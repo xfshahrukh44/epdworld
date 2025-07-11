@@ -34,6 +34,8 @@
         href="{{ asset(!empty($favicon->img_path) ? $favicon->img_path : '') }}">
     <title>@yield('title') | {{ config('app.name') }}</title>
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/components.min.css') }}">
+
 
 
     <script type="application/ld+json">
@@ -327,6 +329,68 @@
                 padding: 15px 50px 15px 15px;
             }
         }
+
+        button.select2-selection__choice__remove span {
+            position: absolute;
+            z-index: 0;
+            left: -5px;
+            top: -5px;
+        }
+
+        .attributeRepeaterContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .d-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .form-inline-item {
+            display: flex;
+            flex-direction: column;
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+
+        .form-inline-item label {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .gap-2 {
+            gap: 10px;
+        }
+
+        .mainAttributeSelectsec {
+            width: 100% !important;
+        }
+
+        .mainAttributeSelectsec span.select2.select2-container.select2-container--default {
+            width: 100% !important;
+        }
+
+        .variationBlock .form-inline-item {
+            width: 20%;
+        }
+
+        .variationBlock {
+            margin-bottom: 40px;
+            border: 1px solid #cacfe7;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+            margin: 2px !important;
+        }
+
+        .variationBlock select.form-control.mx-2 {
+            margin: 0 !important;
+        }
     </style>
 
     @include('layouts.front.css')
@@ -500,6 +564,11 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-extended.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/colors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/components.min.css') }}">
 </head>
 
 <body class="responsive">
@@ -518,7 +587,7 @@
     <!-- All SCRIPTS ANS JS LINKS IN BELOW FILE -->
     <!-- ============================================================== -->
     @include('layouts/front.scripts')
-    
+
     @yield('js')
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
