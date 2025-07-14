@@ -51,8 +51,8 @@
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane show active" id="orders" role="#">
                                             <div class="myproductform">
-                                                <form action="{{ route('storeproduct') }}" enctype="multipart/form-data"
-                                                    method="post">
+                                                <form action="{{ route('updateproduct', $data->id) }}"
+                                                    enctype="multipart/form-data" method="post">
                                                     @csrf
                                                     <div class="row">
 
@@ -64,7 +64,8 @@
                                                                 @endphp
                                                                 <select name="category" class="form-control" id="">
                                                                     @foreach ($category as $item)
-                                                                        <option {{ $item->id ? 'selected' : '' }}
+                                                                        <option
+                                                                            {{ $data->category == $item->id ? 'selected' : '' }}
                                                                             value="{{ $item->id }}">{{ $item->name }}
                                                                         </option>
                                                                     @endforeach
@@ -76,27 +77,30 @@
                                                             <div class="form-group">
                                                                 <label for="title">Product Title</label>
                                                                 <input type="text" name="product_title"
-                                                                    class="form-control">
+                                                                    class="form-control" value="{{ $data->product_title }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label for="title">Price</label>
-                                                                <input type="number" name="base_price" step='0.01'
-                                                                    placeholder='5.00' class="form-control">
+                                                                <input type="number" name="base_price" step='0.01' class="form-control"
+                                                                    value="{{ $data->price }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label for="description">Description</label>
-                                                                <textarea name="description" id="ckedtior" cols="30" rows="10">{!! $description !!}</textarea>
+                                                                <textarea name="description" value="{{ $data->description }}" id="ckedtior" cols="30" rows="10">{!! $data->description !!}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 {!! Form::label('image', 'Image') !!}
                                                                 <input class="form-control dropify" name="image"
-                                                                    type="file" id="image">
+                                                                    type="file" id="image"
+                                                                    {{ $data->image != '' ? "data-default-file = /$data->image" : '' }}
+                                                                    {{ $data->image == '' ? 'required' : '' }}
+                                                                    value="{{ $data->image }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
@@ -115,49 +119,106 @@
                                                                     @endforeach
                                                                 </div>
                                                                 <input class="form-control dropify" name="images[]"
-                                                                    type="file" id="images" multiple>
+                                                                    type="file" id="images"
+                                                                    {{ $product->additional_image != '' ? "data-default-file = /$product->additional_image" : '' }}
+                                                                    value="{{ $product->additional_image }}" multiple>
                                                             </div>
                                                         </div>
-
                                                         <div class="col-md-12">
                                                             <h4 class="card-title" id="repeat-form">Add Variation</h4>
                                                         </div>
+                                                        <input type="hidden" id="existingVariationCount"
+                                                            value="{{ count($variations ?? []) }}">
                                                         <div class="col-md-12">
-                                                            <!-- Attribute Select (Once at the top only) -->
+                                                            <!-- Attribute Select -->
                                                             <div class="mb-3 mainAttributeSelectsec">
                                                                 <label><strong>Select Attributes</strong></label>
                                                                 <select id="mainAttributeSelect" class="form-control"
                                                                     multiple>
-                                                                    @foreach ($att as $attribute)
+                                                                    @foreach ($attributes as $attribute)
                                                                         <option value="{{ $attribute->id }}"
-                                                                            data-values='@json($attribute->values)'>
+                                                                            @if (count($variations->pluck('variationValues')->flatten()->where('attribute_id', $attribute->id))) selected @endif>
                                                                             {{ $attribute->name }}
                                                                         </option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
 
-                                                            <!-- Variation Blocks Container -->
-                                                            <div id="variationBlocksContainer"></div>
+                                                            <!-- Variation Blocks -->
+                                                            <div id="variationBlocksContainer">
+                                                                @foreach ($variations as $index => $variation)
+                                                                    <div class="variationBlock"
+                                                                        id="var-{{ $variation->id }}">
+                                                                        <div class="d-flex justify-content-end">
+                                                                            <button type="button"
+                                                                                class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2 remove-variation-btn">Remove</button>
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex flex-wrap gap-2 attr-values-container">
+                                                                            @foreach ($variation->variationValues as $vValue)
+                                                                                <div class="form-inline-item">
+                                                                                    <label>{{ $vValue->attribute->name }}</label>
+                                                                                    <select
+                                                                                        class="form-control mx-2 variation-attribute-select"
+                                                                                        name="attribute_values[{{ $index }}][{{ $vValue->attribute_id }}]">
+                                                                                        <option value="">Select
+                                                                                            {{ $vValue->attribute->name }}
+                                                                                        </option>
+                                                                                        @foreach ($vValue->attribute->values as $option)
+                                                                                            <option
+                                                                                                value="{{ $option->id }}"
+                                                                                                @if ($option->id == $vValue->attribute_value_id) selected @endif>
+                                                                                                {{ $option->value }}
+                                                                                            </option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
 
-                                                            <!-- Button to Add Variation -->
+                                                                        <div
+                                                                            class="d-flex flex-wrap gap-2 align-items-end ms-3 mt-3">
+                                                                            <div class="form-inline-item">
+                                                                                <label>Price</label>
+                                                                                <input type="number" step="any"
+                                                                                    name="price[{{ $index }}]"
+                                                                                    class="form-control mx-2"
+                                                                                    value="{{ number_format($variation->price, 2, '.', '') }}">
+                                                                            </div>
+                                                                            <div class="form-inline-item">
+                                                                                <label>Qty</label>
+                                                                                <input type="number"
+                                                                                    name="qty[{{ $index }}]"
+                                                                                    class="form-control mx-2"
+                                                                                    value="{{ $variation->qty }}">
+                                                                            </div>
+                                                                            <div class="form-inline-item">
+                                                                                <label>Image</label>
+                                                                                <input type="file"
+                                                                                    name="var_image[{{ $index }}]"
+                                                                                    class="form-control mx-2">
+                                                                                @if ($variation->image)
+                                                                                    <img src="{{ asset($variation->image) }}"
+                                                                                        width="60" height="60"
+                                                                                        style="margin-top: 10px;">
+                                                                                @endif
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+
                                                             <button type="button" class="btn btn-primary mt-3"
                                                                 id="addVariationBtn">Add Variation</button>
-
-
                                                         </div>
-
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <button class="btn btn-green"
-                                                                    type="submit">{{ 'Save' }}</button>
+                                                                    type="submit">Update</button>
                                                             </div>
                                                         </div>
-
                                                     </div>
-
                                                 </form>
-
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
@@ -170,8 +231,6 @@
             </div>
         </div>
         <!-- my account wrapper end -->
-
-
         <!-- main content end -->
     </main>
 
@@ -282,18 +341,22 @@
 
     <script>
         $(document).ready(function() {
-            let variationIndex = 0;
-            let selectedAttributes = []; // Track selection order
+            let variationIndex = parseInt($('#existingVariationCount').val()) ||
+                0; // 👈 Start from existing variations
+            let selectedAttributes = $('#mainAttributeSelect').val() || []; // 👈 Track selection order
 
-            // Initialize Select2
             $('#mainAttributeSelect').select2();
-            $('.attribute-select').select2();
+            $('.variation-attribute-select').select2();
 
-            // Track selection order on select
+            // Event delegation for remove button (create + edit)
+            $(document).on('click', '.remove-variation-btn', function() {
+                $(this).closest('.variationBlock').remove();
+            });
+
+            // Listen to select2:select to track selection order
             $('#mainAttributeSelect').on('select2:select', function(e) {
                 const selectedId = e.params.data.id;
 
-                // Add if not already in the array
                 if (!selectedAttributes.includes(selectedId)) {
                     selectedAttributes.push(selectedId);
                 }
@@ -301,11 +364,10 @@
                 rebuildVariationBlocks();
             });
 
-            // Track deselection
+            // Listen to select2:unselect to update selection order
             $('#mainAttributeSelect').on('select2:unselect', function(e) {
                 const unselectedId = e.params.data.id;
 
-                // Remove from array
                 selectedAttributes = selectedAttributes.filter(id => id !== unselectedId);
 
                 rebuildVariationBlocks();
@@ -335,7 +397,6 @@
                     class: 'variationBlock position-relative border p-3 mb-3 rounded'
                 });
 
-                // Remove Button
                 const $removeBtn = $('<button>', {
                     type: 'button',
                     class: 'btn btn-danger btn-sm position-absolute top-0 end-0 m-2',
@@ -348,15 +409,12 @@
                 const $attrValuesContainer = $('<div>', {
                     class: 'd-flex flex-wrap gap-2 attr-values-container'
                 });
-
                 let dropdowns = [];
 
-                // AJAX requests in order
                 const requests = selectedAttributes.map(attrId => {
-
                     return new Promise((resolve, reject) => {
                         $.ajax({
-                            url: `{{ url('get_attribute_values') }}/${attrId}`,
+                            url: `{{ url('admin/get-attribute-values') }}/${attrId}`,
                             type: 'GET',
                             dataType: 'json',
                             success: function(values) {
@@ -365,24 +423,23 @@
                                     resolve(); // Do not add dropdown for this attribute
                                     return;
                                 }
-
                                 const attrName = $(
                                     '#mainAttributeSelect option[value="' + attrId +
                                     '"]').text();
-                                let $dropdown = $(`
+                                let dropdown = `
                                     <div class="form-inline-item">
                                         <label>${attrName}</label>
-                                        <select class="form-control mx-2 variation-attribute-select"
-                                            name="attribute_values[${blockIndex}][${attrId}]">
-                                        </select>
-                                    </div>
-                                `);
-
+                                        <select class="form-control mx-2 variation-attribute-select" name="attribute_values[${blockIndex}][${attrId}]">
+                                            <option value="">Select ${attrName}</option>`;
+                                values.forEach(v => {
+                                    dropdown +=
+                                        `<option value="${v.id}">${v.value}</option>`;
+                                });
+                                dropdown += `</select></div>`;
                                 dropdowns.push({
                                     order: attrId,
-                                    $html: $dropdown,
-                                    attrId: attrId
-                                });
+                                    html: dropdown
+                                }); // Store with order
                                 resolve();
                             },
                             error: reject
@@ -391,43 +448,14 @@
                 });
 
                 Promise.all(requests).then(() => {
+                    // Append dropdowns in selection order
                     selectedAttributes.forEach(attrId => {
                         const dropdownObj = dropdowns.find(d => d.order == attrId);
                         if (dropdownObj) {
-                            $attrValuesContainer.append(dropdownObj.$html);
-
-                            dropdownObj.$html.find('select').select2({
-                                ajax: {
-                                    url: `{{ url('searc_hattribute_values') }}/${dropdownObj.attrId}`,
-                                    dataType: 'json',
-                                    delay: 250,
-                                    data: function(params) {
-                                        return {
-                                            q: params.term,
-                                            page: params.page || 1
-                                        };
-                                    },
-                                    processResults: function(data, params) {
-                                        params.page = params.page || 1;
-
-                                        return {
-                                            results: data.results,
-                                            pagination: {
-                                                more: data.pagination.more
-                                            }
-                                        };
-                                    },
-                                    cache: true
-                                },
-                                placeholder: 'Select ' + $(
-                                    '#mainAttributeSelect option[value="' + dropdownObj
-                                    .attrId + '"]').text(),
-                                minimumInputLength: 1
-                            });
+                            $attrValuesContainer.append(dropdownObj.html);
                         }
                     });
 
-                    // Price and other fields
                     const priceSection = `
                         <div class="d-flex flex-wrap gap-2 align-items-end ms-3 mt-3">
                             <div class="form-inline-item">
@@ -436,7 +464,7 @@
                             </div>
                             <div class="form-inline-item">
                                 <label>Qty</label>
-                                <input type="number" name="qty[${blockIndex}]" value="1" class="form-control mx-2">
+                                <input type="number" name="qty[${blockIndex}]" class="form-control mx-2">
                             </div>
                             <div class="form-inline-item">
                                 <label>Image</label>
@@ -444,17 +472,13 @@
                             </div>
                         </div>`;
 
-                    $block.append(
-                        $('<div>', {
-                            class: 'd-flex justify-content-end'
-                        }).append($removeBtn)
-                    );
-
+                    $block.append($('<div>', {
+                        class: 'd-flex justify-content-end'
+                    }).append($removeBtn));
                     $block.append($attrValuesContainer).append(priceSection);
                     $('#variationBlocksContainer').append($block);
-                }).catch(error => {
-                    console.error('One of the requests failed:', error);
-                    alert('An error occurred while loading product variations. Please try again.');
+
+                    $block.find('.variation-attribute-select').select2();
                 });
             }
         });

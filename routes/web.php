@@ -435,3 +435,8 @@ Route::get('blog/{slug?}', [\App\Http\Controllers\HomeController::class, 'blog_d
 
 
 Route::get('admin/attributes_value/getIndex', 'Admin\\AttributesValueController@getIndex')->name('admin.attributesvalue.index');
+
+
+
+Route::get('get_attribute_values/{id}', 'LoggedInController@getAttributeValues');
+Route::get('searc_hattribute_values/{attributeId}', 'LoggedInController@searchAttributeValues');
