@@ -94,11 +94,11 @@
                                     <p class="price">
                                         <span class="electro-price">
                                             <input type="hidden" name="price" id="productPrice"
-                                                value="{{ $product_detail->price }}" />
+                                                value="{{ $product_detail->calculated_final_price }}" />
                                             <ins><span class="amount" id="productPriceDisplay">$0.00</span></ins>
                                         </span>
                                     </p>
-                                    <meta itemprop="price" content="{{ $product_detail->price }}" />
+                                    <meta itemprop="price" content="{{ $product_detail->calculated_final_price }}" />
                                     <meta itemprop="priceCurrency" content="USD" />
                                     <link itemprop="availability" href="http://schema.org/InStock" />
                                 </div>
@@ -1095,8 +1095,9 @@
                     });
 
                     // Always reset price on parent change
-                    $('#productPriceDisplay').text(`$${basePrice.toFixed(2)}`);
-                    $('#productPrice').val(basePrice.toFixed(2));
+                    let finalPrice = calculateFinalPrice(parseFloat(basePrice));
+                    $('#productPriceDisplay').text(`$${finalPrice.toFixed(2)}`);
+                    $('#productPrice').val(finalPrice.toFixed(2));
                 }
             }
 
