@@ -1022,7 +1022,7 @@
         let shipping = parseFloat(pricingFlags.data('shipping'));
         let stripeFee = parseFloat(pricingFlags.data('stripe-fee'));
         let variations = JSON.parse($('#variation-data').val());
-        let basePrice = parseFloat('{{ $product_detail->calculated_final_price }}');
+        let basePrice = parseFloat('{{ $product_detail->price }}');
         let selectedAttributes = {};
 
         let initialFinalPrice = calculateFinalPrice(basePrice);
