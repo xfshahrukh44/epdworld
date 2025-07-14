@@ -94,11 +94,11 @@
                                     <p class="price">
                                         <span class="electro-price">
                                             <input type="hidden" name="price" id="productPrice"
-                                                value="{{ $product_detail->price }}" />
+                                                value="{{ $product_detail->calculated_final_price }}" />
                                             <ins><span class="amount" id="productPriceDisplay">$0.00</span></ins>
                                         </span>
                                     </p>
-                                    <meta itemprop="price" content="{{ $product_detail->price }}" />
+                                    <meta itemprop="price" content="{{ $product_detail->calculated_final_price }}" />
                                     <meta itemprop="priceCurrency" content="USD" />
                                     <link itemprop="availability" href="http://schema.org/InStock" />
                                 </div>
@@ -1022,7 +1022,7 @@
         let shipping = parseFloat(pricingFlags.data('shipping'));
         let stripeFee = parseFloat(pricingFlags.data('stripe-fee'));
         let variations = JSON.parse($('#variation-data').val());
-        let basePrice = parseFloat('{{ $product_detail->price }}');
+        let basePrice = parseFloat('{{ $product_detail->calculated_final_price }}');
         let selectedAttributes = {};
 
         let initialFinalPrice = calculateFinalPrice(basePrice);
