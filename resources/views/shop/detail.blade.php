@@ -1095,8 +1095,9 @@
                     });
 
                     // Always reset price on parent change
-                    $('#productPriceDisplay').text(`$${basePrice.toFixed(2)}`);
-                    $('#productPrice').val(basePrice.toFixed(2));
+                    let finalPrice = calculateFinalPrice(parseFloat(basePrice));
+                    $('#productPriceDisplay').text(`$${finalPrice.toFixed(2)}`);
+                    $('#productPrice').val(finalPrice.toFixed(2));
                 }
             }
 
