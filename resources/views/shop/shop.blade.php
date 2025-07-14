@@ -157,7 +157,7 @@
                                         </a>
                                         <div class="price-add-to-cart"> <span class="price">
 
-                                                    <ins><span class="amount">&#036;{!! $pro->price !!}</span></ins>
+                                                    <ins><span class="amount">&#036;{!! $pro->calculated_final_price !!}</span></ins>
 
 
                                             </span></div>
