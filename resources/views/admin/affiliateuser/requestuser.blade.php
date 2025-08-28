@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="content-header-right col-md-6 col-12">
-       
+
     </div>
 </div>
 
@@ -49,6 +49,7 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>DateTime</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -61,6 +62,7 @@
                                         <td>{{ $count }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
+                                        <td>{{ $item->created_at }}</td>
                                         <td>
                                             <form action="{{ route('isseller') }}" method="POST">
                                                 @csrf
@@ -69,8 +71,8 @@
                                                 <button class="btn btn-primary btn-sm" type="submit">
                                                     <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> Approve
                                                 </button>
-                                            </form>    
-                                            
+                                            </form>
+
                                         </td>
                                     </tr>
                                     @php

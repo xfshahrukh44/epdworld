@@ -25,7 +25,7 @@ return [
     ],
 
     'mail' => [
-        'username' => 'davidharry15235@gmail.com',
+        'username' => 'info@epdworld.com',
     ],
 
     'ses' => [

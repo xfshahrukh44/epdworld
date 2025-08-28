@@ -54,11 +54,33 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
-        ]);
+        $rules = [
+            'email'    => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ];
+
+        if (!empty($data['is_seller']) && $data['is_seller'] == 1) {
+            // Affiliate Seller Application validation
+            $rules = array_merge($rules, [
+                'first_name'          => 'required|string|max:255',
+                'last_name'           => 'required|string|max:255',
+                'phone'               => 'required|string|max:20',
+                'address'             => 'required|string|max:500',
+                'country'             => 'required|string|max:255',
+                'why_join'            => 'required|string',
+                'affiliate_experience'=> 'required|string|in:yes,no',
+                'agree_terms'         => 'required',
+                'agree_noncompete'    => 'required',
+                'agree_disclosure'    => 'required',
+            ]);
+        } else {
+            // Normal User registration
+            $rules = array_merge($rules, [
+                'name' => 'required|string|max:255',
+            ]);
+        }
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -76,21 +98,21 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
+        // Email notification to admin
         $emails = config('services.mail.username');
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email
-        ];
-        $subject = 'EPD WORLD - BECOME A AFFILIATE REQUEST';
+        $subject = 'EPD WORLD - New Affiliate Application';
+
+        $data = $request->all(); // full form data
         Mail::send('seller_request_approval', $data, function ($message) use ($emails, $subject) {
-            $message->from(config('services.mail.username'), 'EPD WORLD - BECOME A AFFILIATE REQUEST');
+            $message->from(config('services.mail.username'), 'EPD WORLD Affiliate');
             $message->to($emails)->subject($subject);
         });
 
         $this->guard()->login($user);
 
-        Session::flash('message', 'New Account Created Successfully');
+        Session::flash('message', 'Your application has been submitted successfully.');
         Session::flash('alert-class', 'alert-success');
+
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
     }
@@ -103,17 +125,48 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'slug' => Str::slug($data['name']),
-            'email' => $data['email'],
-            'is_seller' => $data['is_seller'],
-
-            'image' => 'image\noimage.png',
-            'password' => Hash::make($data['password']),
+        // 1. Create the user first
+        $user = User::create([
+            'name'      => $data['name'],
+            'slug'      => Str::slug($data['name']),
+            'email'     => $data['email'],
+            'is_seller' => $data['is_seller'] ?? 0,
+            'image'     => 'image/noimage.png',
+            'password'  => Hash::make($data['password']),
         ]);
 
-        dd(Str::slug($data['name']));
+        // 2. If seller → create profile with extra affiliate details
+        if (!empty($data['is_seller']) && $data['is_seller'] == 1) {
+            $profile = new Profile();
+            $profile->user_id              = $user->id;
+            $profile->localisation         = $data['localisation'] ?? null;
+            $profile->dob                  = $data['dob'] ?? null;
+            $profile->gender               = $data['gender'] ?? null;
+            $profile->country              = $data['country'] ?? null;
+            $profile->state                = $data['state'] ?? null;
+            $profile->city                 = $data['city'] ?? null;
+            $profile->address              = $data['address'] ?? null;
+            $profile->postal               = $data['postal'] ?? null;
+
+            // Affiliate application fields
+            $profile->company_name         = $data['company_name'] ?? null;
+            $profile->why_join             = $data['why_join'] ?? null;
+            $profile->affiliate_experience = $data['affiliate_experience'] ?? null;
+            $profile->experience_details   = $data['experience_details'] ?? null;
+            $profile->social_media         = !empty($data['social_media'])
+                                            ? json_encode($data['social_media'])
+                                            : null;
+            $profile->competing_brands     = $data['competing_brands'] ?? null;
+            $profile->hear_about           = $data['hear_about'] ?? null;
+            $profile->payment_method       = $data['payment_method'] ?? null;
+            $profile->about_yourself       = $data['about_yourself'] ?? null;
+            $profile->signature            = $data['signature'] ?? null;
+            $profile->application_date     = $data['application_date'] ?? now();
+
+            $profile->save();
+        }
+
+        return $user;
     }
 
     protected function registered(Request $request, $user)

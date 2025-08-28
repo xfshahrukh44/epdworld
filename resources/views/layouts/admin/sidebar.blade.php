@@ -123,12 +123,12 @@
             <li class="nav-item">
                 <a href="javascript:;"><i class="la la-user"></i><span class="menu-title" data-i18n="Dashboard">Affiliate Users</span></a>
                 <ul class="menu-content">
-                    <li class="">
+                    <li class="{{ (request()->is('admin/affiliateuser/requestuser') || request()->is('admin/affiliateuser/requestuser/*')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/affiliateuser/requestuser')}}"><i></i>
                             <span data-i18n="eCommerce">User Request</span>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="{{ (request()->is('admin/affiliateuser/all') || request()->is('admin/affiliateuser/all/*')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/affiliateuser/all')}}"><i></i>
                             <span data-i18n="eCommerce">Users</span>
                         </a>
