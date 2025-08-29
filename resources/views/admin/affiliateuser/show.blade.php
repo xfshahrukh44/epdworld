@@ -64,11 +64,11 @@
                                 <td class="text-color">{{ $user->profile->affiliate_experience ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <td class="text-muted">Experience Details:</td>
+                                <td class="text-muted">Number of Years:</td>
                                 <td class="text-color">{{ $user->profile->experience_details ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <td class="text-muted">Experience Details 2:</td>
+                                <td class="text-muted">Types of Products:</td>
                                 <td class="text-color">{{ $user->profile->experience_details2 ?? '-' }}</td>
                             </tr>
                             <tr>
