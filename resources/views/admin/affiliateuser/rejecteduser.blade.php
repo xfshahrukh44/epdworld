@@ -67,15 +67,6 @@
                                                 <td>
                                                     <form action="{{ route('isseller') }}" method="POST">
                                                         @csrf
-                                                        <input type="hidden" name="is_approved" value="1" />
-                                                        <input type="hidden" name="user_id" value="{{ $item->id }}" />
-                                                        <button class="btn btn-primary btn-sm" type="submit">
-                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
-                                                            Approve
-                                                        </button>
-                                                    </form>
-                                                    <form action="{{ route('isseller') }}" method="POST">
-                                                        @csrf
                                                         <input type="hidden" name="is_approved" value="2" />
                                                         <input type="hidden" name="user_id" value="{{ $item->id }}" />
                                                         <button class="btn btn-danger btn-sm" type="submit">

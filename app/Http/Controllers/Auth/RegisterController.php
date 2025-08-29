@@ -98,15 +98,27 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        // Email notification to admin
-        $emails = config('services.mail.username');
+        $data = $request->all();
+        $emails = config('services.mail.username'); // from config
         $subject = 'EPD WORLD - New Affiliate Application';
 
-        $data = $request->all();
+        /**
+         * Email to Admin with full application data
+         */
+        Mail::send('seller_request_approval', $data, function ($message) use ($emails, $subject, $user) {
+            $message->from($user->email, 'EPD WORLD Affiliate');
+            $message->to('info@epdworld.com') // Admin email fixed
+                ->replyTo($user->email, $user->name) // 👈 yeh line add ki
+                ->subject($subject);
+        });
 
-        Mail::send('seller_request_approval', $data, function ($message) use ($user) {
-            $message->from(config('services.mail.username'), 'EPD WORLD Affiliate');
-            $message->to($user->email)->subject('EPD WORLD - New Affiliate Application');
+        /**
+         * Email to User (thank you)
+         */
+        Mail::send('seller_request', ['user' => $user], function ($message) use ($emails, $user) {
+            $message->from($emails, 'EPD WORLD Affiliate');
+            $message->to($user->email)
+                ->subject('Thank you for applying - EPD WORLD Affiliate Program');
         });
 
 

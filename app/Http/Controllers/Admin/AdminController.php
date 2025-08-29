@@ -223,7 +223,7 @@ class AdminController extends Controller
             ->orderBy('id', 'desc') // latest user first
             ->get();
 
-        return view('admin/affiliateuser/requestuser', compact('user'));
+        return view('admin/affiliateuser/rejecteduser', compact('user'));
     }
 
     public function alluser()
