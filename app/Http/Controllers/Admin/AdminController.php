@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\imagetable;
@@ -11,6 +12,7 @@ use Image;
 use File;
 use App\User;
 use Mail;
+
 class AdminController extends Controller
 {
     /**
@@ -19,30 +21,27 @@ class AdminController extends Controller
      * @return void
      */
 
-	public function __construct()
-	{
-		 //$this->middleware('auth');
-		$logo = imagetable::
-					 select('img_path')
-					 ->where('table_name','=','logo')
-					 ->first();
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $logo = imagetable::select('img_path')
+            ->where('table_name', '=', 'logo')
+            ->first();
 
-		$favicon = imagetable::
-					 select('img_path')
-					 ->where('table_name','=','favicon')
-					 ->first();
+        $favicon = imagetable::select('img_path')
+            ->where('table_name', '=', 'favicon')
+            ->first();
 
-		View()->share('logo',$logo);
-		View()->share('favicon',$favicon);
-
-	}
+        View()->share('logo', $logo);
+        View()->share('favicon', $favicon);
+    }
 
     public function index()
     {
-        return view('auth.login')->with('title','Josue Francois');;
+        return view('auth.login')->with('title', 'Josue Francois');;
     }
 
-	public function dashboard()
+    public function dashboard()
     {
         return view('admin.dashboard.index');
     }
@@ -51,30 +50,27 @@ class AdminController extends Controller
     public function configSettingUpdate()
     {
 
-        if(isset($_POST)) {
+        if (isset($_POST)) {
 
-            foreach($_POST as $key=>$value) {
-                if($key=='_token') {
+            foreach ($_POST as $key => $value) {
+                if ($key == '_token') {
                     continue;
                 }
 
-                DB::UPDATE("UPDATE m_flag set flag_value = '".$value."',flag_additionalText = '".$value."' where flag_type = '".$key."'");
-
-
+                DB::UPDATE("UPDATE m_flag set flag_value = '" . $value . "',flag_additionalText = '" . $value . "' where flag_type = '" . $key . "'");
             }
         }
-		session()->flash('message', 'Successfully Updated');
+        session()->flash('message', 'Successfully Updated');
         return redirect('admin/config/setting');
-
     }
 
-	public function faviconEdit() {
+    public function faviconEdit()
+    {
 
-		$user = Auth::user();
-		$favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
+        $user = Auth::user();
+        $favicon = DB::table('imagetable')->where('table_name', 'favicon')->first();
 
-		return view('admin.dashboard.index-favicon')->with(compact('favicon'))->with('title',$user->name.' Edit Favicon');
-
+        return view('admin.dashboard.index-favicon')->with(compact('favicon'))->with('title', $user->name . ' Edit Favicon');
     }
 
     public function faviconUpload(Request $request)
@@ -121,12 +117,12 @@ class AdminController extends Controller
     }
 
 
-	public function logoEdit() {
+    public function logoEdit()
+    {
 
-		$user = Auth::user();
+        $user = Auth::user();
 
-		return view('admin.dashboard.index-logo')->with('title',$user->name.'  Edit Logo');
-
+        return view('admin.dashboard.index-logo')->with('title', $user->name . '  Edit Logo');
     }
 
     public function logoUpload(Request $request)
@@ -170,79 +166,97 @@ class AdminController extends Controller
     }
 
 
-	public function contactSubmissions() {
-	 	$contact_inquiries = DB::table('inquiry')->get();
+    public function contactSubmissions()
+    {
+        $contact_inquiries = DB::table('inquiry')->get();
 
-	 	return view('admin.inquires.contact_inquiries', compact('contact_inquiries'));
+        return view('admin.inquires.contact_inquiries', compact('contact_inquiries'));
+    }
 
-	}
+    public function contactSubmissionsDelete($id)
+    {
 
-	public function contactSubmissionsDelete($id) {
+        $del = DB::table('inquiry')->where('id', $id)->delete();
 
-		  $del = DB::table('inquiry')->where('id',$id)->delete();
-
-		  if($del) {
-			  return redirect('admin/contact/inquiries')->with('flash_message', 'Contact deleted!');
-		  }
-
-	}
+        if ($del) {
+            return redirect('admin/contact/inquiries')->with('flash_message', 'Contact deleted!');
+        }
+    }
 
     public function inquiryshow($id)
     {
-            $inquiry = inquiry::findOrFail($id);
-            return view('admin.inquires.inquirydetail', compact('inquiry'));
+        $inquiry = inquiry::findOrFail($id);
+        return view('admin.inquires.inquirydetail', compact('inquiry'));
     }
 
-	public function newsletterInquiries() {
+    public function newsletterInquiries()
+    {
 
-	 	$newsletter_inquiries = DB::table('newsletter')->get();
+        $newsletter_inquiries = DB::table('newsletter')->get();
 
-	 	return view('admin.inquires.newsletter_inquiries', compact('newsletter_inquiries'));
+        return view('admin.inquires.newsletter_inquiries', compact('newsletter_inquiries'));
+    }
 
-	}
+    public function newsletterInquiriesDelete($id)
+    {
+        $del = DB::table('newsletter')->where('id', $id)->delete();
 
-	public function newsletterInquiriesDelete($id) {
-		  $del = DB::table('newsletter')->where('id',$id)->delete();
+        if ($del) {
+            return redirect('admin/newsletter/inquiries')->with('flash_message', 'Contact deleted!');
+        }
+    }
 
-		  if($del) {
-			  return redirect('admin/newsletter/inquiries')->with('flash_message', 'Contact deleted!');
-		  }
+    public function requestuser()
+    {
 
-	}
+        $user = User::where('is_seller', 1)->where('is_approved', 0)->get();
+        return view('admin/affiliateuser/requestuser', compact('user'));
+    }
 
-	public function requestuser(){
+    public function alluser()
+    {
 
-	    $user = User::where('is_seller', 1)->where('is_approved', 0)->get();
-	    return view('admin/affiliateuser/requestuser', compact('user'));
-	}
+        $user = User::where('is_seller', 1)->where('is_approved', 1)->get();
+        return view('admin/affiliateuser/all', compact('user'));
+    }
 
-	public function alluser(){
-
-	    $user = User::where('is_seller', 1)->where('is_approved', 1)->get();
-	    return view('admin/affiliateuser/all', compact('user'));
-	}
-
-	public function isseller(Request $request){
-	    $is_approved = DB::table('users')
-              ->where('id', $request->user_id)
-              ->update(['is_approved' => 1]);
-
+    public function isseller(Request $request)
+    {
         $user = User::find($request->user_id);
 
-        $emails = $user->email;
-        $data = [];
-        $subject = 'EPD WORLD - BECOME A AFFILIATE REQUEST APPROVAL';
-        Mail::send('seller_request',$data, function($message) use ($emails, $subject){
-            $message->from(config('services.mail.username'), 'EPD WORLD - BECOME A AFFILIATE REQUEST APPROVAL');
-            $message->to($emails)->subject($subject);
-        });
+        if (!$user) {
+            return back()->with('flash_message', 'User not found!');
+        }
 
-        return back()->with('flash_message', 'Seller Approved!');
-	}
+        // jo value form se aayi use save kar do (1 = approve, 2 = reject)
+        $user->is_approved = $request->is_approved;
+        $user->save();
+
+        // sirf approve hone par mail bhejna
+        if ($user->is_approved == 1) {
+            $emails = $user->email;
+            $subject = 'EPD WORLD - BECOME AN AFFILIATE REQUEST APPROVAL';
+            Mail::send('seller_request', [], function ($message) use ($emails, $subject) {
+                $message->from(config('services.mail.username'), 'EPD WORLD - AFFILIATE');
+                $message->to($emails)->subject($subject);
+            });
+        }
+
+        // status message
+        $status = $user->is_approved == 1 ? 'Approved' : ($user->is_approved == 2 ? 'Rejected' : 'Pending');
+
+        return back()->with('flash_message', "Seller {$status}!");
+    }
 
 
-	public function configSetting(){
-		return view('admin.dashboard.index-config');
-	}
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.affiliateuser.show', compact('user'));
+    }
 
+    public function configSetting()
+    {
+        return view('admin.dashboard.index-config');
+    }
 }

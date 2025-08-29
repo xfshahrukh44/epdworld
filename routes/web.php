@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin', 'prefix' =>
     Route::get('affiliateuser/requestuser', 'Admin\AdminController@requestuser')->name('requestuser');
     Route::get('affiliateuser/all', 'Admin\AdminController@alluser')->name('all');
     Route::post('affiliateuser/isseller', 'Admin\AdminController@isseller')->name('isseller');
+    Route::post('/affiliate-user/{id}', 'Admin\AdminController@show')->name('affiliate-user.show');
 
 
     /* Config Setting Form Submit Route */

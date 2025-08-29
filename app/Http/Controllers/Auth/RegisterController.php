@@ -68,7 +68,7 @@ class RegisterController extends Controller
                 'address'             => 'required|string|max:500',
                 'country'             => 'required|string|max:255',
                 'why_join'            => 'required|string',
-                'affiliate_experience'=> 'required|string|in:yes,no',
+                'affiliate_experience' => 'required|string|in:yes,no',
                 'agree_terms'         => 'required',
                 'agree_noncompete'    => 'required',
                 'agree_disclosure'    => 'required',
@@ -108,6 +108,7 @@ class RegisterController extends Controller
             $message->to($emails)->subject($subject);
         });
 
+
         $this->guard()->login($user);
 
         Session::flash('message', 'Your application has been submitted successfully.');
@@ -125,10 +126,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Full name combine karo
+        $fullName = trim(($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? ''));
+
         // 1. Create the user first
         $user = User::create([
-            'name'      => $data['name'],
-            'slug'      => Str::slug($data['name']),
+            'name'      => $fullName,
+            'slug'      => Str::slug($fullName),
             'email'     => $data['email'],
             'is_seller' => $data['is_seller'] ?? 0,
             'image'     => 'image/noimage.png',
@@ -153,9 +157,10 @@ class RegisterController extends Controller
             $profile->why_join             = $data['why_join'] ?? null;
             $profile->affiliate_experience = $data['affiliate_experience'] ?? null;
             $profile->experience_details   = $data['experience_details'] ?? null;
+            $profile->experience_details2  = $data['experience_details2'] ?? null;
             $profile->social_media         = !empty($data['social_media'])
-                                            ? json_encode($data['social_media'])
-                                            : null;
+                ? json_encode($data['social_media'])
+                : null;
             $profile->competing_brands     = $data['competing_brands'] ?? null;
             $profile->hear_about           = $data['hear_about'] ?? null;
             $profile->payment_method       = $data['payment_method'] ?? null;
@@ -168,6 +173,7 @@ class RegisterController extends Controller
 
         return $user;
     }
+
 
     protected function registered(Request $request, $user)
     {
