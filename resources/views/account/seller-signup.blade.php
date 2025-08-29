@@ -79,12 +79,12 @@
                                     <label class="form-check-label" for="experienceNo">No</label>
                                 </div>
 
-                                <div class="form-group mt-2">
-                                    {{-- <textarea class="form-control" name="experience_details" placeholder="If yes: number of years, types of products"></textarea> --}}
+                                <!-- Ye wali div by default hidden -->
+                                <div class="form-group mt-2" id="experienceFields" style="display: none;">
                                     <input type="text" class="form-control" name="experience_details"
                                         placeholder="If yes: number of years">
-                                    <input type="text" class="form-control" style="margin-top: 3px"
-                                        name="experience_details2" placeholder="If yes: types of products">
+                                    <input type="text" class="form-control mt-2" name="experience_details2"
+                                        placeholder="If yes: types of products">
                                 </div>
 
                                 {{-- Online Presence --}}
@@ -226,4 +226,24 @@
             $('.loginForm').submit();
         });
     </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const yesRadio = document.getElementById("experienceYes");
+    const noRadio = document.getElementById("experienceNo");
+    const experienceFields = document.getElementById("experienceFields");
+
+    yesRadio.addEventListener("change", function() {
+        if (yesRadio.checked) {
+            experienceFields.style.display = "block";
+        }
+    });
+
+    noRadio.addEventListener("change", function() {
+        if (noRadio.checked) {
+            experienceFields.style.display = "none";
+        }
+    });
+});
+</script>
 @endsection

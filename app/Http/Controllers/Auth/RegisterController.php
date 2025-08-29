@@ -102,11 +102,13 @@ class RegisterController extends Controller
         $emails = config('services.mail.username');
         $subject = 'EPD WORLD - New Affiliate Application';
 
-        $data = $request->all(); // full form data
-        Mail::send('seller_request_approval', $data, function ($message) use ($emails, $subject) {
+        $data = $request->all();
+
+        Mail::send('seller_request_approval', $data, function ($message) use ($user) {
             $message->from(config('services.mail.username'), 'EPD WORLD Affiliate');
-            $message->to($emails)->subject($subject);
+            $message->to($user->email)->subject('EPD WORLD - New Affiliate Application');
         });
+
 
 
         $this->guard()->login($user);
@@ -153,6 +155,7 @@ class RegisterController extends Controller
             $profile->postal               = $data['postal'] ?? null;
 
             // Affiliate application fields
+            $profile->phone = $data['phone'] ?? null;
             $profile->company_name         = $data['company_name'] ?? null;
             $profile->why_join             = $data['why_join'] ?? null;
             $profile->affiliate_experience = $data['affiliate_experience'] ?? null;

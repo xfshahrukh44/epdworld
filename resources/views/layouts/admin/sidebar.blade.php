@@ -128,6 +128,11 @@
                             <span data-i18n="eCommerce">User Request</span>
                         </a>
                     </li>
+                    <li class="{{ (request()->is('admin/affiliateuser/rejecteduser') || request()->is('admin/affiliateuser/rejecteduser/*')) ? 'active' : '' }}">
+                        <a class="menu-item" href="{{url('admin/affiliateuser/rejecteduser')}}"><i></i>
+                            <span data-i18n="eCommerce">User Rejected</span>
+                        </a>
+                    </li>
                     <li class="{{ (request()->is('admin/affiliateuser/all') || request()->is('admin/affiliateuser/all/*')) ? 'active' : '' }}">
                         <a class="menu-item" href="{{url('admin/affiliateuser/all')}}"><i></i>
                             <span data-i18n="eCommerce">Users</span>

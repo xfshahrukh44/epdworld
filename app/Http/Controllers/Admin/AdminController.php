@@ -208,8 +208,21 @@ class AdminController extends Controller
 
     public function requestuser()
     {
+        $user = User::where('is_seller', 1)
+            ->where('is_approved', 0)
+            ->orderBy('id', 'desc') // latest user first
+            ->get();
 
-        $user = User::where('is_seller', 1)->where('is_approved', 0)->get();
+        return view('admin/affiliateuser/requestuser', compact('user'));
+    }
+
+    public function rejecteduser()
+    {
+        $user = User::where('is_seller', 1)
+            ->where('is_approved', 2)
+            ->orderBy('id', 'desc') // latest user first
+            ->get();
+
         return view('admin/affiliateuser/requestuser', compact('user'));
     }
 
@@ -252,6 +265,7 @@ class AdminController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+
         return view('admin.affiliateuser.show', compact('user'));
     }
 

@@ -4,6 +4,7 @@
     <link href="{{asset('plugins/components/datatables/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -49,7 +50,7 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <!--<th>Actions</th>-->
+                                        <th>View</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,13 +62,16 @@
                                         <td>{{ $count }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
-                                        <!--<td>-->
-                                        <!--    <a href="" title="">-->
-                                        <!--        <button class="btn btn-primary btn-sm">-->
-                                        <!--            <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> Approve-->
-                                        <!--        </button>-->
-                                        <!--    </a>-->
-                                        <!--</td>-->
+                                        <td>
+                                            <form action="{{ route('affiliate-user.show', $item->id) }}"
+                                                        method="POST" style="display:inline-block;">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-info btn-sm"
+                                                            title="View Details">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                    </form>
+                                        </td>
                                     </tr>
                                     @php
                                     $count++
@@ -79,7 +83,7 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <!--<th>Actions</th>-->
+                                        <th>View</th>
                                     </tr>
                                 </tfoot>
                             </table>

@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin', 'prefix' =>
     Route::any('newsletter/inquiries/delete/{id}', 'Admin\AdminController@newsletterInquiriesDelete');
 
     Route::get('affiliateuser/requestuser', 'Admin\AdminController@requestuser')->name('requestuser');
+    Route::get('affiliateuser/rejecteduser', 'Admin\AdminController@rejecteduser')->name('rejecteduser');
     Route::get('affiliateuser/all', 'Admin\AdminController@alluser')->name('all');
     Route::post('affiliateuser/isseller', 'Admin\AdminController@isseller')->name('isseller');
     Route::post('/affiliate-user/{id}', 'Admin\AdminController@show')->name('affiliate-user.show');
