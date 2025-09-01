@@ -51,19 +51,20 @@
                                         required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="address" placeholder="Address *" required>
+                                    <input type="text" class="form-control" name="address" placeholder="Address *"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="zip" placeholder="Zip/Postal Code">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="country" placeholder="Country *" required>
+                                    <input type="text" class="form-control" name="country" placeholder="Country *"
+                                        required>
                                 </div>
 
                                 {{-- Experience & Strategy --}}
                                 <div class="form-group">
-                                    <textarea class="form-control" name="why_join"
-                                        placeholder="Why do you want to join our affiliate program? *" required></textarea>
+                                    <textarea class="form-control" name="why_join" placeholder="Why do you want to join our affiliate program? *" required></textarea>
                                 </div>
 
                                 <label class="d-block">Previous Affiliate Marketing Experience *</label>
@@ -99,8 +100,8 @@
                                     <label class="form-check-label" for="facebook">Facebook</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="social_media[]" value="youtube"
-                                        id="youtube">
+                                    <input class="form-check-input" type="checkbox" name="social_media[]"
+                                        value="youtube" id="youtube">
                                     <label class="form-check-label" for="youtube">YouTube</label>
                                 </div>
                                 <div class="form-check">
@@ -109,8 +110,8 @@
                                     <label class="form-check-label" for="tiktok">TikTok</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="social_media[]" value="snapchat"
-                                        id="snapchat">
+                                    <input class="form-check-input" type="checkbox" name="social_media[]"
+                                        value="snapchat" id="snapchat">
                                     <label class="form-check-label" for="snapchat">Snapchat</label>
                                 </div>
                                 <div class="form-check">
@@ -178,8 +179,8 @@
                                     <input type="text" class="form-control" name="signature" placeholder="Signature">
                                 </div>
                                 <div class="form-group">
-                                    <input type="date" class="form-control" name="application_date" placeholder="Date"
-                                        min="{{ date('Y-m-d') }}">
+                                    <input type="date" class="form-control" name="application_date"
+                                        placeholder="Date" min="{{ date('Y-m-d') }}">
                                 </div>
 
                                 {{-- Submit --}}
@@ -278,28 +279,30 @@
             font-size: 16px;
             color: black;
         }
+
+       
     </style>
 @endsection
 @section('js')
     <script type="text/javascript">
-        $(document).on('click', ".btn1", function (e) {
+        $(document).on('click', ".btn1", function(e) {
             $('.loginForm').submit();
         });
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const yesRadio = document.getElementById("experienceYes");
             const noRadio = document.getElementById("experienceNo");
             const experienceFields = document.getElementById("experienceFields");
 
-            yesRadio.addEventListener("change", function () {
+            yesRadio.addEventListener("change", function() {
                 if (yesRadio.checked) {
                     experienceFields.style.display = "block";
                 }
             });
 
-            noRadio.addEventListener("change", function () {
+            noRadio.addEventListener("change", function() {
                 if (noRadio.checked) {
                     experienceFields.style.display = "none";
                 }
