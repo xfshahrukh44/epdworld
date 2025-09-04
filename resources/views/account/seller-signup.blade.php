@@ -79,7 +79,7 @@
                                     <label class="form-check-label" for="experienceNo">No</label>
                                 </div>
 
-                                <!-- Ye wali div by default hidden -->
+                               
                                 <div class="form-group mt-2" id="experienceFields" style="display: none;">
                                     <input type="text" class="form-control" name="experience_details"
                                         placeholder="If yes: number of years">

@@ -241,11 +241,11 @@ class AdminController extends Controller
             return back()->with('flash_message', 'User not found!');
         }
 
-        // jo value form se aayi use save kar do (1 = approve, 2 = reject)
+        
         $user->is_approved = $request->is_approved;
         $user->save();
 
-        // sirf approve hone par mail bhejna
+       
         if ($user->is_approved == 1) {
             $emails = $user->email;
             $subject = 'EPD WORLD - BECOME AN AFFILIATE REQUEST APPROVAL';

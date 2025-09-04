@@ -108,7 +108,7 @@ class RegisterController extends Controller
         Mail::send('seller_request_approval', $data, function ($message) use ($emails, $subject, $user) {
             $message->from($user->email, 'EPD WORLD Affiliate');
             $message->to('info@epdworld.com') // Admin email fixed
-                ->replyTo($user->email, $user->name) // 👈 yeh line add ki
+                ->replyTo($user->email, $user->name) 
                 ->subject($subject);
         });
 
