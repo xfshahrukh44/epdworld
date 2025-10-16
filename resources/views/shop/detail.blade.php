@@ -1015,7 +1015,7 @@
     //         $('meta[itemprop="price"]').attr('content', price.toFixed(2));
     //     }
     // });
-    $(document).ready(function () {
+    $(document).ready(function() {
         // Get flags from hidden input
         let pricingFlags = $('#pricing-flags');
         let profitMargin = parseFloat(pricingFlags.data('profit-margin'));
@@ -1030,7 +1030,7 @@
         $('#productPrice').val(initialFinalPrice.toFixed(2));
 
         // Dynamically get all unique attribute IDs and find the last one
-        let uniqueAttributeIds = $('.variation-selector').map(function () {
+        let uniqueAttributeIds = $('.variation-selector').map(function() {
             return $(this).data('attribute-id');
         }).get().filter((v, i, a) => a.indexOf(v) === i);
 
@@ -1057,7 +1057,7 @@
             }
         });
 
-        $('.variation-selector').on('change', function () {
+        $('.variation-selector').on('change', function() {
             let attributeId = $(this).data('attribute-id');
             let valueId = parseInt($(this).val());
 
@@ -1078,7 +1078,7 @@
                         });
                     });
 
-                    $('.variation-selector').each(function () {
+                    $('.variation-selector').each(function() {
                         if ($(this).data('attribute-id') !== firstAttributeId) {
                             let optionValue = parseInt($(this).val());
 
@@ -1114,7 +1114,8 @@
                     variation.variation_values.forEach(vv => {
                         // ✅ Only check attributes that are selected
                         if (selectedAttributes.hasOwnProperty(vv.attribute_id)) {
-                            if (selectedAttributes[vv.attribute_id] != vv.attribute_value_id) {
+                            if (selectedAttributes[vv.attribute_id] != vv
+                                .attribute_value_id) {
                                 isMatch = false;
                             }
                         }
@@ -1154,11 +1155,30 @@
 
         // Pricing function
         function calculateFinalPrice(basePrice) {
-            let priceWithProfit = basePrice * (1 + profitMargin);
-            let priceWithShipping = priceWithProfit * (1 + shipping);
-            let finalPrice = priceWithShipping * (1 + stripeFee);
-            return finalPrice;
+            // Step 1: Add 100% Markup
+            let priceWithProfit = basePrice + (basePrice * 1.00);
+
+            // Step 2: Subtract 30% Affiliate Commission
+            let affiliateCommission = (basePrice * 0.30);
+            let afterCommission = priceWithProfit - affiliateCommission;
+
+            // Step 3: Add 6% Sales Tax
+            let salesTax = afterCommission * 0.06;
+            let afterSalesTax = afterCommission + salesTax;
+
+            // Step 4: Add 30% Shipping
+            let priceWithShipping = afterSalesTax + (afterSalesTax * 0.30);
+
+            // Step 5: Add 5% Payment Processing Fee
+            let afterProcessing = priceWithShipping + (priceWithShipping * 0.05);
+
+            // Step 6: Add 35% Maintenance/Admin Fee
+            let finalPrice = afterProcessing + (afterProcessing * 0.35);
+
+            // Return rounded result (same as before)
+            return Math.round(finalPrice * 100) / 100;
         }
+
 
     });
 </script>
