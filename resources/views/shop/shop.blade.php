@@ -100,7 +100,9 @@ use App\wishlists;
                     <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
                         @if (count($shops) > 0)
                             <ul class="products columns-3">
+                                
                                 @foreach ($shops as $pro)
+                             
                                     <li class="product first">
                                         <div class="product-outer">
                                             <div class="product-inner"> <span class="loop-product-categories"><a
@@ -122,6 +124,7 @@ use App\wishlists;
                                                 <div class="price-add-to-cart"> <span class="price">
                                                         <span class="electro-price">
                                                             <ins><span
+                                                           
                                                                     class="amount">&#036;{!! $pro->calculated_final_price !!}</span></ins>
                                                             <div class="ship-box">
                                                                 <div class="ship-detail">
