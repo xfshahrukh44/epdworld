@@ -118,7 +118,19 @@
 @endsection
 
 
+@section('css')
+    <style>
+        section#configuration tr th {
+            width: unset !important;
+        }
 
+        section#configuration tr td:last-child {
+            display: flex;
+            align-items: center;
+            gap: 3px
+        }
+    </style>
+@endsection
 @push('js')
     <script src="{{ asset('plugins/components/toast-master/js/jquery.toast.js') }}"></script>
     <script src="{{ asset('plugins/components/datatables/jquery.dataTables.min.js') }}"></script>

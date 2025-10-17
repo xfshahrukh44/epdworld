@@ -55,29 +55,62 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         $rules = [
-            'email'    => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ];
 
         if (!empty($data['is_seller']) && $data['is_seller'] == 1) {
-            // Affiliate Seller Application validation
             $rules = array_merge($rules, [
-                'first_name'          => 'required|string|max:255',
-                'last_name'           => 'required|string|max:255',
-                'phone'               => 'required|string|max:20',
-                'address'             => 'required|string|max:500',
-                'country'             => 'required|string|max:255',
-                'why_join'            => 'required|string',
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'phone' => 'required|string|max:20',
+                'address' => 'required|string|max:500',
+                'country' => 'required|string|max:255',
+                'why_join' => 'required|string',
                 'affiliate_experience' => 'required|string|in:yes,no',
-                'agree_terms'         => 'required',
-                'agree_noncompete'    => 'required',
-                'agree_disclosure'    => 'required',
+                'agree_terms' => 'required',
+                'agree_noncompete' => 'required',
+                'agree_disclosure' => 'required',
+                'agree_promote' => 'required',
+                'printed_name' => 'required|string|max:255',
+                'signature' => 'required|string|max:255',
+                'application_date' => 'required|date',
             ]);
-        } else {
-            // Normal User registration
+
+            // اب یہ فیلڈز required ہیں کیونکہ default value ہے
             $rules = array_merge($rules, [
-                'name' => 'required|string|max:255',
+                'instagram_yesno' => 'required|string|in:yes,no',
+                'facebook_yesno' => 'required|string|in:yes,no',
+                'youtube_yesno' => 'required|string|in:yes,no',
+                'tiktok_yesno' => 'required|string|in:yes,no',
+                'other_yesno' => 'required|string|in:yes,no',
+                'competing_brands_yesno' => 'required|string|in:yes,no',
+                'commission_transfer' => 'required|string|in:yes,no',
             ]);
+
+            // Conditional validation - صرف جب Yes ہو تو required
+            if (isset($data['instagram_yesno']) && $data['instagram_yesno'] === 'yes') {
+                $rules['instagram_handle'] = 'required|string|max:255';
+            }
+            if (isset($data['facebook_yesno']) && $data['facebook_yesno'] === 'yes') {
+                $rules['facebook_name'] = 'required|string|max:255';
+            }
+            if (isset($data['youtube_yesno']) && $data['youtube_yesno'] === 'yes') {
+                $rules['youtube_page'] = 'required|string|max:255';
+            }
+            if (isset($data['tiktok_yesno']) && $data['tiktok_yesno'] === 'yes') {
+                $rules['tiktok_channel'] = 'required|string|max:255';
+            }
+            if (isset($data['other_yesno']) && $data['other_yesno'] === 'yes') {
+                $rules['other_social'] = 'required|string|max:255';
+            }
+            if (isset($data['competing_brands_yesno']) && $data['competing_brands_yesno'] === 'yes') {
+                $rules['competing_brands_details'] = 'required|string|max:255';
+            }
+            if (isset($data['affiliate_experience']) && $data['affiliate_experience'] === 'yes') {
+                $rules['experience_details'] = 'required|string|max:255';
+                $rules['experience_details2'] = 'required|string|max:255';
+            }
         }
 
         return Validator::make($data, $rules);
@@ -92,7 +125,9 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validator = $this->validator($request->all());
+
         if ($validator->fails()) {
+            \Log::error('Validation Errors:', $validator->errors()->toArray());
             return redirect()->back()->withInput()->withErrors($validator, 'registerForm');
         }
 
@@ -108,7 +143,7 @@ class RegisterController extends Controller
         Mail::send('seller_request_approval', $data, function ($message) use ($emails, $subject, $user) {
             $message->from($user->email, 'EPD WORLD Affiliate');
             $message->to('info@epdworld.com') // Admin email fixed
-                ->replyTo($user->email, $user->name) // 👈 yeh line add ki
+                ->replyTo($user->email, $user->name)
                 ->subject($subject);
         });
 
@@ -120,8 +155,6 @@ class RegisterController extends Controller
             $message->to($user->email)
                 ->subject('Thank you for applying - EPD WORLD Affiliate Program');
         });
-
-
 
         $this->guard()->login($user);
 
@@ -145,43 +178,60 @@ class RegisterController extends Controller
 
         // 1. Create the user first
         $user = User::create([
-            'name'      => $fullName,
-            'slug'      => Str::slug($fullName),
-            'email'     => $data['email'],
+            'name' => $fullName,
+            'slug' => Str::slug($fullName),
+            'email' => $data['email'],
             'is_seller' => $data['is_seller'] ?? 0,
-            'image'     => 'image/noimage.png',
-            'password'  => Hash::make($data['password']),
+            'image' => 'image/noimage.png',
+            'password' => Hash::make($data['password']),
         ]);
 
         // 2. If seller → create profile with extra affiliate details
         if (!empty($data['is_seller']) && $data['is_seller'] == 1) {
             $profile = new Profile();
-            $profile->user_id              = $user->id;
-            $profile->localisation         = $data['localisation'] ?? null;
-            $profile->dob                  = $data['dob'] ?? null;
-            $profile->gender               = $data['gender'] ?? null;
-            $profile->country              = $data['country'] ?? null;
-            $profile->state                = $data['state'] ?? null;
-            $profile->city                 = $data['city'] ?? null;
-            $profile->address              = $data['address'] ?? null;
-            $profile->postal               = $data['postal'] ?? null;
+            $profile->user_id = $user->id;
+            $profile->localisation = $data['localisation'] ?? null;
+            $profile->dob = $data['dob'] ?? null;
+            $profile->gender = $data['gender'] ?? null;
+            $profile->country = $data['country'] ?? null;
+            $profile->state = $data['state'] ?? null;
+            $profile->city = $data['city'] ?? null;
+            $profile->address = $data['address'] ?? null;
+            $profile->postal = $data['postal'] ?? null;
 
-            // Affiliate application fields
             $profile->phone = $data['phone'] ?? null;
-            $profile->company_name         = $data['company_name'] ?? null;
-            $profile->why_join             = $data['why_join'] ?? null;
+            $profile->company_name = $data['company_name'] ?? null;
+            $profile->why_join = $data['why_join'] ?? null;
             $profile->affiliate_experience = $data['affiliate_experience'] ?? null;
-            $profile->experience_details   = $data['experience_details'] ?? null;
-            $profile->experience_details2  = $data['experience_details2'] ?? null;
-            $profile->social_media         = !empty($data['social_media'])
-                ? json_encode($data['social_media'])
-                : null;
-            $profile->competing_brands     = $data['competing_brands'] ?? null;
-            $profile->hear_about           = $data['hear_about'] ?? null;
-            $profile->payment_method       = $data['payment_method'] ?? null;
-            $profile->about_yourself       = $data['about_yourself'] ?? null;
-            $profile->signature            = $data['signature'] ?? null;
-            $profile->application_date     = $data['application_date'] ?? now();
+            $profile->experience_details = $data['experience_details'] ?? null;
+            $profile->experience_details2 = $data['experience_details2'] ?? null;
+
+            $profile->instagram_yesno = $data['instagram_yesno'] ?? null;
+            $profile->instagram_handle = $data['instagram_handle'] ?? null;
+            $profile->facebook_yesno = $data['facebook_yesno'] ?? null;
+            $profile->facebook_name = $data['facebook_name'] ?? null;
+            $profile->youtube_yesno = $data['youtube_yesno'] ?? null;
+            $profile->youtube_page = $data['youtube_page'] ?? null;
+            $profile->tiktok_yesno = $data['tiktok_yesno'] ?? null;
+            $profile->tiktok_channel = $data['tiktok_channel'] ?? null;
+            $profile->other_yesno = $data['other_yesno'] ?? null;
+            $profile->other_social = $data['other_social'] ?? null;
+
+            $profile->competing_brands_yesno = $data['competing_brands_yesno'] ?? null;
+            $profile->competing_brands_details = $data['competing_brands_details'] ?? null;
+            $profile->hear_about = $data['hear_about'] ?? null;
+            $profile->commission_transfer = $data['commission_transfer'] ?? null;
+            $profile->about_yourself = $data['about_yourself'] ?? null;
+
+
+            $profile->agree_terms = isset($data['agree_terms']) ? 1 : 0;
+            $profile->agree_noncompete = isset($data['agree_noncompete']) ? 1 : 0;
+            $profile->agree_disclosure = isset($data['agree_disclosure']) ? 1 : 0;
+            $profile->agree_promote = isset($data['agree_promote']) ? 1 : 0;
+
+            $profile->printed_name = $data['printed_name'] ?? null;
+            $profile->signature = $data['signature'] ?? null;
+            $profile->application_date = $data['application_date'] ?? now();
 
             $profile->save();
         }
@@ -189,10 +239,8 @@ class RegisterController extends Controller
         return $user;
     }
 
-
     protected function registered(Request $request, $user)
     {
-        // dd($request->all());
         if ($user->profile == null) {
             $profile = new Profile();
             $profile->user_id = $user->id;
@@ -200,10 +248,6 @@ class RegisterController extends Controller
             $profile->dob = $request->dob;
             $profile->save();
         }
-        // activity($user->name)
-        //     ->performedOn($user)
-        //     ->causedBy($user)
-        //     ->log('Registered');
         $user->assignRole('user');
     }
 }

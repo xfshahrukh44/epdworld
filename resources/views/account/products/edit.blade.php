@@ -339,6 +339,33 @@
         });
     </script>
 
+    <script> 
+        function getInputValue(id, a) {
+            var e = a;
+            $.ajax({
+                url: "{{ route('pro-img-id-deleting') }}",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    id: id
+                },
+                success: function(response) {
+                    if (response.status) {
+                        $(e).parent().remove();
+                       
+                    } else {
+                        
+                    }
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                    alert("Server error: check Laravel logs");
+                }
+            });
+
+        }
+    </script>
+
     <script>
         $(document).ready(function() {
             let variationIndex = parseInt($('#existingVariationCount').val()) ||

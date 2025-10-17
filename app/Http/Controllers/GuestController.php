@@ -19,48 +19,51 @@ use App\orders;
 use App\orders_products;
 
 class GuestController extends Controller
-{	
-	use HelperTrait;
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-	 // use Helper;
-	 
-    public function __construct()
-    {
-		 $this->middleware('guest');
-        $logo = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','logo')
-                     ->first();
-             
-		$favicon = imagetable::
-                     select('img_path')
-                     ->where('table_name','=','favicon')
-                     ->first();	 
+{
+  use HelperTrait;
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  // use Helper;
 
-        View()->share('logo',$logo);
-		View()->share('favicon',$favicon);
-    }
-	
-	public function signin()
-    {
-		return view('account.signin'); 
-		
-	}
-	
-	public function signup()
-    {		 
-		return view('account.signup'); 
-	}
-	
-	    public function seller_signup()
-    {
-		return view('account.seller-signup');
-	}
-	
-	
-}	
-	
+  public function __construct()
+  {
+    $this->middleware('guest');
+    $logo = imagetable::
+      select('img_path')
+      ->where('table_name', '=', 'logo')
+      ->first();
+
+    $favicon = imagetable::
+      select('img_path')
+      ->where('table_name', '=', 'favicon')
+      ->first();
+
+    View()->share('logo', $logo);
+    View()->share('favicon', $favicon);
+  }
+
+  public function signin()
+  {
+    return view('account.signin');
+
+  }
+
+  public function signup()
+  {
+    return view('account.signup');
+  }
+
+  public function seller_signup()
+  {
+    return view('account.seller-signup');
+  }
+  public function seller_signup1()
+  {
+    return view('account.seller-signup1');
+  }
+
+
+}

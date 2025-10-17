@@ -181,11 +181,14 @@ Auth::routes();
 Route::get('signin', 'GuestController@signin')->name('signin');
 Route::get('signup', 'GuestController@signup')->name('signup');
 Route::get('seller-signup', 'GuestController@seller_signup')->name('seller-signup');
+Route::get('seller-signup1', 'GuestController@seller_signup1')->name('seller-signup1');
 Route::get('account', 'LoggedInController@account')->name('account');
 
 Route::get('productlist', 'LoggedInController@productlist')->name('productlist');
 Route::get('add-new-product', 'LoggedInController@addnewproduct')->name('addnewproduct');
 Route::get('edit-product/{id}', 'LoggedInController@editproduct')->name('editproduct');
+
+Route::post('pro-img-id-deleted', 'LoggedInController@img_deleted')->name('pro-img-id-deleting');
 
 Route::post('store-product', 'LoggedInController@storeproduct')->name('storeproduct');
 Route::post('update-product/{id}', 'LoggedInController@updateproduct')->name('updateproduct');
@@ -193,6 +196,10 @@ Route::post('update-product/{id}', 'LoggedInController@updateproduct')->name('up
 Route::get('myorders', 'LoggedInController@myorders')->name('myorders');
 Route::get('orders', 'LoggedInController@orders')->name('orders');
 Route::get('account-detail', 'LoggedInController@accountDetail')->name('accountDetail');
+
+Route::get('affiliate_deposit', 'AffiliateDepositController@affiliate_deposit')->name('affiliate_deposit');
+Route::post('/affiliate-form-submit', 'AffiliateDepositController@store')->name('affiliate.store');
+
 
 Route::post('update/account', 'LoggedInController@updateAccount')->name('update.account');
 Route::get('signout', function () {

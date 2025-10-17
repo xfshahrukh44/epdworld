@@ -499,5 +499,35 @@ class LoggedInController extends Controller
     {
         return view('account.password');
     }
+    public function img_deleted(Request $request)
+    {
+        $id = $request->id;
+
+        // check if row exists
+        $product_image = DB::table('product_imagess')->where('id', $id)->first();
+
+        if (!$product_image) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Image not found'
+            ]);
+        }
+
+        // delete image
+        $deleted = DB::table('product_imagess')->where('id', $id)->delete();
+
+        if ($deleted) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Image deleted successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Error occurred while deleting'
+        ]);
+    }
+
 }
 
