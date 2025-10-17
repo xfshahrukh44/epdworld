@@ -11,52 +11,35 @@ class AffiliateDepositController extends Controller
 
     public function affiliate_deposit()
     {
-        return view('account.affiliate_deposit');
+        $affiliate = AffiliateUser::where('user_id', auth()->id())->first();
+        return view('account.affiliate_deposit', compact('affiliate'));
     }
 
     public function store(Request $request)
     {
-        // dd(123);
-        $request->validate([
+        $data = $request->validate([
             'full_name' => 'required|string|max:255',
             'business_name' => 'nullable|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:50',
+            'email' => 'required|email',
+            'phone' => 'nullable|string|max:255',
             'address' => 'nullable|string',
-
-            'account_holder_name' => 'required|string|max:255',
-            'bank_name' => 'required|string|max:255',
-            'account_number' => 'required|string|max:100',
-            'routing_swift_bic_code' => 'required|string|max:100',
-            'account_type' => 'nullable|string|max:50',
-            'bank_location' => 'nullable|string|max:255',
-            'currency' => 'nullable|string|max:50',
-
-            'printed_name' => 'required|string|max:255',
-            'signature' => 'nullable|string',
-            'date' => 'nullable|date',
-        ]);
-        // dd($request->all());
-
-        AffiliateUser::create([
-            'user_id' => Auth::id(),
-            'full_name' => $request->full_name,
-            'business_name' => $request->business_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'account_holder_name' => $request->account_holder_name,
-            'bank_name' => $request->bank_name,
-            'account_number' => $request->account_number,
-            'routing_swift_bic_code' => $request->routing_swift_bic_code,
-            'account_type' => $request->account_type,
-            'bank_location' => $request->bank_location,
-            'currency' => $request->currency,
-            'printed_name' => $request->printed_name,
-            'signature' => $request->signature,
-            'date' => $request->date,
+            'account_holder_name' => 'required|string',
+            'bank_name' => 'required|string',
+            'account_number' => 'required|string',
+            'routing_swift_bic_code' => 'required|string',
+            'account_type' => 'nullable|string',
+            'bank_location' => 'nullable|string',
+            'currency' => 'nullable|string',
+            'printed_name' => 'required|string',
+            'signature' => 'required|string',
+            'date' => 'required|date|after_or_equal:today',
         ]);
 
-        return back()->with('success', 'Affiliate form submitted successfully!');
+        AffiliateUser::updateOrCreate(
+            ['user_id' => auth()->id()],
+            array_merge($data, ['user_id' => auth()->id()])
+        );
+
+        return back()->with('success', 'Affiliate details saved successfully!');
     }
 }

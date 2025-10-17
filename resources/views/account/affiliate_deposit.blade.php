@@ -49,6 +49,44 @@
                                                         Product Distributors.
                                                     </p>
 
+
+                                                    {{-- ✅ SUCCESS MESSAGE (TOP) --}}
+                                                    @if (session('success'))
+                                                        <div
+                                                            style="
+                                                                background-color: #f4f5fa;
+                                                                border-left: 5px solid #ffd500;
+                                                                color: #040404;
+                                                                padding: 15px 20px;
+                                                                border-radius: 8px;
+                                                                font-weight: 500;
+                                                                margin-bottom: 20px;
+                                                                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                                                                display: flex;
+                                                                align-items: center;
+                                                                gap: 10px;
+                                                            ">
+                                                            <svg xmlns='http://www.w3.org/2000/svg' width='22'
+                                                                height='22' fill='#ffd500' viewBox='0 0 24 24'>
+                                                                <path
+                                                                    d='M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12C24 5.373 18.627 0 12 0zm-1 17.414-4.707-4.707 1.414-1.414L11 14.586l5.293-5.293 1.414 1.414L11 17.414z' />
+                                                            </svg>
+                                                            {{ session('success') }}
+                                                        </div>
+                                                    @endif
+
+                                                    {{-- ✅ ERROR MESSAGE --}}
+                                                    @if ($errors->any())
+                                                        <div class="alert alert-danger text-center"
+                                                            style="border-radius:10px;">
+                                                            <ul class="mb-0" style="list-style:none;">
+                                                                @foreach ($errors->all() as $error)
+                                                                    <li>⚠️ {{ $error }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
+
                                                     <form action="{{ route('affiliate.store') }}" method="POST">
                                                         @csrf
 
@@ -59,45 +97,42 @@
                                                                 <div class="form-group">
                                                                     <label class="form-label">Full Legal Name</label>
                                                                     <input type="text" class="form-input"
-                                                                        name="full_name" placeholder="Enter your full name"
+                                                                        name="full_name"
+                                                                        value="{{ old('full_name', $affiliate->full_name ?? '') }}"
+                                                                        placeholder="{{ $affiliate->full_name ?? 'Enter your full name' }}"
                                                                         required>
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Business Name (if
                                                                         applicable)</label>
                                                                     <input type="text" class="form-input"
                                                                         name="business_name"
-                                                                        placeholder="Enter business name">
+                                                                        value="{{ old('business_name', $affiliate->business_name ?? '') }}"
+                                                                        placeholder="{{ $affiliate->business_name ?? 'Enter business name' }}">
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Email Address</label>
                                                                     <input type="email" class="form-input" name="email"
-                                                                        placeholder="your@email.com" required>
+                                                                        value="{{ old('email', $affiliate->email ?? '') }}"
+                                                                        placeholder="{{ $affiliate->email ?? 'your@email.com' }}"
+                                                                        required>
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Phone Number</label>
                                                                     <input type="text" class="form-input" name="phone"
-                                                                        placeholder="+92 300 0000000">
+                                                                        value="{{ old('phone', $affiliate->phone ?? '') }}"
+                                                                        placeholder="{{ $affiliate->phone ?? '+92 300 0000000' }}">
                                                                 </div>
+
                                                                 <div class="form-group full-width">
                                                                     <label class="form-label">Full Mailing Address</label>
-                                                                    <textarea class="form-input" name="address" rows="3" placeholder="Your complete address"></textarea>
+                                                                    <textarea class="form-input" name="address" rows="3"
+                                                                        placeholder="{{ $affiliate->address ?? 'Your complete address' }}">{{ old('address', $affiliate->address ?? '') }}</textarea>
                                                                 </div>
                                                             </div>
-                                                        </div>
-
-                                                        <!-- Affiliate Tax Agreement -->
-                                                        <div class="form-section">
-                                                            <h4 class="form-heading">Affiliate Tax Agreement</h4>
-                                                            <p class="form-text">
-                                                                The affiliate is an independent contractor and is not an
-                                                                employee, agent, or partner of
-                                                                <strong>Elite Product Distributors World</strong>. The
-                                                                affiliate shall be solely responsible for all
-                                                                taxes, including but not limited to self-employment taxes,
-                                                                income taxes, and any other taxes due
-                                                                as a result of their participation in the affiliate program.
-                                                            </p>
                                                         </div>
 
                                                         <!-- Bank Account Information -->
@@ -108,90 +143,104 @@
                                                                     <label class="form-label">Account Holder Name</label>
                                                                     <input type="text" class="form-input"
                                                                         name="account_holder_name"
-                                                                        placeholder="As on your bank account" required>
+                                                                        value="{{ old('account_holder_name', $affiliate->account_holder_name ?? '') }}"
+                                                                        placeholder="{{ $affiliate->account_holder_name ?? 'As on your bank account' }}"
+                                                                        required>
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Bank Name</label>
                                                                     <input type="text" class="form-input"
-                                                                        name="bank_name" placeholder="Bank name" required>
+                                                                        name="bank_name"
+                                                                        value="{{ old('bank_name', $affiliate->bank_name ?? '') }}"
+                                                                        placeholder="{{ $affiliate->bank_name ?? 'Bank name' }}"
+                                                                        required>
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Account Number</label>
                                                                     <input type="text" class="form-input"
                                                                         name="account_number"
-                                                                        placeholder="Your account number" required>
+                                                                        value="{{ old('account_number', $affiliate->account_number ?? '') }}"
+                                                                        placeholder="{{ $affiliate->account_number ?? 'Your account number' }}"
+                                                                        required>
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Routing/SWIFT/BIC Code</label>
                                                                     <input type="text" class="form-input"
                                                                         name="routing_swift_bic_code"
-                                                                        placeholder="Enter code" required>
+                                                                        value="{{ old('routing_swift_bic_code', $affiliate->routing_swift_bic_code ?? '') }}"
+                                                                        placeholder="{{ $affiliate->routing_swift_bic_code ?? 'Enter code' }}"
+                                                                        required>
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Account Type</label>
                                                                     <select class="form-input" name="account_type">
                                                                         <option value="">Select type</option>
-                                                                        <option value="Checking">Checking</option>
-                                                                        <option value="Savings">Savings</option>
+                                                                        <option value="Checking"
+                                                                            {{ isset($affiliate) && $affiliate->account_type == 'Checking' ? 'selected' : '' }}>
+                                                                            Checking</option>
+                                                                        <option value="Savings"
+                                                                            {{ isset($affiliate) && $affiliate->account_type == 'Savings' ? 'selected' : '' }}>
+                                                                            Savings</option>
                                                                     </select>
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Bank Location</label>
                                                                     <input type="text" class="form-input"
-                                                                        name="bank_location" placeholder="e.g., USA">
+                                                                        name="bank_location"
+                                                                        value="{{ old('bank_location', $affiliate->bank_location ?? '') }}"
+                                                                        placeholder="{{ $affiliate->bank_location ?? 'e.g., USA' }}">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label class="form-label">Currency</label>
                                                                     <input type="text" class="form-input"
-                                                                        name="currency" placeholder="e.g., USD, PKR, EUR">
+                                                                        name="currency"
+                                                                        value="{{ old('currency', $affiliate->currency ?? '') }}"
+                                                                        placeholder="{{ $affiliate->currency ?? 'e.g., USD, PKR, EUR' }}">
                                                                 </div>
-
                                                             </div>
                                                         </div>
 
-                                                        <!-- Authorization and Agreement -->
+                                                        <!-- Authorization -->
                                                         <div class="form-section">
                                                             <h4 class="form-heading">Authorization and Agreement</h4>
-                                                            <p class="form-text">
-                                                                I, [Affiliate's Full Legal Name], authorize <strong>Elite
-                                                                    Product Distributors</strong> to initiate
-                                                                credit entries (deposits) into the bank account specified
-                                                                above for commissions earned from my
-                                                                participation in the affiliate program. Commissions will be
-                                                                calculated as 30% of net profit from
-                                                                sales attributed to my affiliate link.
-                                                            </p>
-                                                            <p class="form-text">
-                                                                <strong>Recoupment Clause:</strong> In the event that funds
-                                                                are deposited in error, I authorize
-                                                                Elite Product Distributors to debit the erroneous amount
-                                                                from my account.
-                                                            </p>
                                                             <div class="form-grid">
                                                                 <div class="form-group">
                                                                     <label class="form-label">Printed Name</label>
                                                                     <input type="text" class="form-input"
-                                                                        name="printed_name" placeholder="Full name"
+                                                                        name="printed_name"
+                                                                        value="{{ old('printed_name', $affiliate->printed_name ?? '') }}"
+                                                                        placeholder="{{ $affiliate->printed_name ?? 'Full name' }}"
                                                                         required>
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Signature</label>
                                                                     <input type="text" class="form-input"
                                                                         name="signature"
-                                                                        placeholder="Type your signature">
+                                                                        value="{{ old('signature', $affiliate->signature ?? '') }}"
+                                                                        placeholder="{{ $affiliate->signature ?? 'Type your signature' }}">
                                                                 </div>
+
                                                                 <div class="form-group">
                                                                     <label class="form-label">Date</label>
-                                                                    <input type="date" id="dateField" class="form-input"
-                                                                        name="date">
+                                                                    <input type="date" id="dateField"
+                                                                        class="form-input" name="date"
+                                                                        value="{{ old('date', $affiliate->date ?? '') }}"
+                                                                        min="{{ now()->toDateString() }}">
                                                                 </div>
                                                             </div>
                                                         </div>
 
-                                                        <!-- Submit -->
-                                                        <div class="form-submit text-center">
-                                                            <button type="submit" class="submit-btn">Submit Form</button>
+                                                        <div class="form-submit text-center mt-4">
+                                                            <button type="submit" class="submit-btn btn btn-primary">
+                                                                {{ $affiliate ? 'Update Form' : 'Submit Form' }}
+                                                            </button>
                                                         </div>
                                                     </form>
 
