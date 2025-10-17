@@ -40,6 +40,11 @@
                                                 class="ec ec-user"></i>Request to be an affiliate seller</a></li>
                                 @endif
 
+                                @if (Auth::check() && Auth::user()->is_seller == 1)
+                                    <li class="menu-item animate-dropdown"><a
+                                            href="{{ route('affiliate_deposit') }}"><i
+                                                class="ec ec-user"></i>Affiliate Dashboard</a></li>
+                                @endif
                             </ul>
                         </nav>
                     </div>

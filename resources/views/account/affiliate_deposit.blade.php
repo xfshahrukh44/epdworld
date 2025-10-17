@@ -22,7 +22,6 @@
     </section>
 
 
-
     <div class="my-account-wrapper">
         <div class="container">
             <div class="row">
