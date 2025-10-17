@@ -197,6 +197,10 @@ Route::get('myorders', 'LoggedInController@myorders')->name('myorders');
 Route::get('orders', 'LoggedInController@orders')->name('orders');
 Route::get('account-detail', 'LoggedInController@accountDetail')->name('accountDetail');
 
+Route::get('affiliate_deposit', 'AffiliateDepositController@affiliate_deposit')->name('affiliate_deposit');
+Route::post('/affiliate-form-submit', 'AffiliateDepositController@store')->name('affiliate.store');
+
+
 Route::post('update/account', 'LoggedInController@updateAccount')->name('update.account');
 Route::get('signout', function () {
     Auth::logout();
