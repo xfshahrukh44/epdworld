@@ -308,8 +308,7 @@ class ProductController extends Controller
 		// }
 
 
-		$category = Category::with('children.grandchildren.products')->get();
-		// dd($category);
+		$category = Category::all();
 		$latest = Product::orderBy('id', 'desc')->take(4)->get();
 
 
