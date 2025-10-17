@@ -13,8 +13,9 @@
                 class="{{ request()->route()->getName() == 'myorders' ? 'active' : '' }}"><i
                     class="fa fa-cart-arrow-down"></i>My Orders</a>
 
-            <a href="{{ URL('affiliate_deposit') }}" class="<?php echo (isset($segment[0]) and $segment[0] == 'affiliate_deposit') ? 'active' : ''; ?>"><i class="fa fa-cart-arrow-down"></i>
-                Affiliate Deposit</a>
+            <a href="{{ route('affiliate_deposit') }}"
+                class="{{ request()->route()->getName() == 'affiliate_deposit' ? 'active' : '' }}"><i
+                    class="fa fa-cart-arrow-down"></i>Affiliate Deposit</a>
 
             @if (Auth::user()->is_seller == 1 && Auth::user()->slug)
                 <a href="{{ route('seller-profile', ['slug' => Auth::user()->slug]) }}"
