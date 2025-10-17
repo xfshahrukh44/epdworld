@@ -100,9 +100,8 @@ use App\wishlists;
                     <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
                         @if (count($shops) > 0)
                             <ul class="products columns-3">
-                                
+
                                 @foreach ($shops as $pro)
-                             
                                     <li class="product first">
                                         <div class="product-outer">
                                             <div class="product-inner"> <span class="loop-product-categories"><a
@@ -124,7 +123,6 @@ use App\wishlists;
                                                 <div class="price-add-to-cart"> <span class="price">
                                                         <span class="electro-price">
                                                             <ins><span
-                                                           
                                                                     class="amount">&#036;{!! $pro->calculated_final_price !!}</span></ins>
                                                             <div class="ship-box">
                                                                 <div class="ship-detail">
@@ -196,7 +194,8 @@ use App\wishlists;
                                                 </a>
                                                 <div class="price-add-to-cart"> <span class="price">
 
-                                                    <ins><span class="amount">&#036;{!! $pro->calculated_final_price !!}</span></ins>
+                                                        <ins><span
+                                                                class="amount">&#036;{!! $pro->calculated_final_price !!}</span></ins>
 
 
                                                     </span></div>
@@ -252,23 +251,16 @@ use App\wishlists;
                             <li class="product_cat"><span class="show-all-cat-dropdown">Show All
                                     Categories</span>
                                 <ul>
-
-
-                                    <!--@foreach ($cat->grandchildren as $item)
--->
-                                    <!--<li class="cat-item"><a href="#">{!! $item->name !!}</a>-->
-                                    <!--    <span class="count">(0)</span></li>-->
-                                    <!--
-@endforeach-->
-
-
-
+                                    <li class="cat-item"><a href="{!! route('shop') !!}">All
+                                            Categories</a>
+                                    </li>
 
                                 </ul>
                             </li>
                         </ul>
                         <ul>
 
+                            {{-- @dd($cat->grandchildren) --}}
                             @foreach ($category as $cat)
                                 @foreach ($cat->grandchildren as $item)
                                     @if ($item->parent_cat->parent != 0)

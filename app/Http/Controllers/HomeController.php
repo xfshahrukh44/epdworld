@@ -68,13 +68,11 @@ class HomeController extends Controller
         $second_banner = DB::table('banners')->where('slider_cat', 1)->get();
         $section = DB::table('section')->where('page_id', 1)->get();
         $product = Product::inRandomOrder()->limit(12)->get();
-        $product_all = DB::table('products')
-            ->orderBy('created_at', 'desc')
+        $product_all = Product::orderBy('created_at', 'desc')
             ->limit(50)
             ->get()
             ->shuffle()
             ->take(12);
-
         $category = Category::inRandomOrder()->limit(24)->get();
 
         return view('welcome', compact('page', 'banner', 'second_banner', 'section', 'product', 'product_all', 'category'));

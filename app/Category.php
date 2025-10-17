@@ -14,10 +14,10 @@ class Category extends Model
     protected $table = 'categories';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -31,12 +31,12 @@ class Category extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Product', 'id', 'category');
+        return $this->hasMany(Product::class, 'category', 'id');
     }
 
     public function parent_cat()
     {
-        return $this->hasOne('App\Category', 'id', 'parent');
+        return $this->belongsTo(self::class, 'parent');
     }
 
     public function children()
@@ -48,6 +48,4 @@ class Category extends Model
     {
         return $this->children()->with('grandchildren')->orderBy('name', 'asc');
     }
-
-
 }
