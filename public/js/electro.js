@@ -192,8 +192,8 @@
             navRewind: true,
             items: 1,
             dots: true,
-            nav: false,
-            //navText: ["<i class='icon fa fa-angle-left'></i>", "<i class='icon fa fa-angle-right'></i>"],
+            nav: true,
+            navText: ["<i class='icon fa fa-angle-left'></i>", "<i class='icon fa fa-angle-right'></i>"],
             lazyLoad: true,
             stagePadding: 0,
             responsive: {
