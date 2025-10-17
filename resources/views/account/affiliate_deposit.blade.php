@@ -1,7 +1,8 @@
 @extends('layouts.main')
-@section('title', 'Order')
+@section('title', 'Affiliate Deposit')
 @section('content')
 
+    <?php $segment = Request::segments(); ?>
 
     <section class="banner">
         <div class="container">

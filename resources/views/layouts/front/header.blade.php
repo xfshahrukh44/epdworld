@@ -58,6 +58,11 @@
             <div class="row headerRow">
 
                 <!-- ============================================================= Header Logo ============================================================= -->
+                @if(!$logo)
+                    @php
+                        $logo = DB::table('imagetable')->where('id', 2)->first();
+                    @endphp
+                @endif
                 <div class="header-logo">
                     <a href="{{ route('home') }}" aria-label="logo" class="header-logo-link">
 
