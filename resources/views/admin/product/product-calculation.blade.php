@@ -60,68 +60,91 @@
                     <div class="card-body card-dashboard">
                         <div class="row">
                             <div class="col-md-8">
-                                {{-- Editable fields form (moved from header) --}}
                                 <form method="post" action="{{ route('product.calculation.save') }}">
                                     @csrf
                                     <div class="form-group">
                                         <label for="markup_percent">Markup %</label>
                                         <input type="number" name="markup_percent" id="markup_percent" step="0.01" min="0"
-                                            class="form-control" value="{{ old('markup_percent', $cfg['markup_percent'] ?? 100) }}">
-                                        <small class="form-text text-muted">Percentage markup applied to the base product price (default 100%).</small>
+                                            class="form-control"
+                                            value="{{ old('markup_percent', $cfg['markup_percent'] ?? 100) }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="affiliate_percent">Affiliate Commission %</label>
-                                        <input type="number" name="affiliate_percent" id="affiliate_percent" step="0.01" min="0"
-                                            class="form-control" value="{{ old('affiliate_percent', $cfg['affiliate_percent'] ?? 30) }}">
-                                        <small class="form-text text-muted">Percent subtracted as affiliate commission (default 30%). This is calculated from the base price as in the model.</small>
+                                        <input type="number" name="affiliate_percent" id="affiliate_percent" step="0.01"
+                                            min="0" class="form-control"
+                                            value="{{ old('affiliate_percent', $cfg['affiliate_percent'] ?? 30) }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="tax_percent">Sales Tax %</label>
                                         <input type="number" name="tax_percent" id="tax_percent" step="0.01" min="0"
                                             class="form-control" value="{{ old('tax_percent', $cfg['tax_percent'] ?? 6) }}">
-                                        <small class="form-text text-muted">Sales tax applied after commission (default 6%).</small>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="shipping_percent">Shipping %</label>
-                                        <input type="number" name="shipping_percent" id="shipping_percent" step="0.01" min="0"
-                                            class="form-control" value="{{ old('shipping_percent', $cfg['shipping_percent'] ?? 30) }}">
-                                        <small class="form-text text-muted">Shipping percent added to the post-tax price (default 30%).</small>
+                                        <input type="number" name="shipping_percent" id="shipping_percent" step="0.01"
+                                            min="0" class="form-control"
+                                            value="{{ old('shipping_percent', $cfg['shipping_percent'] ?? 30) }}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="processing_percent">Processing Fee %</label>
-                                        <input type="number" name="processing_percent" id="processing_percent" step="0.01" min="0"
-                                            class="form-control" value="{{ old('processing_percent', $cfg['processing_percent'] ?? 5) }}">
-                                        <small class="form-text text-muted">Payment processing percent added to the price with shipping (default 5%).</small>
+                                        <label for="processing_percent">Payment Processing Fee %</label>
+                                        <input type="number" name="processing_percent" id="processing_percent" step="0.01"
+                                            min="0" class="form-control"
+                                            value="{{ old('processing_percent', $cfg['processing_percent'] ?? 5) }}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="maintenance_percent">Maintenance/Admin %</label>
-                                        <input type="number" name="maintenance_percent" id="maintenance_percent" step="0.01" min="0"
-                                            class="form-control" value="{{ old('maintenance_percent', $cfg['maintenance_percent'] ?? 35) }}">
-                                        <small class="form-text text-muted">Maintenance/admin percent added at the end (default 35%).</small>
+                                        <label for="maintenance_percent">Maintenance/Administrative %</label>
+                                        <input type="number" name="maintenance_percent" id="maintenance_percent" step="0.01"
+                                            min="0" class="form-control"
+                                            value="{{ old('maintenance_percent', $cfg['maintenance_percent'] ?? 35) }}">
                                     </div>
 
-                                    <button class="btn btn-warning" type="submit"><i class="la la-check-circle"></i> Save</button>
+                                    <button class="btn btn-warning" type="submit"><i class="la la-check-circle"></i>
+                                        Save</button>
                                 </form>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="border rounded p-3 bg-light">
-                                    <h6 class="mb-2">Field definitions</h6>
-                                    <ul class="list-unstyled small">
-                                        <li><strong>Markup %</strong><br>How much to markup base price.</li>
-                                        <li class="mt-2"><strong>Affiliate Commission %</strong><br>Percent taken as affiliate commission.</li>
-                                        <li class="mt-2"><strong>Sales Tax %</strong><br>Percent sales tax applied after commission.</li>
-                                        <li class="mt-2"><strong>Shipping %</strong><br>Percent added for shipping.</li>
-                                        <li class="mt-2"><strong>Processing Fee %</strong><br>Payment processing percent.</li>
-                                        <li class="mt-2"><strong>Maintenance/Admin %</strong><br>Final admin/maintenance percent.</li>
-                                        {{-- VIP/global increment removed; only calculation fields remain --}}
+                                    <ul class="list-unstyled small mb-0">
+                                        <li class="mb-2">
+                                            <strong>Markup %</strong><br>
+                                            The percentage added to the base price to determine the product’s selling price.
+                                        </li>
+
+                                        <li class="mb-2">
+                                            <strong>Affiliate Commission %</strong><br>
+                                            The percentage of profit allocated to affiliates for promoting or selling the
+                                            product.
+                                        </li>
+
+                                        <li class="mb-2">
+                                            <strong>Sales Tax %</strong><br>
+                                            The percentage of tax applied on the total price after commissions and markups.
+                                        </li>
+
+                                        <li class="mb-2">
+                                            <strong>Shipping %</strong><br>
+                                            The percentage added to cover shipping and handling costs.
+                                        </li>
+
+                                        <li class="mb-2">
+                                            <strong>Processing Fee %</strong><br>
+                                            The percentage charged for payment gateway or transaction processing.
+                                        </li>
+
+                                        <li class="mb-0">
+                                            <strong>Maintenance / Admin %</strong><br>
+                                            The percentage added for administrative, maintenance, or operational overhead
+                                            costs.
+                                        </li>
                                     </ul>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -134,7 +157,7 @@
 @push('js')
     <script src="{{ asset('plugins/components/datatables/jquery.dataTables.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#productTable').DataTable({
                 pageLength: 10,
                 ordering: false
