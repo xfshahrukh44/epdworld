@@ -110,6 +110,14 @@
                                     data-profit-margin="{{ App\Http\Traits\HelperTrait::returnFlag(1974) }}"
                                     data-shipping="{{ App\Http\Traits\HelperTrait::returnFlag(1973) }}"
                                     data-stripe-fee="{{ App\Http\Traits\HelperTrait::returnFlag(1975) }}">
+                                {{-- Calculation config (from admin - session) - used by frontend JS --}}
+                                {{-- Calculation config from admin (stored in session) - used by frontend JS --}}
+                                <input type="hidden" id="calc-markup" value="{{ session('calc.markup_percent', 100) }}">
+                                <input type="hidden" id="calc-affiliate" value="{{ session('calc.affiliate_percent', 30) }}">
+                                <input type="hidden" id="calc-tax" value="{{ session('calc.tax_percent', 6) }}">
+                                <input type="hidden" id="calc-shipping" value="{{ session('calc.shipping_percent', 30) }}">
+                                <input type="hidden" id="calc-processing" value="{{ session('calc.processing_percent', 5) }}">
+                                <input type="hidden" id="calc-maintenance" value="{{ session('calc.maintenance_percent', 35) }}">
 
                                 @php
                                     $formattedVariations = $variations->map(function ($variation) {
@@ -1021,6 +1029,14 @@
         let profitMargin = parseFloat(pricingFlags.data('profit-margin'));
         let shipping = parseFloat(pricingFlags.data('shipping'));
         let stripeFee = parseFloat(pricingFlags.data('stripe-fee'));
+    // Calculation config (from admin session) - use these instead of hardcoded values
+        let cfg_markup = parseFloat($('#calc-markup').val()) || 100;
+        let cfg_affiliate = parseFloat($('#calc-affiliate').val()) || 30;
+        let cfg_tax = parseFloat($('#calc-tax').val()) || 6;
+        let cfg_shipping = parseFloat($('#calc-shipping').val()) || 30;
+        let cfg_processing = parseFloat($('#calc-processing').val()) || 5;
+        let cfg_maintenance = parseFloat($('#calc-maintenance').val()) || 35;
+
         let variations = JSON.parse($('#variation-data').val());
         let basePrice = parseFloat('{{ $product_detail->price }}');
         let selectedAttributes = {};
@@ -1155,27 +1171,29 @@
 
         // Pricing function
         function calculateFinalPrice(basePrice) {
-            // Step 1: Add 100% Markup
-            let priceWithProfit = basePrice + (basePrice * 1.00);
+            // Step 1: Markup (configurable)
+            let priceWithProfit = basePrice + (basePrice * (cfg_markup / 100));
 
-            // Step 2: Subtract 30% Affiliate Commission
-            let affiliateCommission = (basePrice * 0.30);
+            // Step 2: Subtract affiliate commission (configurable)
+            let affiliateCommission = (basePrice * (cfg_affiliate / 100));
             let afterCommission = priceWithProfit - affiliateCommission;
 
-            // Step 3: Add 6% Sales Tax
-            let salesTax = afterCommission * 0.06;
+            // Step 3: Add sales tax (configurable)
+            let salesTax = afterCommission * (cfg_tax / 100);
             let afterSalesTax = afterCommission + salesTax;
 
-            // Step 4: Add 30% Shipping
-            let priceWithShipping = afterSalesTax + (afterSalesTax * 0.30);
+            // Step 4: Add shipping (configurable)
+            let priceWithShipping = afterSalesTax + (afterSalesTax * (cfg_shipping / 100));
 
-            // Step 5: Add 5% Payment Processing Fee
-            let afterProcessing = priceWithShipping + (priceWithShipping * 0.05);
+            // Step 5: Add payment processing fee (configurable)
+            let afterProcessing = priceWithShipping + (priceWithShipping * (cfg_processing / 100));
 
-            // Step 6: Add 35% Maintenance/Admin Fee
-            let finalPrice = afterProcessing + (afterProcessing * 0.35);
+            // Step 6: Add maintenance/admin (configurable)
+            let finalPrice = afterProcessing + (afterProcessing * (cfg_maintenance / 100));
 
-            // Return rounded result (same as before)
+            // No global increment — final price is returned as computed from the six fields
+
+            // Return rounded result
             return Math.round(finalPrice * 100) / 100;
         }
 
