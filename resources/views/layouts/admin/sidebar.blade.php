@@ -89,11 +89,11 @@
                             <span data-i18n="eCommerce">Orders</span>
                         </a>
                     </li>
-                    <!--<li class="{{ (request()->is('admin/product/csvupload') || request()->is('admin/product/csvupload/*')) ? 'active' : '' }}">-->
-                    <!--    <a class="menu-item" href="{{ route('product.csvupload') }}"><i></i>-->
-                    <!--        <span data-i18n="eCommerce">Upload CSV</span>-->
-                    <!--    </a>-->
-                    <!--</li>-->
+                    <li class="{{ (request()->is('admin/product-calculation') || request()->is('admin/product-calculation/*')) ? 'active' : '' }}">
+                        <a class="menu-item" href="{{url('admin/product-calculation')}}"><i></i>
+                            <span data-i18n="eCommerce">Product Calculation</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item">

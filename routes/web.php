@@ -138,6 +138,8 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin', 'prefix' =>
 
 
     Route::resource('product', 'Admin\\ProductController');
+    Route::get('product-calculation', 'Admin\\ProductCalculationController@productCalculation')->name('product.calculation');
+    Route::post('product-calculation', 'Admin\\ProductCalculationController@saveProductCalculation')->name('product.calculation.save');
     Route::get('product/{id}/delete', ['as' => 'product.delete', 'uses' => 'Admin\\ProductController@destroy']);
     Route::get('order/list', ['as' => 'order.list', 'uses' => 'Admin\\ProductController@orderList']);
     Route::get('order/detail/{id}', ['as' => 'order.list.detail', 'uses' => 'Admin\\ProductController@orderListDetail']);
