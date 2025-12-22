@@ -25,7 +25,9 @@ use App\Models\Productreview;
 use App\Http\Traits\HelperTrait;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Section;
 use Illuminate\Contracts\Session\Session as SessionSession;
+
 
 class ProductController extends Controller
 {
@@ -116,7 +118,7 @@ class ProductController extends Controller
 
 	public function saveCart(Request $request)
 	{
-        // dd($request->all());
+		// dd($request->all());
 		$var_item = $_POST['variation'];
 
 		$result = array();
@@ -158,18 +160,18 @@ class ProductController extends Controller
 			$cart[$cartId]['qty'] = $qty;
 			$cart[$cartId]['variation_price'] = 0;
 
-            foreach ($var_item as $key => $val) {
-                $data = ProductAttribute::where('product_id', $_POST['product_id'])->first();
-                $get_att = Attributes::where('id', $key)->first();
-                $get_att_val = AttributeValue::where('id', $val)->first();
+			foreach ($var_item as $key => $val) {
+				$data = ProductAttribute::where('product_id', $_POST['product_id'])->first();
+				$get_att = Attributes::where('id', $key)->first();
+				$get_att_val = AttributeValue::where('id', $val)->first();
 
-                $cart[$cartId]['variation'][] = [
-                    'product_att_id' => $data->id,
-                    'attribute' => $get_att->name,
-                    'attribute_val' => $get_att_val->value,
-                    'attribute_image' => $data->image,
-                ];
-            }
+				$cart[$cartId]['variation'][] = [
+					'product_att_id' => $data->id,
+					'attribute' => $get_att->name,
+					'attribute_val' => $get_att_val->value,
+					'attribute_image' => $data->image,
+				];
+			}
 
 			// foreach ($var_item as $key => $value) {
 
@@ -297,13 +299,12 @@ class ProductController extends Controller
 		if ($cat != null && $cat !== '0') {
 
 			$shops = $shops->where('category', $cat);
-
 		}
 
 
 		// dd($shops);
 		// if(!$shops->isEmpty()){
-//            $shops = $shops->where('price', '!=', 10.00)->orderByDesc('id')->paginate(12);
+		//            $shops = $shops->where('price', '!=', 10.00)->orderByDesc('id')->paginate(12);
 		$shops = $shops->orderByDesc('id')->paginate(12);
 		// }
 
@@ -332,66 +333,66 @@ class ProductController extends Controller
 		$vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
 		$exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
 		$reviews = Productreview::where('product_id', $product_detail->id)->get();
-        // $variations = \App\ProductAttribute::with('variationValues')->where('product_id', $product_detail->id)
-        //     ->get();
+		// $variations = \App\ProductAttribute::with('variationValues')->where('product_id', $product_detail->id)
+		//     ->get();
 
-        // Get all variations of this product
-        $variations = \App\ProductAttribute::with('variationValues.attribute', 'variationValues.attributeValue')
-            ->where('product_id', $product_detail->id)
-            ->get();
+		// Get all variations of this product
+		$variations = \App\ProductAttribute::with('variationValues.attribute', 'variationValues.attributeValue')
+			->where('product_id', $product_detail->id)
+			->get();
 
-        // Extract all used attributes from variations
-        $usedAttributeIds = [];
-        $usedAttributeValueIds = [];
+		// Extract all used attributes from variations
+		$usedAttributeIds = [];
+		$usedAttributeValueIds = [];
 
-        foreach ($variations as $variation) {
-            foreach ($variation->variationValues as $vValue) {
-                $usedAttributeIds[] = $vValue->attribute_id;
-                $usedAttributeValueIds[] = $vValue->attribute_value_id;
-            }
-        }
+		foreach ($variations as $variation) {
+			foreach ($variation->variationValues as $vValue) {
+				$usedAttributeIds[] = $vValue->attribute_id;
+				$usedAttributeValueIds[] = $vValue->attribute_value_id;
+			}
+		}
 
-        $usedAttributeIds = array_unique($usedAttributeIds);
-        $usedAttributeValueIds = array_unique($usedAttributeValueIds);
+		$usedAttributeIds = array_unique($usedAttributeIds);
+		$usedAttributeValueIds = array_unique($usedAttributeValueIds);
 
-        // Get only the attributes that are used in variations
-        $attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
-            $query->whereIn('id', $usedAttributeValueIds);
-        }])->whereIn('id', $usedAttributeIds)->get();
+		// Get only the attributes that are used in variations
+		$attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
+			$query->whereIn('id', $usedAttributeValueIds);
+		}])->whereIn('id', $usedAttributeIds)->get();
 
-        // Get all product attributes at once to reduce queries
-        $productAttributes = \App\ProductAttribute::where('product_id', $product_detail->id)
-            ->with('variationValues')
-            ->get();
+		// Get all product attributes at once to reduce queries
+		$productAttributes = \App\ProductAttribute::where('product_id', $product_detail->id)
+			->with('variationValues')
+			->get();
 
-        // Attach images only to the first attribute's values
-        $firstAttribute = true;
+		// Attach images only to the first attribute's values
+		$firstAttribute = true;
 
-        foreach ($attributes as $attribute) {
-            foreach ($attribute->values as $value) {
+		foreach ($attributes as $attribute) {
+			foreach ($attribute->values as $value) {
 
-                if ($firstAttribute) {
-                    // Find the matching ProductAttribute
-                    $productAttribute = $productAttributes->first(function ($item) use ($attribute, $value) {
-                        return $item->variationValues->contains(function ($v) use ($attribute, $value) {
-                            return $v->attribute_id == $attribute->id && $v->attribute_value_id == $value->id;
-                        });
-                    });
+				if ($firstAttribute) {
+					// Find the matching ProductAttribute
+					$productAttribute = $productAttributes->first(function ($item) use ($attribute, $value) {
+						return $item->variationValues->contains(function ($v) use ($attribute, $value) {
+							return $v->attribute_id == $attribute->id && $v->attribute_value_id == $value->id;
+						});
+					});
 
-                    // Attach image if found
-                    if ($productAttribute) {
-                        $value->image = $productAttribute->image;
-                    } else {
-                        $value->image = null;
-                    }
-                }
-            }
+					// Attach image if found
+					if ($productAttribute) {
+						$value->image = $productAttribute->image;
+					} else {
+						$value->image = null;
+					}
+				}
+			}
 
-            // ✅ After processing the first attribute, we skip image assignment for the rest
-            if ($firstAttribute) {
-                $firstAttribute = false;
-            }
-        }
+			// ✅ After processing the first attribute, we skip image assignment for the rest
+			if ($firstAttribute) {
+				$firstAttribute = false;
+			}
+		}
 
 		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews', 'variations', 'attributes'));
 	}
@@ -413,63 +414,63 @@ class ProductController extends Controller
 		$vendor_pro = DB::table('product_users')->where('product_id', $product_detail->id)->get();
 		$exist = DB::table('product_users')->where('product_id', $product_detail->id)->where('user_id', Auth::user()->id)->first();
 		$reviews = Productreview::where('product_id', $product_detail->id)->get();
-        // Get all variations of this product
-        $variations = \App\ProductAttribute::with('variationValues.attribute', 'variationValues.attributeValue')
-            ->where('product_id', $product_detail->id)
-            ->get();
+		// Get all variations of this product
+		$variations = \App\ProductAttribute::with('variationValues.attribute', 'variationValues.attributeValue')
+			->where('product_id', $product_detail->id)
+			->get();
 
-        // Extract all used attributes from variations
-        $usedAttributeIds = [];
-        $usedAttributeValueIds = [];
+		// Extract all used attributes from variations
+		$usedAttributeIds = [];
+		$usedAttributeValueIds = [];
 
-        foreach ($variations as $variation) {
-            foreach ($variation->variationValues as $vValue) {
-                $usedAttributeIds[] = $vValue->attribute_id;
-                $usedAttributeValueIds[] = $vValue->attribute_value_id;
-            }
-        }
+		foreach ($variations as $variation) {
+			foreach ($variation->variationValues as $vValue) {
+				$usedAttributeIds[] = $vValue->attribute_id;
+				$usedAttributeValueIds[] = $vValue->attribute_value_id;
+			}
+		}
 
-        $usedAttributeIds = array_unique($usedAttributeIds);
-        $usedAttributeValueIds = array_unique($usedAttributeValueIds);
+		$usedAttributeIds = array_unique($usedAttributeIds);
+		$usedAttributeValueIds = array_unique($usedAttributeValueIds);
 
-        // Get only the attributes that are used in variations
-        $attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
-            $query->whereIn('id', $usedAttributeValueIds);
-        }])->whereIn('id', $usedAttributeIds)->get();
+		// Get only the attributes that are used in variations
+		$attributes = \App\Attributes::with(['values' => function ($query) use ($usedAttributeValueIds) {
+			$query->whereIn('id', $usedAttributeValueIds);
+		}])->whereIn('id', $usedAttributeIds)->get();
 
-        // Get all product attributes at once to reduce queries
-        $productAttributes = \App\ProductAttribute::where('product_id', $product_detail->id)
-            ->with('variationValues')
-            ->get();
+		// Get all product attributes at once to reduce queries
+		$productAttributes = \App\ProductAttribute::where('product_id', $product_detail->id)
+			->with('variationValues')
+			->get();
 
-        // Attach images only to the first attribute's values
-        $firstAttribute = true;
+		// Attach images only to the first attribute's values
+		$firstAttribute = true;
 
-        foreach ($attributes as $attribute) {
-            foreach ($attribute->values as $value) {
+		foreach ($attributes as $attribute) {
+			foreach ($attribute->values as $value) {
 
-                if ($firstAttribute) {
-                    // Find the matching ProductAttribute
-                    $productAttribute = $productAttributes->first(function ($item) use ($attribute, $value) {
-                        return $item->variationValues->contains(function ($v) use ($attribute, $value) {
-                            return $v->attribute_id == $attribute->id && $v->attribute_value_id == $value->id;
-                        });
-                    });
+				if ($firstAttribute) {
+					// Find the matching ProductAttribute
+					$productAttribute = $productAttributes->first(function ($item) use ($attribute, $value) {
+						return $item->variationValues->contains(function ($v) use ($attribute, $value) {
+							return $v->attribute_id == $attribute->id && $v->attribute_value_id == $value->id;
+						});
+					});
 
-                    // Attach image if found
-                    if ($productAttribute) {
-                        $value->image = $productAttribute->image;
-                    } else {
-                        $value->image = null;
-                    }
-                }
-            }
+					// Attach image if found
+					if ($productAttribute) {
+						$value->image = $productAttribute->image;
+					} else {
+						$value->image = null;
+					}
+				}
+			}
 
-            // ✅ After processing the first attribute, we skip image assignment for the rest
-            if ($firstAttribute) {
-                $firstAttribute = false;
-            }
-        }
+			// ✅ After processing the first attribute, we skip image assignment for the rest
+			if ($firstAttribute) {
+				$firstAttribute = false;
+			}
+		}
 
 		return view('shop.detail', compact('product_detail', 'shops', 'att_id', 'att_model', 'vendor_pro', 'exist', 'reviews', 'variations', 'attributes'));
 	}
@@ -498,8 +499,7 @@ class ProductController extends Controller
 		$order = orders::where('id', $order_id)->first();
 		$order_products = orders_products::where('orders_id', $order_id)->get();
 
-		return view('account.invoice')->with('title', 'Invoice #' . $order_id)->with(compact('order', 'order_products'))->with('order_id', $order_id);
-		;
+		return view('account.invoice')->with('title', 'Invoice #' . $order_id)->with(compact('order', 'order_products'))->with('order_id', $order_id);;
 	}
 
 	public function checkout()
@@ -616,7 +616,220 @@ class ProductController extends Controller
 		return view('shop.cart', ['messgae' => $messgae, 'cart' => $cart]);
 	}
 
+	public function upsservices(Request $request)
+	{
+		$tax = 0.00;
+		$description = "Domestic Tax"; // Default description
+
+		if ($request->input('country') == 'US') {
+			if ($request->input('postal')) {
+				$ch = curl_init('https://api.api-ninjas.com/v1/salestax?zip_code=' . $request->input('postal'));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, [
+					'X-Api-Key: u9uJPdSpJl4pjoQvputyQg==Xp3H6aBKFpo5Zocj',
+				]);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				$apiResponse = curl_exec($ch);
+				if ($apiResponse === false) {
+					return response()->json(['message' => 'Curl error: ' . curl_error($ch), 'status' => false]);
+				}
+				$apiResponse = json_decode($apiResponse);
+			} else {
+				$ch = curl_init('https://api.api-ninjas.com/v1/zipcode?city=' . $request->input('city') . '&state=' . $request->input('state'));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, [
+					'X-Api-Key: u9uJPdSpJl4pjoQvputyQg==Xp3H6aBKFpo5Zocj',
+				]);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				$apiResponse = curl_exec($ch);
+				if ($apiResponse === false) {
+					return response()->json(['message' => 'Curl error: ' . curl_error($ch), 'status' => false]);
+				}
+				$apiResponse = json_decode($apiResponse);
+
+				$ch = curl_init('https://api.api-ninjas.com/v1/salestax?zip_code=' . $apiResponse[0]->zip_code);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, [
+					'X-Api-Key: u9uJPdSpJl4pjoQvputyQg==Xp3H6aBKFpo5Zocj',
+				]);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				$apiResponse = curl_exec($ch);
+				if ($apiResponse === false) {
+					return response()->json(['message' => 'Curl error: ' . curl_error($ch), 'status' => false]);
+				}
+				$apiResponse = json_decode($apiResponse);
+			}
+
+			$tax = (float) $apiResponse[0]->total_rate * 100;
+		} else {
+			$description = "International Custom Tax";
+		}
+
+		$weight = 1;
+		$cart = Session::get('cart');
+		foreach ($cart as $key => $value) {
+			$proweight = Product::find($value['id'])->weight * $value['qty'];
+			$weight += $proweight;
+		}
+
+		$service = $request->get('shipping_method') ?? '11';
+
+		$clientID = 'TQAtFnYgzZIcGJJGLyXyEMBrDYYV9q30A0duyCVvfrWd4owo';
+		$clientSecret = 'VElikvdTAF4AHDPwQno1HG81sOWSMoUYiBFIWfDOAYAw7uPSy3gVYDsdITZaZyqc';
+
+		// Create a Guzzle client
+		$client = new Client([
+			'base_uri' => 'https://onlinetools.ups.com/',
+			'timeout' => 5.0,
+		]);
+
+		try {
+			$response = $client->request('POST', 'security/v1/oauth/token', [
+				'headers' => [
+					'Content-Type' => 'application/x-www-form-urlencoded',
+				],
+				'auth' => [
+					$clientID,
+					$clientSecret
+				],
+				'form_params' => [
+					'grant_type' => 'client_credentials'
+				],
+			]);
+
+			$body = json_decode($response->getBody(), true);
+			// return $body;
+			$accessToken = $body['access_token'];
+		} catch (\Exception $e) {
+			// Handle the error accordingly
+			return response()->json(['error' => 'Failed to retrieve access token: ' . $e->getMessage()], 500);
+		}
+
+		// Use the access token to make an API request to the UPS Rating API
+		try {
+			$response = $client->request('POST', 'api/rating/v2403/Rate', [
+				'headers' => [
+					'Content-Type' => 'application/json',
+					'Authorization' => "Bearer $accessToken",
+				],
+				'json' => [
+					"RateRequest" => [
+						"Request" => [
+							"SubVersion" => "1703",
+							"TransactionReference" => ["CustomerContext" => " "],
+						],
+						"Shipment" => [
+							"ShipmentRatingOptions" => ["UserLevelDiscountIndicator" => "TRUE"],
+							"Shipper" => [
+								"Name" => "Justine Siragusa",
+								"ShipperNumber" => "367009",
+								"Address" => [
+									"AddressLine" => "4803 95th St N, St. Petersburg",
+									"City" => "St. Petersburg",
+									"StateProvinceCode" => "FL",
+									"PostalCode" => "33708",
+									"CountryCode" => "US",
+
+								],
+							],
+							"ShipTo" => [
+								"Name" => $request->input('first_name') . ' ' . $request->input('last_name'),
+								"Address" => [
+									"AddressLine" => $request->input('address'),
+									"City" => $request->input('city'),
+									"StateProvinceCode" => $request->input('state'),
+									"PostalCode" => $request->input('postal'),
+									"CountryCode" => $request->input('country'),
+								],
+							],
+							"ShipFrom" => [
+								"Name" => "Justine Siragusa",
+								"ShipperNumber" => "367009",
+								"Address" => [
+									"AddressLine" => "4803 95th St N, St. Petersburg",
+									"City" => "St. Petersburg",
+									"StateProvinceCode" => "FL",
+									"PostalCode" => "33708",
+									"CountryCode" => "US",
+								],
+							],
+							"Service" => ["Code" => $service],
+							"ShipmentTotalWeight" => [
+								"UnitOfMeasurement" => [
+									"Code" => "LBS"
+								],
+								"Weight" => (intval($weight) < 1) ? "1" : ((string) $weight),
+							],
+							"Package" => [
+								"PackagingType" => ["Code" => "02", "Description" => "Package"],
+								"Dimensions" => [
+									"UnitOfMeasurement" => ["Code" => "IN"],
+									"Length" => "10",
+									"Width" => "7",
+									"Height" => "5",
+								],
+								"PackageWeight" => [
+									"UnitOfMeasurement" => ["Code" => "LBS"],
+									"Weight" => number_format((float) $weight, 2, '.', ''),
+								],
+							],
+						],
+					],
+				]
+			]);
 
 
+			$apiResponse = json_decode($response->getBody(), true);
+		} catch (\Exception $e) {
+			// Handle the error accordingly
+			return response()->json(['error' => 'Failed to retrieve rate: ' . $e->getMessage()], 500);
+		}
 
+		if (
+			isset($apiResponse['RateResponse']['Response']['ResponseStatus']['Description']) &&
+			$apiResponse['RateResponse']['Response']['ResponseStatus']['Description'] === 'Success'
+		) {
+
+			// Extract total charges from the response
+			$totalCharges = $apiResponse['RateResponse']['RatedShipment']['TotalCharges']['MonetaryValue'];
+
+			// Assuming $tax and $description are defined earlier in your code
+			return response()->json([
+				'upsamount' => $totalCharges,
+				'tax' => $tax,
+				'description' => $description,
+				'status' => true,
+			]);
+		} elseif (isset($apiResponse['RateResponse']['Response']['Alert'][0]['Description'])) {
+
+			// Extract error message from the response alert
+			$errorMessage = $apiResponse['RateResponse']['Response']['Alert'][0]['Description'];
+
+			return response()->json([
+				'message' => $errorMessage,
+				'status' => false,
+			]);
+		} else {
+			return response()->json([
+				'message' => 'Could not verify your address or UPS service unavailable',
+				'status' => false,
+			]);
+		}
+	}
+
+	public function fedexShipping(Request $request)
+	{
+		$country = $request->country;
+		$address = $request->address;
+		$city = $request->city;
+		$state = $request->state;
+		$postal = $request->postal;
+
+		// Call FedEx API here using your SDK or HTTP request
+		// Example pseudo response:
+		$methods = [
+			['code' => 'FDX01', 'name' => 'FedEx Ground', 'amount' => 10.00],
+			['code' => 'FDX02', 'name' => 'FedEx 2 Day', 'amount' => 20.00],
+			['code' => 'FDX03', 'name' => 'FedEx Overnight', 'amount' => 35.00]
+		];
+
+		return response()->json(['status' => true, 'methods' => $methods]);
+	}
 }
