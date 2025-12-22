@@ -69,7 +69,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                                border-color: #f5c6cb; */
+                                                            border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -208,10 +208,11 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for=""> Address</label>
+                                <label>Address</label>
                                 <input type="text" class="form-control" id="address_input" name="address_line_1"
-                                    placeholder="e.g. Main Street 123" required>
+                                    placeholder="Type any address" required>
                             </div>
+
 
                             <!-- hidden fields (backend + shipping logic ke liye) -->
                             <input type="hidden" id="hidden_address">
@@ -248,7 +249,7 @@
                                 </span>
                             </div>
                             <div class="form-group" id="shipping-placeholder">
-                                <strong>Enter address to see shipping options.</strong>
+                                <strong>Type address to see shipping options</strong>
                             </div>
 
                             <div id="shipping-methods-wrapper" style="display:none;">
@@ -256,8 +257,9 @@
                                 <div id="shipping-methods-container"></div>
                             </div>
 
-                            <input type="hidden" name="shipping" id="shipping_amount_input">
+                            <input type="hidden" name="shipping_amount" id="shipping">
                             <input type="hidden" id="total_price">
+
 
                             <div class="form-group">
                                 <input class="form-control" id="zip_code" name="zip_code" placeholder="Postcode"
@@ -693,132 +695,37 @@
     <script>
         $(document).ready(function() {
 
-            // STATIC address → city/state/postal mapping
-            const addressMap = {
-                "new york 123": {
-                    city: "New York",
-                    state: "NY",
-                    postal: "10001"
-                },
-                "new york 456": {
-                    city: "Los Angeles",
-                    state: "CA",
-                    postal: "90001"
-                },
-                "new york 789": {
-                    city: "Chicago",
-                    state: "IL",
-                    postal: "60007"
-                },
-                "new york 111t": {
-                    city: "Houston",
-                    state: "TX",
-                    postal: "77002"
-                },
-                "new york 222": {
-                    city: "Miami",
-                    state: "FL",
-                    postal: "33101"
-                }
-            };
+            $('#address_input').on('input', function() {
 
-            // STATIC shipping rates
-            const shippingData = {
-                "new york": [{
-                        name: "FedEx Standard",
-                        amount: 10
-                    },
-                    {
-                        name: "FedEx Express",
-                        amount: 20
-                    }
-                ],
-                "los angeles": [{
-                        name: "FedEx Standard",
-                        amount: 12
-                    },
-                    {
-                        name: "FedEx Express",
-                        amount: 22
-                    }
-                ],
-                "chicago": [{
-                        name: "FedEx Standard",
-                        amount: 8
-                    },
-                    {
-                        name: "FedEx Express",
-                        amount: 18
-                    }
-                ],
-                "houston": [{
-                        name: "FedEx Standard",
-                        amount: 11
-                    },
-                    {
-                        name: "FedEx Express",
-                        amount: 21
-                    }
-                ],
-                "miami": [{
-                        name: "FedEx Standard",
-                        amount: 9
-                    },
-                    {
-                        name: "FedEx Express",
-                        amount: 19
-                    }
-                ]
-            };
+                let address = $(this).val().trim();
 
-            // Address typing event
-            $('#address_input').on('blur', function() {
-                let address = $(this).val().toLowerCase().trim();
                 $('#shipping-methods-container').empty();
                 $('#shipping-methods-wrapper').hide();
 
-                if (!address) {
+                if (address.length < 3) {
                     $('#shipping-placeholder').show();
                     return;
                 }
 
-                $('#hidden_address').val(address);
-
-                let matched = null;
-
-                Object.keys(addressMap).forEach(key => {
-                    if (address.includes(key)) {
-                        matched = addressMap[key];
+                // STATIC SHIPPING (ALWAYS SAME)
+                let shippingOptions = [{
+                        name: 'FedEx Standard',
+                        amount: 10
+                    },
+                    {
+                        name: 'FedEx Express',
+                        amount: 20
                     }
-                });
+                ];
 
-                if (!matched) {
-                    $('#shipping-placeholder').text('No shipping available for this address.').show();
-                    return;
-                }
-
-                $('#hidden_city').val(matched.city);
-                $('#hidden_state').val(matched.state);
-                $('#hidden_postal').val(matched.postal);
-
-                loadShipping(matched.city.toLowerCase());
-            });
-
-            function loadShipping(city) {
                 $('#shipping-placeholder').hide();
-                $('#shipping-methods-container').empty();
-
-                if (!shippingData[city]) {
-                    $('#shipping-placeholder').show();
-                    return;
-                }
-
                 $('#shipping-methods-wrapper').show();
 
-                shippingData[city].forEach((m, i) => {
+                shippingOptions.forEach((m, i) => {
                     $('#shipping-methods-container').append(`
-                <div>
-                    <input type="radio" name="shipping_radio"
+                <div class="shipping-option">
+                    <input type="radio"
+                        name="shipping_radio"
                         class="shipping-radio"
                         data-name="${m.name}"
                         data-amount="${m.amount}">
@@ -826,10 +733,11 @@
                 </div>
             `);
                 });
-            }
+            });
 
-            // Shipping select
+            // When shipping selected
             $(document).on('change', '.shipping-radio', function() {
+
                 let amount = parseFloat($(this).data('amount'));
                 let name = $(this).data('name');
 
@@ -846,6 +754,7 @@
 
         });
     </script>
+
 
 
     {{-- <script>
