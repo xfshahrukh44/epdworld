@@ -516,6 +516,7 @@ class OrderController extends Controller
 			'email' => 'required|email|max:255',
 			'phone_no' => 'required|max:20',
 		];
+		// dd( $request->all());
 		$messageArr = [
 			'first_name.required' => 'The first name field is required.',
 		];

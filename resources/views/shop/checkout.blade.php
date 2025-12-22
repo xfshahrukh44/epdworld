@@ -69,7 +69,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                    border-color: #f5c6cb; */
+                                                border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -208,24 +208,17 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label>Address</label>
-                                <select class="form-control" id="address_dropdown" required>
-                                    <option value="">Select Address</option>
-                                    <option value="123 Main Street, New York, NY 10001">123 Main Street, New York</option>
-                                    <option value="456 Market Street, Los Angeles, CA 90001">456 Market Street, Los Angeles
-                                    </option>
-                                    <option value="789 Broadway, Chicago, IL 60007">789 Broadway, Chicago</option>
-                                    <option value="321 King Street, Houston, TX 77002">321 King Street, Houston</option>
-                                    <option value="654 Queen Street, Miami, FL 33101">654 Queen Street, Miami</option>
-                                </select>
+                                <label for=""> Address</label>
+                                <input type="text" class="form-control" id="address_input" name="address_line_1"
+                                    placeholder="e.g. Main Street 123" required>
                             </div>
 
-                            <!-- Hidden inputs to store selected address data for shipping -->
-                            <input type="hidden" name="address_line_1" id="hidden_address">
-                            <input type="hidden" name="city" id="hidden_city">
-                            <input type="hidden" name="state" id="hidden_state">
-                            <input type="hidden" name="postal_code" id="hidden_postal">
-                            <input type="hidden" name="country" id="hidden_country">
+                            <!-- hidden fields (backend + shipping logic ke liye) -->
+                            <input type="hidden" id="hidden_address">
+                            <input type="hidden" id="hidden_city">
+                            <input type="hidden" id="hidden_state">
+                            <input type="hidden" id="hidden_postal">
+                            <input type="hidden" id="hidden_country" value="US">
                             <div class="form-group">
                                 <input class="form-control right" placeholder="Town / City *" name="city" id="city"
                                     type="text" required>
@@ -255,15 +248,17 @@
                                 </span>
                             </div>
                             <div class="form-group" id="shipping-placeholder">
-                                <strong>Select an address to see shipping options.</strong>
+                                <strong>Enter address to see shipping options.</strong>
                             </div>
+
                             <div id="shipping-methods-wrapper" style="display:none;">
                                 <h5>Shipping Options</h5>
                                 <div id="shipping-methods-container"></div>
                             </div>
-                            <input type="hidden" name="shipping_" id="shipping_method_name">
+
                             <input type="hidden" name="shipping" id="shipping_amount_input">
                             <input type="hidden" id="total_price">
+
                             <div class="form-group">
                                 <input class="form-control" id="zip_code" name="zip_code" placeholder="Postcode"
                                     type="text" value="{{ old('zip_code') }}">
@@ -695,110 +690,163 @@
         }
     </script>
 
-<script>
-$(document).ready(function() {
-    // Address change logic
-    $('#address_dropdown').change(function() {
-        var selected = $(this).val();
+    <script>
+        $(document).ready(function() {
 
-        var data = {
-            "123 Main Street, New York, NY 10001": {address: "123 Main Street", city: "New York", state: "NY", postal: "10001", country: "US"},
-            "456 Market Street, Los Angeles, CA 90001": {address: "456 Market Street", city: "Los Angeles", state: "CA", postal: "90001", country: "US"},
-            "789 Broadway, Chicago, IL 60007": {address: "789 Broadway", city: "Chicago", state: "IL", postal: "60007", country: "US"},
-            "321 King Street, Houston, TX 77002": {address: "321 King Street", city: "Houston", state: "TX", postal: "77002", country: "US"},
-            "654 Queen Street, Miami, FL 33101": {address: "654 Queen Street", city: "Miami", state: "FL", postal: "33101", country: "US"}
-        };
+            // STATIC address → city/state/postal mapping
+            const addressMap = {
+                "new york 123": {
+                    city: "New York",
+                    state: "NY",
+                    postal: "10001"
+                },
+                "new york 456": {
+                    city: "Los Angeles",
+                    state: "CA",
+                    postal: "90001"
+                },
+                "new york 789": {
+                    city: "Chicago",
+                    state: "IL",
+                    postal: "60007"
+                },
+                "new york 111t": {
+                    city: "Houston",
+                    state: "TX",
+                    postal: "77002"
+                },
+                "new york 222": {
+                    city: "Miami",
+                    state: "FL",
+                    postal: "33101"
+                }
+            };
 
-        if (data[selected]) {
-            $('#hidden_address').val(data[selected].address);
-            $('#hidden_city').val(data[selected].city);
-            $('#hidden_state').val(data[selected].state);
-            $('#hidden_postal').val(data[selected].postal);
-            $('#hidden_country').val(data[selected].country);
+            // STATIC shipping rates
+            const shippingData = {
+                "new york": [{
+                        name: "FedEx Standard",
+                        amount: 10
+                    },
+                    {
+                        name: "FedEx Express",
+                        amount: 20
+                    }
+                ],
+                "los angeles": [{
+                        name: "FedEx Standard",
+                        amount: 12
+                    },
+                    {
+                        name: "FedEx Express",
+                        amount: 22
+                    }
+                ],
+                "chicago": [{
+                        name: "FedEx Standard",
+                        amount: 8
+                    },
+                    {
+                        name: "FedEx Express",
+                        amount: 18
+                    }
+                ],
+                "houston": [{
+                        name: "FedEx Standard",
+                        amount: 11
+                    },
+                    {
+                        name: "FedEx Express",
+                        amount: 21
+                    }
+                ],
+                "miami": [{
+                        name: "FedEx Standard",
+                        amount: 9
+                    },
+                    {
+                        name: "FedEx Express",
+                        amount: 19
+                    }
+                ]
+            };
 
-            loadShippingOptions(); // trigger shipping fetch
-        }
-    });
+            // Address typing event
+            $('#address_input').on('blur', function() {
+                let address = $(this).val().toLowerCase().trim();
+                $('#shipping-methods-container').empty();
+                $('#shipping-methods-wrapper').hide();
 
-    function loadShippingOptions() {
-        $('#shipping-placeholder').hide();
-        $('#shipping-methods-wrapper').hide();
-        $('#shipping-methods-container').empty();
+                if (!address) {
+                    $('#shipping-placeholder').show();
+                    return;
+                }
 
-        var country = $('#hidden_country').val();
-        var address = $('#hidden_address').val();
-        var postal = $('#hidden_postal').val();
-        var city = $('#hidden_city').val();
-        var state = $('#hidden_state').val();
+                $('#hidden_address').val(address);
 
-        if (!country || !address || !city || !postal) {
-            toastr.error('Please select a valid address.');
-            $('#shipping-placeholder').show();
-            return;
-        }
+                let matched = null;
 
-        // STATIC shipping options
-        var shippingData = {
-            "123 Main Street, New York, NY 10001": [
-                {code: 'fedex_standard', name: 'FedEx Standard', amount: 10.00},
-                {code: 'fedex_express', name: 'FedEx Express', amount: 20.00}
-            ],
-            "456 Market Street, Los Angeles, CA 90001": [
-                {code: 'fedex_standard', name: 'FedEx Standard', amount: 12.00},
-                {code: 'fedex_express', name: 'FedEx Express', amount: 22.00}
-            ],
-            "789 Broadway, Chicago, IL 60007": [
-                {code: 'fedex_standard', name: 'FedEx Standard', amount: 8.00},
-                {code: 'fedex_express', name: 'FedEx Express', amount: 18.00}
-            ],
-            "321 King Street, Houston, TX 77002": [
-                {code: 'fedex_standard', name: 'FedEx Standard', amount: 11.00},
-                {code: 'fedex_express', name: 'FedEx Express', amount: 21.00}
-            ],
-            "654 Queen Street, Miami, FL 33101": [
-                {code: 'fedex_standard', name: 'FedEx Standard', amount: 9.00},
-                {code: 'fedex_express', name: 'FedEx Express', amount: 19.00}
-            ]
-        };
+                Object.keys(addressMap).forEach(key => {
+                    if (address.includes(key)) {
+                        matched = addressMap[key];
+                    }
+                });
 
-        if (shippingData[address]) {
-            $('#shipping-methods-wrapper').show();
-            shippingData[address].forEach(function(method) {
-                $('#shipping-methods-container').append(`
-                    <div class="shipping-method-option">
-                        <input type="radio" id="shipping-${method.code}" name="shipping_method_radio" 
-                            value="${method.code}" data-rate="${method.amount}" data-method-name="${method.name}" class="shipping-method-radio">
-                        <label for="shipping-${method.code}">${method.name} - $${method.amount}</label>
-                    </div>
-                `);
+                if (!matched) {
+                    $('#shipping-placeholder').text('No shipping available for this address.').show();
+                    return;
+                }
+
+                $('#hidden_city').val(matched.city);
+                $('#hidden_state').val(matched.state);
+                $('#hidden_postal').val(matched.postal);
+
+                loadShipping(matched.city.toLowerCase());
             });
-        } else {
-            $('#shipping-placeholder').text('No shipping options available.').show();
-        }
-    }
 
-    // Update totals and hidden inputs when shipping selected
-    $(document).on('change', '.shipping-method-radio', function() {
-        var shippingRate = parseFloat($(this).data('rate'));
-        var shippingName = $(this).data('method-name');
-        var subtotal = parseFloat("{{ $subtotal ?? 0 }}");
-        var variation = parseFloat("{{ $variation ?? 0 }}");
-        var total = (subtotal + variation + shippingRate).toFixed(2);
+            function loadShipping(city) {
+                $('#shipping-placeholder').hide();
+                $('#shipping-methods-container').empty();
 
-        $('#shipping_method_name').val(shippingName); // hidden input for backend
-        $('#shipping_amount_input').val(shippingRate.toFixed(2)); // hidden input for backend
-        $('#total_price').val(total);
-        $('.span_total').text('$' + total);
-        $('#stripe-submit').text('Pay Now $' + total);
-    });
+                if (!shippingData[city]) {
+                    $('#shipping-placeholder').show();
+                    return;
+                }
 
-    /* 
-    // PAYPAL button and coupon scripts not working
-    // Commented out as per instruction
-    // renderPaypalButton(); 
-    */
-});
-</script>
+                $('#shipping-methods-wrapper').show();
+
+                shippingData[city].forEach((m, i) => {
+                    $('#shipping-methods-container').append(`
+                <div>
+                    <input type="radio" name="shipping_radio"
+                        class="shipping-radio"
+                        data-name="${m.name}"
+                        data-amount="${m.amount}">
+                    ${m.name} - $${m.amount}
+                </div>
+            `);
+                });
+            }
+
+            // Shipping select
+            $(document).on('change', '.shipping-radio', function() {
+                let amount = parseFloat($(this).data('amount'));
+                let name = $(this).data('name');
+
+                $('#shipping_method_name').val(name);
+                $('#shipping_amount_input').val(amount);
+
+                let subtotal = parseFloat("{{ $subtotal ?? 0 }}");
+                let total = (subtotal + amount).toFixed(2);
+
+                $('#total_price').val(total);
+                $('.span_total').text('$' + total);
+                $('#stripe-submit').text('Pay Now $' + total);
+            });
+
+        });
+    </script>
+
 
     {{-- <script>
         $('.btn_apply_coupon').on('click', () => {
@@ -852,7 +900,7 @@ $(document).ready(function() {
         });
     </script> --}}
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             // Static dropdown address change
             $('#address_dropdown').change(function() {
@@ -974,7 +1022,7 @@ $(document).ready(function() {
                 $('#stripe-submit').prop('disabled', false);
             });
         });
-    </script>
+    </script> --}}
 
 
 @endsection
