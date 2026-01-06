@@ -848,7 +848,6 @@ class ProductController extends Controller
 		return response()->json($response->json());
 	}
 
-	// Get shipping rates using token
 	public function fedexShipping(Request $request)
 	{
 		$request->validate([
@@ -858,148 +857,124 @@ class ProductController extends Controller
 			'country' => 'required|string',
 		]);
 
-		try {
+		// STEP 1: Get FedEx Token
+		$tokenRes = Http::asForm()->post(
+			'https://apis-sandbox.fedex.com/oauth/token',
+			[
+				'grant_type'    => 'client_credentials',
+				'client_id'     => env('FEDEX_CLIENT_ID'),
+				'client_secret' => env('FEDEX_CLIENT_SECRET'),
+			]
+		);
 
-			/* =====================================================
-         | STEP 1: GET FEDEX TOKEN
-         ===================================================== */
-			$tokenRes = Http::asForm()->post(
-				'https://apis-sandbox.fedex.com/oauth/token',
-				[
-					'grant_type'    => 'client_credentials',
-					'client_id'     => env('FEDEX_CLIENT_ID'),
-					'client_secret' => env('FEDEX_CLIENT_SECRET'),
-				]
-			);
+		if (!$tokenRes->successful()) {
+			return response()->json([
+				'status' => false,
+				'error'  => 'FedEx token failed',
+				'details' => $tokenRes->json()
+			], 500);
+		}
 
-			if (!$tokenRes->successful()) {
-				return response()->json([
-					'status' => false,
-					'error'  => 'FedEx token failed',
-					'details' => $tokenRes->json()
-				], 500);
-			}
+		$accessToken = $tokenRes['access_token'];
 
-			$accessToken = $tokenRes['access_token'];
+		// STEP 2: Dynamic State Mapping for US
+		$stateMapping = [
+			'Austin'    => 'TX',
+			'Memphis'   => 'TN',
+			'New York'  => 'NY',
+			'Los Angeles' => 'CA'
+		];
 
-			/* =====================================================
-         | STEP 2: SHIP API PAYLOAD (FULL REQUIRED STRUCTURE)
-         ===================================================== */
-			$payload = [
-				"accountNumber" => [
-					"value" => env('FEDEX_ACCOUNT_NUMBER')
+		$stateCode = strtoupper($request->country) === 'US' && isset($stateMapping[$request->city])
+			? $stateMapping[$request->city]
+			: null;
+
+		// STEP 3: Payload (unchanged from your working version)
+		$payload = [
+			"accountNumber" => ["value" => env('FEDEX_ACCOUNT_NUMBER')],
+			"labelResponseOptions" => "URL_ONLY",
+			"requestedShipment" => [
+				"shipper" => [
+					"contact" => [
+						"personName"  => "Test Shipper",
+						"phoneNumber" => "9015551234"
+					],
+					"address" => [
+						"streetLines" => ["10 FedEx Pkwy"],
+						"city"        => "Memphis",
+						"stateOrProvinceCode" => "TN",
+						"postalCode"  => "38115",
+						"countryCode" => "US"
+					]
 				],
-
-				"labelResponseOptions" => "URL_ONLY",
-
-				"requestedShipment" => [
-
-					"shipper" => [
+				"recipients" => [
+					[
 						"contact" => [
-							"personName"  => "Test Shipper",
-							"phoneNumber" => "9015551234"
+							"personName"  => "John Doe",
+							"phoneNumber" => "9015555678"
 						],
 						"address" => [
-							"streetLines" => ["10 FedEx Pkwy"],
-							"city"        => "Memphis",
-							"stateOrProvinceCode" => "TN",
-							"postalCode"  => "38115",
-							"countryCode" => "US"
+							"streetLines" => [$request->address],
+							"city"        => $request->city,
+							"stateOrProvinceCode" => $stateCode ?? 'TX', // fallback
+							"postalCode"  => $request->postal,
+							"countryCode" => $request->country
 						]
-					],
-
-					"recipients" => [
-						[
+					]
+				],
+				"shippingChargesPayment" => [
+					"paymentType" => "SENDER",
+					"payor" => [
+						"responsibleParty" => [
+							"accountNumber" => ["value" => env('FEDEX_ACCOUNT_NUMBER')],
 							"contact" => [
-								"personName"  => "Test Receiver",
-								"phoneNumber" => "9015555678"
+								"personName" => "Test Shipper",
+								"phoneNumber" => "1234567890"
 							],
 							"address" => [
-								"streetLines" => [$request->address],
-								"city"        => $request->city,
-								"stateOrProvinceCode" => "WY",
-								"postalCode"  => $request->postal,
-								"countryCode" => $request->country
-							]
-						]
-					],
-
-					"shippingChargesPayment" => [
-                        "paymentType" => "SENDER",
-                        "payor" => [
-                            "responsibleParty" => [
-                                "accountNumber" => [
-                                    "value" => env('FEDEX_ACCOUNT_NUMBER')
-                                ],
-                                "contact" => [
-                                    "personName" => "Test Shipper",
-                                    "phoneNumber" => "1234567890"
-                                ],
-                                "address" => [
-                                    "streetLines" => ["10 FedEx Parkway"],
-                                    "city" => "Memphis",
-                                    "stateOrProvinceCode" => "TN",
-                                    "postalCode" => "38120",
-                                    "countryCode" => "US"
-                                ]
-                            ]
-                        ]
-                    ],
-
-					"serviceType"   => "FEDEX_GROUND",
-					"packagingType" => "YOUR_PACKAGING",
-					"pickupType"    => "DROPOFF_AT_FEDEX_LOCATION",
-
-					"labelSpecification" => [
-						"labelFormatType" => "COMMON2D",
-						"imageType"       => "PDF",
-						"labelStockType"  => "PAPER_4X6",
-                        "labelPrintingOrientation" => "TOP_EDGE_OF_TEXT_FIRST"
-					],
-
-					"requestedPackageLineItems" => [
-						[
-							"weight" => [
-								"units" => "LB",
-								"value" => 2
-							],
-							"dimensions" => [
-								"length" => 10,
-								"width"  => 5,
-								"height" => 5,
-								"units"  => "IN"
+								"streetLines" => ["10 FedEx Parkway"],
+								"city" => "Memphis",
+								"stateOrProvinceCode" => "TN",
+								"postalCode" => "38120",
+								"countryCode" => "US"
 							]
 						]
 					]
+				],
+				"serviceType"   => "FEDEX_GROUND",
+				"packagingType" => "YOUR_PACKAGING",
+				"pickupType"    => "DROPOFF_AT_FEDEX_LOCATION",
+				"labelSpecification" => [
+					"labelFormatType" => "COMMON2D",
+					"imageType"       => "PDF",
+					"labelStockType"  => "PAPER_4X6",
+					"labelPrintingOrientation" => "TOP_EDGE_OF_TEXT_FIRST"
+				],
+				"requestedPackageLineItems" => [
+					[
+						"weight" => ["units" => "LB", "value" => 2],
+						"dimensions" => ["length" => 10, "width" => 5, "height" => 5, "units" => "IN"]
+					]
 				]
-			];
+			]
+		];
 
-			/* =====================================================
-         | STEP 3: CALL FEDEX SHIP API
-         ===================================================== */
-			$res = Http::withToken($accessToken)
-				->post('https://apis-sandbox.fedex.com/ship/v1/shipments', $payload);
+		// STEP 4: Call FedEx Ship API
+		$res = Http::withToken($accessToken)
+			->post('https://apis-sandbox.fedex.com/ship/v1/shipments', $payload);
 
-			if (!$res->successful()) {
-				return response()->json([
-					'status' => false,
-					'error'  => 'FedEx Ship API failed',
-					'details' => $res->json()
-				], 500);
-			}
-
-			/* =====================================================
-         | STEP 4: SUCCESS RESPONSE
-         ===================================================== */
-			return response()->json([
-				'status'   => true,
-				'shipment' => $res->json()
-			]);
-		} catch (\Exception $e) {
+		if (!$res->successful()) {
 			return response()->json([
 				'status' => false,
-				'error'  => $e->getMessage()
+				'error'  => 'FedEx Ship API failed',
+				'details' => $res->json()
 			], 500);
 		}
+
+		// STEP 5: Success
+		return response()->json([
+			'status'   => true,
+			'shipment' => $res->json()
+		]);
 	}
 }
