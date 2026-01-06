@@ -917,7 +917,7 @@ class ProductController extends Controller
 							"address" => [
 								"streetLines" => [$request->address],
 								"city"        => $request->city,
-								"stateOrProvinceCode" => "TN",
+								"stateOrProvinceCode" => "WY",
 								"postalCode"  => $request->postal,
 								"countryCode" => $request->country
 							]
@@ -925,8 +925,26 @@ class ProductController extends Controller
 					],
 
 					"shippingChargesPayment" => [
-						"paymentType" => "SENDER"
-					],
+                        "paymentType" => "SENDER",
+                        "payor" => [
+                            "responsibleParty" => [
+                                "accountNumber" => [
+                                    "value" => env('FEDEX_ACCOUNT_NUMBER')
+                                ],
+                                "contact" => [
+                                    "personName" => "Test Shipper",
+                                    "phoneNumber" => "1234567890"
+                                ],
+                                "address" => [
+                                    "streetLines" => ["10 FedEx Parkway"],
+                                    "city" => "Memphis",
+                                    "stateOrProvinceCode" => "TN",
+                                    "postalCode" => "38120",
+                                    "countryCode" => "US"
+                                ]
+                            ]
+                        ]
+                    ],
 
 					"serviceType"   => "FEDEX_GROUND",
 					"packagingType" => "YOUR_PACKAGING",
@@ -935,7 +953,8 @@ class ProductController extends Controller
 					"labelSpecification" => [
 						"labelFormatType" => "COMMON2D",
 						"imageType"       => "PDF",
-						"labelStockType"  => "PAPER_4X6"
+						"labelStockType"  => "PAPER_4X6",
+                        "labelPrintingOrientation" => "TOP_EDGE_OF_TEXT_FIRST"
 					],
 
 					"requestedPackageLineItems" => [
