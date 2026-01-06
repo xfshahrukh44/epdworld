@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css"
         integrity="sha512-wJgJNTBBkLit7ymC6vvzM1EcSWeM9mmOu+1USHaRBbHkm6W9EgM0HY27+UtUaprntaYQJF75rc8gjxllKs5OIQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
     <style>
         .payment-accordion img {
             display: inline-block;
@@ -69,7 +70,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                                                                                            border-color: #f5c6cb; */
+                                                                                                                                                                    border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -274,6 +275,7 @@
                             </div>
 
                             <input type="hidden" name="shipping_amount" id="shipping">
+                            <input type="hidden" name="tracking_number" id="tracking_number">
                             <input type="hidden" id="total_price">
                             <input type="hidden" id="hidden_address">
                             <input type="hidden" id="hidden_city">
@@ -316,12 +318,16 @@
                             $variation += $value['variation_price']; ?>
                         @endforeach
                         <div class="amount-wrapper">
-                            <h2>Item Subtotal <span>${{ number_format($subtotal, 2) }}</span></h2>
-                            <h2>Shipping & Handling <span>Free</span></h2>
+                            <h2>Item Subtotal <span id="subtotal_amount">${{ number_format($subtotal, 2) }}</span></h2>
+                            <h2>Shipping & Handling <span id="shipping_amount_display">Free</span></h2>
                             @php $tax = 0.0; @endphp
-                            <h3> Order Total Amount <span
+                            <h3>Order Total Amount <span id="total_amount"
                                     class="span_total">${{ number_format($subtotal + $tax, 2) }}</span></h3>
                         </div>
+
+                        <!-- Hidden inputs for form submission -->
+                        <input type="hidden" name="shipping_amount" id="shipping" value="0">
+                        <input type="hidden" name="total_price" id="total_price" value="{{ $subtotal + $tax }}">
                     </div>
                     <div id="accordion" class="payment-accordion">
                         <div class="card-body">
@@ -366,11 +372,258 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"
         integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
     <script src="https://www.paypalobjects.com/api/checkout.js?disable-funding=credit"></script>
     <script src="https://js.stripe.com/v3/"></script>
 
 
+
+
     <script>
+        // $(document).on('click', ".btn", function(e){
+        //   $('#order-place').submit();
+        // });
+
+        $('#accordion .btn-link').on('click', function(e) {
+            if (!$(this).hasClass('collapsed')) {
+                e.stopPropagation();
+            }
+            $('#payment_method').val($(this).attr('data-payment'));
+        });
+
+        $('.bttn').on('change', function() {
+            var count = 0;
+            if ($(this).prop("checked") == true) {
+                if ($('#f-name').val() == "") {
+                    $('.fname').text('first name is required field');
+                } else {
+                    $('.fname').text("");
+                    count++;
+                }
+                if ($('#l-name').val() == "") {
+                    $('.lname').text('last name is required field');
+                } else {
+                    $('.lname').text("");
+                    count++;
+                }
+
+                if (count == 2) {
+                    $('#paypal-button-container-popup').show();
+                } else {
+                    $(this).prop("checked", false);
+
+                    $.toast({
+                        heading: 'Alert!',
+                        position: 'bottom-right',
+                        text: 'Please fill the required fields before proceeding to pay',
+                        loaderBg: '#ff6849',
+                        icon: 'error',
+                        hideAfter: 5000,
+                        stack: 6
+                    });
+
+                    return false;
+
+                }
+
+            } else {
+                $('#paypal-button-container-popup').hide();
+                // $('.btn').show();
+            }
+
+            $('input[name="' + this.name + '"]').not(this).prop('checked', false);
+            //$(this).siblings('input[type="checkbox"]').prop('checked', false);
+        });
+
+        const renderPaypalButton = (amount = {{ number_format((float) $subtotal + $tax, 2, '.', '') }}) => {
+            paypal.Button.render({
+                env: 'sandbox', //production
+
+                style: {
+                    label: 'checkout',
+                    size: 'responsive',
+                    shape: 'rect',
+                    color: 'gold',
+                    tagline: false
+                },
+                client: {
+                    sandbox: 'AV06KMdIerC8pd6_i1gQQlyVoIwV8e_1UZaJKj9-aELaeNXIGMbdR32kDDEWS4gRsAis6SRpUVYC9Jmf',
+                    // production:'ARIYLCFJIoObVCUxQjohmqLeFQcHKmQ7haI-4kNxHaSwEEALdWABiLwYbJAwAoHSvdHwKJnnOL3Jlzje',
+                },
+                validate: function(actions) {
+                    actions.disable();
+                    paypalActions = actions;
+                },
+
+                onClick: function(e) {
+                    var errorCount = checkEmptyFileds();
+
+                    if (errorCount == 1) {
+                        $.toast({
+                            heading: 'Alert!',
+                            position: 'bottom-right',
+                            text: 'Please fill the required fields before proceeding to pay',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 5000,
+                            stack: 6
+                        });
+                        paypalActions.disable();
+                    } else {
+                        paypalActions.enable();
+                    }
+                },
+                payment: function(data, actions) {
+                    return actions.payment.create({
+                        payment: {
+                            transactions: [{
+                                {{-- amount: {total: {{number_format(((float)$subtotal),2, '.', '')}}, currency: 'USD'} --}}
+                                amount: {
+                                    total: amount,
+                                    currency: 'USD'
+                                }
+                            }]
+                        }
+                    });
+                },
+                onAuthorize: function(data, actions) {
+                    return actions.payment.execute().then(function() {
+                        // generateNotification('success','Payment Authorized');
+
+                        $.toast({
+                            heading: 'Success!',
+                            position: 'bottom-right',
+                            text: 'Payment Authorized',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 1000,
+                            stack: 6
+                        });
+
+                        var params = {
+                            payment_status: 'Completed',
+                            paymentID: data.paymentID,
+                            payerID: data.payerID
+                        };
+
+                        // console.log(data.paymentID);
+                        // return false;
+                        $('input[name="payment_status"]').val('Completed');
+                        $('input[name="payment_id"]').val(data.paymentID);
+                        $('input[name="payer_id"]').val(data.payerID);
+                        $('input[name="payment_method"]').val('paypal');
+                        $('#order-place').submit();
+                    });
+                },
+                onCancel: function(data, actions) {
+                    var params = {
+                        payment_status: 'Failed',
+                        paymentID: data.paymentID
+                    };
+                    $('input[name="payment_status"]').val('Failed');
+                    $('input[name="payment_id"]').val(data.paymentID);
+                    $('input[name="payer_id"]').val('');
+                    $('input[name="payment_method"]').val('paypal');
+                }
+            }, '#paypal-button-container-popup');
+        }
+        renderPaypalButton();
+
+
+
+        var stripe = Stripe('{{ env('STRIPE_KEY') }}');
+
+        // Create an instance of Elements.
+        var elements = stripe.elements();
+        var style = {
+            base: {
+                color: '#32325d',
+                lineHeight: '18px',
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                    color: '#aab7c4'
+                }
+            },
+            invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a'
+            }
+        };
+        var card = elements.create('card', {
+            style: style
+        });
+        card.mount('#card-element');
+
+        card.addEventListener('change', function(event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                $(displayError).show();
+                displayError.textContent = event.error.message;
+            } else {
+                $(displayError).hide();
+                displayError.textContent = '';
+            }
+        });
+
+        var form = document.getElementById('order-place');
+
+        $('#stripe-submit').click(function() {
+            stripe.createToken(card).then(function(result) {
+                var errorCount = checkEmptyFileds();
+                if ((result.error) || (errorCount == 1)) {
+                    // Inform the user if there was an error.
+                    if (result.error) {
+                        var errorElement = document.getElementById('card-errors');
+                        $(errorElement).show();
+                        errorElement.textContent = result.error.message;
+                    } else {
+                        $.toast({
+                            heading: 'Alert!',
+                            position: 'bottom-right',
+                            text: 'Please fill the required fields before proceeding to pay',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 5000,
+                            stack: 6
+                        });
+                    }
+                } else {
+                    // Send the token to your server.
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+
+        function stripeTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('order-place');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+            form.submit();
+        }
+
+
+        function checkEmptyFileds() {
+            var errorCount = 0;
+            $('form#order-place').find('.form-control').each(function() {
+                if ($(this).prop('required')) {
+                    if (!$(this).val()) {
+                        $(this).parent().find('.invalid-feedback').addClass('d-block');
+                        $(this).parent().find('.invalid-feedback strong').html('Field is Required');
+                        errorCount = 1;
+                    }
+                }
+            });
+            return errorCount;
+        }
+    </script>
+
+    {{-- <script>
         function renderPaypalButton(amount = {{ number_format((float) $subtotal + $tax, 2, '.', '') }}) {
 
             function showToast(message, type = 'error') {
@@ -458,133 +711,126 @@
         $(document).ready(function() {
             renderPaypalButton();
         });
-    </script>
+    </script> --}}
+
 
     <script>
         $(document).ready(function() {
 
-            function fetchShipping() {
-                let address = $('#address_input').val().trim();
-                let city = $('#city').val().trim();
-                let postal = $('#zip_code').val().trim();
-                let country = $('#country').val() || 'US';
-                let token = $('#hidden_fedex_token').val();
+            // Safe fallback for $.toast
+            if (!$.toast) {
+                $.toast = function(opts) {
+                    console.warn('Toast missing:', opts.text);
+                    alert(opts.text);
+                };
+            }
 
-                if (address.length < 5 || city.length < 2 || postal.length < 4 || !token) return;
+            // Function to fetch FedEx shipping
+            function fetchFedexShipping() {
+                let address = $('#address_input').val();
+                let city = $('#city').val();
+                let postal = $('#zip_code').val();
+                let country = $('#country').val();
+                let state = $('#stateOrProvinceCode').val();
 
-                $('#shipping-methods-container').html('Loading shipping...');
+                // If any required field is empty, hide shipping
+                if (!address || !city || !postal || !country) {
+                    $('#shipping-methods-wrapper').hide();
+                    $('#shipping-methods-container').html('');
+                    updateShippingDisplay(0);
+                    return;
+                }
+
+                // Show calculating text while fetching
+                $('#shipping-methods-container').html('Calculating shipping...');
                 $('#shipping-methods-wrapper').show();
 
                 $.ajax({
                     url: "{{ route('fedex.shipping') }}",
-                    type: "POST",
+                    method: "POST",
                     data: {
                         _token: "{{ csrf_token() }}",
                         address,
                         city,
                         postal,
-                        country
+                        country,
+                        state
                     },
                     success: function(res) {
-                        $('#shipping-methods-container').html('');
+                        let shipping = 0;
+                        let tracking = '';
 
-                        if (!res.status || !res.shipment || !res.shipment.output || !res.shipment.output
-                            .transactionShipments) {
-                            $('#shipping-methods-container').html('No shipping available');
-                            return;
-                        }
+                        if (res.status) {
+                            shipping = parseFloat(res.shippingPrice);
+                            tracking = res.tracking_number ?? '';
 
-                        let shipment = res.shipment.output.transactionShipments[0];
-                        if (!shipment || !shipment.completedShipmentDetail || !shipment
-                            .completedShipmentDetail.shipmentRating) {
-                            $('#shipping-methods-container').html('No shipping available');
-                            return;
-                        }
-
-                        // Get total net charge and service name
-                        let rateDetails = shipment.completedShipmentDetail.shipmentRating
-                            .shipmentRateDetails[0];
-                        let amount = rateDetails.totalNetCharge?.amount || 0;
-                        let currency = rateDetails.totalNetCharge?.currency || 'USD';
-                        let serviceName = shipment.serviceName || 'FedEx Shipping';
-
-                        // Render shipping option
-                        $('#shipping-methods-container').append(`
-                    <div>
+                            // Show FedEx option if shipping > 0
+                            $('#shipping-methods-container').html(`
                         <label>
-                            <input type="radio" name="shipping" data-amount="${amount}" checked>
-                            ${serviceName} - ${currency} ${amount.toFixed(2)}
+                            <input type="radio" name="shipping_option" checked>
+                            FedEx Ground - $${shipping.toFixed(2)}
                         </label>
-                    </div>
-                `);
+                    `);
 
-                        // Set default shipping in hidden input
-                        $('#shipping').val(amount);
-
-                        // Update total price immediately
-                        updateTotal(amount);
-                    },
-                    error: function(err) {
-                        console.error("FedEx error: ", err.responseJSON || err);
-                        $('#shipping-methods-container').html('FedEx error');
-                    }
-                });
-            }
-
-            // Update total price
-            function updateTotal(shippingAmount) {
-                let subtotal = parseFloat("{{ $subtotal ?? 0 }}");
-                let tax = parseFloat("{{ $tax ?? 0 }}");
-                let total = (subtotal + tax + parseFloat(shippingAmount || 0)).toFixed(2);
-
-                $('#total_price').val(total);
-                $('.span_total').text('$' + total);
-                $('#stripe-submit').text('Pay Now $' + total);
-            }
-
-            // Typing delay
-            let typingTimer;
-            let doneTypingInterval = 800;
-
-            $('#address_input, #city, #zip_code').on('keyup', function() {
-                clearTimeout(typingTimer);
-                typingTimer = setTimeout(fetchShipping, doneTypingInterval);
-            });
-
-            // Fetch FedEx token when typing address
-            $('#address_input').on('input', function() {
-                let address = $(this).val().trim();
-                if (address.length < 3) return;
-
-                $.ajax({
-                    url: "{{ route('fedex.token') }}",
-                    type: "POST",
-                    data: {
-                        _token: "{{ csrf_token() }}"
-                    },
-                    success: function(res) {
-                        if (res.access_token) {
-                            $('#hidden_fedex_token').val(res.access_token);
-                            fetchShipping(); // fetch shipping after token
                         } else {
-                            console.error("No token returned from FedEx");
+                            // Shipping not available, still show wrapper
+                            $('#shipping-methods-container').html('Shipping not available');
+                            shipping = 0;
                         }
+
+                        // Fill hidden inputs
+                        $('#shipping').val(shipping);
+                        $('#tracking_number').val(tracking);
+
+                        // Update display (Free / $ price)
+                        updateShippingDisplay(shipping);
+
                     },
                     error: function(err) {
-                        console.error("Error fetching FedEx token", err);
+                        console.error('FedEx AJAX error:', err);
+                        $('#shipping-methods-container').html('FedEx Error');
+                        $('#shipping').val(0);
+                        $('#tracking_number').val('');
+                        updateShippingDisplay(0);
                     }
                 });
+            }
+
+            // Update shipping & total display
+            function updateShippingDisplay(shipping) {
+                let subtotal = parseFloat("{{ $subtotal }}");
+                let tax = parseFloat("{{ $tax }}");
+                let total = subtotal + tax + shipping;
+
+                // Show "Free" if shipping 0
+                $('#shipping_amount_display').text(shipping > 0 ? '$' + shipping.toFixed(2) : 'Free');
+
+                // Update total
+                $('#total_amount').text('$' + total.toFixed(2));
+                $('#total_price').val(total.toFixed(2));
+
+                // Update Stripe button
+                $('#stripe-submit').text('Pay $' + total.toFixed(2));
+            }
+
+            // Trigger shipping fetch when user fills form fields
+            $('#address_input, #city, #zip_code, #stateOrProvinceCode').on('keyup change', function() {
+                clearTimeout(window.shipTimer);
+                window.shipTimer = setTimeout(fetchFedexShipping, 700);
             });
 
-            // Update hidden shipping when user selects different option
-            $(document).on('change', 'input[name="shipping"]', function() {
-                let amount = parseFloat($(this).data('amount')) || 0;
-                $('#shipping').val(amount);
-                updateTotal(amount);
-            });
+            // Optional: trigger once if page loads with filled fields
+            if ($('#address_input').val() && $('#city').val() && $('#zip_code').val()) {
+                fetchFedexShipping();
+            }
 
         });
     </script>
+
+
+
+
+
 
 
 

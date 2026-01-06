@@ -516,47 +516,34 @@ class OrderController extends Controller
 			'email' => 'required|email|max:255',
 			'phone_no' => 'required|max:20',
 		];
-		// dd( $request->all());
-		$messageArr = [
-			'first_name.required' => 'The first name field is required.',
-		];
+
+		$messageArr = ['first_name.required' => 'The first name field is required.'];
 
 		$id = 0;
-		if ($request->has('create_account')) {
-			if (empty($request->password)) {
-				$validateArr['password'] = 'min:6|required_with:confirm_password|same:confirm_password';
-				$validateArr['confirm_password'] = 'min:6';
-			} else {
-				$validateArr['email'] = 'required|max:255|email|unique:users';
-				$this->validate($request, $validateArr, $messageArr);
-
-				$pw = Hash::make($request->password);
-				$fullName = $request->first_name . " " . $request->last_name;
-
-				DB::insert("INSERT INTO users(email,name,password) values(?,?,?)", [$request->email, $fullName, $pw]);
-				$user = DB::table('users')->orderBy('id', 'desc')->first();
-				$id = $user->id;
-			}
+		if ($request->has('create_account') && !empty($request->password)) {
+			$validateArr['email'] = 'required|max:255|email|unique:users';
+			$this->validate($request, $validateArr, $messageArr);
+			$pw = Hash::make($request->password);
+			$fullName = $request->first_name . " " . $request->last_name;
+			DB::insert("INSERT INTO users(email,name,password) values(?,?,?)", [$request->email, $fullName, $pw]);
+			$id = DB::table('users')->orderBy('id', 'desc')->first()->id;
 		}
 
 		$this->validate($request, $validateArr, $messageArr);
-
-		if (Auth::check()) {
-			$id = Auth::user()->id;
-		}
+		if (Auth::check()) $id = Auth::user()->id;
 
 		$cart = Session::get('cart', []);
 		$subtotal = 0;
 		$pro = 0;
-		foreach ($cart as $key => $value) {
+		foreach ($cart as $value) {
 			$subtotal += $value['baseprice'] * $value['qty'];
 			$pro = $value['vendor_id'];
 		}
 
-		// Shipping info from request
-		$shippingAmount = $request->input('shipping');
-		// dd($shippingAmount);
+		$shippingAmount = floatval($request->input('shipping_amount') ?? 0);
+		$trackingNumber = $request->input('tracking_number') ?? null;
 
+		// Save order (orders table)
 		$order = new orders();
 		$order->delivery_country = $request->country;
 		$order->country_code = $request->country_code ?? '';
@@ -595,41 +582,46 @@ class OrderController extends Controller
 		} elseif ($request->payment_method == 'cash') {
 			$order->order_status = "succeeded";
 		} elseif ($request->payment_method == 'stripe') {
-			// TEST MODE: bypass Stripe API for now
-			$order->transaction_id = 'TEST123456'; // static demo transaction ID
-			$order->order_status = 'succeeded';   // mark as succeeded
+			$order->transaction_id = 'TEST123456';
+			$order->order_status = 'succeeded';
 		}
 
-
-		// Generate invoice
-		$record = orders::latest()->first();
 		$order->invoice_number = rand(0, 999999999999999);
+		$order->save();
 
-		if ($order->save()) {
-			foreach ($cart as $key => $value) {
-				if (!empty($value['name'])) {
-					$order_products = new orders_products();
-					$order_products->order_products_product_id = $value['id'];
-					$order_products->user_id = $id;
-					$order_products->order_products_name = $value['name'];
-					$order_products->order_products_price = $value['baseprice'];
-					$order_products->orders_id = $order->id;
-					$order_products->order_products_qty = $value['qty'];
-					$order_products->mat_language = $value['mat_language'] ?? '';
-					$order_products->shipping = $shippingAmount;
-					$order_products->order_products_subtotal = $value['baseprice'] * $value['qty'] + ($value['variant_price'] ?? 0);
-					$order_products->seller_id = $value['vendor_id'];
-					$order_products->variants = json_encode($value['variation'] ?? []);
-					$order_products->save();
-				}
+		// Save products (orders_products table) with shipping & tracking
+		foreach ($cart as $value) {
+			if (!empty($value['name'])) {
+				$order_products = new orders_products();
+				$order_products->order_products_product_id = $value['id'];
+				$order_products->user_id = $id;
+				$order_products->order_products_name = $value['name'];
+				$order_products->order_products_price = $value['baseprice'];
+				$order_products->orders_id = $order->id;
+				$order_products->order_products_qty = $value['qty'];
+				$order_products->mat_language = $value['mat_language'] ?? '';
+
+				// ✅ Shipping & tracking per product
+				$order_products->shipping = $shippingAmount;
+				$order_products->tracking_number = $trackingNumber;
+
+				$order_products->order_products_subtotal = $value['baseprice'] * $value['qty'] + ($value['variant_price'] ?? 0);
+				$order_products->seller_id = $value['vendor_id'];
+				$order_products->variants = json_encode($value['variation'] ?? []);
+
+				$order_products->save();
 			}
-
-			Session::forget('cart');
-			Session::flash('message', 'Your Order has been placed Successfully');
-			Session::flash('alert-class', 'alert-success');
-			return redirect('/');
 		}
+
+		Session::forget('cart');
+		Session::flash('message', 'Your Order has been placed Successfully');
+		Session::flash('alert-class', 'alert-success');
+		return redirect('/');
 	}
+
+
+
+
 
 
 	public function payment()

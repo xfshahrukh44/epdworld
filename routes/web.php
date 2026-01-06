@@ -405,7 +405,7 @@ Route::post('shipping', 'ProductController@shipping')->name('shipping');
 Route::post('upsservices', 'ProductController@upsservices')->name('upsservices');
 Route::post('/fedex-shipping', 'ProductController@fedexShipping')->name('fedex.shipping');
 Route::post('/get-fedex-token', 'ProductController@getToken')->name('fedex.token');
-Route::post('/fedex/shipping', 'ProductController@fedexShipping')->name('fedex.shipping');
+Route::any('/fedex/shipping', 'ProductController@fedexShipping')->name('fedex.shipping');
 
 
 /*wishlist*/
