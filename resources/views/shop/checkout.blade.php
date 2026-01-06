@@ -70,7 +70,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                                                                                                                                                    border-color: #f5c6cb; */
+                                                                                                                                                                                                        border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -213,6 +213,7 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Country</label>
                                 <input type="text" name="country" id="country" class="form-control left"
                                     placeholder="Country" value="{{ old('country') ?? 'US' }}">
                                 <span class="invalid-feedback {{ $errors->first('country') ? 'd-block' : '' }}">
@@ -230,23 +231,17 @@
                             </div>
 
                             <!-- STATE/PROVINCE dropdown -->
-                            <div class="form-group" id="state-wrapper">
-                                <select class="form-control" name="stateOrProvinceCode" id="stateOrProvinceCode">
+                            <div class="form-group" id="state-wrapper" style="display:none">
+                                <label>State</label>
+                                <select name="stateOrProvinceCode" id="stateOrProvinceCode" class="form-control">
                                     <option value="">Select State</option>
-                                    <!-- US States dynamically filled by JS -->
                                 </select>
-                                <span
-                                    class="invalid-feedback {{ $errors->first('stateOrProvinceCode') ? 'd-block' : '' }}">
-                                    <strong>{{ $errors->first('stateOrProvinceCode') }}</strong>
-                                </span>
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control right" placeholder="Town / City *" name="city" id="city"
-                                    type="text" required>
-                                <span class="invalid-feedback {{ $errors->first('city') ? 'd-block' : '' }}">
-                                    <strong>{{ $errors->first('city') }}</strong>
-                                </span>
+                                <label>City</label>
+                                <input type="text" placeholder="Town / City *" class=" form-control" id="city"
+                                    name="city" required>
                             </div>
 
                             <div class="form-group">
@@ -285,8 +280,9 @@
                             <input type="hidden" id="hidden_country" value="US">
 
                             <div class="form-group">
-                                <input class="form-control" id="zip_code" name="zip_code" placeholder="Postcode"
-                                    type="text" value="{{ old('zip_code') }}">
+                                <label>ZIP Code</label>
+                                <input type="text" class="form-control" placeholder="Order Note" id="zip_code"
+                                    name="zip_code" required>
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control" id="comment" name="order_notes" placeholder="Order Note" rows="5">{{ old('order_notes') }}</textarea>
@@ -714,36 +710,170 @@
     </script> --}}
 
 
+
+
+
+
+
     <script>
         $(document).ready(function() {
 
-            // Safe fallback for $.toast
-            if (!$.toast) {
-                $.toast = function(opts) {
-                    console.warn('Toast missing:', opts.text);
-                    alert(opts.text);
-                };
+            // --------------------------
+            // Country & US States Setup
+            // --------------------------
+            const countries = {
+                "US": "United States",
+                "CA": "Canada",
+                "GB": "United Kingdom",
+                "AU": "Australia",
+                "PK": "Pakistan"
+            };
+
+            const usStates = {
+                "AL": "Alabama",
+                "AK": "Alaska",
+                "AZ": "Arizona",
+                "AR": "Arkansas",
+                "CA": "California",
+                "CO": "Colorado",
+                "CT": "Connecticut",
+                "DE": "Delaware",
+                "FL": "Florida",
+                "GA": "Georgia",
+                "HI": "Hawaii",
+                "ID": "Idaho",
+                "IL": "Illinois",
+                "IN": "Indiana",
+                "IA": "Iowa",
+                "KS": "Kansas",
+                "KY": "Kentucky",
+                "LA": "Louisiana",
+                "ME": "Maine",
+                "MD": "Maryland",
+                "MA": "Massachusetts",
+                "MI": "Michigan",
+                "MN": "Minnesota",
+                "MS": "Mississippi",
+                "MO": "Missouri",
+                "MT": "Montana",
+                "NE": "Nebraska",
+                "NV": "Nevada",
+                "NH": "New Hampshire",
+                "NJ": "New Jersey",
+                "NM": "New Mexico",
+                "NY": "New York",
+                "NC": "North Carolina",
+                "ND": "North Dakota",
+                "OH": "Ohio",
+                "OK": "Oklahoma",
+                "OR": "Oregon",
+                "PA": "Pennsylvania",
+                "RI": "Rhode Island",
+                "SC": "South Carolina",
+                "SD": "South Dakota",
+                "TN": "Tennessee",
+                "TX": "Texas",
+                "UT": "Utah",
+                "VT": "Vermont",
+                "VA": "Virginia",
+                "WA": "Washington",
+                "WV": "West Virginia",
+                "WI": "Wisconsin",
+                "WY": "Wyoming"
+            };
+
+            // Hide original country input and create dropdown
+            let countrySelect = $('#country');
+            countrySelect.prop('type', 'hidden');
+            let countryDropdown = $(
+                '<select class="form-control left" id="country_select" name="country"></select>');
+            $.each(countries, function(code, name) {
+                let selected = code === (countrySelect.val() || 'US') ? 'selected' : '';
+                countryDropdown.append(`<option value="${code}" ${selected}>${name}</option>`);
+            });
+            countrySelect.after(countryDropdown);
+
+            function populateStates() {
+                let stateSelect = $('#stateOrProvinceCode');
+                stateSelect.html('<option value="">Select State</option>');
+                $.each(usStates, function(code, name) {
+                    stateSelect.append(`<option value="${code}">${name}</option>`);
+                });
             }
 
-            // Function to fetch FedEx shipping
-            function fetchFedexShipping() {
-                let address = $('#address_input').val();
-                let city = $('#city').val();
-                let postal = $('#zip_code').val();
-                let country = $('#country').val();
-                let state = $('#stateOrProvinceCode').val();
+            function toggleStateDropdown() {
+                if ($('#country_select').val() === 'US') {
+                    $('#state-wrapper').show();
+                    populateStates();
+                } else {
+                    $('#state-wrapper').hide();
+                }
+            }
+            toggleStateDropdown();
+            $('#country_select').on('change', toggleStateDropdown);
 
-                // If any required field is empty, hide shipping
-                if (!address || !city || !postal || !country) {
+            // --------------------------
+            // Address Validation
+            // --------------------------
+            function validateAddress() {
+                let address = $('#address_input').val().trim();
+                let words = address.split(/\s+/);
+                if (address === '') {
+                    showAddressError('Address is required');
+                    return false;
+                } else if (words.length > 3) {
+                    showAddressError('Address too long. Max 3 words');
+                    return false;
+                } else {
+                    clearAddressError();
+                    return true;
+                }
+            }
+
+            function showAddressError(msg) {
+                $('#address_input').addClass('is-invalid');
+                $('#address_input').siblings('.invalid-feedback').html(msg).addClass('d-block');
+            }
+
+            function clearAddressError() {
+                $('#address_input').removeClass('is-invalid');
+                $('#address_input').siblings('.invalid-feedback').removeClass('d-block').html('');
+            }
+
+            $('#address_input').on('keyup change', validateAddress);
+
+            // --------------------------
+            // FedEx Error Codes Mapping
+            // --------------------------
+            const fedexErrors = {
+                "RECIPIENTS.ADDRESSSTATEORPROVINCECODE.MISMATCH": "State does not match country. Please check your state.",
+                "RECIPIENTS.POSTALCODE.INVALID": "ZIP/Postal code seems invalid. Please check your ZIP code.",
+                "RECIPIENTS.ADDRESSLINE1.INVALID": "Address seems invalid. Keep it short (max 3 words).",
+                "RECIPIENTS.COUNTRY.INVALID": "Country is invalid. Please select a valid country."
+            };
+
+            // --------------------------
+            // Fetch FedEx Shipping
+            // --------------------------
+            function fetchFedexShipping() {
+                if (!validateAddress()) {
                     $('#shipping-methods-wrapper').hide();
-                    $('#shipping-methods-container').html('');
-                    updateShippingDisplay(0);
                     return;
                 }
 
-                // Show calculating text while fetching
-                $('#shipping-methods-container').html('Calculating shipping...');
+                let address = $('#address_input').val().trim();
+                let city = $('#city').val().trim();
+                let postal = $('#zip_code').val().trim();
+                let country = $('#country_select').val();
+                let state = $('#stateOrProvinceCode').val();
+
+                if (!address || !city || !postal || !country) {
+                    $('#shipping-methods-wrapper').hide();
+                    return;
+                }
+
                 $('#shipping-methods-wrapper').show();
+                $('#shipping-methods-container').html('Calculating shipping...');
 
                 $.ajax({
                     url: "{{ route('fedex.shipping') }}",
@@ -761,160 +891,71 @@
                         let tracking = '';
 
                         if (res.status) {
-                            shipping = parseFloat(res.shippingPrice);
+                            shipping = parseFloat(res.shippingPrice) || 0;
                             tracking = res.tracking_number ?? '';
-
-                            // Show FedEx option if shipping > 0
-                            $('#shipping-methods-container').html(`
-                        <label>
-                            <input type="radio" name="shipping_option" checked>
-                            FedEx Ground - $${shipping.toFixed(2)}
-                        </label>
-                    `);
-
                         } else {
-                            // Shipping not available, still show wrapper
-                            $('#shipping-methods-container').html('Shipping not available');
-                            shipping = 0;
+                            // Show friendly error
+                            let code = res.details?.errors?.[0]?.code || '';
+                            let userMsg = fedexErrors[code] ||
+                                "Unable to calculate shipping. Please check your address.";
+                            $('#shipping-methods-container').html(
+                                `<span style="color:red;">${userMsg}</span>`);
+                            $('#shipping').val(0);
+                            $('#tracking_number').val('');
+                            updateTotal(0);
+                            return;
                         }
 
-                        // Fill hidden inputs
+                        let displayShipping = shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`;
+                        $('#shipping-methods-container').html(`
+                    <label>
+                        <input type="radio" checked>
+                        FedEx Ground - ${displayShipping}
+                    </label>
+                `);
+
                         $('#shipping').val(shipping);
                         $('#tracking_number').val(tracking);
-
-                        // Update display (Free / $ price)
-                        updateShippingDisplay(shipping);
-
+                        updateTotal(shipping);
                     },
-                    error: function(err) {
-                        console.error('FedEx AJAX error:', err);
-                        $('#shipping-methods-container').html('FedEx Error');
+                    error: function(xhr) {
+                        let errMsg = "Unable to calculate shipping. Please check your address.";
+                        $('#shipping-methods-container').html(
+                            `<span style="color:red;">${errMsg}</span>`);
                         $('#shipping').val(0);
                         $('#tracking_number').val('');
-                        updateShippingDisplay(0);
+                        updateTotal(0);
                     }
                 });
             }
 
-            // Update shipping & total display
-            function updateShippingDisplay(shipping) {
+            // --------------------------
+            // Update Order Total
+            // --------------------------
+            function updateTotal(shipping) {
                 let subtotal = parseFloat("{{ $subtotal }}");
                 let tax = parseFloat("{{ $tax }}");
                 let total = subtotal + tax + shipping;
 
-                // Show "Free" if shipping 0
-                $('#shipping_amount_display').text(shipping > 0 ? '$' + shipping.toFixed(2) : 'Free');
+                $('.span_total').text('$' + total.toFixed(2));
 
-                // Update total
-                $('#total_amount').text('$' + total.toFixed(2));
+                let displayShipping = shipping === 0 ? 'Free' : '$' + shipping.toFixed(2);
+                $('.amount-wrapper h2:nth-child(2) span').text(displayShipping);
+
                 $('#total_price').val(total.toFixed(2));
-
-                // Update Stripe button
                 $('#stripe-submit').text('Pay $' + total.toFixed(2));
             }
 
-            // Trigger shipping fetch when user fills form fields
-            $('#address_input, #city, #zip_code, #stateOrProvinceCode').on('keyup change', function() {
-                clearTimeout(window.shipTimer);
-                window.shipTimer = setTimeout(fetchFedexShipping, 700);
-            });
-
-            // Optional: trigger once if page loads with filled fields
-            if ($('#address_input').val() && $('#city').val() && $('#zip_code').val()) {
-                fetchFedexShipping();
-            }
+            // --------------------------
+            // Trigger shipping fetch
+            // --------------------------
+            $('#address_input, #city, #zip_code, #stateOrProvinceCode, #country_select').on('keyup change',
+                function() {
+                    clearTimeout(window.shipTimer);
+                    window.shipTimer = setTimeout(fetchFedexShipping, 700);
+                });
 
         });
-    </script>
-
-
-
-
-
-
-
-
-
-    <script>
-        const usStates = {
-            "AL": "Alabama",
-            "AK": "Alaska",
-            "AZ": "Arizona",
-            "AR": "Arkansas",
-            "CA": "California",
-            "CO": "Colorado",
-            "CT": "Connecticut",
-            "DE": "Delaware",
-            "FL": "Florida",
-            "GA": "Georgia",
-            "HI": "Hawaii",
-            "ID": "Idaho",
-            "IL": "Illinois",
-            "IN": "Indiana",
-            "IA": "Iowa",
-            "KS": "Kansas",
-            "KY": "Kentucky",
-            "LA": "Louisiana",
-            "ME": "Maine",
-            "MD": "Maryland",
-            "MA": "Massachusetts",
-            "MI": "Michigan",
-            "MN": "Minnesota",
-            "MS": "Mississippi",
-            "MO": "Missouri",
-            "MT": "Montana",
-            "NE": "Nebraska",
-            "NV": "Nevada",
-            "NH": "New Hampshire",
-            "NJ": "New Jersey",
-            "NM": "New Mexico",
-            "NY": "New York",
-            "NC": "North Carolina",
-            "ND": "North Dakota",
-            "OH": "Ohio",
-            "OK": "Oklahoma",
-            "OR": "Oregon",
-            "PA": "Pennsylvania",
-            "RI": "Rhode Island",
-            "SC": "South Carolina",
-            "SD": "South Dakota",
-            "TN": "Tennessee",
-            "TX": "Texas",
-            "UT": "Utah",
-            "VT": "Vermont",
-            "VA": "Virginia",
-            "WA": "Washington",
-            "WV": "West Virginia",
-            "WI": "Wisconsin",
-            "WY": "Wyoming"
-        };
-
-        // Populate US states dropdown
-        function populateStates() {
-            let stateSelect = $('#stateOrProvinceCode');
-            stateSelect.html('<option value="">Select State</option>');
-            $.each(usStates, function(code, name) {
-                stateSelect.append(`<option value="${code}">${name}</option>`);
-            });
-        }
-
-        // Show state dropdown if country is US
-        $('#country').on('change keyup', function() {
-            if ($(this).val().toUpperCase() === 'US') {
-                $('#state-wrapper').show();
-                populateStates();
-            } else {
-                $('#state-wrapper').hide();
-            }
-        });
-
-        // Initialize state field on page load if US
-        if ($('#country').val().toUpperCase() === 'US') {
-            $('#state-wrapper').show();
-            populateStates();
-        } else {
-            $('#state-wrapper').hide();
-        }
     </script>
 
 @endsection
