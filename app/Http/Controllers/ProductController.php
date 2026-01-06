@@ -26,6 +26,7 @@ use App\Http\Traits\HelperTrait;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Section;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Contracts\Session\Session as SessionSession;
 
 
@@ -616,220 +617,370 @@ class ProductController extends Controller
 		return view('shop.cart', ['messgae' => $messgae, 'cart' => $cart]);
 	}
 
-	public function upsservices(Request $request)
+	// public function upsservices(Request $request)
+	// {
+	// 	$tax = 0.00;
+	// 	$description = "Domestic Tax"; // Default description
+
+	// 	if ($request->input('country') == 'US') {
+	// 		if ($request->input('postal')) {
+	// 			$ch = curl_init('https://api.api-ninjas.com/v1/salestax?zip_code=' . $request->input('postal'));
+	// 			curl_setopt($ch, CURLOPT_HTTPHEADER, [
+	// 				'X-Api-Key: u9uJPdSpJl4pjoQvputyQg==Xp3H6aBKFpo5Zocj',
+	// 			]);
+	// 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	// 			$apiResponse = curl_exec($ch);
+	// 			if ($apiResponse === false) {
+	// 				return response()->json(['message' => 'Curl error: ' . curl_error($ch), 'status' => false]);
+	// 			}
+	// 			$apiResponse = json_decode($apiResponse);
+	// 		} else {
+	// 			$ch = curl_init('https://api.api-ninjas.com/v1/zipcode?city=' . $request->input('city') . '&state=' . $request->input('state'));
+	// 			curl_setopt($ch, CURLOPT_HTTPHEADER, [
+	// 				'X-Api-Key: u9uJPdSpJl4pjoQvputyQg==Xp3H6aBKFpo5Zocj',
+	// 			]);
+	// 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	// 			$apiResponse = curl_exec($ch);
+	// 			if ($apiResponse === false) {
+	// 				return response()->json(['message' => 'Curl error: ' . curl_error($ch), 'status' => false]);
+	// 			}
+	// 			$apiResponse = json_decode($apiResponse);
+
+	// 			$ch = curl_init('https://api.api-ninjas.com/v1/salestax?zip_code=' . $apiResponse[0]->zip_code);
+	// 			curl_setopt($ch, CURLOPT_HTTPHEADER, [
+	// 				'X-Api-Key: u9uJPdSpJl4pjoQvputyQg==Xp3H6aBKFpo5Zocj',
+	// 			]);
+	// 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	// 			$apiResponse = curl_exec($ch);
+	// 			if ($apiResponse === false) {
+	// 				return response()->json(['message' => 'Curl error: ' . curl_error($ch), 'status' => false]);
+	// 			}
+	// 			$apiResponse = json_decode($apiResponse);
+	// 		}
+
+	// 		$tax = (float) $apiResponse[0]->total_rate * 100;
+	// 	} else {
+	// 		$description = "International Custom Tax";
+	// 	}
+
+	// 	$weight = 1;
+	// 	$cart = Session::get('cart');
+	// 	foreach ($cart as $key => $value) {
+	// 		$proweight = Product::find($value['id'])->weight * $value['qty'];
+	// 		$weight += $proweight;
+	// 	}
+
+	// 	$service = $request->get('shipping_method') ?? '11';
+
+	// 	$clientID = 'TQAtFnYgzZIcGJJGLyXyEMBrDYYV9q30A0duyCVvfrWd4owo';
+	// 	$clientSecret = 'VElikvdTAF4AHDPwQno1HG81sOWSMoUYiBFIWfDOAYAw7uPSy3gVYDsdITZaZyqc';
+
+	// 	// Create a Guzzle client
+	// 	$client = new Client([
+	// 		'base_uri' => 'https://onlinetools.ups.com/',
+	// 		'timeout' => 5.0,
+	// 	]);
+
+	// 	try {
+	// 		$response = $client->request('POST', 'security/v1/oauth/token', [
+	// 			'headers' => [
+	// 				'Content-Type' => 'application/x-www-form-urlencoded',
+	// 			],
+	// 			'auth' => [
+	// 				$clientID,
+	// 				$clientSecret
+	// 			],
+	// 			'form_params' => [
+	// 				'grant_type' => 'client_credentials'
+	// 			],
+	// 		]);
+
+	// 		$body = json_decode($response->getBody(), true);
+	// 		// return $body;
+	// 		$accessToken = $body['access_token'];
+	// 	} catch (\Exception $e) {
+	// 		// Handle the error accordingly
+	// 		return response()->json(['error' => 'Failed to retrieve access token: ' . $e->getMessage()], 500);
+	// 	}
+
+	// 	// Use the access token to make an API request to the UPS Rating API
+	// 	try {
+	// 		$response = $client->request('POST', 'api/rating/v2403/Rate', [
+	// 			'headers' => [
+	// 				'Content-Type' => 'application/json',
+	// 				'Authorization' => "Bearer $accessToken",
+	// 			],
+	// 			'json' => [
+	// 				"RateRequest" => [
+	// 					"Request" => [
+	// 						"SubVersion" => "1703",
+	// 						"TransactionReference" => ["CustomerContext" => " "],
+	// 					],
+	// 					"Shipment" => [
+	// 						"ShipmentRatingOptions" => ["UserLevelDiscountIndicator" => "TRUE"],
+	// 						"Shipper" => [
+	// 							"Name" => "Justine Siragusa",
+	// 							"ShipperNumber" => "367009",
+	// 							"Address" => [
+	// 								"AddressLine" => "4803 95th St N, St. Petersburg",
+	// 								"City" => "St. Petersburg",
+	// 								"StateProvinceCode" => "FL",
+	// 								"PostalCode" => "33708",
+	// 								"CountryCode" => "US",
+
+	// 							],
+	// 						],
+	// 						"ShipTo" => [
+	// 							"Name" => $request->input('first_name') . ' ' . $request->input('last_name'),
+	// 							"Address" => [
+	// 								"AddressLine" => $request->input('address'),
+	// 								"City" => $request->input('city'),
+	// 								"StateProvinceCode" => $request->input('state'),
+	// 								"PostalCode" => $request->input('postal'),
+	// 								"CountryCode" => $request->input('country'),
+	// 							],
+	// 						],
+	// 						"ShipFrom" => [
+	// 							"Name" => "Justine Siragusa",
+	// 							"ShipperNumber" => "367009",
+	// 							"Address" => [
+	// 								"AddressLine" => "4803 95th St N, St. Petersburg",
+	// 								"City" => "St. Petersburg",
+	// 								"StateProvinceCode" => "FL",
+	// 								"PostalCode" => "33708",
+	// 								"CountryCode" => "US",
+	// 							],
+	// 						],
+	// 						"Service" => ["Code" => $service],
+	// 						"ShipmentTotalWeight" => [
+	// 							"UnitOfMeasurement" => [
+	// 								"Code" => "LBS"
+	// 							],
+	// 							"Weight" => (intval($weight) < 1) ? "1" : ((string) $weight),
+	// 						],
+	// 						"Package" => [
+	// 							"PackagingType" => ["Code" => "02", "Description" => "Package"],
+	// 							"Dimensions" => [
+	// 								"UnitOfMeasurement" => ["Code" => "IN"],
+	// 								"Length" => "10",
+	// 								"Width" => "7",
+	// 								"Height" => "5",
+	// 							],
+	// 							"PackageWeight" => [
+	// 								"UnitOfMeasurement" => ["Code" => "LBS"],
+	// 								"Weight" => number_format((float) $weight, 2, '.', ''),
+	// 							],
+	// 						],
+	// 					],
+	// 				],
+	// 			]
+	// 		]);
+
+
+	// 		$apiResponse = json_decode($response->getBody(), true);
+	// 	} catch (\Exception $e) {
+	// 		// Handle the error accordingly
+	// 		return response()->json(['error' => 'Failed to retrieve rate: ' . $e->getMessage()], 500);
+	// 	}
+
+	// 	if (
+	// 		isset($apiResponse['RateResponse']['Response']['ResponseStatus']['Description']) &&
+	// 		$apiResponse['RateResponse']['Response']['ResponseStatus']['Description'] === 'Success'
+	// 	) {
+
+	// 		// Extract total charges from the response
+	// 		$totalCharges = $apiResponse['RateResponse']['RatedShipment']['TotalCharges']['MonetaryValue'];
+
+	// 		// Assuming $tax and $description are defined earlier in your code
+	// 		return response()->json([
+	// 			'upsamount' => $totalCharges,
+	// 			'tax' => $tax,
+	// 			'description' => $description,
+	// 			'status' => true,
+	// 		]);
+	// 	} elseif (isset($apiResponse['RateResponse']['Response']['Alert'][0]['Description'])) {
+
+	// 		// Extract error message from the response alert
+	// 		$errorMessage = $apiResponse['RateResponse']['Response']['Alert'][0]['Description'];
+
+	// 		return response()->json([
+	// 			'message' => $errorMessage,
+	// 			'status' => false,
+	// 		]);
+	// 	} else {
+	// 		return response()->json([
+	// 			'message' => 'Could not verify your address or UPS service unavailable',
+	// 			'status' => false,
+	// 		]);
+	// 	}
+	// }
+
+	// public function fedexShipping(Request $request)
+	// {
+	// 	$country = $request->country;
+	// 	$address = $request->address;
+	// 	$city = $request->city;
+	// 	$state = $request->state;
+	// 	$postal = $request->postal;
+
+	// 	// Call FedEx API here using your SDK or HTTP request
+	// 	// Example pseudo response:
+	// 	$methods = [
+	// 		['code' => 'FDX01', 'name' => 'FedEx Ground', 'amount' => 10.00],
+	// 		['code' => 'FDX02', 'name' => 'FedEx 2 Day', 'amount' => 20.00],
+	// 		['code' => 'FDX03', 'name' => 'FedEx Overnight', 'amount' => 35.00]
+	// 	];
+
+	// 	return response()->json(['status' => true, 'methods' => $methods]);
+	// }
+
+	public function getToken(Request $request)
 	{
-		$tax = 0.00;
-		$description = "Domestic Tax"; // Default description
+		$client_id = env('FEDEX_CLIENT_ID');
+		$client_secret = env('FEDEX_CLIENT_SECRET');
 
-		if ($request->input('country') == 'US') {
-			if ($request->input('postal')) {
-				$ch = curl_init('https://api.api-ninjas.com/v1/salestax?zip_code=' . $request->input('postal'));
-				curl_setopt($ch, CURLOPT_HTTPHEADER, [
-					'X-Api-Key: u9uJPdSpJl4pjoQvputyQg==Xp3H6aBKFpo5Zocj',
-				]);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				$apiResponse = curl_exec($ch);
-				if ($apiResponse === false) {
-					return response()->json(['message' => 'Curl error: ' . curl_error($ch), 'status' => false]);
-				}
-				$apiResponse = json_decode($apiResponse);
-			} else {
-				$ch = curl_init('https://api.api-ninjas.com/v1/zipcode?city=' . $request->input('city') . '&state=' . $request->input('state'));
-				curl_setopt($ch, CURLOPT_HTTPHEADER, [
-					'X-Api-Key: u9uJPdSpJl4pjoQvputyQg==Xp3H6aBKFpo5Zocj',
-				]);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				$apiResponse = curl_exec($ch);
-				if ($apiResponse === false) {
-					return response()->json(['message' => 'Curl error: ' . curl_error($ch), 'status' => false]);
-				}
-				$apiResponse = json_decode($apiResponse);
+		$response = Http::asForm()->post('https://apis-sandbox.fedex.com/oauth/token', [
+			'grant_type' => 'client_credentials',
+			'client_id' => $client_id,
+			'client_secret' => $client_secret,
+		]);
 
-				$ch = curl_init('https://api.api-ninjas.com/v1/salestax?zip_code=' . $apiResponse[0]->zip_code);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, [
-					'X-Api-Key: u9uJPdSpJl4pjoQvputyQg==Xp3H6aBKFpo5Zocj',
-				]);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				$apiResponse = curl_exec($ch);
-				if ($apiResponse === false) {
-					return response()->json(['message' => 'Curl error: ' . curl_error($ch), 'status' => false]);
-				}
-				$apiResponse = json_decode($apiResponse);
-			}
+		return response()->json($response->json());
+	}
 
-			$tax = (float) $apiResponse[0]->total_rate * 100;
-		} else {
-			$description = "International Custom Tax";
-		}
-
-		$weight = 1;
-		$cart = Session::get('cart');
-		foreach ($cart as $key => $value) {
-			$proweight = Product::find($value['id'])->weight * $value['qty'];
-			$weight += $proweight;
-		}
-
-		$service = $request->get('shipping_method') ?? '11';
-
-		$clientID = 'TQAtFnYgzZIcGJJGLyXyEMBrDYYV9q30A0duyCVvfrWd4owo';
-		$clientSecret = 'VElikvdTAF4AHDPwQno1HG81sOWSMoUYiBFIWfDOAYAw7uPSy3gVYDsdITZaZyqc';
-
-		// Create a Guzzle client
-		$client = new Client([
-			'base_uri' => 'https://onlinetools.ups.com/',
-			'timeout' => 5.0,
+	// Get shipping rates using token
+	public function fedexShipping(Request $request)
+	{
+		$request->validate([
+			'address' => 'required|string',
+			'city'    => 'required|string',
+			'postal'  => 'required|string',
+			'country' => 'required|string',
 		]);
 
 		try {
-			$response = $client->request('POST', 'security/v1/oauth/token', [
-				'headers' => [
-					'Content-Type' => 'application/x-www-form-urlencoded',
-				],
-				'auth' => [
-					$clientID,
-					$clientSecret
-				],
-				'form_params' => [
-					'grant_type' => 'client_credentials'
-				],
-			]);
 
-			$body = json_decode($response->getBody(), true);
-			// return $body;
-			$accessToken = $body['access_token'];
-		} catch (\Exception $e) {
-			// Handle the error accordingly
-			return response()->json(['error' => 'Failed to retrieve access token: ' . $e->getMessage()], 500);
-		}
-
-		// Use the access token to make an API request to the UPS Rating API
-		try {
-			$response = $client->request('POST', 'api/rating/v2403/Rate', [
-				'headers' => [
-					'Content-Type' => 'application/json',
-					'Authorization' => "Bearer $accessToken",
-				],
-				'json' => [
-					"RateRequest" => [
-						"Request" => [
-							"SubVersion" => "1703",
-							"TransactionReference" => ["CustomerContext" => " "],
-						],
-						"Shipment" => [
-							"ShipmentRatingOptions" => ["UserLevelDiscountIndicator" => "TRUE"],
-							"Shipper" => [
-								"Name" => "Justine Siragusa",
-								"ShipperNumber" => "367009",
-								"Address" => [
-									"AddressLine" => "4803 95th St N, St. Petersburg",
-									"City" => "St. Petersburg",
-									"StateProvinceCode" => "FL",
-									"PostalCode" => "33708",
-									"CountryCode" => "US",
-
-								],
-							],
-							"ShipTo" => [
-								"Name" => $request->input('first_name') . ' ' . $request->input('last_name'),
-								"Address" => [
-									"AddressLine" => $request->input('address'),
-									"City" => $request->input('city'),
-									"StateProvinceCode" => $request->input('state'),
-									"PostalCode" => $request->input('postal'),
-									"CountryCode" => $request->input('country'),
-								],
-							],
-							"ShipFrom" => [
-								"Name" => "Justine Siragusa",
-								"ShipperNumber" => "367009",
-								"Address" => [
-									"AddressLine" => "4803 95th St N, St. Petersburg",
-									"City" => "St. Petersburg",
-									"StateProvinceCode" => "FL",
-									"PostalCode" => "33708",
-									"CountryCode" => "US",
-								],
-							],
-							"Service" => ["Code" => $service],
-							"ShipmentTotalWeight" => [
-								"UnitOfMeasurement" => [
-									"Code" => "LBS"
-								],
-								"Weight" => (intval($weight) < 1) ? "1" : ((string) $weight),
-							],
-							"Package" => [
-								"PackagingType" => ["Code" => "02", "Description" => "Package"],
-								"Dimensions" => [
-									"UnitOfMeasurement" => ["Code" => "IN"],
-									"Length" => "10",
-									"Width" => "7",
-									"Height" => "5",
-								],
-								"PackageWeight" => [
-									"UnitOfMeasurement" => ["Code" => "LBS"],
-									"Weight" => number_format((float) $weight, 2, '.', ''),
-								],
-							],
-						],
-					],
+			/* =====================================================
+         | STEP 1: GET FEDEX TOKEN
+         ===================================================== */
+			$tokenRes = Http::asForm()->post(
+				'https://apis-sandbox.fedex.com/oauth/token',
+				[
+					'grant_type'    => 'client_credentials',
+					'client_id'     => env('FEDEX_CLIENT_ID'),
+					'client_secret' => env('FEDEX_CLIENT_SECRET'),
 				]
+			);
+
+			if (!$tokenRes->successful()) {
+				return response()->json([
+					'status' => false,
+					'error'  => 'FedEx token failed',
+					'details' => $tokenRes->json()
+				], 500);
+			}
+
+			$accessToken = $tokenRes['access_token'];
+
+			/* =====================================================
+         | STEP 2: SHIP API PAYLOAD (FULL REQUIRED STRUCTURE)
+         ===================================================== */
+			$payload = [
+				"accountNumber" => [
+					"value" => env('FEDEX_ACCOUNT_NUMBER')
+				],
+
+				"labelResponseOptions" => "URL_ONLY",
+
+				"requestedShipment" => [
+
+					"shipper" => [
+						"contact" => [
+							"personName"  => "Test Shipper",
+							"phoneNumber" => "9015551234"
+						],
+						"address" => [
+							"streetLines" => ["10 FedEx Pkwy"],
+							"city"        => "Memphis",
+							"stateOrProvinceCode" => "TN",
+							"postalCode"  => "38115",
+							"countryCode" => "US"
+						]
+					],
+
+					"recipients" => [
+						[
+							"contact" => [
+								"personName"  => "Test Receiver",
+								"phoneNumber" => "9015555678"
+							],
+							"address" => [
+								"streetLines" => [$request->address],
+								"city"        => $request->city,
+								"stateOrProvinceCode" => "TN",
+								"postalCode"  => $request->postal,
+								"countryCode" => $request->country
+							]
+						]
+					],
+
+					"shippingChargesPayment" => [
+						"paymentType" => "SENDER"
+					],
+
+					"serviceType"   => "FEDEX_GROUND",
+					"packagingType" => "YOUR_PACKAGING",
+					"pickupType"    => "DROPOFF_AT_FEDEX_LOCATION",
+
+					"labelSpecification" => [
+						"labelFormatType" => "COMMON2D",
+						"imageType"       => "PDF",
+						"labelStockType"  => "PAPER_4X6"
+					],
+
+					"requestedPackageLineItems" => [
+						[
+							"weight" => [
+								"units" => "LB",
+								"value" => 2
+							],
+							"dimensions" => [
+								"length" => 10,
+								"width"  => 5,
+								"height" => 5,
+								"units"  => "IN"
+							]
+						]
+					]
+				]
+			];
+
+			/* =====================================================
+         | STEP 3: CALL FEDEX SHIP API
+         ===================================================== */
+			$res = Http::withToken($accessToken)
+				->post('https://apis-sandbox.fedex.com/ship/v1/shipments', $payload);
+
+			if (!$res->successful()) {
+				return response()->json([
+					'status' => false,
+					'error'  => 'FedEx Ship API failed',
+					'details' => $res->json()
+				], 500);
+			}
+
+			/* =====================================================
+         | STEP 4: SUCCESS RESPONSE
+         ===================================================== */
+			return response()->json([
+				'status'   => true,
+				'shipment' => $res->json()
 			]);
-
-
-			$apiResponse = json_decode($response->getBody(), true);
 		} catch (\Exception $e) {
-			// Handle the error accordingly
-			return response()->json(['error' => 'Failed to retrieve rate: ' . $e->getMessage()], 500);
-		}
-
-		if (
-			isset($apiResponse['RateResponse']['Response']['ResponseStatus']['Description']) &&
-			$apiResponse['RateResponse']['Response']['ResponseStatus']['Description'] === 'Success'
-		) {
-
-			// Extract total charges from the response
-			$totalCharges = $apiResponse['RateResponse']['RatedShipment']['TotalCharges']['MonetaryValue'];
-
-			// Assuming $tax and $description are defined earlier in your code
 			return response()->json([
-				'upsamount' => $totalCharges,
-				'tax' => $tax,
-				'description' => $description,
-				'status' => true,
-			]);
-		} elseif (isset($apiResponse['RateResponse']['Response']['Alert'][0]['Description'])) {
-
-			// Extract error message from the response alert
-			$errorMessage = $apiResponse['RateResponse']['Response']['Alert'][0]['Description'];
-
-			return response()->json([
-				'message' => $errorMessage,
 				'status' => false,
-			]);
-		} else {
-			return response()->json([
-				'message' => 'Could not verify your address or UPS service unavailable',
-				'status' => false,
-			]);
+				'error'  => $e->getMessage()
+			], 500);
 		}
-	}
-
-	public function fedexShipping(Request $request)
-	{
-		$country = $request->country;
-		$address = $request->address;
-		$city = $request->city;
-		$state = $request->state;
-		$postal = $request->postal;
-
-		// Call FedEx API here using your SDK or HTTP request
-		// Example pseudo response:
-		$methods = [
-			['code' => 'FDX01', 'name' => 'FedEx Ground', 'amount' => 10.00],
-			['code' => 'FDX02', 'name' => 'FedEx 2 Day', 'amount' => 20.00],
-			['code' => 'FDX03', 'name' => 'FedEx Overnight', 'amount' => 35.00]
-		];
-
-		return response()->json(['status' => true, 'methods' => $methods]);
 	}
 }
