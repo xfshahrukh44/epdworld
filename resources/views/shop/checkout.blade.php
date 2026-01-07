@@ -70,7 +70,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                                                                                                                                                                                            border-color: #f5c6cb; */
+                                                                                                                                                                                                                            border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -213,7 +213,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Country</label>
                                 <input type="text" name="country" id="country" class="form-control left"
                                     placeholder="Country" value="{{ old('country') ?? 'US' }}">
                                 <span class="invalid-feedback {{ $errors->first('country') ? 'd-block' : '' }}">
@@ -221,8 +220,31 @@
                                 </span>
                             </div>
 
+                            <!-- STATE/PROVINCE dropdown -->
+                            <div class="form-group" id="state-wrapper">
+                                <select class="form-control" name="stateOrProvinceCode" id="stateOrProvinceCode">
+                                    <option value="">Select State</option>
+                                    <!-- US States dynamically filled by JS -->
+                                </select>
+                                <span class="invalid-feedback {{ $errors->first('stateOrProvinceCode') ? 'd-block' : '' }}">
+                                    <strong>{{ $errors->first('stateOrProvinceCode') }}</strong>
+                                </span>
+                            </div>
+
                             <div class="form-group">
-                                <label>Address</label>
+                                <input class="form-control right" placeholder="Town / City *" name="city" id="city"
+                                    type="text" required>
+                                <span class="invalid-feedback {{ $errors->first('city') ? 'd-block' : '' }}">
+                                    <strong>{{ $errors->first('city') }}</strong>
+                                </span>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" id="zip_code" name="zip_code" placeholder="Postcode"
+                                    type="text" value="{{ old('zip_code') }}">
+                            </div>
+
+                            <div class="form-group">
                                 <input type="text" class="form-control" id="address_input" name="address_line_1"
                                     placeholder="Type any address" required>
                                 <span class="invalid-feedback {{ $errors->first('address_line_1') ? 'd-block' : '' }}">
@@ -230,19 +252,6 @@
                                 </span>
                             </div>
 
-                            <!-- STATE/PROVINCE dropdown -->
-                            <div class="form-group" id="state-wrapper" style="display:none">
-                                <label>State</label>
-                                <select name="stateOrProvinceCode" id="stateOrProvinceCode" class="form-control">
-                                    <option value="">Select State</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>City</label>
-                                <input type="text" placeholder="Town / City *" class=" form-control" id="city"
-                                    name="city" required>
-                            </div>
 
                             <div class="form-group">
                                 <input class="form-control right" placeholder="Phone *" name="phone_no" type="text"
@@ -279,11 +288,7 @@
                             <input type="hidden" id="hidden_fedex_token" value="">
                             <input type="hidden" id="hidden_country" value="US">
 
-                            <div class="form-group">
-                                <label>ZIP Code</label>
-                                <input type="text" class="form-control" placeholder="Order Note" id="zip_code"
-                                    name="zip_code" required>
-                            </div>
+
                             <div class="form-group">
                                 <textarea class="form-control" id="comment" name="order_notes" placeholder="Order Note" rows="5">{{ old('order_notes') }}</textarea>
                             </div>
@@ -717,11 +722,210 @@
             // Country & US States Setup
             // --------------------------
             const countries = {
-                "US": "United States",
-                "CA": "Canada",
-                "GB": "United Kingdom",
+                "AF": "Afghanistan",
+                "AL": "Albania",
+                "DZ": "Algeria",
+                "AS": "American Samoa",
+                "AD": "Andorra",
+                "AO": "Angola",
+                "AI": "Anguilla",
+                "AQ": "Antarctica",
+                "AG": "Antigua and Barbuda",
+                "AR": "Argentina",
+                "AM": "Armenia",
+                "AW": "Aruba",
                 "AU": "Australia",
-                "PK": "Pakistan"
+                "AT": "Austria",
+                "AZ": "Azerbaijan",
+                "BS": "Bahamas",
+                "BH": "Bahrain",
+                "BD": "Bangladesh",
+                "BB": "Barbados",
+                "BY": "Belarus",
+                "BE": "Belgium",
+                "BZ": "Belize",
+                "BJ": "Benin",
+                "BM": "Bermuda",
+                "BT": "Bhutan",
+                "BO": "Bolivia",
+                "BA": "Bosnia and Herzegovina",
+                "BW": "Botswana",
+                "BR": "Brazil",
+                "BN": "Brunei",
+                "BG": "Bulgaria",
+                "BF": "Burkina Faso",
+                "BI": "Burundi",
+                "KH": "Cambodia",
+                "CM": "Cameroon",
+                "CA": "Canada",
+                "CV": "Cape Verde",
+                "KY": "Cayman Islands",
+                "CF": "Central African Republic",
+                "TD": "Chad",
+                "CL": "Chile",
+                "CN": "China",
+                "CO": "Colombia",
+                "KM": "Comoros",
+                "CG": "Congo",
+                "CR": "Costa Rica",
+                "CI": "Côte d'Ivoire",
+                "HR": "Croatia",
+                "CU": "Cuba",
+                "CY": "Cyprus",
+                "CZ": "Czech Republic",
+                "DK": "Denmark",
+                "DJ": "Djibouti",
+                "DM": "Dominica",
+                "DO": "Dominican Republic",
+                "EC": "Ecuador",
+                "EG": "Egypt",
+                "SV": "El Salvador",
+                "GQ": "Equatorial Guinea",
+                "ER": "Eritrea",
+                "EE": "Estonia",
+                "SZ": "Eswatini",
+                "ET": "Ethiopia",
+                "FJ": "Fiji",
+                "FI": "Finland",
+                "FR": "France",
+                "GA": "Gabon",
+                "GM": "Gambia",
+                "GE": "Georgia",
+                "DE": "Germany",
+                "GH": "Ghana",
+                "GR": "Greece",
+                "GD": "Grenada",
+                "GU": "Guam",
+                "GT": "Guatemala",
+                "GN": "Guinea",
+                "GW": "Guinea-Bissau",
+                "GY": "Guyana",
+                "HT": "Haiti",
+                "HN": "Honduras",
+                "HK": "Hong Kong",
+                "HU": "Hungary",
+                "IS": "Iceland",
+                "IN": "India",
+                "ID": "Indonesia",
+                "IR": "Iran",
+                "IQ": "Iraq",
+                "IE": "Ireland",
+                "IL": "Israel",
+                "IT": "Italy",
+                "JM": "Jamaica",
+                "JP": "Japan",
+                "JO": "Jordan",
+                "KZ": "Kazakhstan",
+                "KE": "Kenya",
+                "KI": "Kiribati",
+                "KW": "Kuwait",
+                "KG": "Kyrgyzstan",
+                "LA": "Laos",
+                "LV": "Latvia",
+                "LB": "Lebanon",
+                "LS": "Lesotho",
+                "LR": "Liberia",
+                "LY": "Libya",
+                "LI": "Liechtenstein",
+                "LT": "Lithuania",
+                "LU": "Luxembourg",
+                "MO": "Macau",
+                "MG": "Madagascar",
+                "MW": "Malawi",
+                "MY": "Malaysia",
+                "MV": "Maldives",
+                "ML": "Mali",
+                "MT": "Malta",
+                "MH": "Marshall Islands",
+                "MR": "Mauritania",
+                "MU": "Mauritius",
+                "MX": "Mexico",
+                "FM": "Micronesia",
+                "MD": "Moldova",
+                "MC": "Monaco",
+                "MN": "Mongolia",
+                "ME": "Montenegro",
+                "MA": "Morocco",
+                "MZ": "Mozambique",
+                "MM": "Myanmar",
+                "NA": "Namibia",
+                "NR": "Nauru",
+                "NP": "Nepal",
+                "NL": "Netherlands",
+                "NZ": "New Zealand",
+                "NI": "Nicaragua",
+                "NE": "Niger",
+                "NG": "Nigeria",
+                "KP": "North Korea",
+                "MK": "North Macedonia",
+                "NO": "Norway",
+                "OM": "Oman",
+                "PK": "Pakistan",
+                "PW": "Palau",
+                "PA": "Panama",
+                "PG": "Papua New Guinea",
+                "PY": "Paraguay",
+                "PE": "Peru",
+                "PH": "Philippines",
+                "PL": "Poland",
+                "PT": "Portugal",
+                "PR": "Puerto Rico",
+                "QA": "Qatar",
+                "RO": "Romania",
+                "RU": "Russia",
+                "RW": "Rwanda",
+                "KN": "Saint Kitts and Nevis",
+                "LC": "Saint Lucia",
+                "VC": "Saint Vincent and the Grenadines",
+                "WS": "Samoa",
+                "SM": "San Marino",
+                "ST": "Sao Tome and Principe",
+                "SA": "Saudi Arabia",
+                "SN": "Senegal",
+                "RS": "Serbia",
+                "SC": "Seychelles",
+                "SL": "Sierra Leone",
+                "SG": "Singapore",
+                "SK": "Slovakia",
+                "SI": "Slovenia",
+                "SB": "Solomon Islands",
+                "SO": "Somalia",
+                "ZA": "South Africa",
+                "KR": "South Korea",
+                "SS": "South Sudan",
+                "ES": "Spain",
+                "LK": "Sri Lanka",
+                "SD": "Sudan",
+                "SR": "Suriname",
+                "SE": "Sweden",
+                "CH": "Switzerland",
+                "SY": "Syria",
+                "TW": "Taiwan",
+                "TJ": "Tajikistan",
+                "TZ": "Tanzania",
+                "TH": "Thailand",
+                "TL": "Timor-Leste",
+                "TG": "Togo",
+                "TO": "Tonga",
+                "TT": "Trinidad and Tobago",
+                "TN": "Tunisia",
+                "TR": "Turkey",
+                "TM": "Turkmenistan",
+                "TV": "Tuvalu",
+                "UG": "Uganda",
+                "UA": "Ukraine",
+                "AE": "United Arab Emirates",
+                "GB": "United Kingdom",
+                "US": "United States",
+                "UY": "Uruguay",
+                "UZ": "Uzbekistan",
+                "VU": "Vanuatu",
+                "VA": "Vatican City",
+                "VE": "Venezuela",
+                "VN": "Vietnam",
+                "YE": "Yemen",
+                "ZM": "Zambia",
+                "ZW": "Zimbabwe"
             };
 
             const usStates = {
@@ -777,7 +981,9 @@
                 "WY": "Wyoming"
             };
 
-            // Hide original country input and create dropdown
+            // --------------------------
+            // Country Dropdown
+            // --------------------------
             let countrySelect = $('#country');
             countrySelect.prop('type', 'hidden');
             let countryDropdown = $(
@@ -808,7 +1014,7 @@
             $('#country_select').on('change', toggleStateDropdown);
 
             // --------------------------
-            // Address Validation (no word limit)
+            // Simple Address Validation (Required only)
             // --------------------------
             function validateAddress() {
                 let address = $('#address_input').val().trim();
@@ -834,7 +1040,7 @@
             $('#address_input').on('keyup change', validateAddress);
 
             // --------------------------
-            // FedEx Error Codes Mapping
+            // FedEx Errors Mapping
             // --------------------------
             const fedexErrors = {
                 "RECIPIENTS.ADDRESSSTATEORPROVINCECODE.MISMATCH": "State does not match country. Please check your state.",
@@ -852,13 +1058,13 @@
                     return;
                 }
 
-                let address = $('#address_input').val().trim();
+                let addressFull = $('#address_input').val().trim(); // Full user input
                 let city = $('#city').val().trim();
                 let postal = $('#zip_code').val().trim();
                 let country = $('#country_select').val();
                 let state = $('#stateOrProvinceCode').val();
 
-                if (!address || !city || !postal || !country) {
+                if (!addressFull || !city || !postal || !country) {
                     $('#shipping-methods-wrapper').hide();
                     return;
                 }
@@ -866,18 +1072,30 @@
                 $('#shipping-methods-wrapper').show();
                 $('#shipping-methods-container').html('Calculating shipping...');
 
+                // Only send essential part of address to FedEx (first 3 words or street number + name)
+                let essentialAddress = addressFull.split(/\s+/).slice(0, 3).join(' ');
+
+                console.log("Sending to FedEx:", {
+                    address: essentialAddress,
+                    city,
+                    postal,
+                    country,
+                    state
+                });
+
                 $.ajax({
                     url: "{{ route('fedex.shipping') }}",
                     method: "POST",
                     data: {
                         _token: "{{ csrf_token() }}",
-                        address,
+                        address: essentialAddress,
                         city,
                         postal,
                         country,
                         state
                     },
                     success: function(res) {
+                        console.log("FedEx Response:", res);
                         let shipping = 0;
                         let tracking = '';
 
@@ -885,7 +1103,6 @@
                             shipping = parseFloat(res.shippingPrice) || 0;
                             tracking = res.tracking_number ?? '';
                         } else {
-                            // Show friendly error
                             let code = res.details?.errors?.[0]?.code || '';
                             let userMsg = fedexErrors[code] ||
                                 "Unable to calculate shipping. Please check your address.";
@@ -898,18 +1115,16 @@
                         }
 
                         let displayShipping = shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`;
-                        $('#shipping-methods-container').html(`
-                    <label>
-                        <input type="radio" checked>
-                        FedEx Ground - ${displayShipping}
-                    </label>
-                `);
+                        $('#shipping-methods-container').html(
+                            `<label><input type="radio" checked>FedEx Ground - ${displayShipping}</label>`
+                            );
 
                         $('#shipping').val(shipping);
                         $('#tracking_number').val(tracking);
                         updateTotal(shipping);
                     },
                     error: function(xhr) {
+                        console.error("FedEx AJAX Error:", xhr);
                         let errMsg = "Unable to calculate shipping. Please check your address.";
                         $('#shipping-methods-container').html(
                             `<span style="color:red;">${errMsg}</span>`);
@@ -939,14 +1154,15 @@
             // --------------------------
             // Trigger shipping fetch
             // --------------------------
-            $('#address_input, #city, #zip_code, #stateOrProvinceCode, #country_select').on('keyup change',
-                function() {
-                    clearTimeout(window.shipTimer);
-                    window.shipTimer = setTimeout(fetchFedexShipping, 700);
-                });
+            $('#address_input,#city,#zip_code,#stateOrProvinceCode,#country_select').on('keyup change', function() {
+                clearTimeout(window.shipTimer);
+                window.shipTimer = setTimeout(fetchFedexShipping, 700);
+            });
 
         });
     </script>
+
+
 
 
 @endsection
