@@ -70,7 +70,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                                                                                                                                                                                                            border-color: #f5c6cb; */
+                                                                                                                                                                                                                                border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -252,7 +252,6 @@
                                 </span>
                             </div>
 
-
                             <div class="form-group">
                                 <input class="form-control right" placeholder="Phone *" name="phone_no" type="text"
                                     value="{{ old('phone_no') }}" required>
@@ -267,15 +266,6 @@
                                 <span class="invalid-feedback {{ $errors->first('email') ? 'd-block' : '' }}">
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
-                            </div>
-
-                            <div class="form-group" id="shipping-placeholder">
-                                <strong>Type address to see shipping options</strong>
-                            </div>
-
-                            <div id="shipping-methods-wrapper" style="display:none;">
-                                <h5>Shipping Options</h5>
-                                <div id="shipping-methods-container"></div>
                             </div>
 
                             <input type="hidden" name="shipping_amount" id="shipping">
@@ -321,6 +311,7 @@
                         <div class="amount-wrapper">
                             <h2>Item Subtotal <span id="subtotal_amount">${{ number_format($subtotal, 2) }}</span></h2>
                             <h2>Shipping & Handling <span id="shipping_amount_display">Free</span></h2>
+                            <div id="shipping-methods-container"></div>
                             @php $tax = 0.0; @endphp
                             <h3>Order Total Amount <span id="total_amount"
                                     class="span_total">${{ number_format($subtotal + $tax, 2) }}</span></h3>
@@ -1116,8 +1107,8 @@
 
                         let displayShipping = shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`;
                         $('#shipping-methods-container').html(
-                            `<label><input type="radio" checked>FedEx Ground - ${displayShipping}</label>`
-                            );
+                            `<label>FedEx Shipping</label>`
+                        );
 
                         $('#shipping').val(shipping);
                         $('#tracking_number').val(tracking);
