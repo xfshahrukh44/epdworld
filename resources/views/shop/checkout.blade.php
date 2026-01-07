@@ -70,7 +70,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                                                                                                                                                                                                                border-color: #f5c6cb; */
+                                                                                                                                                                                                                                    border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -710,7 +710,24 @@
         $(document).ready(function() {
 
             // --------------------------
-            // Country & US States Setup
+            // RESET SHIPPING FUNCTION
+            // --------------------------
+            function resetShipping(reason = '') {
+                console.warn('Shipping reset:', reason);
+                $('#shipping-methods-wrapper').hide();
+                $('#shipping-methods-container').html('');
+
+                $('#shipping').val(0);
+                $('#tracking_number').val('');
+
+                // Show in old span
+                $('#shipping_amount_display').text('Free');
+
+                updateTotal(0);
+            }
+
+            // --------------------------
+            // COUNTRIES & US STATES
             // --------------------------
             const countries = {
                 "AF": "Afghanistan",
@@ -719,204 +736,38 @@
                 "AS": "American Samoa",
                 "AD": "Andorra",
                 "AO": "Angola",
-                "AI": "Anguilla",
-                "AQ": "Antarctica",
-                "AG": "Antigua and Barbuda",
                 "AR": "Argentina",
-                "AM": "Armenia",
-                "AW": "Aruba",
                 "AU": "Australia",
                 "AT": "Austria",
-                "AZ": "Azerbaijan",
-                "BS": "Bahamas",
-                "BH": "Bahrain",
                 "BD": "Bangladesh",
-                "BB": "Barbados",
-                "BY": "Belarus",
                 "BE": "Belgium",
-                "BZ": "Belize",
-                "BJ": "Benin",
-                "BM": "Bermuda",
-                "BT": "Bhutan",
-                "BO": "Bolivia",
-                "BA": "Bosnia and Herzegovina",
-                "BW": "Botswana",
                 "BR": "Brazil",
-                "BN": "Brunei",
-                "BG": "Bulgaria",
-                "BF": "Burkina Faso",
-                "BI": "Burundi",
-                "KH": "Cambodia",
-                "CM": "Cameroon",
                 "CA": "Canada",
-                "CV": "Cape Verde",
-                "KY": "Cayman Islands",
-                "CF": "Central African Republic",
-                "TD": "Chad",
-                "CL": "Chile",
                 "CN": "China",
-                "CO": "Colombia",
-                "KM": "Comoros",
-                "CG": "Congo",
-                "CR": "Costa Rica",
-                "CI": "Côte d'Ivoire",
-                "HR": "Croatia",
-                "CU": "Cuba",
-                "CY": "Cyprus",
-                "CZ": "Czech Republic",
-                "DK": "Denmark",
-                "DJ": "Djibouti",
-                "DM": "Dominica",
-                "DO": "Dominican Republic",
-                "EC": "Ecuador",
-                "EG": "Egypt",
-                "SV": "El Salvador",
-                "GQ": "Equatorial Guinea",
-                "ER": "Eritrea",
-                "EE": "Estonia",
-                "SZ": "Eswatini",
-                "ET": "Ethiopia",
-                "FJ": "Fiji",
-                "FI": "Finland",
                 "FR": "France",
-                "GA": "Gabon",
-                "GM": "Gambia",
-                "GE": "Georgia",
                 "DE": "Germany",
-                "GH": "Ghana",
-                "GR": "Greece",
-                "GD": "Grenada",
-                "GU": "Guam",
-                "GT": "Guatemala",
-                "GN": "Guinea",
-                "GW": "Guinea-Bissau",
-                "GY": "Guyana",
-                "HT": "Haiti",
-                "HN": "Honduras",
-                "HK": "Hong Kong",
-                "HU": "Hungary",
-                "IS": "Iceland",
                 "IN": "India",
-                "ID": "Indonesia",
                 "IR": "Iran",
-                "IQ": "Iraq",
-                "IE": "Ireland",
-                "IL": "Israel",
                 "IT": "Italy",
-                "JM": "Jamaica",
                 "JP": "Japan",
-                "JO": "Jordan",
-                "KZ": "Kazakhstan",
-                "KE": "Kenya",
-                "KI": "Kiribati",
-                "KW": "Kuwait",
-                "KG": "Kyrgyzstan",
-                "LA": "Laos",
-                "LV": "Latvia",
-                "LB": "Lebanon",
-                "LS": "Lesotho",
-                "LR": "Liberia",
-                "LY": "Libya",
-                "LI": "Liechtenstein",
-                "LT": "Lithuania",
-                "LU": "Luxembourg",
-                "MO": "Macau",
-                "MG": "Madagascar",
-                "MW": "Malawi",
                 "MY": "Malaysia",
-                "MV": "Maldives",
-                "ML": "Mali",
-                "MT": "Malta",
-                "MH": "Marshall Islands",
-                "MR": "Mauritania",
-                "MU": "Mauritius",
                 "MX": "Mexico",
-                "FM": "Micronesia",
-                "MD": "Moldova",
-                "MC": "Monaco",
-                "MN": "Mongolia",
-                "ME": "Montenegro",
-                "MA": "Morocco",
-                "MZ": "Mozambique",
-                "MM": "Myanmar",
-                "NA": "Namibia",
-                "NR": "Nauru",
-                "NP": "Nepal",
                 "NL": "Netherlands",
                 "NZ": "New Zealand",
-                "NI": "Nicaragua",
-                "NE": "Niger",
-                "NG": "Nigeria",
-                "KP": "North Korea",
-                "MK": "North Macedonia",
                 "NO": "Norway",
-                "OM": "Oman",
                 "PK": "Pakistan",
-                "PW": "Palau",
-                "PA": "Panama",
-                "PG": "Papua New Guinea",
-                "PY": "Paraguay",
-                "PE": "Peru",
-                "PH": "Philippines",
-                "PL": "Poland",
-                "PT": "Portugal",
-                "PR": "Puerto Rico",
                 "QA": "Qatar",
-                "RO": "Romania",
-                "RU": "Russia",
-                "RW": "Rwanda",
-                "KN": "Saint Kitts and Nevis",
-                "LC": "Saint Lucia",
-                "VC": "Saint Vincent and the Grenadines",
-                "WS": "Samoa",
-                "SM": "San Marino",
-                "ST": "Sao Tome and Principe",
                 "SA": "Saudi Arabia",
-                "SN": "Senegal",
-                "RS": "Serbia",
-                "SC": "Seychelles",
-                "SL": "Sierra Leone",
                 "SG": "Singapore",
-                "SK": "Slovakia",
-                "SI": "Slovenia",
-                "SB": "Solomon Islands",
-                "SO": "Somalia",
                 "ZA": "South Africa",
                 "KR": "South Korea",
-                "SS": "South Sudan",
                 "ES": "Spain",
-                "LK": "Sri Lanka",
-                "SD": "Sudan",
-                "SR": "Suriname",
                 "SE": "Sweden",
                 "CH": "Switzerland",
-                "SY": "Syria",
-                "TW": "Taiwan",
-                "TJ": "Tajikistan",
-                "TZ": "Tanzania",
-                "TH": "Thailand",
-                "TL": "Timor-Leste",
-                "TG": "Togo",
-                "TO": "Tonga",
-                "TT": "Trinidad and Tobago",
-                "TN": "Tunisia",
                 "TR": "Turkey",
-                "TM": "Turkmenistan",
-                "TV": "Tuvalu",
-                "UG": "Uganda",
-                "UA": "Ukraine",
                 "AE": "United Arab Emirates",
                 "GB": "United Kingdom",
-                "US": "United States",
-                "UY": "Uruguay",
-                "UZ": "Uzbekistan",
-                "VU": "Vanuatu",
-                "VA": "Vatican City",
-                "VE": "Venezuela",
-                "VN": "Vietnam",
-                "YE": "Yemen",
-                "ZM": "Zambia",
-                "ZW": "Zimbabwe"
+                "US": "United States"
             };
 
             const usStates = {
@@ -973,39 +824,41 @@
             };
 
             // --------------------------
-            // Country Dropdown
+            // COUNTRY DROPDOWN
             // --------------------------
-            let countrySelect = $('#country');
-            countrySelect.prop('type', 'hidden');
-            let countryDropdown = $(
-                '<select class="form-control left" id="country_select" name="country"></select>');
+            let countryInput = $('#country');
+            countryInput.prop('type', 'hidden');
+
+            let countrySelect = $('<select id="country_select" class="form-control left"></select>');
             $.each(countries, function(code, name) {
-                let selected = code === (countrySelect.val() || 'US') ? 'selected' : '';
-                countryDropdown.append(`<option value="${code}" ${selected}>${name}</option>`);
+                countrySelect.append(`<option value="${code}">${name}</option>`);
             });
-            countrySelect.after(countryDropdown);
+            countryInput.after(countrySelect);
+            countrySelect.val(countryInput.val() || 'US');
 
             function populateStates() {
-                let stateSelect = $('#stateOrProvinceCode');
-                stateSelect.html('<option value="">Select State</option>');
+                let state = $('#stateOrProvinceCode');
+                state.html('<option value="">Select State</option>');
                 $.each(usStates, function(code, name) {
-                    stateSelect.append(`<option value="${code}">${name}</option>`);
+                    state.append(`<option value="${code}">${name}</option>`);
                 });
             }
 
-            function toggleStateDropdown() {
+            function toggleState() {
                 if ($('#country_select').val() === 'US') {
                     $('#state-wrapper').show();
                     populateStates();
                 } else {
                     $('#state-wrapper').hide();
+                    $('#stateOrProvinceCode').val('');
                 }
             }
-            toggleStateDropdown();
-            $('#country_select').on('change', toggleStateDropdown);
+
+            toggleState();
+            $('#country_select').on('change', toggleState);
 
             // --------------------------
-            // Simple Address Validation (Required only)
+            // ADDRESS VALIDATION
             // --------------------------
             function validateAddress() {
                 let address = $('#address_input').val().trim();
@@ -1031,48 +884,47 @@
             $('#address_input').on('keyup change', validateAddress);
 
             // --------------------------
-            // FedEx Errors Mapping
+            // FEDEX ERROR MAPPING
             // --------------------------
             const fedexErrors = {
-                "RECIPIENTS.ADDRESSSTATEORPROVINCECODE.MISMATCH": "State does not match country. Please check your state.",
-                "RECIPIENTS.POSTALCODE.INVALID": "ZIP/Postal code seems invalid. Please check your ZIP code.",
-                "RECIPIENTS.ADDRESSLINE1.INVALID": "Address seems invalid. Please check your address.",
-                "RECIPIENTS.COUNTRY.INVALID": "Country is invalid. Please select a valid country."
+                "RECIPIENTS.ADDRESSSTATEORPROVINCECODE.MISMATCH": "State aur ZIP match nahi kar rahe. State check karein.",
+                "RECIPIENTS.POSTALCODE.INVALID": "ZIP / Postal Code ghalat lag raha hai.",
+                "RECIPIENTS.ADDRESSLINE1.INVALID": "Address ghalat lag raha hai.",
+                "RECIPIENTS.COUNTRY.INVALID": "Country invalid hai."
             };
 
             // --------------------------
-            // Fetch FedEx Shipping
+            // FETCH FEDEX SHIPPING
             // --------------------------
             function fetchFedexShipping() {
-                if (!validateAddress()) {
-                    $('#shipping-methods-wrapper').hide();
-                    return;
-                }
-
-                let addressFull = $('#address_input').val().trim(); // Full user input
+                let addressFull = $('#address_input').val().trim();
                 let city = $('#city').val().trim();
                 let postal = $('#zip_code').val().trim();
                 let country = $('#country_select').val();
                 let state = $('#stateOrProvinceCode').val();
 
                 if (!addressFull || !city || !postal || !country) {
-                    $('#shipping-methods-wrapper').hide();
+                    resetShipping('Required field empty');
                     return;
                 }
 
-                $('#shipping-methods-wrapper').show();
-                $('#shipping-methods-container').html('Calculating shipping...');
+                if (country === 'US' && !state) {
+                    resetShipping('US state missing');
+                    return;
+                }
 
-                // Only send essential part of address to FedEx (first 3 words or street number + name)
                 let essentialAddress = addressFull.split(/\s+/).slice(0, 3).join(' ');
 
-                console.log("Sending to FedEx:", {
+                console.log('Sending to FedEx:', {
                     address: essentialAddress,
                     city,
                     postal,
                     country,
                     state
                 });
+
+                $('#shipping-methods-wrapper').show();
+                $('#shipping-methods-container').html('Calculating shipping...');
 
                 $.ajax({
                     url: "{{ route('fedex.shipping') }}",
@@ -1086,48 +938,42 @@
                         state
                     },
                     success: function(res) {
-                        console.log("FedEx Response:", res);
-                        let shipping = 0;
-                        let tracking = '';
+                        console.log('FedEx Response:', res);
 
-                        if (res.status) {
-                            shipping = parseFloat(res.shippingPrice) || 0;
-                            tracking = res.tracking_number ?? '';
-                        } else {
+                        if (!res.status) {
+                            resetShipping('FedEx error');
                             let code = res.details?.errors?.[0]?.code || '';
-                            let userMsg = fedexErrors[code] ||
-                                "Unable to calculate shipping. Please check your address.";
+                            let msg = fedexErrors[code] ||
+                            'Address check karein aur dobara try karein.';
                             $('#shipping-methods-container').html(
-                                `<span style="color:red;">${userMsg}</span>`);
-                            $('#shipping').val(0);
-                            $('#tracking_number').val('');
-                            updateTotal(0);
+                                `<span style="color:red;">${msg}</span>`);
                             return;
                         }
 
-                        let displayShipping = shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`;
-                        $('#shipping-methods-container').html(
-                            `<label>FedEx Shipping</label>`
-                        );
+                        let shipping = parseFloat(res.shippingPrice) || 0;
+                        let tracking = res.tracking_number ?? '';
 
                         $('#shipping').val(shipping);
                         $('#tracking_number').val(tracking);
+
+                        // 🔥 Purana span me show
+                        let display = shipping === 0 ? 'Free' : '$' + shipping.toFixed(2);
+                        $('#shipping_amount_display').text(display);
+
+                        $('#shipping-methods-container').html(
+                        `<strong>FedEx Shipping</strong>`);
                         updateTotal(shipping);
                     },
-                    error: function(xhr) {
-                        console.error("FedEx AJAX Error:", xhr);
-                        let errMsg = "Unable to calculate shipping. Please check your address.";
+                    error: function() {
+                        resetShipping('AJAX failed');
                         $('#shipping-methods-container').html(
-                            `<span style="color:red;">${errMsg}</span>`);
-                        $('#shipping').val(0);
-                        $('#tracking_number').val('');
-                        updateTotal(0);
+                            '<span style="color:red;">FedEx service unavailable</span>');
                     }
                 });
             }
 
             // --------------------------
-            // Update Order Total
+            // UPDATE TOTAL
             // --------------------------
             function updateTotal(shipping) {
                 let subtotal = parseFloat("{{ $subtotal }}");
@@ -1135,23 +981,27 @@
                 let total = subtotal + tax + shipping;
 
                 $('.span_total').text('$' + total.toFixed(2));
-                let displayShipping = shipping === 0 ? 'Free' : '$' + shipping.toFixed(2);
-                $('.amount-wrapper h2:nth-child(2) span').text(displayShipping);
-
                 $('#total_price').val(total.toFixed(2));
                 $('#stripe-submit').text('Pay $' + total.toFixed(2));
             }
 
             // --------------------------
-            // Trigger shipping fetch
+            // EVENTS
             // --------------------------
             $('#address_input,#city,#zip_code,#stateOrProvinceCode,#country_select').on('keyup change', function() {
+
+                if (!$(this).val().trim()) {
+                    resetShipping('Field cleared: ' + this.id);
+                    return;
+                }
+
                 clearTimeout(window.shipTimer);
-                window.shipTimer = setTimeout(fetchFedexShipping, 700);
+                window.shipTimer = setTimeout(fetchFedexShipping, 600);
             });
 
         });
     </script>
+
 
 
 
