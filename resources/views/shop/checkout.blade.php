@@ -70,7 +70,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                                                                                                                                                                                        border-color: #f5c6cb; */
+                                                                                                                                                                                                            border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -710,11 +710,6 @@
     </script> --}}
 
 
-
-
-
-
-
     <script>
         $(document).ready(function() {
 
@@ -813,16 +808,12 @@
             $('#country_select').on('change', toggleStateDropdown);
 
             // --------------------------
-            // Address Validation
+            // Address Validation (no word limit)
             // --------------------------
             function validateAddress() {
                 let address = $('#address_input').val().trim();
-                let words = address.split(/\s+/);
                 if (address === '') {
                     showAddressError('Address is required');
-                    return false;
-                } else if (words.length > 3) {
-                    showAddressError('Address too long. Max 3 words');
                     return false;
                 } else {
                     clearAddressError();
@@ -848,7 +839,7 @@
             const fedexErrors = {
                 "RECIPIENTS.ADDRESSSTATEORPROVINCECODE.MISMATCH": "State does not match country. Please check your state.",
                 "RECIPIENTS.POSTALCODE.INVALID": "ZIP/Postal code seems invalid. Please check your ZIP code.",
-                "RECIPIENTS.ADDRESSLINE1.INVALID": "Address seems invalid. Keep it short (max 3 words).",
+                "RECIPIENTS.ADDRESSLINE1.INVALID": "Address seems invalid. Please check your address.",
                 "RECIPIENTS.COUNTRY.INVALID": "Country is invalid. Please select a valid country."
             };
 
@@ -938,7 +929,6 @@
                 let total = subtotal + tax + shipping;
 
                 $('.span_total').text('$' + total.toFixed(2));
-
                 let displayShipping = shipping === 0 ? 'Free' : '$' + shipping.toFixed(2);
                 $('.amount-wrapper h2:nth-child(2) span').text(displayShipping);
 
@@ -957,5 +947,6 @@
 
         });
     </script>
+
 
 @endsection
