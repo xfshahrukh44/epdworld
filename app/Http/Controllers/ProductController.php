@@ -847,6 +847,7 @@ class ProductController extends Controller
 
 		return response()->json($response->json());
 	}
+
 	public function fedexShipping(Request $request)
 	{
 		$request->validate([
@@ -856,7 +857,6 @@ class ProductController extends Controller
 			'country' => 'required|string',
 		]);
 
-		// STEP 1: Get FedEx Token
 		$tokenRes = Http::asForm()->post(
 			'https://apis-sandbox.fedex.com/oauth/token',
 			[
@@ -876,7 +876,6 @@ class ProductController extends Controller
 
 		$accessToken = $tokenRes['access_token'];
 
-		// STEP 2: State mapping for US
 		$stateMapping = [
 			'New York' => 'NY',
 			'Los Angeles' => 'CA',
@@ -888,7 +887,6 @@ class ProductController extends Controller
 			? $stateMapping[$request->city]
 			: null;
 
-		// STEP 3: FedEx shipment payload
 		$payload = [
 			"accountNumber" => ["value" => env('FEDEX_ACCOUNT_NUMBER')],
 			"labelResponseOptions" => "URL_ONLY",
@@ -925,7 +923,6 @@ class ProductController extends Controller
 			]
 		];
 
-		// STEP 4: Call FedEx Ship API
 		$res = Http::withToken($accessToken)->post('https://apis-sandbox.fedex.com/ship/v1/shipments', $payload);
 
 		if (!$res->successful()) {
@@ -937,10 +934,7 @@ class ProductController extends Controller
 		}
 
 		$shipment = $res->json();
-
-		// STEP 5: Safe tracking & shipping price
 		$transactionShipments = data_get($shipment, 'output.transactionShipments', []);
-
 		$trackingNumber = null;
 		$shippingPrice = 0;
 
@@ -955,7 +949,7 @@ class ProductController extends Controller
 				$shippingPrice = floatval($shipmentRate['totalNetFedExCharge']);
 			}
 
-			// ✅ Address validation: Agar trackingNumber missing ya shippingPrice 0 hai → treat as invalid
+			// ✅ Address validation
 			if (!$trackingNumber || $shippingPrice <= 0) {
 				return response()->json([
 					'status' => false,
@@ -963,14 +957,12 @@ class ProductController extends Controller
 				]);
 			}
 		} else {
-			// ✅ Agar transactionShipments empty hai → invalid address
 			return response()->json([
 				'status' => false,
 				'details' => $shipment
 			]);
 		}
 
-		// ✅ Agar sab correct hai
 		return response()->json([
 			'status' => true,
 			'tracking_number' => $trackingNumber,

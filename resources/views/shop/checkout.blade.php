@@ -70,7 +70,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                                                                                                                                                                                                                                    border-color: #f5c6cb; */
+                                                                                                                                                                                                                                                            border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -720,7 +720,6 @@
                 $('#shipping').val(0);
                 $('#tracking_number').val('');
 
-                // Purana span me show
                 $('#shipping_amount_display').text('Free');
 
                 updateTotal(0);
@@ -887,7 +886,7 @@
             }
 
             // --------------------------
-            // COUNTRY DROPDOWN
+            // COUNTRY SELECT
             // --------------------------
             let countryInput = $('#country');
             countryInput.prop('type', 'hidden');
@@ -915,48 +914,11 @@
                     $('#stateOrProvinceCode').val('');
                 }
             }
-
             toggleState();
             $('#country_select').on('change', toggleState);
 
             // --------------------------
-            // ADDRESS VALIDATION
-            // --------------------------
-            function validateAddress() {
-                let address = $('#address_input').val().trim();
-                if (address === '') {
-                    showAddressError('Address is required');
-                    return false;
-                } else {
-                    clearAddressError();
-                    return true;
-                }
-            }
-
-            function showAddressError(msg) {
-                $('#address_input').addClass('is-invalid');
-                $('#address_input').siblings('.invalid-feedback').html(msg).addClass('d-block');
-            }
-
-            function clearAddressError() {
-                $('#address_input').removeClass('is-invalid');
-                $('#address_input').siblings('.invalid-feedback').removeClass('d-block').html('');
-            }
-
-            $('#address_input').on('keyup change', validateAddress);
-
-            // --------------------------
-            // FEDEX ERROR MAPPING
-            // --------------------------
-            const fedexErrors = {
-                "RECIPIENTS.ADDRESSSTATEORPROVINCECODE.MISMATCH": "State aur ZIP match nahi kar rahe. State check karein.",
-                "RECIPIENTS.POSTALCODE.INVALID": "ZIP / Postal Code ghalat lag raha hai.",
-                "RECIPIENTS.ADDRESSLINE1.INVALID": "Address ghalat lag raha hai.",
-                "RECIPIENTS.COUNTRY.INVALID": "Country invalid hai."
-            };
-
-            // --------------------------
-            // FETCH FEDEX SHIPPING
+            // STRICT ADDRESS VALIDATION BEFORE FEDEX
             // --------------------------
             function fetchFedexShipping() {
                 let addressFull = $('#address_input').val().trim();
@@ -965,24 +927,35 @@
                 let country = $('#country_select').val();
                 let state = $('#stateOrProvinceCode').val();
 
+                // EMPTY FIELDS
                 if (!addressFull || !city || !postal || !country) {
                     resetShipping('Required field empty');
                     return;
                 }
 
-                if (country === 'US' && !state) {
-                    resetShipping('US state missing');
-                    return;
-                }
-
-                // City validation
-                if (!isCityValidForState(state, city)) {
-                    resetShipping('City does not match selected state');
+                // US STATE MISMATCH
+                if (country === 'US' && !isCityValidForState(state, city)) {
+                    resetShipping('City-State mismatch');
                     $('#shipping-methods-container').html(
                         '<span style="color:red;">City does not match selected state</span>');
                     return;
                 }
 
+                // POSTAL CODE validation (optional strict numeric)
+                if (postal.length < 3) {
+                    resetShipping('Invalid postal code');
+                    $('#shipping-methods-container').html('<span style="color:red;">Postal code invalid</span>');
+                    return;
+                }
+
+                // COUNTRY valid?
+                if (!countries[country]) {
+                    resetShipping('Invalid country');
+                    $('#shipping-methods-container').html('<span style="color:red;">Country invalid</span>');
+                    return;
+                }
+
+                // send only essential address to FedEx (first 3 words)
                 let essentialAddress = addressFull.split(/\s+/).slice(0, 3).join(' ');
 
                 $('#shipping-methods-wrapper').show();
@@ -1000,27 +973,33 @@
                         state
                     },
                     success: function(res) {
-                        // ✅ Fix: Check FedEx response errors properly
+                        // ❌ ERROR from FedEx OR tracking missing → shipping not show
                         if (!res.status || (res.details && res.details.errors && res.details.errors
                                 .length > 0)) {
                             resetShipping('FedEx error');
                             let code = res.details?.errors?.[0]?.code || '';
-                            let msg = fedexErrors[code] ||
-                            'Address check karein aur dobara try karein.';
+                            let msg = code ? code : 'Address check karein aur dobara try karein.';
                             $('#shipping-methods-container').html(
                                 `<span style="color:red;">${msg}</span>`);
-                            return; // shipping show nahi hogi
+                            return;
                         }
 
                         let shipping = parseFloat(res.shippingPrice) || 0;
-                        let tracking = res.tracking_number ?? '';
+                        let tracking = res.tracking_number || '';
+
+                        // extra check: if tracking empty → invalid
+                        if (!tracking || shipping <= 0) {
+                            resetShipping('Invalid shipping info');
+                            $('#shipping-methods-container').html(
+                                '<span style="color:red;">Address invalid</span>');
+                            return;
+                        }
 
                         $('#shipping').val(shipping);
                         $('#tracking_number').val(tracking);
 
                         let display = shipping === 0 ? 'Free' : '$' + shipping.toFixed(2);
                         $('#shipping_amount_display').text(display);
-
                         $('#shipping-methods-container').html('<strong>FedEx Shipping</strong>');
                         updateTotal(shipping);
                     },
@@ -1039,7 +1018,6 @@
                 let subtotal = parseFloat("{{ $subtotal }}");
                 let tax = parseFloat("{{ $tax }}");
                 let total = subtotal + tax + shipping;
-
                 $('.span_total').text('$' + total.toFixed(2));
                 $('#total_price').val(total.toFixed(2));
                 $('#stripe-submit').text('Pay $' + total.toFixed(2));
@@ -1059,6 +1037,8 @@
 
         });
     </script>
+
+
 
 
 
