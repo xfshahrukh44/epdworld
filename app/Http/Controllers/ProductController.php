@@ -954,9 +954,23 @@ class ProductController extends Controller
 			} elseif (isset($shipmentRate['totalNetFedExCharge'])) {
 				$shippingPrice = floatval($shipmentRate['totalNetFedExCharge']);
 			}
+
+			// ✅ Address validation: Agar trackingNumber missing ya shippingPrice 0 hai → treat as invalid
+			if (!$trackingNumber || $shippingPrice <= 0) {
+				return response()->json([
+					'status' => false,
+					'details' => $shipment
+				]);
+			}
+		} else {
+			// ✅ Agar transactionShipments empty hai → invalid address
+			return response()->json([
+				'status' => false,
+				'details' => $shipment
+			]);
 		}
 
-
+		// ✅ Agar sab correct hai
 		return response()->json([
 			'status' => true,
 			'tracking_number' => $trackingNumber,

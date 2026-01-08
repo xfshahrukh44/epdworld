@@ -70,7 +70,7 @@
         .checkoutPage span.invalid-feedback strong {
             color: #333e48;
             /* background-color: #f8d7da;
-                                                                                                                                                                                                                                    border-color: #f5c6cb; */
+                                                                                                                                                                                                                                                    border-color: #f5c6cb; */
             display: block;
             width: 100%;
             font-size: 15px;
@@ -720,7 +720,7 @@
                 $('#shipping').val(0);
                 $('#tracking_number').val('');
 
-                // Show in old span
+                // Purana span me show
                 $('#shipping_amount_display').text('Free');
 
                 updateTotal(0);
@@ -824,12 +824,74 @@
             };
 
             // --------------------------
+            // US STATE - CITY VALIDATION
+            // --------------------------
+            const stateCities = {
+                "AL": ["Birmingham", "Montgomery", "Mobile"],
+                "AK": ["Anchorage", "Fairbanks"],
+                "AZ": ["Phoenix", "Tucson"],
+                "AR": ["Little Rock", "Fayetteville"],
+                "CA": ["Los Angeles", "San Francisco", "San Diego", "Sacramento"],
+                "CO": ["Denver", "Colorado Springs"],
+                "CT": ["Hartford", "New Haven"],
+                "DE": ["Wilmington", "Dover"],
+                "FL": ["Miami", "Orlando", "Tampa"],
+                "GA": ["Atlanta", "Savannah", "Augusta"],
+                "HI": ["Honolulu", "Hilo"],
+                "ID": ["Boise", "Meridian"],
+                "IL": ["Chicago", "Springfield"],
+                "IN": ["Indianapolis", "Fort Wayne"],
+                "IA": ["Des Moines", "Cedar Rapids"],
+                "KS": ["Wichita", "Topeka"],
+                "KY": ["Louisville", "Lexington"],
+                "LA": ["New Orleans", "Baton Rouge"],
+                "ME": ["Portland", "Augusta"],
+                "MD": ["Baltimore", "Annapolis"],
+                "MA": ["Boston", "Worcester"],
+                "MI": ["Detroit", "Lansing", "Grand Rapids"],
+                "MN": ["Minneapolis", "Saint Paul"],
+                "MS": ["Jackson", "Gulfport"],
+                "MO": ["Kansas City", "St. Louis"],
+                "MT": ["Billings", "Missoula"],
+                "NE": ["Omaha", "Lincoln"],
+                "NV": ["Las Vegas", "Reno"],
+                "NH": ["Manchester", "Concord"],
+                "NJ": ["Newark", "Trenton"],
+                "NM": ["Albuquerque", "Santa Fe"],
+                "NY": ["New York", "Buffalo", "Rochester", "Albany"],
+                "NC": ["Charlotte", "Raleigh", "Greensboro"],
+                "ND": ["Fargo", "Bismarck"],
+                "OH": ["Columbus", "Cleveland", "Cincinnati", "Toledo"],
+                "OK": ["Oklahoma City", "Tulsa"],
+                "OR": ["Portland", "Salem"],
+                "PA": ["Philadelphia", "Pittsburgh", "Harrisburg"],
+                "RI": ["Providence", "Warwick"],
+                "SC": ["Charleston", "Columbia"],
+                "SD": ["Sioux Falls", "Pierre"],
+                "TN": ["Nashville", "Memphis"],
+                "TX": ["Houston", "Dallas", "Austin", "San Antonio"],
+                "UT": ["Salt Lake City", "Provo"],
+                "VT": ["Burlington", "Montpelier"],
+                "VA": ["Richmond", "Virginia Beach"],
+                "WA": ["Seattle", "Spokane", "Tacoma"],
+                "WV": ["Charleston", "Morgantown"],
+                "WI": ["Milwaukee", "Madison", "Green Bay", "Kenosha"],
+                "WY": ["Cheyenne", "Casper"]
+            };
+
+            function isCityValidForState(state, city) {
+                if (!state || !city) return false;
+                let cities = stateCities[state];
+                if (!cities) return false;
+                return cities.some(c => c.toLowerCase() === city.toLowerCase());
+            }
+
+            // --------------------------
             // COUNTRY DROPDOWN
             // --------------------------
             let countryInput = $('#country');
             countryInput.prop('type', 'hidden');
-
-            let countrySelect = $('<select id="country_select" class="form-control left"></select>');
+            let countrySelect = $('<select id="country_select" class="form-control left" name="country"></select>');
             $.each(countries, function(code, name) {
                 countrySelect.append(`<option value="${code}">${name}</option>`);
             });
@@ -913,15 +975,15 @@
                     return;
                 }
 
-                let essentialAddress = addressFull.split(/\s+/).slice(0, 3).join(' ');
+                // City validation
+                if (!isCityValidForState(state, city)) {
+                    resetShipping('City does not match selected state');
+                    $('#shipping-methods-container').html(
+                        '<span style="color:red;">City does not match selected state</span>');
+                    return;
+                }
 
-                console.log('Sending to FedEx:', {
-                    address: essentialAddress,
-                    city,
-                    postal,
-                    country,
-                    state
-                });
+                let essentialAddress = addressFull.split(/\s+/).slice(0, 3).join(' ');
 
                 $('#shipping-methods-wrapper').show();
                 $('#shipping-methods-container').html('Calculating shipping...');
@@ -938,16 +1000,16 @@
                         state
                     },
                     success: function(res) {
-                        console.log('FedEx Response:', res);
-
-                        if (!res.status) {
+                        // ✅ Fix: Check FedEx response errors properly
+                        if (!res.status || (res.details && res.details.errors && res.details.errors
+                                .length > 0)) {
                             resetShipping('FedEx error');
                             let code = res.details?.errors?.[0]?.code || '';
                             let msg = fedexErrors[code] ||
                             'Address check karein aur dobara try karein.';
                             $('#shipping-methods-container').html(
                                 `<span style="color:red;">${msg}</span>`);
-                            return;
+                            return; // shipping show nahi hogi
                         }
 
                         let shipping = parseFloat(res.shippingPrice) || 0;
@@ -956,12 +1018,10 @@
                         $('#shipping').val(shipping);
                         $('#tracking_number').val(tracking);
 
-                        // 🔥 Purana span me show
                         let display = shipping === 0 ? 'Free' : '$' + shipping.toFixed(2);
                         $('#shipping_amount_display').text(display);
 
-                        $('#shipping-methods-container').html(
-                        `<strong>FedEx Shipping</strong>`);
+                        $('#shipping-methods-container').html('<strong>FedEx Shipping</strong>');
                         updateTotal(shipping);
                     },
                     error: function() {
@@ -989,18 +1049,20 @@
             // EVENTS
             // --------------------------
             $('#address_input,#city,#zip_code,#stateOrProvinceCode,#country_select').on('keyup change', function() {
-
                 if (!$(this).val().trim()) {
                     resetShipping('Field cleared: ' + this.id);
                     return;
                 }
-
                 clearTimeout(window.shipTimer);
                 window.shipTimer = setTimeout(fetchFedexShipping, 600);
             });
 
         });
     </script>
+
+
+
+
 
 
 
