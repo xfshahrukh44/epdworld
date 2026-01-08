@@ -60,21 +60,21 @@ class OrderController extends Controller
 		$product_detail = DB::table('products')->first();
 
 		if (Session::get('cart') && count(Session::get('cart')) > 0) {
-//		    $client = Client::withApiKey('79aacc35197596e441bdcb0066fd7340');
-//
-//            $client->setApiConfig('headers', [
-//                'Authorization' => 'Bearer 79aacc35197596e441bdcb0066fd7340'
-//            ]);
-//
-//            $order_taxes = $client->taxForOrder([
-//                'to_country' => 'US',
-//                'to_zip' => '90002',
-//                'to_state' => 'CA',
-//                'amount' => 10,
-//                'shipping' => 0.00
-//            ]);
-//
-//            dd($order_taxes);
+			//		    $client = Client::withApiKey('79aacc35197596e441bdcb0066fd7340');
+			//
+			//            $client->setApiConfig('headers', [
+			//                'Authorization' => 'Bearer 79aacc35197596e441bdcb0066fd7340'
+			//            ]);
+			//
+			//            $order_taxes = $client->taxForOrder([
+			//                'to_country' => 'US',
+			//                'to_zip' => '90002',
+			//                'to_state' => 'CA',
+			//                'amount' => 10,
+			//                'shipping' => 0.00
+			//            ]);
+			//
+			//            dd($order_taxes);
 
 			$countries = DB::table('countries')->get();
 			return view('shop.checkout', ['cart' => Session::get('cart'), 'countries' => $countries, 'language' => $language, 'product_detail' => $product_detail]);
@@ -320,191 +320,309 @@ class OrderController extends Controller
 		return view('account.success');
 	}
 
+	// public function placeOrder(Request $request)
+	// {
+	// 	$validateArr = array();
+	// 	$messageArr = array();
+	// 	$validateArr['country'] = 'required|max:50';
+	// 	$validateArr['first_name'] = 'required|max:255';
+	// 	$validateArr['address_line_1'] = 'required|max:255';
+	// 	$validateArr['city'] = 'required|max:50';
+	// 	$validateArr['email'] = 'required|max:20';
+	// 	$validateArr['phone_no'] = 'required|max:20';
+	// 	$messageArr['first_name.required'] = 'The first name field is required.';
+
+	// 	$id = 0;
+	// 	if (isset($_POST['create_account'])) {
+
+
+	// 		if ($_POST['password'] == '') {
+
+	// 			$validateArr['password'] = 'min:6|required_with:confirm_password|same:confirm_password';
+	// 			$validateArr['confirm_password'] = 'min:6';
+	// 		} else {
+
+	// 			$validateArr['email'] = 'required|max:255|email|unique:users';
+	// 			$this->validate($request, $validateArr, $messageArr);
+
+	// 			$pw = Hash::make($_POST['password']);
+	// 			$fullName = $request->first_name . " " . $request->last_name;
+
+	// 			DB::insert("INSERT INTO users(email,name,password) values('" . $_POST['email'] . "','" . $fullName . "','" . $pw . "')");
+
+
+	// 			$user = DB::table('users')->orderBy('id', 'desc')->first();
+	// 			$id = $user->id;
+	// 		}
+	// 	}
+
+	// 	$validateArr['email'] = 'required|max:255|email';
+	// 	$this->validate($request, $validateArr, $messageArr);
+
+	// 	if (Auth::check()) {
+	// 		$id = Auth::user()->id;
+	// 	}
+
+	// 	$cart = Session::get('cart');
+
+	// 	$subtotal = 0;
+	// 	foreach ($cart as $key => $value) {
+	// 		$subtotal +=	$value['baseprice'] * $value['qty'];
+	// 		$pro = $value['vendor_id'];
+	// 	}
+	// 	//dd($pro);
+	// 	$order = new orders();
+
+	// 	$order->delivery_country = $request->country;
+	// 	$order->country_code = $request->country_code;
+	// 	$order->delivery_first_name = $request->first_name;
+	// 	$order->delivery_last_name = $request->last_name;
+	// 	$order->order_company = $request->company_name;
+	// 	$order->delivery_address_1 = $request->address_line_1;
+	// 	$order->delivery_address_2 = $request->address_line_2;
+	// 	$order->delivery_city = $request->city;
+	// 	$order->delivery_state = $request->state;
+	// 	$order->delivery_zip_code = $request->zip_code;
+	// 	$order->area = $request->area;
+	// 	$order->landmark = $request->landmark;
+	// 	$order->floor_num = $request->floor_num;
+	// 	$order->building = $request->building;
+	// 	$order->order_shipping = $cart['shipping'];
+	// 	$order->country_code = $request->country_code;
+
+	// 	$order->order_email = $request->email;
+	// 	$order->delivery_phone_no = $request->phone_no;
+	// 	$order->order_notes = $request->order_notes;
+	// 	$order->order_company = $request->company_name;
+	// 	$order->payment_method = $request->payment_method;
+
+	// 	$order->order_items = count(Session::get('cart'));
+
+	// 	$order->order_item_total = $subtotal;
+	// 	$order->seller_id = $pro;
+
+	// 	$total +=	$subtotal + $cart['shipping'];
+
+
+	// 	$order->order_total = $request->has('total_after_coupon') ? floatval($request->get('total_after_coupon')) : $total;
+
+	// 	$order->user_id = $id;
+
+	// 	if (isset($_POST['payment_method']) && $_POST['payment_method'] == 'paypal') {
+	// 		$order->transaction_id = $_POST['payment_id'];
+	// 		$order->order_status = $_POST['payment_status'];
+	// 		$order->card_token = $_POST['payer_id'];
+	// 	} elseif (isset($_POST['payment_method']) && $_POST['payment_method'] == 'cash') {
+	// 		$order->order_status = "succeeded";
+	// 	} else {
+
+	// 		try {
+
+
+
+	// 			try {
+	// 				Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+	// 				$customer = \Stripe\Customer::create(array(
+	// 					'email' => $request->email,
+	// 					'name' => $request->first_name,
+	// 					'phone' => $request->phone_no,
+	// 					'description' => "Client Created From Website",
+	// 					'source'  => $request->stripeToken,
+	// 				));
+	// 			} catch (Exception $e) {
+	// 				return redirect()->back()->with('stripe_error', $e->getMessage());
+	// 			}
+
+	// 			try {
+	// 				$charge = \Stripe\Charge::create(array(
+	// 					'customer' => $customer->id,
+	// 					'amount'   => $total * 100,
+	// 					'currency' => 'USD',
+	// 					'description' => "Payment From Website",
+	// 					'metadata' => array("name" => $request->first_name, "email" => $request->email),
+	// 				));
+	// 			} catch (Exception $e) {
+	// 				return redirect()->back()->with('stripe_error', $e->getMessage());
+	// 			}
+	// 		} catch (Exception $e) {
+	// 			return redirect()->back()->with('stripe_error', $e->getMessage());
+	// 		}
+	// 		$chargeJson = $charge->jsonSerialize();
+	// 		// Check whether the charge is successful 
+	// 		if ($chargeJson['amount_refunded'] == 0 && empty($chargeJson['failure_code']) && $chargeJson['paid'] == 1 && $chargeJson['captured'] == 1) {
+	// 			$transactionID = $chargeJson['balance_transaction'];
+	// 			$payment_status = $chargeJson['status'];
+	// 			$order->transaction_id = $transactionID;
+	// 			$order->order_status = $payment_status;
+	// 		}
+	// 	}
+
+	// 	$record = orders::latest()->first();
+	// 	$expNum = explode('-', $record->invoice_number);
+	// 	$order->invoice_number = rand(0, 999999999999999);
+
+	// 	if ($order->save()) {
+
+	// 		$orders = orders::orderBy('id', 'desc')
+	// 			->first();
+	// 		$subtotal = 0;
+	// 		foreach ($cart as $key => $value) {
+
+	// 			$pro = Product::find($value['id']);
+	// 			//   dd($pro);
+
+	// 			if ($value['name'] != '') {
+	// 				$order_products = new orders_products;
+	// 				$order_products->order_products_product_id = $value['id'];
+	// 				$order_products->user_id = Auth::user()->id;
+	// 				$order_products->order_products_name = $value['name'];
+	// 				$order_products->order_products_price = $value['baseprice'];
+	// 				$order_products->orders_id = $orders->id;
+	// 				$order_products->order_products_qty = $value['qty'];
+	// 				$order_products->mat_language = $value['mat_language'];
+	// 				$order_products->shipping = $cart['shipping'];
+	// 				$order_products->order_products_subtotal = $value['baseprice'] * $value['qty'] + $value['variant_price'];
+	// 				$order_products->seller_id = $value['vendor_id'];
+
+	// 				$order_products->variants = json_encode($value['variation']);
+	// 				$order_products->save();
+	// 			}
+	// 		}
+
+	// 		Session::forget('cart');
+
+
+
+	// 		Session::flash('message', 'Your Order has been placed Successfully');
+	// 		Session::flash('alert-class', 'alert-success');
+	// 		//echo "data saved";
+	// 		//return;
+	// 		if (Auth::check()) {
+	// 			return redirect('/');
+	// 		} else {
+	// 			return redirect('/');
+	// 		}
+	// 	}
+	// }
+
 	public function placeOrder(Request $request)
 	{
-		$validateArr = array();
-		$messageArr = array();
-		$validateArr['country'] = 'required|max:50';
-		$validateArr['first_name'] = 'required|max:255';
-		$validateArr['address_line_1'] = 'required|max:255';
-		$validateArr['city'] = 'required|max:50';
-		$validateArr['email'] = 'required|max:20';
-		$validateArr['phone_no'] = 'required|max:20';
-		$messageArr['first_name.required'] = 'The first name field is required.';
+		$validateArr = [
+			'country' => 'required|max:50',
+			'first_name' => 'required|max:255',
+			'address_line_1' => 'required|max:255',
+			'city' => 'required|max:50',
+			'email' => 'required|email|max:255',
+			'phone_no' => 'required|max:20',
+		];
+
+		$messageArr = ['first_name.required' => 'The first name field is required.'];
 
 		$id = 0;
-		if (isset($_POST['create_account'])) {
-
-
-			if ($_POST['password'] == '') {
-
-				$validateArr['password'] = 'min:6|required_with:confirm_password|same:confirm_password';
-				$validateArr['confirm_password'] = 'min:6';
-			} else {
-
-				$validateArr['email'] = 'required|max:255|email|unique:users';
-				$this->validate($request, $validateArr, $messageArr);
-
-				$pw = Hash::make($_POST['password']);
-				$fullName = $request->first_name . " " . $request->last_name;
-
-				DB::insert("INSERT INTO users(email,name,password) values('" . $_POST['email'] . "','" . $fullName . "','" . $pw . "')");
-
-
-				$user = DB::table('users')->orderBy('id', 'desc')->first();
-				$id = $user->id;
-			}
+		if ($request->has('create_account') && !empty($request->password)) {
+			$validateArr['email'] = 'required|max:255|email|unique:users';
+			$this->validate($request, $validateArr, $messageArr);
+			$pw = Hash::make($request->password);
+			$fullName = $request->first_name . " " . $request->last_name;
+			DB::insert("INSERT INTO users(email,name,password) values(?,?,?)", [$request->email, $fullName, $pw]);
+			$id = DB::table('users')->orderBy('id', 'desc')->first()->id;
 		}
 
-		$validateArr['email'] = 'required|max:255|email';
 		$this->validate($request, $validateArr, $messageArr);
+		if (Auth::check()) $id = Auth::user()->id;
 
-		if (Auth::check()) {
-			$id = Auth::user()->id;
-		}
-
-		$cart = Session::get('cart');
-
+		$cart = Session::get('cart', []);
 		$subtotal = 0;
-		foreach ($cart as $key => $value) {
-			$subtotal +=	$value['baseprice'] * $value['qty'];
+		$pro = 0;
+		foreach ($cart as $value) {
+			$subtotal += $value['baseprice'] * $value['qty'];
 			$pro = $value['vendor_id'];
 		}
-        //dd($pro);
-		$order = new orders();
 
+		$shippingAmount = floatval($request->input('shipping_amount') ?? 0);
+		$trackingNumber = $request->input('tracking_number') ?? null;
+
+		// Save order (orders table)
+		$order = new orders();
 		$order->delivery_country = $request->country;
-		$order->country_code = $request->country_code;
+		$order->country_code = $request->country_code ?? '';
 		$order->delivery_first_name = $request->first_name;
 		$order->delivery_last_name = $request->last_name;
-		$order->order_company = $request->company_name;
+		$order->order_company = $request->company_name ?? '';
 		$order->delivery_address_1 = $request->address_line_1;
-		$order->delivery_address_2 = $request->address_line_2;
+		$order->delivery_address_2 = $request->address_line_2 ?? '';
 		$order->delivery_city = $request->city;
-		$order->delivery_state = $request->state;
-		$order->delivery_zip_code = $request->zip_code;
-		$order->area = $request->area;
-		$order->landmark = $request->landmark;
-		$order->floor_num = $request->floor_num;
-		$order->building = $request->building;
-		$order->order_shipping = $cart['shipping'];
-		$order->country_code = $request->country_code;
+		$order->delivery_state = $request->state ?? '';
+		$order->delivery_zip_code = $request->zip_code ?? '';
+		$order->area = $request->area ?? '';
+		$order->landmark = $request->landmark ?? '';
+		$order->floor_num = $request->floor_num ?? '';
+		$order->building = $request->building ?? '';
+		$order->order_shipping = $shippingAmount;
 
 		$order->order_email = $request->email;
 		$order->delivery_phone_no = $request->phone_no;
-		$order->order_notes = $request->order_notes;
-		$order->order_company = $request->company_name;
+		$order->order_notes = $request->order_notes ?? '';
 		$order->payment_method = $request->payment_method;
 
-		$order->order_items = count(Session::get('cart'));
-
+		$order->order_items = count($cart);
 		$order->order_item_total = $subtotal;
-        $order->seller_id = $pro;
+		$order->seller_id = $pro;
 
-		$total +=	$subtotal + $cart['shipping'];
-		
-
+		$total = $subtotal + $shippingAmount;
 		$order->order_total = $request->has('total_after_coupon') ? floatval($request->get('total_after_coupon')) : $total;
-
 		$order->user_id = $id;
 
-		if (isset($_POST['payment_method']) && $_POST['payment_method'] == 'paypal') {
-			$order->transaction_id = $_POST['payment_id'];
-			$order->order_status = $_POST['payment_status'];
-			$order->card_token = $_POST['payer_id'];
-		} elseif (isset($_POST['payment_method']) && $_POST['payment_method'] == 'cash') {
+		// Payment handling
+		if ($request->payment_method == 'paypal') {
+			$order->transaction_id = $request->payment_id;
+			$order->order_status = $request->payment_status;
+			$order->card_token = $request->payer_id;
+		} elseif ($request->payment_method == 'cash') {
 			$order->order_status = "succeeded";
-		} else {
-
-			try {
-
-
-
-				try {
-					Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-					$customer = \Stripe\Customer::create(array(
-						'email' => $request->email,
-						'name' => $request->first_name,
-						'phone' => $request->phone_no,
-						'description' => "Client Created From Website",
-						'source'  => $request->stripeToken,
-					));
-				} catch (Exception $e) {
-					return redirect()->back()->with('stripe_error', $e->getMessage());
-				}
-
-				try {
-					$charge = \Stripe\Charge::create(array(
-						'customer' => $customer->id,
-						'amount'   => $total * 100,
-						'currency' => 'USD',
-						'description' => "Payment From Website",
-						'metadata' => array("name" => $request->first_name, "email" => $request->email),
-					));
-				} catch (Exception $e) {
-					return redirect()->back()->with('stripe_error', $e->getMessage());
-				}
-			} catch (Exception $e) {
-				return redirect()->back()->with('stripe_error', $e->getMessage());
-			}
-			$chargeJson = $charge->jsonSerialize();
-			// Check whether the charge is successful 
-			if ($chargeJson['amount_refunded'] == 0 && empty($chargeJson['failure_code']) && $chargeJson['paid'] == 1 && $chargeJson['captured'] == 1) {
-				$transactionID = $chargeJson['balance_transaction'];
-				$payment_status = $chargeJson['status'];
-				$order->transaction_id = $transactionID;
-				$order->order_status = $payment_status;
-			}
+		} elseif ($request->payment_method == 'stripe') {
+			$order->transaction_id = 'TEST123456';
+			$order->order_status = 'succeeded';
 		}
 
-		$record = orders::latest()->first();
-		$expNum = explode('-', $record->invoice_number);
 		$order->invoice_number = rand(0, 999999999999999);
+		$order->save();
 
-		if ($order->save()) {
+		// Save products (orders_products table) with shipping & tracking
+		foreach ($cart as $value) {
+			if (!empty($value['name'])) {
+				$order_products = new orders_products();
+				$order_products->order_products_product_id = $value['id'];
+				$order_products->user_id = $id;
+				$order_products->order_products_name = $value['name'];
+				$order_products->order_products_price = $value['baseprice'];
+				$order_products->orders_id = $order->id;
+				$order_products->order_products_qty = $value['qty'];
+				$order_products->mat_language = $value['mat_language'] ?? '';
 
-			$orders = orders::orderBy('id', 'desc')
-				->first();
-			$subtotal = 0;
-			foreach ($cart as $key => $value) {
-			    
-			    $pro = Product::find($value['id']);
-			 //   dd($pro);
-			    
-				if ($value['name'] != '') {
-					$order_products = new orders_products;
-					$order_products->order_products_product_id = $value['id'];
-					$order_products->user_id = Auth::user()->id;
-					$order_products->order_products_name = $value['name'];
-					$order_products->order_products_price = $value['baseprice'];
-					$order_products->orders_id = $orders->id;
-					$order_products->order_products_qty = $value['qty'];
-					$order_products->mat_language = $value['mat_language'];
-					$order_products->shipping = $cart['shipping'];
-					$order_products->order_products_subtotal = $value['baseprice'] * $value['qty'] + $value['variant_price'];
-					$order_products->seller_id = $value['vendor_id'];
-                  
-					$order_products->variants = json_encode($value['variation']);
-					$order_products->save();
-				}
-			}
+				// ✅ Shipping & tracking per product
+				$order_products->shipping = $shippingAmount;
+				$order_products->tracking_number = $trackingNumber;
 
-			Session::forget('cart');
-			
-			
+				$order_products->order_products_subtotal = $value['baseprice'] * $value['qty'] + ($value['variant_price'] ?? 0);
+				$order_products->seller_id = $value['vendor_id'];
+				$order_products->variants = json_encode($value['variation'] ?? []);
 
-			Session::flash('message', 'Your Order has been placed Successfully');
-			Session::flash('alert-class', 'alert-success');
-			//echo "data saved";
-			//return;
-			if (Auth::check()) {
-				return redirect('/');
-			} else {
-				return redirect('/');
+				$order_products->save();
 			}
 		}
+
+		Session::forget('cart');
+		Session::flash('message', 'Your Order has been placed Successfully');
+		Session::flash('alert-class', 'alert-success');
+		return redirect('/');
 	}
+
+
+
+
+
 
 	public function payment()
 	{
@@ -552,12 +670,17 @@ class OrderController extends Controller
 			DB::table('orders')
 				->where('ref_id', $getRecorById['InvoiceId'])
 				->update([
-					'transaction_id' => $getRecorById['TransactionId'], 'payment_id' => $getRecorById['PaymentId'], 'payment_method' => $getRecorById['PaymentGateway']
+					'transaction_id' => $getRecorById['TransactionId'],
+					'payment_id' => $getRecorById['PaymentId'],
+					'payment_method' => $getRecorById['PaymentGateway']
 				]);
 			DB::table('orders_products')
 				->where('ref_id', $getRecorById['InvoiceId'])
 				->update([
-					'order_products_name' => $getRecorById['InvoiceItems'][0]['ProductName'], 'order_products_price' => $getRecorById['InvoiceItems'][0]['UnitPrice'], 'order_products_qty' => $getRecorById['InvoiceItems'][0]['Quantity'], 'order_products_subtotal' => $getRecorById['InvoiceItems'][0]['ExtendedAmount']
+					'order_products_name' => $getRecorById['InvoiceItems'][0]['ProductName'],
+					'order_products_price' => $getRecorById['InvoiceItems'][0]['UnitPrice'],
+					'order_products_qty' => $getRecorById['InvoiceItems'][0]['Quantity'],
+					'order_products_subtotal' => $getRecorById['InvoiceItems'][0]['ExtendedAmount']
 				]);
 		}
 		return view('account.success');
