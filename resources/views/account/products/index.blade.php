@@ -82,9 +82,21 @@
                                                                             {{-- <button class="btn-seller" type="button"
                                                                                 data-toggle="modal"
                                                                                 data-target="#exampleModalCenter-{{ $pros->id }}">Edit</button> --}}
-                                                                            <a href="{{ route('editproduct', ['id' => $pros->id]) }}"
-                                                                                class="btn-seller">Edit</a>
+                                                                            <button>
+                                                                                <a href="{{ route('editproduct', ['id' => $pros->id]) }}"
+                                                                                    class="btn-seller">Edit</a>
+                                                                            </button>
+                                                                            <form
+                                                                                action="{{ route('deleteproduct', $pros->id) }}"
+                                                                                method="POST" style="display:inline;">
+                                                                                @csrf
+                                                                                @method('DELETE')
 
+                                                                                <button type="submit" class="btn-seller"
+                                                                                    onclick="return confirm('Are you sure?')">
+                                                                                    Delete
+                                                                                </button>
+                                                                            </form>
                                                                         </td>
                                                                     </tr>
                                                                     @php

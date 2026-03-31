@@ -189,6 +189,7 @@ Route::get('account', 'LoggedInController@account')->name('account');
 Route::get('productlist', 'LoggedInController@productlist')->name('productlist');
 Route::get('add-new-product', 'LoggedInController@addnewproduct')->name('addnewproduct');
 Route::get('edit-product/{id}', 'LoggedInController@editproduct')->name('editproduct');
+Route::delete('/product-delete/{id}', 'LoggedInController@deleteproduct')->name('deleteproduct');
 
 Route::post('pro-img-id-deleted', 'LoggedInController@img_deleted')->name('pro-img-id-deleting');
 

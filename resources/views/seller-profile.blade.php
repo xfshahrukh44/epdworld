@@ -16,19 +16,18 @@
                         <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
                             <ul class="products columns-3">
                                 @foreach ($product as $pros)
-                                    @php
+                                    {{-- @php
                                         $pro = App\Product::where('id', $pros->product_id)->first();
-                                    @endphp
-
+                                    @endphp --}}
 
                                     <li class="product first">
                                         <div class="product-outer">
                                             <div class="product-inner"> <span class="loop-product-categories"><a
-                                                        href="#" rel="tag">{!! $pro->categorys->name !!}</a></span>
+                                                        href="#" rel="tag">{!! $pros->categorys->name !!}</a></span>
                                                 <a href="{{ route('shopDetail', ['id' => $pros->id]) }}">
-                                                    <h3>{!! $pro->product_title !!}</h3>
-                                                    <div class="product-thumbnail"> <img data-echo="{!! asset($pro->image) !!}"
-                                                            src="{{ asset($pro->image) }}" alt=""> </div>
+                                                    <h3>{!! $pros->product_title !!}</h3>
+                                                    <div class="product-thumbnail"> <img data-echo="{!! asset($pros->image) !!}"
+                                                            src="{{ asset($pros->image) }}" alt=""> </div>
                                                 </a>
                                                 <div class="price-add-to-cart"> <span class="price">
                                                         <span class="electro-price">

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use DB;
 use Auth;
 use File;
@@ -42,13 +43,11 @@ class LoggedInController extends Controller
 
         // $this->middleware('guest');
         $this->middleware('auth');
-        $logo = imagetable::
-            select('img_path')
+        $logo = imagetable::select('img_path')
             ->where('table_name', '=', 'logo')
             ->first();
 
-        $favicon = imagetable::
-            select('img_path')
+        $favicon = imagetable::select('img_path')
             ->where('table_name', '=', 'favicon')
             ->first();
 
@@ -65,7 +64,6 @@ class LoggedInController extends Controller
             ->orderBy('orders.id', 'desc')
             ->get();
         return view('account.orders', ['ORDERS' => $orders]);
-
     }
 
     public function myorders()
@@ -76,7 +74,6 @@ class LoggedInController extends Controller
             ->get();
 
         return view('account.orders', ['ORDERS' => $orders]);
-
     }
 
 
@@ -116,7 +113,6 @@ class LoggedInController extends Controller
         $attval = AttributeValue::all();
         $items = Category::pluck('name', 'id');
         return view('account.products.create', compact('data', 'att', 'attval'));
-
     }
 
     public function editproduct($id)
@@ -135,7 +131,18 @@ class LoggedInController extends Controller
 
         $existingVariations = ProductAttribute::where('product_id', $id)->get();
         return view('account.products.edit', compact('data', 'att', 'items', 'product_images', 'variations', 'attributes', 'existingVariations'));
+    }
 
+    public function deleteproduct($id)
+    {
+        $product = Product::find($id);
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+        DB::table('product_imagess')->where('product_id', $id)->delete();
+        ProductAttribute::where('product_id', $id)->delete();
+        $product->delete();
+        return redirect()->back()->with('success', 'Product deleted successfully');
     }
 
     public function getAttributeValues($id)
@@ -311,7 +318,6 @@ class LoggedInController extends Controller
             $imageName = time() . '_main.' . $file->getClientOriginalExtension();
             $file->move(public_path('uploads/products/'), $imageName);
             $product->image = 'uploads/products/' . $imageName;
-
         }
 
         $product->save();
@@ -365,7 +371,6 @@ class LoggedInController extends Controller
                     ]);
                 }
             }
-
         }
         Session::flash('message', 'Your Product has been saved Successfully');
         return redirect()->route('productlist');
@@ -417,7 +422,6 @@ class LoggedInController extends Controller
         Session::flash('message', 'Your Profile Settings has been changed');
         Session::flash('alert-class', 'alert-success');
         return back();
-
     }
     public function uploadPicture(Request $request)
     {
@@ -482,8 +486,7 @@ class LoggedInController extends Controller
         $order_id = $id;
         $order = orders::where('id', $order_id)->first();
         $order_products = orders_products::where('orders_id', $order_id)->get();
-        return view('account.invoice')->with('title', 'Invoice #' . $order_id)->with(compact('order', 'order_products'))->with('order_id', $order_id);
-        ;
+        return view('account.invoice')->with('title', 'Invoice #' . $order_id)->with(compact('order', 'order_products'))->with('order_id', $order_id);;
     }
     public function friends()
     {
@@ -528,6 +531,4 @@ class LoggedInController extends Controller
             'message' => 'Error occurred while deleting'
         ]);
     }
-
 }
-
