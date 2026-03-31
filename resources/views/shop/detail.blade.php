@@ -63,7 +63,7 @@
                             @csrf
                             <input type="hidden" name="product_id" id="product_id" value="{{ $product_detail->id }}">
                             <div class="summary entry-summary"> <span class="loop-product-categories">
-                                    <a href="" rel="tag">{!! $product_detail->categorys->name !!}</a>
+                                    <a href="#" rel="tag">{!! $product_detail->categorys->name !!}</a>
                                 </span>
                                 <!-- /.loop-product-categories -->
                                 <h1 itemprop="name" class="product_title entry-title">{!! $product_detail->product_title !!}</h1>
