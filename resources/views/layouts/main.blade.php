@@ -12,6 +12,11 @@
     <link rel="canonical" href="@yield('canonical_tag_href')" />
     <meta name="author" content="Admin">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <meta name="geo.region" content="US">
+    <meta name="geo.position" content="39.78373;-100.445882">
+    <meta name="ICBM" content="39.78373, -100.445882" >
+    
     <!--<meta name="google-site-verification" content="f9t6uOoo5Xkcul28cXfrCjZewfNhOifG4X6TFO6TeAo" />-->
     <meta name="google-site-verification" content="f9t6uOoo5Xkcul28cXfrCjZewfNhOifG4X6TFO6TeAo" />
 
@@ -26,6 +31,15 @@
         gtag('js', new Date());
         gtag('config', 'G-H21WNMHKBX');
     </script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KZHTHNZD');</script>
+    <!-- End Google Tag Manager -->
+
 
 
 
@@ -572,6 +586,12 @@
 </head>
 
 <body class="responsive">
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZHTHNZD"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
 
 
     @include('layouts/front.header')
@@ -920,25 +940,6 @@
             });
         });
     </script>
-
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KHH9ZPZF');
-    </script>
-    <!-- End Google Tag Manager -->
 
 </body>
 

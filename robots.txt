@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /admin/
+Disallow: /login/
 Allow: /
-Crawl-delay:3
-Sitemap:https://epdworld.com/index.php/sitemap.xml
+
+Sitemap: https://www.epdworld.com/sitemap.xml
