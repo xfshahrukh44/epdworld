@@ -77,7 +77,7 @@
                                                                         <td>{{ $count }}</td>
                                                                         <td>{{ $pros->product_title }}</td>
                                                                         <td><img src="{{ asset($pros->image) }}"> </td>
-                                                                        <td>${{ $pros->price }}</td>
+                                                                        <td>${{ number_format($pros->calculated_final_price, 2) }}</td>
                                                                         <td class="viewbtn">
                                                                             {{-- <button class="btn-seller" type="button"
                                                                                 data-toggle="modal"
