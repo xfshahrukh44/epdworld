@@ -424,7 +424,7 @@ Route::get('user-ip', 'HomeController@getusersysteminfo');
 route::get('status/delivered/{id}', 'admin\\productcontroller@updatestatusdelivered')->name('status.delivered');
 route::get('status/cancelled/{id}', 'admin\\productcontroller@updatestatuscancelled')->name('status.cancelled');
 
-Route::resource('admin/blog', 'Admin\\BlogController');
+// Route::resource('admin/blog', 'Admin\\BlogController');
 Route::resource('admin/category', 'Admin\\CategoryController');
 
 Route::resource('admin/banner', 'Admin\\BannerController', ['names' => 'admin.banner']);
